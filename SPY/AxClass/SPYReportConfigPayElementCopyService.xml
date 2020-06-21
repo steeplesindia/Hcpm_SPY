@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>SPYReportConfigPayElementCopyService</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+class SPYReportConfigPayElementCopyService extends SysOperationServiceBase
+{
+    SPYReportConfigFields              reportConfigFields;
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>copyDetails</Name>
+				<Source><![CDATA[
+    [SysEntryPointAttribute]    
+    public void copyDetails(SPYReportConfigPayElementCopyContract _contract)
+    {
+        SPYReportConfigFieldPayElements reportConfigFieldPayElements, reportConfigFieldPayElementsInsert;
+        
+        //delete the target data before inserting fresh one
+        delete_from reportConfigFieldPayElementsInsert
+                where reportConfigFieldPayElementsInsert.ReportConfigField == _contract.parmReportConfigRecFieldId();
+           
+        while select reportConfigFieldPayElements 
+            where reportConfigFieldPayElements.ReportConfigField == _contract.parmReportConfigSourceFieldRecId()
+        {
+
+            reportConfigFieldPayElementsInsert.initValue();
+            reportConfigFieldPayElementsInsert.ReportConfigField = _contract.parmReportConfigRecFieldId();
+            reportConfigFieldPayElementsInsert.LineNum = reportConfigFieldPayElements.LineNum;
+            reportConfigFieldPayElementsInsert.PayElement = reportConfigFieldPayElements.PayElement;
+            reportConfigFieldPayElementsInsert.Operator   =  reportConfigFieldPayElements.Operator;
+            reportConfigFieldPayElementsInsert.FieldCode = reportConfigFieldPayElements.FieldCode;
+            reportConfigFieldPayElementsInsert.InverseSign = reportConfigFieldPayElements.InverseSign;
+            reportConfigFieldPayElementsInsert.insert();
+        }
+
+        info('@SPY:DataCopied');
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

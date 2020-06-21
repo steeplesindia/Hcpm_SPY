@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>SPYReportConfigPayElementCopyContract</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[DataContractAttribute]
+class SPYReportConfigPayElementCopyContract
+{
+    SPYReportConfigFieldRecId       reportConfigRecFieldId;
+    SPYReportConfigFieldRecId       reportConfigSourceFieldRecId;
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>parmReportConfigRecFieldId</Name>
+				<Source><![CDATA[
+    [
+        DataMemberAttribute('FieldId'),
+        SysOperationLabelAttribute(literalStr('@SPY:ReportConfigField')),
+        SysOperationDisplayOrderAttribute('1')
+    ]
+
+    public SPYReportConfigFieldRecId parmReportConfigRecFieldId(SPYReportConfigFieldRecId _reportConfigRecFieldId = reportConfigRecFieldId)
+    {
+        reportConfigRecFieldId =_reportConfigRecFieldId;
+    
+        return reportConfigRecFieldId;
+
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmReportConfigSourceFieldRecId</Name>
+				<Source><![CDATA[
+    public SPYReportConfigFieldRecId parmReportConfigSourceFieldRecId(SPYReportConfigFieldRecId _reportConfigSourceFieldRecId = reportConfigSourceFieldRecId)
+    {
+        reportConfigSourceFieldRecId =_reportConfigSourceFieldRecId;
+    
+        return reportConfigSourceFieldRecId;
+
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

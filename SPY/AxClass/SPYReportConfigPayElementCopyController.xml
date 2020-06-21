@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>SPYReportConfigPayElementCopyController</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+class SPYReportConfigPayElementCopyController extends SysOperationServiceController
+{
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>new</Name>
+				<Source><![CDATA[
+    protected void new()
+    {
+        super(); //super call is important
+
+         // This tells the controller what method it should execute as the service.         
+        this.parmClassName( classStr(SPYReportConfigPayElementCopyService) );
+        this.parmMethodName( methodStr(SPYReportConfigPayElementCopyService, copyDetails) );
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>main</Name>
+				<Source><![CDATA[
+    public static void main(Args _args)
+    {
+        SPYReportConfigPayElementCopyController     controller = new SPYReportConfigPayElementCopyController();
+        SPYReportConfigPayElementCopyContract       dataContract;
+        SPYReportConfigFields                       reportConfigFields;
+                              
+        controller.parmArgs(_args);
+        controller.parmExecutionMode( SysOperationExecutionMode::Synchronous);
+        controller.parmShowDialog(true); // Actually the default value
+        controller.parmShowProgressForm(false);
+
+        dataContract = controller.getDataContractObject();
+
+       
+        if (_args && _args.caller() is FormRun)
+        {
+            /*
+            // Get marked records from calling form
+            Set recordSet;
+            recordSet = new Set(Types::Record);
+            multiselectionHelper = MultiSelectionHelper::createFromCaller(_args.caller());
+        
+            tmpInventTable = multiselectionHelper.getFirst();
+            while (tmpInventTable)
+            {
+                recordSet.add(tmpInventTable);
+            
+                tmpInventTable = multiselectionHelper.getNext();
+            }
+            */
+            if (_args.record() && _args.dataset() == tableNum(SPYReportConfigFields))
+            {
+                reportConfigFields = _args.record();
+                dataContract.parmReportConfigSourceFieldRecId( reportConfigFields.RecId);
+            }
+        }
+
+        controller.startOperation();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>validate</Name>
+				<Source><![CDATA[
+    protected boolean validate()
+    {
+        SPYReportConfigPayElementCopyContract         contract;
+        boolean                         ret = true;
+    
+        contract = this.getDataContractObject();
+    
+        if (contract.parmReportConfigRecFieldId() == 0 )
+        {
+            // Failing the validate will not close the dialog, and the user will have another chance of inputting the correct values
+            ret = checkFailed('@SPY:Missing');
+        }
+    
+        return ret;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>defaultCaption</Name>
+				<Source><![CDATA[
+    protected ClassDescription defaultCaption()
+    {
+        // This will be the dialog's caption
+        return '@SPY:CopyField';
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

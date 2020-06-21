@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Diagnostics
+  GenerationTime="2020-06-18T13:37:49.1939153+00:00">
+  <Items>
+    <Diagnostic>
+      <DiagnosticType>Generation</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://View/SPYPayrollLedgerDataEntity</Path>
+      <ElementType>View</ElementType>
+      <Moniker>IsRuntimeServicesMode</Moniker>
+      <Line>0</Line>
+      <Column>0</Column>
+      <Message>Is Runtime Services mode: False</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Class/SPYUploadBenefitJournal/Method/upload</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>125</Line>
+      <Column>9</Column>
+      <EndLine>125</EndLine>
+      <EndColumn>23</EndColumn>
+      <Message>TODO UPGRADE</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Class/SPYUploadWorkerPayElement/Method/upload</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>148</Line>
+      <Column>9</Column>
+      <EndLine>148</EndLine>
+      <EndColumn>23</EndColumn>
+      <Message>TODO UPGRADE</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Class/SPYPromotionEventHandler1/Method/started</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>14</Line>
+      <Column>3</Column>
+      <EndLine>14</EndLine>
+      <EndColumn>64</EndColumn>
+      <Message>TODO:  Write code to execute once the workflow is started.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Class/SPYPromotionEventHandler1/Method/denied</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>32</Line>
+      <Column>3</Column>
+      <EndLine>32</EndLine>
+      <EndColumn>63</EndColumn>
+      <Message>TODO:  Write code to execute once the workflow is denied.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Class/SPYPromotionEventHandler1/Method/created</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>47</Line>
+      <Column>9</Column>
+      <EndLine>47</EndLine>
+      <EndColumn>70</EndColumn>
+      <Message>TODO:  Write code to execute once the workflow is created.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Class/SPYUploadPayAdjustmentJournal/Method/upload</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>153</Line>
+      <Column>9</Column>
+      <EndLine>153</EndLine>
+      <EndColumn>23</EndColumn>
+      <Message>TODO UPGRADE</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>ExternalReference</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Reference/Microsoft.OData.Edm</Path>
+      <Moniker>AssemblyFileNotFound</Moniker>
+      <Message>Assembly 'System.Xml, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e' failed to load because it was not found.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYReportConfigService/Method/runReport</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ObsoleteEntityUsageWithReason</Moniker>
+      <Line>21</Line>
+      <Column>6</Column>
+      <EndLine>21</EndLine>
+      <EndColumn>28</EndColumn>
+      <Message>'SysEntryPointAttribute' is obsolete: '"This attribute is deprecated in AX7. "'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYWorkerTransition/Method/HcmWorkerTransition_Post_newCreateHcmWorker</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ObsoleteEntityUsageWithReason</Moniker>
+      <Line>33</Line>
+      <Column>52</Column>
+      <EndLine>33</EndLine>
+      <EndColumn>108</EndColumn>
+      <Message>'newCreateHcmWorker' is obsolete: ''newCreateHcmWorker is obsolete, use newCreateHcmWorkerV2 method.''.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYReportConfigPayElementCopyService/Method/copyDetails</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ObsoleteEntityUsageWithReason</Moniker>
+      <Line>5</Line>
+      <Column>6</Column>
+      <EndLine>5</EndLine>
+      <EndColumn>28</EndColumn>
+      <Message>'SysEntryPointAttribute' is obsolete: '"This attribute is deprecated in AX7. "'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Table/SPYPromotionWorkerTable/Method/modifiedField</Path>
+      <ElementType>Table Method</ElementType>
+      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
+      <Line>21</Line>
+      <Column>24</Column>
+      <EndLine>21</EndLine>
+      <EndColumn>58</EndColumn>
+      <Message>The variable 'validFrom' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmPositionDetail'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Table/SPYReferencePayElementLedger/Method/aosValidateDelete</Path>
+      <ElementType>Table Method</ElementType>
+      <Moniker>InternalUseOnlyMethodInaccessible</Moniker>
+      <Line>10</Line>
+      <Column>19</Column>
+      <EndLine>10</EndLine>
+      <EndColumn>26</EndColumn>
+      <Message>Method 'aosValidateDelete' or type 'Common' in which it is declared is marked InternalUseOnly and is not accessible from the current module 'SPY'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Table/SPYReferencePayElementLedger/Method/aosValidateInsert</Path>
+      <ElementType>Table Method</ElementType>
+      <Moniker>InternalUseOnlyMethodInaccessible</Moniker>
+      <Line>20</Line>
+      <Column>15</Column>
+      <EndLine>20</EndLine>
+      <EndColumn>22</EndColumn>
+      <Message>Method 'aosValidateInsert' or type 'Common' in which it is declared is marked InternalUseOnly and is not accessible from the current module 'SPY'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Table/SPYPayrollLedger/Method/aosValidateDelete</Path>
+      <ElementType>Table Method</ElementType>
+      <Moniker>InternalUseOnlyMethodInaccessible</Moniker>
+      <Line>14</Line>
+      <Column>19</Column>
+      <EndLine>14</EndLine>
+      <EndColumn>26</EndColumn>
+      <Message>Method 'aosValidateDelete' or type 'Common' in which it is declared is marked InternalUseOnly and is not accessible from the current module 'SPY'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Table/SPYPayrollLedger/Method/aosValidateInsert</Path>
+      <ElementType>Table Method</ElementType>
+      <Moniker>InternalUseOnlyMethodInaccessible</Moniker>
+      <Line>30</Line>
+      <Column>15</Column>
+      <EndLine>30</EndLine>
+      <EndColumn>22</EndColumn>
+      <Message>Method 'aosValidateInsert' or type 'Common' in which it is declared is marked InternalUseOnly and is not accessible from the current module 'SPY'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYWritePayElementsOfWorker/Method/insertWorkerPayelements</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
+      <Line>126</Line>
+      <Column>24</Column>
+      <EndLine>126</EndLine>
+      <EndColumn>64</EndColumn>
+      <Message>The variable 'currentDate' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmEmploymentDetail'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYWritePayElementsOfWorker/Method/insertWorkerPayelements</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
+      <Line>126</Line>
+      <Column>24</Column>
+      <EndLine>126</EndLine>
+      <EndColumn>64</EndColumn>
+      <Message>The variable 'currentDate' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmEmployment'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYWritePayElementsOfWorker/Method/insertWorkerPayelements</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
+      <Line>167</Line>
+      <Column>28</Column>
+      <EndLine>167</EndLine>
+      <EndColumn>68</EndColumn>
+      <Message>The variable 'currentDate' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmEmploymentDetail'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYWritePayElementsOfWorker/Method/insertWorkerPayelements</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
+      <Line>167</Line>
+      <Column>28</Column>
+      <EndLine>167</EndLine>
+      <EndColumn>68</EndColumn>
+      <Message>The variable 'currentDate' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmEmployment'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYProjCatEnableStdHoursParam/Method/ProjCategory_OnActivated</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>UnreachableStatement</Moniker>
+      <Line>23</Line>
+      <Column>13</Column>
+      <EndLine>23</EndLine>
+      <EndColumn>36</EndColumn>
+      <Message>The statement is unreachable.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYWpsGenerationService/Method/generateText</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeConversionLosesRangeAndPrecision</Moniker>
+      <Line>105</Line>
+      <Column>9</Column>
+      <EndLine>105</EndLine>
+      <EndColumn>124</EndColumn>
+      <Message>The type conversion from 'real' to 'int' loses range and precision.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYWpsGenerationService/Method/generateText</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeConversionLosesRangeAndPrecision</Moniker>
+      <Line>106</Line>
+      <Column>9</Column>
+      <EndLine>106</EndLine>
+      <EndColumn>133</EndColumn>
+      <Message>The type conversion from 'real' to 'int' loses range and precision.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYWpsGenerationService/Method/generateText_ae</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeConversionLosesRangeAndPrecision</Moniker>
+      <Line>286</Line>
+      <Column>9</Column>
+      <EndLine>286</EndLine>
+      <EndColumn>124</EndColumn>
+      <Message>The type conversion from 'real' to 'int' loses range and precision.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYWpsGenerationService/Method/generateText_ae</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeConversionLosesRangeAndPrecision</Moniker>
+      <Line>287</Line>
+      <Column>9</Column>
+      <EndLine>287</EndLine>
+      <EndColumn>133</EndColumn>
+      <Message>The type conversion from 'real' to 'int' loses range and precision.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYTimesheetProcessService/Method/process</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ObsoleteEntityUsageWithReason</Moniker>
+      <Line>902</Line>
+      <Column>9</Column>
+      <EndLine>902</EndLine>
+      <EndColumn>42</EndColumn>
+      <Message>'setAnimation' is obsolete: ''This method is obsolete as the progress indicator form no longer displays an animation. Please remove the call.''.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYTSUpdateAttendence/Method/updateLeavers</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ObsoleteEntityUsageWithReason</Moniker>
+      <Line>74</Line>
+      <Column>25</Column>
+      <EndLine>74</EndLine>
+      <EndColumn>102</EndColumn>
+      <Message>'dateStartYr' is obsolete: '"This method is deprecated and will be removed in future releases.
+Please use the DateTimeUtil::getStartOfYearDate method by specifying the locale to use.
+To retrieve the preferred locale of the user, use the method xSession.PreferredLocale."'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYTSUpdateAttendence/Method/updateLeavers</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ObsoleteEntityUsageWithReason</Moniker>
+      <Line>75</Line>
+      <Column>23</Column>
+      <EndLine>75</EndLine>
+      <EndColumn>98</EndColumn>
+      <Message>'dateEndYr' is obsolete: '"This method is deprecated and will be removed in future releases.
+Please use the DateTimeUtil::getEndOfYearDate method by specifying the locale to use.
+To retrieve the preferred locale of the user, use the method xSession.PreferredLocale."'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYPayslipController/Method/runReport</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>InternalUseOnlyVariableTypeInaccessible</Moniker>
+      <Line>29</Line>
+      <Column>9</Column>
+      <EndLine>29</EndLine>
+      <EndColumn>50</EndColumn>
+      <Message>Type 'SrsProxy' of variable 'srsProxy' is marked InternalUseOnly and is not accessible from the current module 'SPY'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYPayslipController/Method/runReport</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>InternalUseOnlyVariableTypeInaccessible</Moniker>
+      <Line>31</Line>
+      <Column>9</Column>
+      <EndLine>31</EndLine>
+      <EndColumn>113</EndColumn>
+      <Message>Type 'Microsoft.Dynamics.AX.Framework.Reporting.Shared.ReportingService.ParameterValue[]' of variable 'parameterValueArray' is marked InternalUseOnly and is not accessible from the current module 'SPY'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYPayslipController/Method/runReport</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ObsoleteEntityUsageWithReason</Moniker>
+      <Line>93</Line>
+      <Column>21</Column>
+      <EndLine>93</EndLine>
+      <EndColumn>40</EndColumn>
+      <Message>'isRunningOnServer' is obsolete: '"X++ code is always executed on the server"'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYPayslipController/Method/runReport</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ObsoleteEntityUsageWithReason</Moniker>
+      <Line>100</Line>
+      <Column>33</Column>
+      <EndLine>100</EndLine>
+      <EndColumn>71</EndColumn>
+      <Message>'getFolderPath' is obsolete: ''WinAPI has been deprecated and should not be used.''.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYPayslipController/Method/runReport</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>InternalUseOnlyTypeInaccessible</Moniker>
+      <Line>135</Line>
+      <Column>43</Column>
+      <EndLine>135</EndLine>
+      <EndColumn>104</EndColumn>
+      <Message>Type 'Microsoft.Dynamics.AX.Framework.Reporting.Shared.ReportingService.ParameterValue[]' is marked InternalUseOnly and is not accessible from the current module 'SPY'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYPayslipController/Method/runReport</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>InternalUseOnlyTypeInaccessible</Moniker>
+      <Line>136</Line>
+      <Column>69</Column>
+      <EndLine>136</EndLine>
+      <EndColumn>119</EndColumn>
+      <Message>Type 'SRSReportServerConfiguration' is marked InternalUseOnly and is not accessible from the current module 'SPY'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYPayslipController/Method/runReport</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>InternalUseOnlyTypeInaccessible</Moniker>
+      <Line>136</Line>
+      <Column>32</Column>
+      <EndLine>136</EndLine>
+      <EndColumn>120</EndColumn>
+      <Message>Type 'SrsProxy' is marked InternalUseOnly and is not accessible from the current module 'SPY'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYPayslipController/Method/runReport</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>InternalUseOnlyMethodInaccessible</Moniker>
+      <Line>136</Line>
+      <Column>32</Column>
+      <EndLine>136</EndLine>
+      <EndColumn>120</EndColumn>
+      <Message>Method 'constructWithConfiguration' or type 'SrsProxy' in which it is declared is marked InternalUseOnly and is not accessible from the current module 'SPY'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYPayslipController/Method/runReport</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>InternalUseOnlyTypeInaccessible</Moniker>
+      <Line>136</Line>
+      <Column>32</Column>
+      <EndLine>136</EndLine>
+      <EndColumn>120</EndColumn>
+      <Message>Type 'SRSReportServerConfiguration' is marked InternalUseOnly and is not accessible from the current module 'SPY'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYPayslipController/Method/runReport</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>InternalUseOnlyTypeInaccessible</Moniker>
+      <Line>137</Line>
+      <Column>35</Column>
+      <EndLine>137</EndLine>
+      <EndColumn>43</EndColumn>
+      <Message>Type 'SrsProxy' is marked InternalUseOnly and is not accessible from the current module 'SPY'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYPayslipController/Method/runReport</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>InternalUseOnlyMethodInaccessible</Moniker>
+      <Line>137</Line>
+      <Column>35</Column>
+      <EndLine>140</EndLine>
+      <EndColumn>121</EndColumn>
+      <Message>Method 'renderReportToByteArray' or type 'SrsProxy' in which it is declared is marked InternalUseOnly and is not accessible from the current module 'SPY'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYPayslipController/Method/runReport</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>InternalUseOnlyTypeInaccessible</Moniker>
+      <Line>137</Line>
+      <Column>35</Column>
+      <EndLine>140</EndLine>
+      <EndColumn>121</EndColumn>
+      <Message>Type 'Microsoft.Dynamics.AX.Framework.Reporting.Shared.ReportingService.ParameterValue[]' is marked InternalUseOnly and is not accessible from the current module 'SPY'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYPayslipController/Method/runReport</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ObsoleteEntityUsageWithReason</Moniker>
+      <Line>184</Line>
+      <Column>16</Column>
+      <EndLine>184</EndLine>
+      <EndColumn>35</EndColumn>
+      <Message>'isRunningOnServer' is obsolete: '"X++ code is always executed on the server"'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYPayslipController/Method/runReport</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>InternalUseOnlyTypeInaccessible</Moniker>
+      <Line>189</Line>
+      <Column>17</Column>
+      <EndLine>189</EndLine>
+      <EndColumn>117</EndColumn>
+      <Message>Type 'SrsClientServerAdapterController' is marked InternalUseOnly and is not accessible from the current module 'SPY'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYPayslipController/Method/runReport</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>InternalUseOnlyMethodInaccessible</Moniker>
+      <Line>189</Line>
+      <Column>17</Column>
+      <EndLine>189</EndLine>
+      <EndColumn>117</EndColumn>
+      <Message>Method 'runReportOnClient' or type 'SrsClientServerAdapterController' in which it is declared is marked InternalUseOnly and is not accessible from the current module 'SPY'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYTimesheetUpload/Method/readCSV</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ObsoleteEntityUsageWithReason</Moniker>
+      <Line>183</Line>
+      <Column>60</Column>
+      <EndLine>183</EndLine>
+      <EndColumn>107</EndColumn>
+      <Message>'getChartOfAccountsDelimiter' is obsolete: ''The getChartOfAccountsDelimiter method has been deprecated; use the DimensionParameters::getDimensionSegmentDelimiter method instead.''.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYPromotionProcessService/Method/process</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ObsoleteEntityUsageWithReason</Moniker>
+      <Line>292</Line>
+      <Column>9</Column>
+      <EndLine>292</EndLine>
+      <EndColumn>42</EndColumn>
+      <Message>'setAnimation' is obsolete: ''This method is obsolete as the progress indicator form no longer displays an animation. Please remove the call.''.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYWorkerAbsenceConfigUpdateService/Method/process</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ObsoleteEntityUsageWithReason</Moniker>
+      <Line>34</Line>
+      <Column>13</Column>
+      <EndLine>34</EndLine>
+      <EndColumn>46</EndColumn>
+      <Message>'setAnimation' is obsolete: ''This method is obsolete as the progress indicator form no longer displays an animation. Please remove the call.''.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYWorkerAbsenceConfigUpdateService/Method/setDates</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
+      <Line>90</Line>
+      <Column>30</Column>
+      <EndLine>90</EndLine>
+      <EndColumn>64</EndColumn>
+      <Message>The variable 'validFrom' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmEmployment'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYWorkerAbsenceConfigUpdateService/Method/setDates</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
+      <Line>102</Line>
+      <Column>30</Column>
+      <EndLine>102</EndLine>
+      <EndColumn>64</EndColumn>
+      <Message>The variable 'validFrom' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmEmployment'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYWorkerAbsenceConfigUpdateService/Method/setDates</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
+      <Line>107</Line>
+      <Column>30</Column>
+      <EndLine>107</EndLine>
+      <EndColumn>64</EndColumn>
+      <Message>The variable 'validFrom' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmWorkerTitle'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYWorkerAbsenceConfigUpdateService/Method/setDates</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
+      <Line>115</Line>
+      <Column>30</Column>
+      <EndLine>115</EndLine>
+      <EndColumn>56</EndColumn>
+      <Message>The variable '_transDate' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmEmployment'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYWorkingProfile/Method/workerIsCalendar</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
+      <Line>20</Line>
+      <Column>26</Column>
+      <EndLine>20</EndLine>
+      <EndColumn>52</EndColumn>
+      <Message>The variable '_transDate' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmEmploymentDetail'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYWorkingProfile/Method/workerIsCalendar</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
+      <Line>20</Line>
+      <Column>26</Column>
+      <EndLine>20</EndLine>
+      <EndColumn>52</EndColumn>
+      <Message>The variable '_transDate' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmEmployment'.</Message>
+    </Diagnostic>
+  </Items>
+  <Aliases />
+</Diagnostics>
