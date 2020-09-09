@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>SPYClearPayrollLogUtilityService</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+class SPYClearPayrollLogUtilityService extends SysOperationServiceBase
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>deletePayrollLog</Name>
+				<Source><![CDATA[
+    public void deletePayrollLog(SPYClearPayrollLogUtilityContract  _contract)
+    {
+        SPYPayrollProcessLogHeader      payProcessLogHeaderDel;
+        SPYPayrollPeriodLineRecId       payrollPeriodLineRecId = _contract.parmPayrollPeriodLine();
+        SPYPayrollPeriodLine            payrollPeriodLine = SPYPayrollPeriodLine::find(payrollPeriodLineRecId);
+
+        // Delete the entire Payroll Period Line in a single set based operation.
+        delete_from payProcessLogHeaderDel
+            where payProcessLogHeaderDel.PayrollPeriodLine == payrollPeriodLineRecId;
+
+        Info(strFmt("Payroll log deleted for Payroll Line %1 <--> %2",payrollPeriodLine.PeriodStartDate,payrollPeriodLine.PeriodEndDate));
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

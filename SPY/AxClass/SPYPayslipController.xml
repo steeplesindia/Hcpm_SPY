@@ -365,7 +365,7 @@ class SPYPayslipController extends SrsReportRunController
         SPYPayslipController    controller = new SPYPayslipController();
 
         controller.parmReportName(ssrsReportStr(SPYPaySlip, SPYReport));
-        controller.parmDialogCaption(literalStr("@SPY:EmployeePayslip"));
+        //controller.parmDialogCaption(literalStr("@SPY:EmployeePayslip"));
         controller.parmArgs(_args);
         controller.startOperation();
     }

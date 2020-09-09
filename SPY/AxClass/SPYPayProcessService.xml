@@ -6,6 +6,9 @@
 class SPYPayProcessService extends SPYPayService
 {
     SPYPayProcessContract       contract;
+    SPYPayrollProcessLogHeader  payrollProcessLogHeader;
+    SPYPayrollProcessLogLine    payrollProcessLogLine;
+
 }
 ]]></Declaration>
 		<Methods>
@@ -73,6 +76,12 @@ class SPYPayProcessService extends SPYPayService
                 ret = false;
                 workerValidationText = workerValidationText + "\n" + (strFmt("@SPY1431",
                 worker.name(),worker.PersonnelNumber));
+
+                this.insertPayProcessLogLine(payrollProcessLogHeader.RecId,
+                                             worker.RecId,
+                                             SPYPayProcessLogStatus::Error,
+                                             payrollPeriodLine,
+                                             workerValidationText);
             }
         }
     
@@ -140,11 +149,12 @@ class SPYPayProcessService extends SPYPayService
 				<Source><![CDATA[
     private void processPayElement()
     {
-        boolean                 payrollParameterState;
-        ListEnumerator          workerListEnumerator;
+        boolean                     payrollParameterState;
+        ListEnumerator              workerListEnumerator;
         #AviFiles
-        SysOperationProgress    progress = new SysOperationProgress();
-        int                     progressCount;
+        SysOperationProgress        progress = new SysOperationProgress();
+        int                         progressCount;
+        ErrorMessage                errorMessage;
     
         this.setPayrollPeriodLine(contract.parmPayrollPeriodLine());
         this.setTransDate(contract.parmTransDate());
@@ -170,6 +180,10 @@ class SPYPayProcessService extends SPYPayService
         progressCount = 1;
         setPrefix("@SPY378");
         info(strFmt("@SPY253",DateTimeUtil::utcNow()));
+
+        select firstonly RecId from payrollProcessLogHeader 
+            order by RecId desc;    
+        
         //ttsBegin;
         while(workerListEnumerator.moveNext())
         {
@@ -188,6 +202,13 @@ class SPYPayProcessService extends SPYPayService
                     this.workerBenefit();
                     this.postWorkerPayrollProcess();
                     //--</Pay calculation>--
+
+                    // Inserting the success records
+                    this.insertPayProcessLogLine(payrollProcessLogHeader.RecId,
+                                                 worker.RecId,
+                                                 SPYPayProcessLogStatus::Success,
+                                                 payrollPeriodLine,
+                                                 strFmt("@SPYLabel:LblPayrollProcessSuccess",worker.name()));
                 }
                 else
                 {
@@ -201,8 +222,35 @@ class SPYPayProcessService extends SPYPayService
             }
             catch(Exception::Error)
             {
-                checkFailed("@SPY252");
+                //checkFailed("@SPY252");
                 ttsAbort;
+
+                errorMessage = infolog.text(infologLine());
+                // Insertion of logging mechanism supporting records.
+                ttsbegin;
+                this.insertPayProcessLogLine(payrollProcessLogHeader.RecId,
+                                             worker.RecId,
+                                             SPYPayProcessLogStatus::Error,
+                                             payrollPeriodLine,
+                                             errorMessage);
+                                             
+                ttscommit;
+            }
+            catch (Exception::Warning)
+            {
+                //checkFailed("@SPY252");
+                ttsabort;
+
+                errorMessage = infolog.text(infologLine());
+                // Insertion of logging mechanism supporting records.
+                ttsbegin;
+                this.insertPayProcessLogLine(payrollProcessLogHeader.RecId,
+                                             worker.RecId,
+                                             SPYPayProcessLogStatus::Error,
+                                             payrollPeriodLine,
+                                             errorMessage);
+                                             
+                ttscommit;
             }
         }
         //this.finalizeProcess();  //Ledger inserted in every loop   
@@ -214,6 +262,20 @@ class SPYPayProcessService extends SPYPayService
             this.checkTrace(strFmt('%1\\Trace_%2_%3_%4.html',WinAPIServer::getTempPath(),curUserId(),
             date2str(DateTimeUtil::getToday(DateTimeUtil::getUserPreferredTimeZone()),123,DateDay::Digits2,DateSeparator::Hyphen,DateDay::Digits2,DateSeparator::Hyphen,DateDay::Digits2),
             DateTimeUtil::getTimeNow(DateTimeUtil::getUserPreferredTimeZone())));
+        }
+
+        // Updating the payroll end time information if the payroll process is running in client mode.
+        if (!this.isExecutingInBatch())
+        {
+            SPYPayrollProcessLogHeader      processPayrollLogHeaderUpd = SPYPayrollProcessLogHeader::findRec(payrollProcessLogHeader.RecId,true);
+            
+            if (processPayrollLogHeaderUpd)
+            {
+                ttsbegin;
+                processPayrollLogHeaderUpd.PayProcessEndTime = DateTimeUtil::getTimeNow(DateTimeUtil::getUserPreferredTimeZone());
+                processPayrollLogHeaderUpd.update();
+                ttscommit;
+            }
         }
     }
 
@@ -246,6 +308,28 @@ class SPYPayProcessService extends SPYPayService
     
         timesheetStart = prevPeriodProcessDate + 1;
         timesheetEnd = periodProcessDate;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>insertPayProcessLogLine</Name>
+				<Source><![CDATA[
+    public void insertPayProcessLogLine(RecId                      _payrollProcessHeaderRecId,
+                                        HcmWorkerRecId             _workerRecId,
+                                        SPYPayProcessLogStatus     _payProcessStatus,
+                                        SPYPayrollPeriodLineRecId  _payrollPeriodLineRecId,
+                                        Description255             _description)
+    {
+        payrollProcessLogLine.clear();
+        
+        payrollProcessLogLine.PayProcessHeaderRef       = _payrollProcessHeaderRecId;
+        payrollProcessLogLine.Worker                    = _workerRecId;
+        payrollProcessLogLine.PayProcessLogStatus       = _payProcessStatus;
+        payrollProcessLogLine.PayrollPeriodLineRecId    = _payrollPeriodLineRecId;
+        payrollProcessLogLine.Description               = _description;
+  
+        payrollProcessLogLine.insert();
     }
 
 ]]></Source>

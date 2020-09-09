@@ -12,7 +12,7 @@ public class SPYPayrollDetailsStagingV2 extends common
 	</SourceCode>
 	<ConfigurationKey>SPYPayroll</ConfigurationKey>
 	<DeveloperDocumentation>@DMF:StagingDeveloperDocumentation</DeveloperDocumentation>
-	<Label>@Benefits:PayrollDetails</Label>
+	<Label>Payroll details V2</Label>
 	<TableGroup>Staging</TableGroup>
 	<PrimaryIndex>StagingIdx</PrimaryIndex>
 	<ReplacementKey>StagingIdx</ReplacementKey>
@@ -302,18 +302,6 @@ public class SPYPayrollDetailsStagingV2 extends common
 					<Name>LegalEntity</Name>
 					<Field>LegalEntity</Field>
 					<RelatedField>LegalEntity</RelatedField>
-				</AxTableRelationConstraint>
-				<AxTableRelationConstraint xmlns=""
-					i:type="AxTableRelationConstraintField">
-					<Name>ValidFrom</Name>
-					<Field>ValidFrom</Field>
-					<RelatedField>ValidFrom</RelatedField>
-				</AxTableRelationConstraint>
-				<AxTableRelationConstraint xmlns=""
-					i:type="AxTableRelationConstraintField">
-					<Name>ValidTo</Name>
-					<Field>ValidTo</Field>
-					<RelatedField>ValidTo</RelatedField>
 				</AxTableRelationConstraint>
 			</Constraints>
 		</AxTableRelation>

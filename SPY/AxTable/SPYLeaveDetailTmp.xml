@@ -105,6 +105,16 @@ public class SPYLeaveDetailTmp extends common
 			<Name>Worker</Name>
 			<ExtendedDataType>HcmWorkerRecId</ExtendedDataType>
 		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>PeriodSequence</Name>
+			<ExtendedDataType>Description</ExtendedDataType>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>AbsenceCode</Name>
+			<ExtendedDataType>HrmAbsenceCodeId</ExtendedDataType>
+		</AxTableField>
 	</Fields>
 	<FullTextIndexes />
 	<Indexes />

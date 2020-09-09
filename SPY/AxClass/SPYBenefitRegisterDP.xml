@@ -27,6 +27,7 @@ public class SPYBenefitRegisterDP extends SrsReportDataProviderPreProcess
     SPYPayElementRecId              benefitCode;
     SPYBenefitTypeRecId             benefitType;
 
+    HcmEmployment                   hcmEmployment;
     HcmEmploymentDetail             hcmEmploymentDetail;
 
     #define.Opening("Opening")
@@ -123,6 +124,8 @@ public class SPYBenefitRegisterDP extends SrsReportDataProviderPreProcess
         benefitRegisterTmp.PeriodCode                   = SPYPayrollPeriod::find(payrollPeriodFrom.PayrollPeriod).PayrollPeriodCode;
         benefitRegisterTmp.PeriodStartDate              = payrollPeriodFrom.PeriodStartDate;
         benefitRegisterTmp.PeriodEndDate                = payrollPeriodTo.PeriodEndDate;
+        benefitRegisterTmp.PeriodEndDate                = payrollPeriodTo.PeriodEndDate;
+        benefitRegisterTmp.Joindate                     = payrollPeriodTo.PeriodEndDate;
 
         if(benefitCode)
         {
@@ -649,6 +652,7 @@ public class SPYBenefitRegisterDP extends SrsReportDataProviderPreProcess
         QueryRun                    qr;
         QueryBuildDataSource        qbdHcmWorker, qbdHcmEmployment, qbdBenefitLedger, qbdPayrollPeriodLine;
         HcmWorkerRecId              curWorker;
+        TransDateTime               validFromDateTime, validToDateTime;
 
         DimArray = new Array(Types::String);
 
@@ -662,6 +666,10 @@ public class SPYBenefitRegisterDP extends SrsReportDataProviderPreProcess
         companyInfo             = CompanyInfo::find();
         payrollPeriodFrom       = SPYPayrollPeriodLine::find(payrollPeriodLineFrom);
         payrollPeriodTo         = SPYPayrollPeriodLine::find(payrollPeriodLineTo);
+        validFromDateTime       = DateTimeUtil::newDateTime(dateNull(), 0); 
+        validToDateTime         = DateTimeUtil::newDateTime(dateMax(), 0);
+
+        
 
         this.financialDimensions();
 
@@ -694,6 +702,10 @@ public class SPYBenefitRegisterDP extends SrsReportDataProviderPreProcess
         while(qr.next())
         {
             hcmWorker           = qr.get(tableNum(HcmWorker));
+
+            select validtimestate(validFromDateTime, validToDateTime) hcmEmployment order by ValidFrom asc
+                where hcmEmployment.Worker == hcmWorker.RecId &&
+                    hcmEmployment.LegalEntity == CompanyInfo::current();
 
             this.insertIntoBenefitRegisterTmp();
         }

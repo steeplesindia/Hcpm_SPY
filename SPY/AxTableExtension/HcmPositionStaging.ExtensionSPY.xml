@@ -24,9 +24,148 @@
 			<Name>SPYCompensationLevelBand</Name>
 			<ExtendedDataType>HcmCompensationLevelRecId</ExtendedDataType>
 		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>CompensationLevelGradeId</Name>
+			<AllowEdit>No</AllowEdit>
+			<AssetClassification>Customer Content</AssetClassification>
+			<ExtendedDataType>HcmCompensationLevelId</ExtendedDataType>
+			<Label>Grade id</Label>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>CompensationLevelBandId</Name>
+			<AllowEdit>No</AllowEdit>
+			<AssetClassification>Customer Content</AssetClassification>
+			<ExtendedDataType>HcmCompensationLevelId</ExtendedDataType>
+			<Label>Band Id</Label>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>CompensationLevelStepId</Name>
+			<AllowEdit>No</AllowEdit>
+			<AssetClassification>Customer Content</AssetClassification>
+			<ExtendedDataType>HcmCompensationLevelId</ExtendedDataType>
+			<Label>Step id</Label>
+		</AxTableField>
 	</Fields>
 	<Indexes />
 	<Mappings />
 	<PropertyModifications />
-	<Relations />
+	<Relations>
+		<AxTableRelation>
+			<Name>SPYCompensationLevelGrade</Name>
+			<Cardinality>ZeroOne</Cardinality>
+			<RelatedTable>HcmCompensationLevel</RelatedTable>
+			<RelatedTableCardinality>ExactlyOne</RelatedTableCardinality>
+			<RelatedTableRole>Grade</RelatedTableRole>
+			<RelationshipType>Association</RelationshipType>
+			<Constraints>
+				<AxTableRelationConstraint xmlns=""
+					i:type="AxTableRelationConstraintRelatedFixed">
+					<Name>Type</Name>
+					<RelatedField>Type</RelatedField>
+					<Value>1</Value>
+				</AxTableRelationConstraint>
+				<AxTableRelationConstraint xmlns=""
+					i:type="AxTableRelationConstraintField">
+					<Name>SPYCompensationLevelGrade</Name>
+					<Field>SPYCompensationLevelGrade</Field>
+					<RelatedField>RecId</RelatedField>
+				</AxTableRelationConstraint>
+			</Constraints>
+		</AxTableRelation>
+		<AxTableRelation>
+			<Name>SPYCompensationLevelBand</Name>
+			<Cardinality>ZeroOne</Cardinality>
+			<RelatedTable>HcmCompensationLevel</RelatedTable>
+			<RelatedTableCardinality>ExactlyOne</RelatedTableCardinality>
+			<RelatedTableRole>Band</RelatedTableRole>
+			<RelationshipType>Association</RelationshipType>
+			<Constraints>
+				<AxTableRelationConstraint xmlns=""
+					i:type="AxTableRelationConstraintRelatedFixed">
+					<Name>Type</Name>
+					<RelatedField>Type</RelatedField>
+					<Value>2</Value>
+				</AxTableRelationConstraint>
+				<AxTableRelationConstraint xmlns=""
+					i:type="AxTableRelationConstraintField">
+					<Name>SPYCompensationLevelBand</Name>
+					<Field>SPYCompensationLevelBand</Field>
+					<RelatedField>RecId</RelatedField>
+				</AxTableRelationConstraint>
+			</Constraints>
+		</AxTableRelation>
+		<AxTableRelation>
+			<Name>SPYCompensationLevelStep</Name>
+			<Cardinality>ZeroOne</Cardinality>
+			<RelatedTable>HcmCompensationLevel</RelatedTable>
+			<RelatedTableCardinality>ExactlyOne</RelatedTableCardinality>
+			<RelatedTableRole>Step</RelatedTableRole>
+			<RelationshipType>Association</RelationshipType>
+			<Constraints>
+				<AxTableRelationConstraint xmlns=""
+					i:type="AxTableRelationConstraintRelatedFixed">
+					<Name>Type</Name>
+					<RelatedField>Type</RelatedField>
+					<Value>3</Value>
+				</AxTableRelationConstraint>
+				<AxTableRelationConstraint xmlns=""
+					i:type="AxTableRelationConstraintField">
+					<Name>SPYCompensationLevelStep</Name>
+					<Field>SPYCompensationLevelStep</Field>
+					<RelatedField>RecId</RelatedField>
+				</AxTableRelationConstraint>
+			</Constraints>
+		</AxTableRelation>
+		<AxTableRelation>
+			<Name>SPYCompensationLevelGradeId</Name>
+			<Cardinality>ZeroOne</Cardinality>
+			<RelatedTable>HcmCompensationLevel</RelatedTable>
+			<RelatedTableCardinality>ExactlyOne</RelatedTableCardinality>
+			<RelatedTableRole>Grade</RelatedTableRole>
+			<RelationshipType>Association</RelationshipType>
+			<Constraints>
+				<AxTableRelationConstraint xmlns=""
+					i:type="AxTableRelationConstraintField">
+					<Name>CompensationLevelGradeId</Name>
+					<Field>CompensationLevelGradeId</Field>
+					<RelatedField>CompensationLevelId</RelatedField>
+				</AxTableRelationConstraint>
+			</Constraints>
+		</AxTableRelation>
+		<AxTableRelation>
+			<Name>SPYCompensationLevelBandId</Name>
+			<Cardinality>ZeroOne</Cardinality>
+			<RelatedTable>HcmCompensationLevel</RelatedTable>
+			<RelatedTableCardinality>ExactlyOne</RelatedTableCardinality>
+			<RelatedTableRole>Grade</RelatedTableRole>
+			<RelationshipType>Association</RelationshipType>
+			<Constraints>
+				<AxTableRelationConstraint xmlns=""
+					i:type="AxTableRelationConstraintField">
+					<Name>CompensationLevelBandId</Name>
+					<Field>CompensationLevelBandId</Field>
+					<RelatedField>CompensationLevelId</RelatedField>
+				</AxTableRelationConstraint>
+			</Constraints>
+		</AxTableRelation>
+		<AxTableRelation>
+			<Name>SPYCompensationLevelStepId</Name>
+			<Cardinality>ZeroOne</Cardinality>
+			<RelatedTable>HcmCompensationLevel</RelatedTable>
+			<RelatedTableCardinality>ExactlyOne</RelatedTableCardinality>
+			<RelatedTableRole>Grade</RelatedTableRole>
+			<RelationshipType>Association</RelationshipType>
+			<Constraints>
+				<AxTableRelationConstraint xmlns=""
+					i:type="AxTableRelationConstraintField">
+					<Name>CompensationLevelStepId</Name>
+					<Field>CompensationLevelStepId</Field>
+					<RelatedField>CompensationLevelId</RelatedField>
+				</AxTableRelationConstraint>
+			</Constraints>
+		</AxTableRelation>
+	</Relations>
 </AxTableExtension>

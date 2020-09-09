@@ -22,6 +22,7 @@ class SPYReportConfigService extends SysOperationServiceBase
     SPYReportConfigTable            reportConfigTable;
     SPYReportConfigFields           reportConfigFields;
     SPYReportConfigFilterTable      reportConfigFieldFilter;
+    str bodyHtml, headerHtml;
 
 }
 ]]></Declaration>
@@ -52,7 +53,9 @@ class SPYReportConfigService extends SysOperationServiceBase
 
             background = System.Convert::ToBase64String(byteArray);
         }
-
+        
+        if(reportConfigTable.Layout == SPYReportConfigLayout::Tabular)
+            this.parseHtml(reportConfigTable.ReportDesign);
         while select spyRReportsTmp
         {
             //build a map of all the fields 
@@ -115,19 +118,44 @@ class SPYReportConfigService extends SysOperationServiceBase
                 }
 
             }
-            
-            SysEmailContents reportText = SysEmailMessage::stringExpand(reportConfigTable.ReportDesign, SysEmailTable::htmlEncodeParameters(mappings));
 
-            NoYesId firstPage = reportBody == "";
-            reportBody += firstPage == NoYes::Yes ? '' : '<page-before>';    //adding a page break
-            //reportBody += num2Char(13) +  '<page-before>';
-            reportBody += num2Char(13) +  '<div style="position:relative; width=100%; height=100%">' ;  
-            reportBody += num2Char(13) +  '<img src="data:image/gif;base64,' + background + '"/>';
-            reportBody += num2Char(13) +   reportText ;
-            reportBody += num2Char(13) +   ' </div>';            
-            reportBody += firstPage == NoYes::Yes ? '' : '</page-before>';    //adding a page break
-            //reportBody += num2Char(13) +   ' </page-before>';
+            //Insert static fields into map
+            mappings.insert("ReportTitle", _contract.parmReportTitle());
+            SPYPayrollPeriodLine  payrollPeriodLineFrom = SPYPayrollPeriodLine::find(_contract.parmPayrollPeriodlineFrom());
+            SPYPayrollPeriodLine  payrollPeriodLineTo = SPYPayrollPeriodLine::find(_contract.parmPayrollPeriodlineTo());
+            mappings.insert("FromPeriodCode", SPYPayrollPeriod::find(payrollPeriodLineFrom.PayrollPeriod).PayrollPeriodCode);
+            mappings.insert("ToPeriodCode", SPYPayrollPeriod::find(payrollPeriodLineTo.PayrollPeriod).PayrollPeriodCode);
+            mappings.insert("FromDate", strFmt("%1", payrollPeriodLineFrom.PeriodStartDate));
+            mappings.insert("ToDate", strFmt("%1", payrollPeriodLineFrom.PeriodEndDate));
+            mappings.insert("PeriodDays", queryValue(payrollPeriodLineFrom.PeriodEndDate - payrollPeriodLineFrom.PeriodStartDate + 1));
+            mappings.insert("CompanyName", CompanyInfo::find(CompanyInfo::current()).Name);
+            //
+
+            if(reportConfigTable.Layout == SPYReportConfigLayout::Form)
+            {
+                SysEmailContents reportText = SysEmailMessage::stringExpand(reportConfigTable.ReportDesign, SysEmailTable::htmlEncodeParameters(mappings));
+                NoYesId firstPage = reportBody == "";
+                reportBody += firstPage == NoYes::Yes ? '' : '<page-before>';    //adding a page break
+                //reportBody += num2Char(13) +  '<page-before>';
+                reportBody += num2Char(13) +  '<div style="position:relative; width=100%; height=100%">' ;
+                reportBody += num2Char(13) +  '<img src="data:image/gif;base64,' + background + '"/>';
+                reportBody += num2Char(13) +   reportText ;
+                reportBody += num2Char(13) +   ' </div>';
+                reportBody += firstPage == NoYes::Yes ? '' : '</page-before>';    //adding a page break
+                //reportBody += num2Char(13) +   ' </page-before>';
+            }
+            else if(reportConfigTable.Layout == SPYReportConfigLayout::Tabular)
+            {
+                headerHtml = SysEmailMessage::stringExpand(headerHtml, SysEmailTable::htmlEncodeParameters(mappings));
+                SysEmailContents reportText = SysEmailMessage::stringExpand(bodyHtml, SysEmailTable::htmlEncodeParameters(mappings));
+                //reportBody += num2Char(13) +  '<div style="position:relative; width=100%; height=100%">' ;
+                //reportBody += num2Char(13) +  '<img src="data:image/gif;base64,' + background + '"/>';
+                reportBody += num2Char(13) +   reportText ;
+                //reportBody += num2Char(13) +   ' </div>';
+            }
         }
+        if(reportConfigTable.Layout == SPYReportConfigLayout::Tabular)
+            reportBody = strReplace(headerHtml, "<$header>", reportBody);
         
         htmlWrapper = num2Char(13) +  ' <html>';
         htmlWrapper += num2Char(13) +  ' 	<head>';
@@ -156,14 +184,57 @@ class SPYReportConfigService extends SysOperationServiceBase
         htmlWrapper += num2Char(13) +  ' 	</body>';
         htmlWrapper += num2Char(13) +  ' </html>';       
 
-        System.Byte[]   arrByte;
-        arrByte = SPYReportWriterPdf.reportWriter::PdfConvert2ByteArr(htmlWrapper);        
-        using(System.IO.MemoryStream stream = new System.IO.MemoryStream(arrByte))      
+        if(reportConfigTable.Format == SPYReportConfigFormat::Pdf)
         {
-            stream.Position = 0; //after the write the stream is at the end position is for read again
-            str fileName =  strFmt("Report_%1.pdf", xGlobal::randomPositiveInt32() );
+            System.Byte[]   arrByte;
+            arrByte = SPYReportWriterPdf.reportWriter::PdfConvert2ByteArr(htmlWrapper);
+            using(System.IO.MemoryStream stream = new System.IO.MemoryStream(arrByte))
+            {
+                stream.Position = 0; //after the write the stream is at the end position is for read again
+                str fileName =  strFmt("Report_%1.pdf", xGlobal::randomPositiveInt32() );
+                File::SendFileToUser(stream, fileName);
+            }
+        }
+        else if(reportConfigTable.Format == SPYReportConfigFormat::Html)
+        {
+            Filename fileName = strFmt('%1\\Report_%2.html',WinAPIServer::getTempPath(), xGlobal::randomPositiveInt32());
+            FileIOPermission        fioPermission;
+            TextStreamIo            txIoWrite;
+            System.IO.StreamWriter  writer;
+            InteropPermission       perm = new InteropPermission(InteropKind::ClrInterop);
+            System.IO.FileStream    stream;
+            #define.FileRW("RW")
+            #define.FileW("W")
+
+            perm.assert();
+            writer = new System.IO.StreamWriter(fileName);
+            writer.WriteLine(htmlWrapper);
+            writer.Close();
+            stream = System.IO.File::OpenRead(fileName);
             File::SendFileToUser(stream, fileName);
-        }     
+            CodeAccessPermission::revertAssert();
+        }
+        else if(reportConfigTable.Format == SPYReportConfigFormat::Excel)
+        {
+            Filename fileName = strFmt('%1\\Report_%2.xls',WinAPIServer::getTempPath(), xGlobal::randomPositiveInt32());
+            FileIOPermission        fioPermission;
+            TextStreamIo            txIoWrite;
+            System.IO.StreamWriter  writer;
+            InteropPermission       perm = new InteropPermission(InteropKind::ClrInterop);
+            System.IO.FileStream    stream;
+            #define.FileRW("RW")
+            #define.FileW("W")
+
+            perm.assert();
+            writer = new System.IO.StreamWriter(fileName);
+            writer.WriteLine(htmlWrapper);
+            writer.Close();
+            stream = System.IO.File::OpenRead(fileName);
+            File::SendFileToUser(stream, fileName);
+            CodeAccessPermission::revertAssert();
+        }
+    
+        
     }
 
 ]]></Source>
@@ -567,6 +638,26 @@ class SPYReportConfigService extends SysOperationServiceBase
         spyRReportsTmp.insert();
         ttscommit;
 
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parseHtml</Name>
+				<Source><![CDATA[
+    private void parseHtml(str _html)
+    {        
+        int pos = 0;
+        int  bodyStart = strScan(_html, "<tbody>", pos, strLen(_html));
+        if(bodyStart)
+        {
+            int  bodyEnd = strScan(_html, "</tbody>", pos, strLen(_html));
+            if(bodyEnd)
+            {
+                 bodyHtml = subStr(_html, bodyStart + 8, bodyEnd - bodyStart - 8);
+                 headerHtml = strReplace(_html, bodyHtml, "<$header>");
+            }
+        }
     }
 
 ]]></Source>

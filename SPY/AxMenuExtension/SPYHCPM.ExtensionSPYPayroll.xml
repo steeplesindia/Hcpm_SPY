@@ -360,6 +360,11 @@
 						<Name>SPYPayrollDistribution</Name>
 						<MenuItemName>SPYPayrollDistribution</MenuItemName>
 					</AxMenuElement>
+					<AxMenuElement xmlns=""
+						i:type="AxMenuElementMenuItem">
+						<Name>SPYPayrollProcessLog</Name>
+						<MenuItemName>SPYPayrollProcessLog</MenuItemName>
+					</AxMenuElement>
 				</Elements>
 			</MenuElement>
 		</AxMenuExtensionElement>
@@ -399,6 +404,12 @@
 								i:type="AxMenuElementMenuItem">
 								<Name>SPYPromotionProcess</Name>
 								<MenuItemName>SPYPromotionProcess</MenuItemName>
+							</AxMenuElement>
+							<AxMenuElement xmlns=""
+								i:type="AxMenuElementMenuItem">
+								<Name>SPYClearPayrollLog</Name>
+								<MenuItemName>SPYClearPayrollLog</MenuItemName>
+								<MenuItemType>Action</MenuItemType>
 							</AxMenuElement>
 						</Elements>
 					</AxMenuElement>
@@ -622,8 +633,14 @@
 					</AxMenuElement>
 					<AxMenuElement xmlns=""
 						i:type="AxMenuElementMenuItem">
-						<Name>SPYLeaveDetailReport</Name>
-						<MenuItemName>SPYLeaveDetailReport</MenuItemName>
+						<Name>SPYLeaveDetailsReport</Name>
+						<MenuItemName>SPYLeaveDetailsReport</MenuItemName>
+						<MenuItemType>Output</MenuItemType>
+					</AxMenuElement>
+					<AxMenuElement xmlns=""
+						i:type="AxMenuElementMenuItem">
+						<Name>SPYLeaveBalanceReport</Name>
+						<MenuItemName>SPYLeaveBalanceReport</MenuItemName>
 						<MenuItemType>Output</MenuItemType>
 					</AxMenuElement>
 					<AxMenuElement xmlns=""

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Diagnostics
-  GenerationTime="2020-06-18T14:38:37.1488831+00:00">
+  GenerationTime="2020-09-09T06:44:45.5443775+00:00">
   <Items>
     <Diagnostic>
       <DiagnosticType>Generation</DiagnosticType>
@@ -90,9 +90,9 @@
       <Path>dynamics://Class/SPYEmployeeBioDataDP/Method/processReport</Path>
       <ElementType>Class Method</ElementType>
       <Moniker>TaskListItem</Moniker>
-      <Line>181</Line>
+      <Line>183</Line>
       <Column>21</Column>
-      <EndLine>181</EndLine>
+      <EndLine>183</EndLine>
       <EndColumn>49</EndColumn>
       <Message>TODO:Implement bonus logic</Message>
     </Diagnostic>
@@ -171,18 +171,6 @@
     <Diagnostic>
       <DiagnosticType>TaskListItem</DiagnosticType>
       <Severity>Informational</Severity>
-      <Path>dynamics://Class/SPYUploadWorkerPayElement/Method/upload</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>TaskListItem</Moniker>
-      <Line>148</Line>
-      <Column>9</Column>
-      <EndLine>148</EndLine>
-      <EndColumn>23</EndColumn>
-      <Message>TODO UPGRADE</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>TaskListItem</DiagnosticType>
-      <Severity>Informational</Severity>
       <Path>dynamics://Class/SPYBankFileGenerationService/Method/generateText</Path>
       <ElementType>Class Method</ElementType>
       <Moniker>TaskListItem</Moniker>
@@ -191,6 +179,18 @@
       <EndLine>139</EndLine>
       <EndColumn>103</EndColumn>
       <Message>TODO: Use the following code when the writing is complete and file is ready to be sent to the user:</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Class/SPYUploadWorkerPayElement/Method/upload</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>148</Line>
+      <Column>9</Column>
+      <EndLine>148</EndLine>
+      <EndColumn>23</EndColumn>
+      <Message>TODO UPGRADE</Message>
     </Diagnostic>
     <Diagnostic>
       <DiagnosticType>TaskListItem</DiagnosticType>
@@ -231,6 +231,18 @@
     <Diagnostic>
       <DiagnosticType>TaskListItem</DiagnosticType>
       <Severity>Informational</Severity>
+      <Path>dynamics://Form/SPYLeaveSettlementEdit</Path>
+      <ElementType>Form</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>1</Line>
+      <Column>1</Column>
+      <EndLine>1</EndLine>
+      <EndColumn>309</EndColumn>
+      <Message>TODO: (Code Upgrade) [Vertical Button Group Rule] Please manually fix the vertical button group [GroupParametersButtonGroup] in this form, it does not conform to any well known rules. The button group does not have any data source or its data source is not part of any root or linked data source query.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
       <Path>dynamics://Form/SPYWpsGenerationEdit</Path>
       <ElementType>Form</ElementType>
       <Moniker>TaskListItem</Moniker>
@@ -243,7 +255,7 @@
     <Diagnostic>
       <DiagnosticType>TaskListItem</DiagnosticType>
       <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYTimesheetProcessEdit</Path>
+      <Path>dynamics://Form/SPYEOSEdit</Path>
       <ElementType>Form</ElementType>
       <Moniker>TaskListItem</Moniker>
       <Line>1</Line>
@@ -267,6 +279,54 @@
     <Diagnostic>
       <DiagnosticType>TaskListItem</DiagnosticType>
       <Severity>Informational</Severity>
+      <Path>dynamics://Form/SPYTimesheetProcessEdit</Path>
+      <ElementType>Form</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>1</Line>
+      <Column>1</Column>
+      <EndLine>1</EndLine>
+      <EndColumn>309</EndColumn>
+      <Message>TODO: (Code Upgrade) [Vertical Button Group Rule] Please manually fix the vertical button group [GroupParametersButtonGroup] in this form, it does not conform to any well known rules. The button group does not have any data source or its data source is not part of any root or linked data source query.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Form/SPYLeaveApplication/FormDesign/AxFormDesign/FormControl/Tab/Method/tabChanged</Path>
+      <ElementType>Form Control Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>385</Line>
+      <Column>13</Column>
+      <EndLine>385</EndLine>
+      <EndColumn>163</EndColumn>
+      <Message>TODO: (Code Upgrade) [Action Pane Rule] Please consider moving all references to the form task override method and remove the control: ListGroup</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Form/SPYLeaveApplication/FormDesign/AxFormDesign/FormControl/Tab/Method/tabChanged</Path>
+      <ElementType>Form Control Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>389</Line>
+      <Column>13</Column>
+      <EndLine>389</EndLine>
+      <EndColumn>170</EndColumn>
+      <Message>TODO: (Code Upgrade) [Action Pane Rule] Please consider moving all references to the form task override method and remove the control: EditRecordButton</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Form/SPYPayArrearEdit</Path>
+      <ElementType>Form</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>1</Line>
+      <Column>1</Column>
+      <EndLine>1</EndLine>
+      <EndColumn>309</EndColumn>
+      <Message>TODO: (Code Upgrade) [Vertical Button Group Rule] Please manually fix the vertical button group [GroupParametersButtonGroup] in this form, it does not conform to any well known rules. The button group does not have any data source or its data source is not part of any root or linked data source query.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
       <Path>dynamics://Form/SPYPayAdjustmentLedger/Method/init</Path>
       <ElementType>Form Method</ElementType>
       <Moniker>TaskListItem</Moniker>
@@ -279,120 +339,36 @@
     <Diagnostic>
       <DiagnosticType>TaskListItem</DiagnosticType>
       <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYEOSEdit</Path>
-      <ElementType>Form</ElementType>
-      <Moniker>TaskListItem</Moniker>
-      <Line>1</Line>
-      <Column>1</Column>
-      <EndLine>1</EndLine>
-      <EndColumn>309</EndColumn>
-      <Message>TODO: (Code Upgrade) [Vertical Button Group Rule] Please manually fix the vertical button group [GroupParametersButtonGroup] in this form, it does not conform to any well known rules. The button group does not have any data source or its data source is not part of any root or linked data source query.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>TaskListItem</DiagnosticType>
-      <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYPayrollEarningsJournalTable/Method/init</Path>
-      <ElementType>Form Method</ElementType>
-      <Moniker>TaskListItem</Moniker>
-      <Line>27</Line>
-      <Column>9</Column>
-      <EndLine>27</EndLine>
-      <EndColumn>125</EndColumn>
-      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>TaskListItem</DiagnosticType>
-      <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYPayrollEarningsJournalTable/FormDesign/AxFormDesign/FormControl/TabFinancialDimensions/Method/pageActivated</Path>
+      <Path>dynamics://Form/SPYPayLoan/FormDesign/AxFormDesign/FormControl/Tab/Method/tabChanged</Path>
       <ElementType>Form Control Method</ElementType>
       <Moniker>TaskListItem</Moniker>
-      <Line>174</Line>
+      <Line>227</Line>
       <Column>13</Column>
-      <EndLine>174</EndLine>
-      <EndColumn>129</EndColumn>
-      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>TaskListItem</DiagnosticType>
-      <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYPayrollEarningsJournal/FormDesign/AxFormDesign/FormControl/Tab/Method/tabChanged</Path>
-      <ElementType>Form Control Method</ElementType>
-      <Moniker>TaskListItem</Moniker>
-      <Line>167</Line>
-      <Column>13</Column>
-      <EndLine>167</EndLine>
+      <EndLine>227</EndLine>
       <EndColumn>163</EndColumn>
       <Message>TODO: (Code Upgrade) [Action Pane Rule] Please consider moving all references to the form task override method and remove the control: ListGroup</Message>
     </Diagnostic>
     <Diagnostic>
       <DiagnosticType>TaskListItem</DiagnosticType>
       <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYPayrollEarningsJournal/FormDesign/AxFormDesign/FormControl/Tab/Method/tabChanged</Path>
+      <Path>dynamics://Form/SPYPayLoan/FormDesign/AxFormDesign/FormControl/Tab/Method/tabChanged</Path>
       <ElementType>Form Control Method</ElementType>
       <Moniker>TaskListItem</Moniker>
-      <Line>171</Line>
+      <Line>231</Line>
       <Column>13</Column>
-      <EndLine>171</EndLine>
+      <EndLine>231</EndLine>
       <EndColumn>170</EndColumn>
       <Message>TODO: (Code Upgrade) [Action Pane Rule] Please consider moving all references to the form task override method and remove the control: EditRecordButton</Message>
     </Diagnostic>
     <Diagnostic>
       <DiagnosticType>TaskListItem</DiagnosticType>
       <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYPayrollEarningsJournal/FormDesign/AxFormDesign/FormControl/TabFinancialDimensionLine/Method/pageActivated</Path>
+      <Path>dynamics://Form/SPYPayLoan/FormDesign/AxFormDesign/FormControl/TabFinancialDimensionLine/Method/pageActivated</Path>
       <ElementType>Form Control Method</ElementType>
       <Moniker>TaskListItem</Moniker>
-      <Line>184</Line>
+      <Line>265</Line>
       <Column>13</Column>
-      <EndLine>184</EndLine>
-      <EndColumn>129</EndColumn>
-      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>TaskListItem</DiagnosticType>
-      <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYPayrollEarningsJournal/FormDesign/AxFormDesign/FormControl/TabFinancialDimensionTable/Method/pageActivated</Path>
-      <ElementType>Form Control Method</ElementType>
-      <Moniker>TaskListItem</Moniker>
-      <Line>197</Line>
-      <Column>13</Column>
-      <EndLine>197</EndLine>
-      <EndColumn>129</EndColumn>
-      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>TaskListItem</DiagnosticType>
-      <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYLeaveSettlementEdit</Path>
-      <ElementType>Form</ElementType>
-      <Moniker>TaskListItem</Moniker>
-      <Line>1</Line>
-      <Column>1</Column>
-      <EndLine>1</EndLine>
-      <EndColumn>309</EndColumn>
-      <Message>TODO: (Code Upgrade) [Vertical Button Group Rule] Please manually fix the vertical button group [GroupParametersButtonGroup] in this form, it does not conform to any well known rules. The button group does not have any data source or its data source is not part of any root or linked data source query.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>TaskListItem</DiagnosticType>
-      <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYPayrollDisbursementTable/Method/init</Path>
-      <ElementType>Form Method</ElementType>
-      <Moniker>TaskListItem</Moniker>
-      <Line>27</Line>
-      <Column>9</Column>
-      <EndLine>27</EndLine>
-      <EndColumn>125</EndColumn>
-      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>TaskListItem</DiagnosticType>
-      <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYPayrollDisbursementTable/FormDesign/AxFormDesign/FormControl/TabFinancialDimensions/Method/pageActivated</Path>
-      <ElementType>Form Control Method</ElementType>
-      <Moniker>TaskListItem</Moniker>
-      <Line>160</Line>
-      <Column>13</Column>
-      <EndLine>160</EndLine>
+      <EndLine>265</EndLine>
       <EndColumn>129</EndColumn>
       <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
     </Diagnostic>
@@ -447,36 +423,96 @@
     <Diagnostic>
       <DiagnosticType>TaskListItem</DiagnosticType>
       <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYPayLoan/FormDesign/AxFormDesign/FormControl/Tab/Method/tabChanged</Path>
+      <Path>dynamics://Form/SPYPayrollEarningsJournal/FormDesign/AxFormDesign/FormControl/Tab/Method/tabChanged</Path>
       <ElementType>Form Control Method</ElementType>
       <Moniker>TaskListItem</Moniker>
-      <Line>227</Line>
+      <Line>167</Line>
       <Column>13</Column>
-      <EndLine>227</EndLine>
+      <EndLine>167</EndLine>
       <EndColumn>163</EndColumn>
       <Message>TODO: (Code Upgrade) [Action Pane Rule] Please consider moving all references to the form task override method and remove the control: ListGroup</Message>
     </Diagnostic>
     <Diagnostic>
       <DiagnosticType>TaskListItem</DiagnosticType>
       <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYPayLoan/FormDesign/AxFormDesign/FormControl/Tab/Method/tabChanged</Path>
+      <Path>dynamics://Form/SPYPayrollEarningsJournal/FormDesign/AxFormDesign/FormControl/Tab/Method/tabChanged</Path>
       <ElementType>Form Control Method</ElementType>
       <Moniker>TaskListItem</Moniker>
-      <Line>231</Line>
+      <Line>171</Line>
       <Column>13</Column>
-      <EndLine>231</EndLine>
+      <EndLine>171</EndLine>
       <EndColumn>170</EndColumn>
       <Message>TODO: (Code Upgrade) [Action Pane Rule] Please consider moving all references to the form task override method and remove the control: EditRecordButton</Message>
     </Diagnostic>
     <Diagnostic>
       <DiagnosticType>TaskListItem</DiagnosticType>
       <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYPayLoan/FormDesign/AxFormDesign/FormControl/TabFinancialDimensionLine/Method/pageActivated</Path>
+      <Path>dynamics://Form/SPYPayrollEarningsJournal/FormDesign/AxFormDesign/FormControl/TabFinancialDimensionLine/Method/pageActivated</Path>
       <ElementType>Form Control Method</ElementType>
       <Moniker>TaskListItem</Moniker>
-      <Line>265</Line>
+      <Line>184</Line>
       <Column>13</Column>
-      <EndLine>265</EndLine>
+      <EndLine>184</EndLine>
+      <EndColumn>129</EndColumn>
+      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Form/SPYPayrollEarningsJournal/FormDesign/AxFormDesign/FormControl/TabFinancialDimensionTable/Method/pageActivated</Path>
+      <ElementType>Form Control Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>197</Line>
+      <Column>13</Column>
+      <EndLine>197</EndLine>
+      <EndColumn>129</EndColumn>
+      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Form/SPYPayrollEarningsJournalTable/Method/init</Path>
+      <ElementType>Form Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>27</Line>
+      <Column>9</Column>
+      <EndLine>27</EndLine>
+      <EndColumn>125</EndColumn>
+      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Form/SPYPayrollEarningsJournalTable/FormDesign/AxFormDesign/FormControl/TabFinancialDimensions/Method/pageActivated</Path>
+      <ElementType>Form Control Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>174</Line>
+      <Column>13</Column>
+      <EndLine>174</EndLine>
+      <EndColumn>129</EndColumn>
+      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Form/SPYPayrollDisbursementTable/Method/init</Path>
+      <ElementType>Form Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>27</Line>
+      <Column>9</Column>
+      <EndLine>27</EndLine>
+      <EndColumn>125</EndColumn>
+      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Form/SPYPayrollDisbursementTable/FormDesign/AxFormDesign/FormControl/TabFinancialDimensions/Method/pageActivated</Path>
+      <ElementType>Form Control Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>160</Line>
+      <Column>13</Column>
+      <EndLine>160</EndLine>
       <EndColumn>129</EndColumn>
       <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
     </Diagnostic>
@@ -531,7 +567,7 @@
     <Diagnostic>
       <DiagnosticType>TaskListItem</DiagnosticType>
       <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYPayrollJourPostEdit</Path>
+      <Path>dynamics://Form/SPYBankFileGenerationEdit</Path>
       <ElementType>Form</ElementType>
       <Moniker>TaskListItem</Moniker>
       <Line>1</Line>
@@ -567,43 +603,7 @@
     <Diagnostic>
       <DiagnosticType>TaskListItem</DiagnosticType>
       <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYLeaveApplication/FormDesign/AxFormDesign/FormControl/Tab/Method/tabChanged</Path>
-      <ElementType>Form Control Method</ElementType>
-      <Moniker>TaskListItem</Moniker>
-      <Line>385</Line>
-      <Column>13</Column>
-      <EndLine>385</EndLine>
-      <EndColumn>163</EndColumn>
-      <Message>TODO: (Code Upgrade) [Action Pane Rule] Please consider moving all references to the form task override method and remove the control: ListGroup</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>TaskListItem</DiagnosticType>
-      <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYLeaveApplication/FormDesign/AxFormDesign/FormControl/Tab/Method/tabChanged</Path>
-      <ElementType>Form Control Method</ElementType>
-      <Moniker>TaskListItem</Moniker>
-      <Line>389</Line>
-      <Column>13</Column>
-      <EndLine>389</EndLine>
-      <EndColumn>170</EndColumn>
-      <Message>TODO: (Code Upgrade) [Action Pane Rule] Please consider moving all references to the form task override method and remove the control: EditRecordButton</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>TaskListItem</DiagnosticType>
-      <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYBankFileGenerationEdit</Path>
-      <ElementType>Form</ElementType>
-      <Moniker>TaskListItem</Moniker>
-      <Line>1</Line>
-      <Column>1</Column>
-      <EndLine>1</EndLine>
-      <EndColumn>309</EndColumn>
-      <Message>TODO: (Code Upgrade) [Vertical Button Group Rule] Please manually fix the vertical button group [GroupParametersButtonGroup] in this form, it does not conform to any well known rules. The button group does not have any data source or its data source is not part of any root or linked data source query.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>TaskListItem</DiagnosticType>
-      <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYPayArrearEdit</Path>
+      <Path>dynamics://Form/SPYPayrollJourPostEdit</Path>
       <ElementType>Form</ElementType>
       <Moniker>TaskListItem</Moniker>
       <Line>1</Line>
@@ -627,7 +627,7 @@
     <Diagnostic>
       <DiagnosticType>TaskListItem</DiagnosticType>
       <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYBenefitEncashmentEdit</Path>
+      <Path>dynamics://Form/SPYBenefitJournalPostEdit</Path>
       <ElementType>Form</ElementType>
       <Moniker>TaskListItem</Moniker>
       <Line>1</Line>
@@ -639,110 +639,26 @@
     <Diagnostic>
       <DiagnosticType>TaskListItem</DiagnosticType>
       <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYEOSRunBenefit/FormDesign/AxFormDesign/FormControl/TabFinancialDimensions/Method/pageActivated</Path>
+      <Path>dynamics://Form/SPYPayrollDisbursement/FormDesign/AxFormDesign/FormControl/Tab/Method/tabChanged</Path>
       <ElementType>Form Control Method</ElementType>
       <Moniker>TaskListItem</Moniker>
-      <Line>14</Line>
+      <Line>135</Line>
       <Column>13</Column>
-      <EndLine>14</EndLine>
-      <EndColumn>129</EndColumn>
-      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
+      <EndLine>135</EndLine>
+      <EndColumn>163</EndColumn>
+      <Message>TODO: (Code Upgrade) [Action Pane Rule] Please consider moving all references to the form task override method and remove the control: ListGroup</Message>
     </Diagnostic>
     <Diagnostic>
       <DiagnosticType>TaskListItem</DiagnosticType>
       <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYBenefitJournalTable/Method/init</Path>
-      <ElementType>Form Method</ElementType>
-      <Moniker>TaskListItem</Moniker>
-      <Line>27</Line>
-      <Column>9</Column>
-      <EndLine>27</EndLine>
-      <EndColumn>125</EndColumn>
-      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>TaskListItem</DiagnosticType>
-      <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYPayAdjustmentPostEdit</Path>
-      <ElementType>Form</ElementType>
-      <Moniker>TaskListItem</Moniker>
-      <Line>1</Line>
-      <Column>1</Column>
-      <EndLine>1</EndLine>
-      <EndColumn>309</EndColumn>
-      <Message>TODO: (Code Upgrade) [Vertical Button Group Rule] Please manually fix the vertical button group [GroupParametersButtonGroup] in this form, it does not conform to any well known rules. The button group does not have any data source or its data source is not part of any root or linked data source query.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>TaskListItem</DiagnosticType>
-      <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYBenefitJournalTable/FormDesign/AxFormDesign/FormControl/TabFinancialDimensions/Method/pageActivated</Path>
+      <Path>dynamics://Form/SPYPayrollDisbursement/FormDesign/AxFormDesign/FormControl/Tab/Method/tabChanged</Path>
       <ElementType>Form Control Method</ElementType>
       <Moniker>TaskListItem</Moniker>
-      <Line>172</Line>
+      <Line>139</Line>
       <Column>13</Column>
-      <EndLine>172</EndLine>
-      <EndColumn>129</EndColumn>
-      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>TaskListItem</DiagnosticType>
-      <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYPayLoanLedger/Method/init</Path>
-      <ElementType>Form Method</ElementType>
-      <Moniker>TaskListItem</Moniker>
-      <Line>14</Line>
-      <Column>9</Column>
-      <EndLine>14</EndLine>
-      <EndColumn>125</EndColumn>
-      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>TaskListItem</DiagnosticType>
-      <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYPayPeriodCloseEdit</Path>
-      <ElementType>Form</ElementType>
-      <Moniker>TaskListItem</Moniker>
-      <Line>1</Line>
-      <Column>1</Column>
-      <EndLine>1</EndLine>
-      <EndColumn>309</EndColumn>
-      <Message>TODO: (Code Upgrade) [Vertical Button Group Rule] Please manually fix the vertical button group [GroupParametersButtonGroup] in this form, it does not conform to any well known rules. The button group does not have any data source or its data source is not part of any root or linked data source query.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>TaskListItem</DiagnosticType>
-      <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYPayLoanPostEdit</Path>
-      <ElementType>Form</ElementType>
-      <Moniker>TaskListItem</Moniker>
-      <Line>1</Line>
-      <Column>1</Column>
-      <EndLine>1</EndLine>
-      <EndColumn>309</EndColumn>
-      <Message>TODO: (Code Upgrade) [Vertical Button Group Rule] Please manually fix the vertical button group [GroupParametersButtonGroup] in this form, it does not conform to any well known rules. The button group does not have any data source or its data source is not part of any root or linked data source query.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>TaskListItem</DiagnosticType>
-      <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYPayrollJournalTable/Method/init</Path>
-      <ElementType>Form Method</ElementType>
-      <Moniker>TaskListItem</Moniker>
-      <Line>27</Line>
-      <Column>9</Column>
-      <EndLine>27</EndLine>
-      <EndColumn>125</EndColumn>
-      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>TaskListItem</DiagnosticType>
-      <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYPayrollJournalTable/FormDesign/AxFormDesign/FormControl/TabFinancialDimensions/Method/pageActivated</Path>
-      <ElementType>Form Control Method</ElementType>
-      <Moniker>TaskListItem</Moniker>
-      <Line>176</Line>
-      <Column>13</Column>
-      <EndLine>176</EndLine>
-      <EndColumn>129</EndColumn>
-      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
+      <EndLine>139</EndLine>
+      <EndColumn>170</EndColumn>
+      <Message>TODO: (Code Upgrade) [Action Pane Rule] Please consider moving all references to the form task override method and remove the control: EditRecordButton</Message>
     </Diagnostic>
     <Diagnostic>
       <DiagnosticType>TaskListItem</DiagnosticType>
@@ -759,19 +675,7 @@
     <Diagnostic>
       <DiagnosticType>TaskListItem</DiagnosticType>
       <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYPayAdjustmentTable/Method/init</Path>
-      <ElementType>Form Method</ElementType>
-      <Moniker>TaskListItem</Moniker>
-      <Line>27</Line>
-      <Column>9</Column>
-      <EndLine>27</EndLine>
-      <EndColumn>125</EndColumn>
-      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>TaskListItem</DiagnosticType>
-      <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYBenefitJournalPostEdit</Path>
+      <Path>dynamics://Form/SPYBenefitEncashmentEdit</Path>
       <ElementType>Form</ElementType>
       <Moniker>TaskListItem</Moniker>
       <Line>1</Line>
@@ -779,174 +683,6 @@
       <EndLine>1</EndLine>
       <EndColumn>309</EndColumn>
       <Message>TODO: (Code Upgrade) [Vertical Button Group Rule] Please manually fix the vertical button group [GroupParametersButtonGroup] in this form, it does not conform to any well known rules. The button group does not have any data source or its data source is not part of any root or linked data source query.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>TaskListItem</DiagnosticType>
-      <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYPayAdjustmentTable/FormDesign/AxFormDesign/FormControl/TabFinancialDimensions/Method/pageActivated</Path>
-      <ElementType>Form Control Method</ElementType>
-      <Moniker>TaskListItem</Moniker>
-      <Line>169</Line>
-      <Column>13</Column>
-      <EndLine>169</EndLine>
-      <EndColumn>129</EndColumn>
-      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>TaskListItem</DiagnosticType>
-      <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYAbsenceJournal/FormDesign/AxFormDesign/FormControl/Tab/Method/tabChanged</Path>
-      <ElementType>Form Control Method</ElementType>
-      <Moniker>TaskListItem</Moniker>
-      <Line>116</Line>
-      <Column>13</Column>
-      <EndLine>116</EndLine>
-      <EndColumn>163</EndColumn>
-      <Message>TODO: (Code Upgrade) [Action Pane Rule] Please consider moving all references to the form task override method and remove the control: ListGroup</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>TaskListItem</DiagnosticType>
-      <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYAbsenceJournal/FormDesign/AxFormDesign/FormControl/Tab/Method/tabChanged</Path>
-      <ElementType>Form Control Method</ElementType>
-      <Moniker>TaskListItem</Moniker>
-      <Line>120</Line>
-      <Column>13</Column>
-      <EndLine>120</EndLine>
-      <EndColumn>170</EndColumn>
-      <Message>TODO: (Code Upgrade) [Action Pane Rule] Please consider moving all references to the form task override method and remove the control: EditRecordButton</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>TaskListItem</DiagnosticType>
-      <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYPayrollEarningsJournalPostEdit</Path>
-      <ElementType>Form</ElementType>
-      <Moniker>TaskListItem</Moniker>
-      <Line>1</Line>
-      <Column>1</Column>
-      <EndLine>1</EndLine>
-      <EndColumn>309</EndColumn>
-      <Message>TODO: (Code Upgrade) [Vertical Button Group Rule] Please manually fix the vertical button group [GroupParametersButtonGroup] in this form, it does not conform to any well known rules. The button group does not have any data source or its data source is not part of any root or linked data source query.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>TaskListItem</DiagnosticType>
-      <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYAbsenceAccrualUpdateEdit</Path>
-      <ElementType>Form</ElementType>
-      <Moniker>TaskListItem</Moniker>
-      <Line>1</Line>
-      <Column>1</Column>
-      <EndLine>1</EndLine>
-      <EndColumn>309</EndColumn>
-      <Message>TODO: (Code Upgrade) [Vertical Button Group Rule] Please manually fix the vertical button group [GroupParametersButtonGroup] in this form, it does not conform to any well known rules. The button group does not have any data source or its data source is not part of any root or linked data source query.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>TaskListItem</DiagnosticType>
-      <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYDisbursementJourPostEdit</Path>
-      <ElementType>Form</ElementType>
-      <Moniker>TaskListItem</Moniker>
-      <Line>1</Line>
-      <Column>1</Column>
-      <EndLine>1</EndLine>
-      <EndColumn>309</EndColumn>
-      <Message>TODO: (Code Upgrade) [Vertical Button Group Rule] Please manually fix the vertical button group [GroupParametersButtonGroup] in this form, it does not conform to any well known rules. The button group does not have any data source or its data source is not part of any root or linked data source query.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>TaskListItem</DiagnosticType>
-      <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYAbsenceJournalPostEdit</Path>
-      <ElementType>Form</ElementType>
-      <Moniker>TaskListItem</Moniker>
-      <Line>1</Line>
-      <Column>1</Column>
-      <EndLine>1</EndLine>
-      <EndColumn>309</EndColumn>
-      <Message>TODO: (Code Upgrade) [Vertical Button Group Rule] Please manually fix the vertical button group [GroupParametersButtonGroup] in this form, it does not conform to any well known rules. The button group does not have any data source or its data source is not part of any root or linked data source query.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>TaskListItem</DiagnosticType>
-      <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYBenefitLedger/FormDesign/AxFormDesign/FormControl/TabFinancialDimensions/Method/pageActivated</Path>
-      <ElementType>Form Control Method</ElementType>
-      <Moniker>TaskListItem</Moniker>
-      <Line>176</Line>
-      <Column>13</Column>
-      <EndLine>176</EndLine>
-      <EndColumn>129</EndColumn>
-      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>TaskListItem</DiagnosticType>
-      <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYDisbursementJournalTable/Method/init</Path>
-      <ElementType>Form Method</ElementType>
-      <Moniker>TaskListItem</Moniker>
-      <Line>27</Line>
-      <Column>9</Column>
-      <EndLine>27</EndLine>
-      <EndColumn>125</EndColumn>
-      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>TaskListItem</DiagnosticType>
-      <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYDisbursementJournalTable/FormDesign/AxFormDesign/FormControl/TabFinancialDimensions/Method/pageActivated</Path>
-      <ElementType>Form Control Method</ElementType>
-      <Moniker>TaskListItem</Moniker>
-      <Line>171</Line>
-      <Column>13</Column>
-      <EndLine>171</EndLine>
-      <EndColumn>129</EndColumn>
-      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>TaskListItem</DiagnosticType>
-      <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYPayLoanCashSettlementEdit</Path>
-      <ElementType>Form</ElementType>
-      <Moniker>TaskListItem</Moniker>
-      <Line>1</Line>
-      <Column>1</Column>
-      <EndLine>1</EndLine>
-      <EndColumn>309</EndColumn>
-      <Message>TODO: (Code Upgrade) [Vertical Button Group Rule] Please manually fix the vertical button group [GroupParametersButtonGroup] in this form, it does not conform to any well known rules. The button group does not have any data source or its data source is not part of any root or linked data source query.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>TaskListItem</DiagnosticType>
-      <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYEOSRunPayroll/FormDesign/AxFormDesign/FormControl/TabFinancialDimensions/Method/pageActivated</Path>
-      <ElementType>Form Control Method</ElementType>
-      <Moniker>TaskListItem</Moniker>
-      <Line>14</Line>
-      <Column>13</Column>
-      <EndLine>14</EndLine>
-      <EndColumn>129</EndColumn>
-      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>TaskListItem</DiagnosticType>
-      <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYDisbursementPostEdit</Path>
-      <ElementType>Form</ElementType>
-      <Moniker>TaskListItem</Moniker>
-      <Line>1</Line>
-      <Column>1</Column>
-      <EndLine>1</EndLine>
-      <EndColumn>309</EndColumn>
-      <Message>TODO: (Code Upgrade) [Vertical Button Group Rule] Please manually fix the vertical button group [GroupParametersButtonGroup] in this form, it does not conform to any well known rules. The button group does not have any data source or its data source is not part of any root or linked data source query.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>TaskListItem</DiagnosticType>
-      <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYDisbursementPostEdit/Method/initializeValue</Path>
-      <ElementType>Form Method</ElementType>
-      <Moniker>TaskListItem</Moniker>
-      <Line>80</Line>
-      <Column>35</Column>
-      <EndLine>80</EndLine>
-      <EndColumn>49</EndColumn>
-      <Message>TODO UPGRADE</Message>
     </Diagnostic>
     <Diagnostic>
       <DiagnosticType>TaskListItem</DiagnosticType>
@@ -999,38 +735,38 @@
     <Diagnostic>
       <DiagnosticType>TaskListItem</DiagnosticType>
       <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYPayrollDisbursement/FormDesign/AxFormDesign/FormControl/Tab/Method/tabChanged</Path>
-      <ElementType>Form Control Method</ElementType>
+      <Path>dynamics://Form/SPYPayrollJournalTable/Method/init</Path>
+      <ElementType>Form Method</ElementType>
       <Moniker>TaskListItem</Moniker>
-      <Line>135</Line>
-      <Column>13</Column>
-      <EndLine>135</EndLine>
-      <EndColumn>163</EndColumn>
-      <Message>TODO: (Code Upgrade) [Action Pane Rule] Please consider moving all references to the form task override method and remove the control: ListGroup</Message>
+      <Line>27</Line>
+      <Column>9</Column>
+      <EndLine>27</EndLine>
+      <EndColumn>125</EndColumn>
+      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
     </Diagnostic>
     <Diagnostic>
       <DiagnosticType>TaskListItem</DiagnosticType>
       <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYPayrollDisbursement/FormDesign/AxFormDesign/FormControl/Tab/Method/tabChanged</Path>
+      <Path>dynamics://Form/SPYBenefitLedger/FormDesign/AxFormDesign/FormControl/TabFinancialDimensions/Method/pageActivated</Path>
       <ElementType>Form Control Method</ElementType>
       <Moniker>TaskListItem</Moniker>
-      <Line>139</Line>
+      <Line>176</Line>
       <Column>13</Column>
-      <EndLine>139</EndLine>
-      <EndColumn>170</EndColumn>
-      <Message>TODO: (Code Upgrade) [Action Pane Rule] Please consider moving all references to the form task override method and remove the control: EditRecordButton</Message>
+      <EndLine>176</EndLine>
+      <EndColumn>129</EndColumn>
+      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
     </Diagnostic>
     <Diagnostic>
       <DiagnosticType>TaskListItem</DiagnosticType>
       <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYPayLedgerDeleteEdit</Path>
-      <ElementType>Form</ElementType>
+      <Path>dynamics://Form/SPYPayrollJournalTable/FormDesign/AxFormDesign/FormControl/TabFinancialDimensions/Method/pageActivated</Path>
+      <ElementType>Form Control Method</ElementType>
       <Moniker>TaskListItem</Moniker>
-      <Line>1</Line>
-      <Column>1</Column>
-      <EndLine>1</EndLine>
-      <EndColumn>309</EndColumn>
-      <Message>TODO: (Code Upgrade) [Vertical Button Group Rule] Please manually fix the vertical button group [GroupParametersButtonGroup] in this form, it does not conform to any well known rules. The button group does not have any data source or its data source is not part of any root or linked data source query.</Message>
+      <Line>176</Line>
+      <Column>13</Column>
+      <EndLine>176</EndLine>
+      <EndColumn>129</EndColumn>
+      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
     </Diagnostic>
     <Diagnostic>
       <DiagnosticType>TaskListItem</DiagnosticType>
@@ -1083,6 +819,114 @@
     <Diagnostic>
       <DiagnosticType>TaskListItem</DiagnosticType>
       <Severity>Informational</Severity>
+      <Path>dynamics://Form/SPYBenefitJournalTable/Method/init</Path>
+      <ElementType>Form Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>27</Line>
+      <Column>9</Column>
+      <EndLine>27</EndLine>
+      <EndColumn>125</EndColumn>
+      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Form/SPYBenefitJournalTable/FormDesign/AxFormDesign/FormControl/TabFinancialDimensions/Method/pageActivated</Path>
+      <ElementType>Form Control Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>172</Line>
+      <Column>13</Column>
+      <EndLine>172</EndLine>
+      <EndColumn>129</EndColumn>
+      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Form/SPYEOSRunBenefit/FormDesign/AxFormDesign/FormControl/TabFinancialDimensions/Method/pageActivated</Path>
+      <ElementType>Form Control Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>14</Line>
+      <Column>13</Column>
+      <EndLine>14</EndLine>
+      <EndColumn>129</EndColumn>
+      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Form/SPYPayAdjustmentPostEdit</Path>
+      <ElementType>Form</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>1</Line>
+      <Column>1</Column>
+      <EndLine>1</EndLine>
+      <EndColumn>309</EndColumn>
+      <Message>TODO: (Code Upgrade) [Vertical Button Group Rule] Please manually fix the vertical button group [GroupParametersButtonGroup] in this form, it does not conform to any well known rules. The button group does not have any data source or its data source is not part of any root or linked data source query.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Form/SPYEOSRunPayroll/FormDesign/AxFormDesign/FormControl/TabFinancialDimensions/Method/pageActivated</Path>
+      <ElementType>Form Control Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>14</Line>
+      <Column>13</Column>
+      <EndLine>14</EndLine>
+      <EndColumn>129</EndColumn>
+      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Form/SPYPayPeriodCloseEdit</Path>
+      <ElementType>Form</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>1</Line>
+      <Column>1</Column>
+      <EndLine>1</EndLine>
+      <EndColumn>309</EndColumn>
+      <Message>TODO: (Code Upgrade) [Vertical Button Group Rule] Please manually fix the vertical button group [GroupParametersButtonGroup] in this form, it does not conform to any well known rules. The button group does not have any data source or its data source is not part of any root or linked data source query.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Form/SPYDisbursementJournalTable/Method/init</Path>
+      <ElementType>Form Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>27</Line>
+      <Column>9</Column>
+      <EndLine>27</EndLine>
+      <EndColumn>125</EndColumn>
+      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Form/SPYDisbursementJournalTable/FormDesign/AxFormDesign/FormControl/TabFinancialDimensions/Method/pageActivated</Path>
+      <ElementType>Form Control Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>171</Line>
+      <Column>13</Column>
+      <EndLine>171</EndLine>
+      <EndColumn>129</EndColumn>
+      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Form/SPYAbsenceAccrualUpdateEdit</Path>
+      <ElementType>Form</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>1</Line>
+      <Column>1</Column>
+      <EndLine>1</EndLine>
+      <EndColumn>309</EndColumn>
+      <Message>TODO: (Code Upgrade) [Vertical Button Group Rule] Please manually fix the vertical button group [GroupParametersButtonGroup] in this form, it does not conform to any well known rules. The button group does not have any data source or its data source is not part of any root or linked data source query.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
       <Path>dynamics://Form/SPYDocumentRequest/FormDesign/AxFormDesign/FormControl/Tab/Method/tabChanged</Path>
       <ElementType>Form Control Method</ElementType>
       <Moniker>TaskListItem</Moniker>
@@ -1107,14 +951,14 @@
     <Diagnostic>
       <DiagnosticType>TaskListItem</DiagnosticType>
       <Severity>Informational</Severity>
-      <Path>dynamics://Form/SPYPayrollLedger/FormDesign/AxFormDesign/FormControl/TabFinancialDimensions/Method/pageActivated</Path>
-      <ElementType>Form Control Method</ElementType>
+      <Path>dynamics://Form/SPYPayLoanPostEdit</Path>
+      <ElementType>Form</ElementType>
       <Moniker>TaskListItem</Moniker>
-      <Line>138</Line>
-      <Column>13</Column>
-      <EndLine>138</EndLine>
-      <EndColumn>129</EndColumn>
-      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
+      <Line>1</Line>
+      <Column>1</Column>
+      <EndLine>1</EndLine>
+      <EndColumn>309</EndColumn>
+      <Message>TODO: (Code Upgrade) [Vertical Button Group Rule] Please manually fix the vertical button group [GroupParametersButtonGroup] in this form, it does not conform to any well known rules. The button group does not have any data source or its data source is not part of any root or linked data source query.</Message>
     </Diagnostic>
     <Diagnostic>
       <DiagnosticType>TaskListItem</DiagnosticType>
@@ -1137,6 +981,102 @@
       <Line>175</Line>
       <Column>13</Column>
       <EndLine>175</EndLine>
+      <EndColumn>170</EndColumn>
+      <Message>TODO: (Code Upgrade) [Action Pane Rule] Please consider moving all references to the form task override method and remove the control: EditRecordButton</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Form/SPYAbsenceJournalPostEdit</Path>
+      <ElementType>Form</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>1</Line>
+      <Column>1</Column>
+      <EndLine>1</EndLine>
+      <EndColumn>309</EndColumn>
+      <Message>TODO: (Code Upgrade) [Vertical Button Group Rule] Please manually fix the vertical button group [GroupParametersButtonGroup] in this form, it does not conform to any well known rules. The button group does not have any data source or its data source is not part of any root or linked data source query.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Form/SPYDisbursementPostEdit</Path>
+      <ElementType>Form</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>1</Line>
+      <Column>1</Column>
+      <EndLine>1</EndLine>
+      <EndColumn>309</EndColumn>
+      <Message>TODO: (Code Upgrade) [Vertical Button Group Rule] Please manually fix the vertical button group [GroupParametersButtonGroup] in this form, it does not conform to any well known rules. The button group does not have any data source or its data source is not part of any root or linked data source query.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Form/SPYDisbursementPostEdit/Method/initializeValue</Path>
+      <ElementType>Form Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>80</Line>
+      <Column>35</Column>
+      <EndLine>80</EndLine>
+      <EndColumn>49</EndColumn>
+      <Message>TODO UPGRADE</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Form/SPYPayrollLedger/FormDesign/AxFormDesign/FormControl/TabFinancialDimensions/Method/pageActivated</Path>
+      <ElementType>Form Control Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>138</Line>
+      <Column>13</Column>
+      <EndLine>138</EndLine>
+      <EndColumn>129</EndColumn>
+      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Form/SPYPayrollEarningsJournalPostEdit</Path>
+      <ElementType>Form</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>1</Line>
+      <Column>1</Column>
+      <EndLine>1</EndLine>
+      <EndColumn>309</EndColumn>
+      <Message>TODO: (Code Upgrade) [Vertical Button Group Rule] Please manually fix the vertical button group [GroupParametersButtonGroup] in this form, it does not conform to any well known rules. The button group does not have any data source or its data source is not part of any root or linked data source query.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Form/SPYPayLoanLedger/Method/init</Path>
+      <ElementType>Form Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>14</Line>
+      <Column>9</Column>
+      <EndLine>14</EndLine>
+      <EndColumn>125</EndColumn>
+      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Form/SPYAbsenceJournal/FormDesign/AxFormDesign/FormControl/Tab/Method/tabChanged</Path>
+      <ElementType>Form Control Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>116</Line>
+      <Column>13</Column>
+      <EndLine>116</EndLine>
+      <EndColumn>163</EndColumn>
+      <Message>TODO: (Code Upgrade) [Action Pane Rule] Please consider moving all references to the form task override method and remove the control: ListGroup</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Form/SPYAbsenceJournal/FormDesign/AxFormDesign/FormControl/Tab/Method/tabChanged</Path>
+      <ElementType>Form Control Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>120</Line>
+      <Column>13</Column>
+      <EndLine>120</EndLine>
       <EndColumn>170</EndColumn>
       <Message>TODO: (Code Upgrade) [Action Pane Rule] Please consider moving all references to the form task override method and remove the control: EditRecordButton</Message>
     </Diagnostic>
@@ -1191,6 +1131,42 @@
     <Diagnostic>
       <DiagnosticType>TaskListItem</DiagnosticType>
       <Severity>Informational</Severity>
+      <Path>dynamics://Form/SPYPayAdjustmentTable/Method/init</Path>
+      <ElementType>Form Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>27</Line>
+      <Column>9</Column>
+      <EndLine>27</EndLine>
+      <EndColumn>125</EndColumn>
+      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Form/SPYPayAdjustmentTable/FormDesign/AxFormDesign/FormControl/TabFinancialDimensions/Method/pageActivated</Path>
+      <ElementType>Form Control Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>169</Line>
+      <Column>13</Column>
+      <EndLine>169</EndLine>
+      <EndColumn>129</EndColumn>
+      <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Form/SPYPayLoanCashSettlementEdit</Path>
+      <ElementType>Form</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>1</Line>
+      <Column>1</Column>
+      <EndLine>1</EndLine>
+      <EndColumn>309</EndColumn>
+      <Message>TODO: (Code Upgrade) [Vertical Button Group Rule] Please manually fix the vertical button group [GroupParametersButtonGroup] in this form, it does not conform to any well known rules. The button group does not have any data source or its data source is not part of any root or linked data source query.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
       <Path>dynamics://Form/SPYPayLoanHistory/Method/init</Path>
       <ElementType>Form Method</ElementType>
       <Moniker>TaskListItem</Moniker>
@@ -1211,6 +1187,30 @@
       <EndLine>42</EndLine>
       <EndColumn>129</EndColumn>
       <Message>TODO: (Code Upgrade) [Dimension Entry control] This method can be removed if there is no custom implementation</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Form/SPYDisbursementJourPostEdit</Path>
+      <ElementType>Form</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>1</Line>
+      <Column>1</Column>
+      <EndLine>1</EndLine>
+      <EndColumn>309</EndColumn>
+      <Message>TODO: (Code Upgrade) [Vertical Button Group Rule] Please manually fix the vertical button group [GroupParametersButtonGroup] in this form, it does not conform to any well known rules. The button group does not have any data source or its data source is not part of any root or linked data source query.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Form/SPYPayLedgerDeleteEdit</Path>
+      <ElementType>Form</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>1</Line>
+      <Column>1</Column>
+      <EndLine>1</EndLine>
+      <EndColumn>309</EndColumn>
+      <Message>TODO: (Code Upgrade) [Vertical Button Group Rule] Please manually fix the vertical button group [GroupParametersButtonGroup] in this form, it does not conform to any well known rules. The button group does not have any data source or its data source is not part of any root or linked data source query.</Message>
     </Diagnostic>
     <Diagnostic>
       <DiagnosticType>ExternalReference</DiagnosticType>
@@ -1246,13 +1246,13 @@
     <Diagnostic>
       <DiagnosticType>Compile</DiagnosticType>
       <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYReportConfigService/Method/runReport</Path>
+      <Path>dynamics://Class/SPYLeaveBalanceDP/Method/processReport</Path>
       <ElementType>Class Method</ElementType>
       <Moniker>ObsoleteEntityUsageWithReason</Moniker>
-      <Line>21</Line>
+      <Line>69</Line>
       <Column>6</Column>
-      <EndLine>21</EndLine>
-      <EndColumn>28</EndColumn>
+      <EndLine>69</EndLine>
+      <EndColumn>35</EndColumn>
       <Message>'SysEntryPointAttribute' is obsolete: '"This attribute is deprecated in AX7. "'.</Message>
     </Diagnostic>
     <Diagnostic>
@@ -1266,6 +1266,18 @@
       <EndLine>33</EndLine>
       <EndColumn>108</EndColumn>
       <Message>'newCreateHcmWorker' is obsolete: ''newCreateHcmWorker is obsolete, use newCreateHcmWorkerV2 method.''.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYReportConfigService/Method/runReport</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ObsoleteEntityUsageWithReason</Moniker>
+      <Line>22</Line>
+      <Column>6</Column>
+      <EndLine>22</EndLine>
+      <EndColumn>28</EndColumn>
+      <Message>'SysEntryPointAttribute' is obsolete: '"This attribute is deprecated in AX7. "'.</Message>
     </Diagnostic>
     <Diagnostic>
       <DiagnosticType>Compile</DiagnosticType>
@@ -1306,30 +1318,6 @@
     <Diagnostic>
       <DiagnosticType>Compile</DiagnosticType>
       <Severity>Warning</Severity>
-      <Path>dynamics://Table/SPYPayrollLedger/Method/aosValidateDelete</Path>
-      <ElementType>Table Method</ElementType>
-      <Moniker>InternalUseOnlyMethodInaccessible</Moniker>
-      <Line>14</Line>
-      <Column>19</Column>
-      <EndLine>14</EndLine>
-      <EndColumn>26</EndColumn>
-      <Message>Method 'aosValidateDelete' or type 'Common' in which it is declared is marked InternalUseOnly and is not accessible from the current module 'SPY'.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Table/SPYPayrollLedger/Method/aosValidateInsert</Path>
-      <ElementType>Table Method</ElementType>
-      <Moniker>InternalUseOnlyMethodInaccessible</Moniker>
-      <Line>30</Line>
-      <Column>15</Column>
-      <EndLine>30</EndLine>
-      <EndColumn>22</EndColumn>
-      <Message>Method 'aosValidateInsert' or type 'Common' in which it is declared is marked InternalUseOnly and is not accessible from the current module 'SPY'.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
       <Path>dynamics://Table/SPYAbsenceLedger/Method/aosValidateDelete</Path>
       <ElementType>Table Method</ElementType>
       <Moniker>InternalUseOnlyMethodInaccessible</Moniker>
@@ -1348,6 +1336,30 @@
       <Line>17</Line>
       <Column>15</Column>
       <EndLine>17</EndLine>
+      <EndColumn>22</EndColumn>
+      <Message>Method 'aosValidateInsert' or type 'Common' in which it is declared is marked InternalUseOnly and is not accessible from the current module 'SPY'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Table/SPYPayrollLedger/Method/aosValidateDelete</Path>
+      <ElementType>Table Method</ElementType>
+      <Moniker>InternalUseOnlyMethodInaccessible</Moniker>
+      <Line>14</Line>
+      <Column>19</Column>
+      <EndLine>14</EndLine>
+      <EndColumn>26</EndColumn>
+      <Message>Method 'aosValidateDelete' or type 'Common' in which it is declared is marked InternalUseOnly and is not accessible from the current module 'SPY'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Table/SPYPayrollLedger/Method/aosValidateInsert</Path>
+      <ElementType>Table Method</ElementType>
+      <Moniker>InternalUseOnlyMethodInaccessible</Moniker>
+      <Line>30</Line>
+      <Column>15</Column>
+      <EndLine>30</EndLine>
       <EndColumn>22</EndColumn>
       <Message>Method 'aosValidateInsert' or type 'Common' in which it is declared is marked InternalUseOnly and is not accessible from the current module 'SPY'.</Message>
     </Diagnostic>
@@ -1378,6 +1390,30 @@
     <Diagnostic>
       <DiagnosticType>Compile</DiagnosticType>
       <Severity>Warning</Severity>
+      <Path>dynamics://Table/SPYMyTeamMember/Method/xds</Path>
+      <ElementType>Table Method</ElementType>
+      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
+      <Line>10</Line>
+      <Column>22</Column>
+      <EndLine>10</EndLine>
+      <EndColumn>47</EndColumn>
+      <Message>The variable 'transDate' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmEmployment'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Table/SPYMyTeamMember/Method/xds</Path>
+      <ElementType>Table Method</ElementType>
+      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
+      <Line>30</Line>
+      <Column>30</Column>
+      <EndLine>30</EndLine>
+      <EndColumn>55</EndColumn>
+      <Message>The variable 'transDate' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmEmployment'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
       <Path>dynamics://Table/SPYBenefitLedger/Method/aosValidateDelete</Path>
       <ElementType>Table Method</ElementType>
       <Moniker>InternalUseOnlyMethodInaccessible</Moniker>
@@ -1402,26 +1438,14 @@
     <Diagnostic>
       <DiagnosticType>Compile</DiagnosticType>
       <Severity>Warning</Severity>
-      <Path>dynamics://Table/SPYMyTeamMember/Method/xds</Path>
-      <ElementType>Table Method</ElementType>
+      <Path>dynamics://Form/SPYPromotion/Method/insertProposedCompensations</Path>
+      <ElementType>Form Method</ElementType>
       <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
-      <Line>10</Line>
-      <Column>22</Column>
-      <EndLine>10</EndLine>
-      <EndColumn>47</EndColumn>
-      <Message>The variable 'transDate' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmEmployment'.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Table/SPYMyTeamMember/Method/xds</Path>
-      <ElementType>Table Method</ElementType>
-      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
-      <Line>30</Line>
-      <Column>30</Column>
-      <EndLine>30</EndLine>
-      <EndColumn>55</EndColumn>
-      <Message>The variable 'transDate' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmEmployment'.</Message>
+      <Line>91</Line>
+      <Column>16</Column>
+      <EndLine>91</EndLine>
+      <EndColumn>50</EndColumn>
+      <Message>The variable 'validFrom' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmPositionDetail'.</Message>
     </Diagnostic>
     <Diagnostic>
       <DiagnosticType>Compile</DiagnosticType>
@@ -1498,18 +1522,6 @@
     <Diagnostic>
       <DiagnosticType>Compile</DiagnosticType>
       <Severity>Warning</Severity>
-      <Path>dynamics://Form/SPYPromotion/Method/insertProposedCompensations</Path>
-      <ElementType>Form Method</ElementType>
-      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
-      <Line>91</Line>
-      <Column>16</Column>
-      <EndLine>91</EndLine>
-      <EndColumn>50</EndColumn>
-      <Message>The variable 'validFrom' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmPositionDetail'.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
       <Path>dynamics://Class/SPYIntTimesheetLineContract/Method/parmTotalHours</Path>
       <ElementType>Class Method</ElementType>
       <Moniker>TypeConversionLosesRangeAndPrecision</Moniker>
@@ -1546,18 +1558,6 @@
     <Diagnostic>
       <DiagnosticType>Compile</DiagnosticType>
       <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYBenefitEncashmentService/Method/process</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>ObsoleteEntityUsageWithReason</Moniker>
-      <Line>523</Line>
-      <Column>13</Column>
-      <EndLine>523</EndLine>
-      <EndColumn>46</EndColumn>
-      <Message>'setAnimation' is obsolete: ''This method is obsolete as the progress indicator form no longer displays an animation. Please remove the call.''.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
       <Path>dynamics://Class/SPYPayLedgerPostService/Method/updateAccountDistribution</Path>
       <ElementType>Class Method</ElementType>
       <Moniker>ObsoleteEntityUsage</Moniker>
@@ -1582,6 +1582,18 @@
     <Diagnostic>
       <DiagnosticType>Compile</DiagnosticType>
       <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYPromotionProcessService/Method/process</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ObsoleteEntityUsageWithReason</Moniker>
+      <Line>292</Line>
+      <Column>9</Column>
+      <EndLine>292</EndLine>
+      <EndColumn>42</EndColumn>
+      <Message>'setAnimation' is obsolete: ''This method is obsolete as the progress indicator form no longer displays an animation. Please remove the call.''.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
       <Path>dynamics://Class/SPYTimesheetUpload/Method/readCSV</Path>
       <ElementType>Class Method</ElementType>
       <Moniker>ObsoleteEntityUsageWithReason</Moniker>
@@ -1590,6 +1602,18 @@
       <EndLine>183</EndLine>
       <EndColumn>107</EndColumn>
       <Message>'getChartOfAccountsDelimiter' is obsolete: ''The getChartOfAccountsDelimiter method has been deprecated; use the DimensionParameters::getDimensionSegmentDelimiter method instead.''.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYBenefitEncashmentService/Method/process</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ObsoleteEntityUsageWithReason</Moniker>
+      <Line>523</Line>
+      <Column>13</Column>
+      <EndLine>523</EndLine>
+      <EndColumn>46</EndColumn>
+      <Message>'setAnimation' is obsolete: ''This method is obsolete as the progress indicator form no longer displays an animation. Please remove the call.''.</Message>
     </Diagnostic>
     <Diagnostic>
       <DiagnosticType>Compile</DiagnosticType>
@@ -1752,18 +1776,6 @@
       <Severity>Warning</Severity>
       <Path>dynamics://Class/SPYPayslipController/Method/runReport</Path>
       <ElementType>Class Method</ElementType>
-      <Moniker>InternalUseOnlyMethodInaccessible</Moniker>
-      <Line>189</Line>
-      <Column>17</Column>
-      <EndLine>189</EndLine>
-      <EndColumn>117</EndColumn>
-      <Message>Method 'runReportOnClient' or type 'SrsClientServerAdapterController' in which it is declared is marked InternalUseOnly and is not accessible from the current module 'SPY'.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYPayslipController/Method/runReport</Path>
-      <ElementType>Class Method</ElementType>
       <Moniker>InternalUseOnlyTypeInaccessible</Moniker>
       <Line>189</Line>
       <Column>17</Column>
@@ -1774,12 +1786,48 @@
     <Diagnostic>
       <DiagnosticType>Compile</DiagnosticType>
       <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYPayslipController/Method/runReport</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>InternalUseOnlyMethodInaccessible</Moniker>
+      <Line>189</Line>
+      <Column>17</Column>
+      <EndLine>189</EndLine>
+      <EndColumn>117</EndColumn>
+      <Message>Method 'runReportOnClient' or type 'SrsClientServerAdapterController' in which it is declared is marked InternalUseOnly and is not accessible from the current module 'SPY'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
       <Path>dynamics://Class/SPYPayArrearService/Method/processPayElement</Path>
       <ElementType>Class Method</ElementType>
       <Moniker>ObsoleteEntityUsageWithReason</Moniker>
       <Line>72</Line>
       <Column>9</Column>
       <EndLine>72</EndLine>
+      <EndColumn>42</EndColumn>
+      <Message>'setAnimation' is obsolete: ''This method is obsolete as the progress indicator form no longer displays an animation. Please remove the call.''.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYLeaveSettlementService/Method/processLeaveAppl</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ObsoleteEntityUsageWithReason</Moniker>
+      <Line>148</Line>
+      <Column>9</Column>
+      <EndLine>148</EndLine>
+      <EndColumn>42</EndColumn>
+      <Message>'setAnimation' is obsolete: ''This method is obsolete as the progress indicator form no longer displays an animation. Please remove the call.''.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYPayProcessService/Method/processPayElement</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ObsoleteEntityUsageWithReason</Moniker>
+      <Line>142</Line>
+      <Column>9</Column>
+      <EndLine>142</EndLine>
       <EndColumn>42</EndColumn>
       <Message>'setAnimation' is obsolete: ''This method is obsolete as the progress indicator form no longer displays an animation. Please remove the call.''.</Message>
     </Diagnostic>
@@ -1846,130 +1894,6 @@
     <Diagnostic>
       <DiagnosticType>Compile</DiagnosticType>
       <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYTSUpdateAttendence/Method/updateLeavers</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>ObsoleteEntityUsageWithReason</Moniker>
-      <Line>74</Line>
-      <Column>25</Column>
-      <EndLine>74</EndLine>
-      <EndColumn>102</EndColumn>
-      <Message>'dateStartYr' is obsolete: '"This method is deprecated and will be removed in future releases.
-Please use the DateTimeUtil::getStartOfYearDate method by specifying the locale to use.
-To retrieve the preferred locale of the user, use the method xSession.PreferredLocale."'.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYTSUpdateAttendence/Method/updateLeavers</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>ObsoleteEntityUsageWithReason</Moniker>
-      <Line>75</Line>
-      <Column>23</Column>
-      <EndLine>75</EndLine>
-      <EndColumn>98</EndColumn>
-      <Message>'dateEndYr' is obsolete: '"This method is deprecated and will be removed in future releases.
-Please use the DateTimeUtil::getEndOfYearDate method by specifying the locale to use.
-To retrieve the preferred locale of the user, use the method xSession.PreferredLocale."'.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYPromotionProcessService/Method/process</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>ObsoleteEntityUsageWithReason</Moniker>
-      <Line>292</Line>
-      <Column>9</Column>
-      <EndLine>292</EndLine>
-      <EndColumn>42</EndColumn>
-      <Message>'setAnimation' is obsolete: ''This method is obsolete as the progress indicator form no longer displays an animation. Please remove the call.''.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYLeaveSettlementService/Method/processLeaveAppl</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>ObsoleteEntityUsageWithReason</Moniker>
-      <Line>148</Line>
-      <Column>9</Column>
-      <EndLine>148</EndLine>
-      <EndColumn>42</EndColumn>
-      <Message>'setAnimation' is obsolete: ''This method is obsolete as the progress indicator form no longer displays an animation. Please remove the call.''.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYWpsGenerationService/Method/generateText</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>TypeConversionLosesRangeAndPrecision</Moniker>
-      <Line>105</Line>
-      <Column>9</Column>
-      <EndLine>105</EndLine>
-      <EndColumn>124</EndColumn>
-      <Message>The type conversion from 'real' to 'int' loses range and precision.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYWpsGenerationService/Method/generateText</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>TypeConversionLosesRangeAndPrecision</Moniker>
-      <Line>106</Line>
-      <Column>9</Column>
-      <EndLine>106</EndLine>
-      <EndColumn>133</EndColumn>
-      <Message>The type conversion from 'real' to 'int' loses range and precision.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYWpsGenerationService/Method/generateText_ae</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>TypeConversionLosesRangeAndPrecision</Moniker>
-      <Line>286</Line>
-      <Column>9</Column>
-      <EndLine>286</EndLine>
-      <EndColumn>124</EndColumn>
-      <Message>The type conversion from 'real' to 'int' loses range and precision.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYWpsGenerationService/Method/generateText_ae</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>TypeConversionLosesRangeAndPrecision</Moniker>
-      <Line>287</Line>
-      <Column>9</Column>
-      <EndLine>287</EndLine>
-      <EndColumn>133</EndColumn>
-      <Message>The type conversion from 'real' to 'int' loses range and precision.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYEOSService/Method/postToRunProcess</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>ObsoleteEntityUsageWithReason</Moniker>
-      <Line>581</Line>
-      <Column>9</Column>
-      <EndLine>581</EndLine>
-      <EndColumn>42</EndColumn>
-      <Message>'setAnimation' is obsolete: ''This method is obsolete as the progress indicator form no longer displays an animation. Please remove the call.''.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYPayPeriodCloseService/Method/closePeriod</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>ObsoleteEntityUsageWithReason</Moniker>
-      <Line>40</Line>
-      <Column>9</Column>
-      <EndLine>40</EndLine>
-      <EndColumn>42</EndColumn>
-      <Message>'setAnimation' is obsolete: ''This method is obsolete as the progress indicator form no longer displays an animation. Please remove the call.''.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
       <Path>dynamics://Class/SPYPayrollJourPostService/Method/createLedgerJournalFromDistribution</Path>
       <ElementType>Class Method</ElementType>
       <Moniker>ObsoleteEntityUsageWithReason</Moniker>
@@ -2006,314 +1930,54 @@ To retrieve the preferred locale of the user, use the method xSession.PreferredL
     <Diagnostic>
       <DiagnosticType>Compile</DiagnosticType>
       <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYExpressionTable_Extension/Method/SPYExpressionTable_Post_callSystemFunction</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>UnreachableStatement</Moniker>
-      <Line>326</Line>
-      <Column>17</Column>
-      <EndLine>326</EndLine>
-      <EndColumn>23</EndColumn>
-      <Message>The statement is unreachable.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYBenefitRegisterDP/Method/insertIntoBenefitRegisterTmp</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>DuplicateSelectField</Moniker>
-      <Line>222</Line>
-      <Column>26</Column>
-      <EndLine>223</EndLine>
-      <EndColumn>52</EndColumn>
-      <Message>The selection field 'Sum(AccountingCurPnLAmount)' cannot be given more than one time.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYBenefitRegisterDP/Method/insertIntoBenefitRegisterTmp</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>DuplicateSelectField</Moniker>
-      <Line>222</Line>
-      <Column>26</Column>
-      <EndLine>223</EndLine>
-      <EndColumn>52</EndColumn>
-      <Message>The selection field 'Sum(TransactionCurPnLAmount)' cannot be given more than one time.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYWorkingProfile/Method/workerIsCalendar</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
-      <Line>20</Line>
-      <Column>26</Column>
-      <EndLine>20</EndLine>
-      <EndColumn>52</EndColumn>
-      <Message>The variable '_transDate' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmEmploymentDetail'.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYWorkingProfile/Method/workerIsCalendar</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
-      <Line>20</Line>
-      <Column>26</Column>
-      <EndLine>20</EndLine>
-      <EndColumn>52</EndColumn>
-      <Message>The variable '_transDate' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmEmployment'.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYProjCatEnableStdHoursParam/Method/ProjCategory_OnActivated</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>UnreachableStatement</Moniker>
-      <Line>23</Line>
-      <Column>13</Column>
-      <EndLine>23</EndLine>
-      <EndColumn>36</EndColumn>
-      <Message>The statement is unreachable.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYTimesheetProcessService/Method/process</Path>
+      <Path>dynamics://Class/SPYPayPeriodCloseService/Method/closePeriod</Path>
       <ElementType>Class Method</ElementType>
       <Moniker>ObsoleteEntityUsageWithReason</Moniker>
-      <Line>902</Line>
+      <Line>40</Line>
       <Column>9</Column>
-      <EndLine>902</EndLine>
+      <EndLine>40</EndLine>
       <EndColumn>42</EndColumn>
       <Message>'setAnimation' is obsolete: ''This method is obsolete as the progress indicator form no longer displays an animation. Please remove the call.''.</Message>
     </Diagnostic>
     <Diagnostic>
       <DiagnosticType>Compile</DiagnosticType>
       <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYEOSRunDP/Method/insertIntoSPYEOSRunTableTmp</Path>
+      <Path>dynamics://Class/SPYTSUpdateAttendence/Method/updateLeavers</Path>
       <ElementType>Class Method</ElementType>
-      <Moniker>TypeConversionLosesPrecision</Moniker>
-      <Line>121</Line>
-      <Column>9</Column>
-      <EndLine>121</EndLine>
+      <Moniker>ObsoleteEntityUsageWithReason</Moniker>
+      <Line>74</Line>
+      <Column>25</Column>
+      <EndLine>74</EndLine>
+      <EndColumn>102</EndColumn>
+      <Message>'dateStartYr' is obsolete: '"This method is deprecated and will be removed in future releases.
+Please use the DateTimeUtil::getStartOfYearDate method by specifying the locale to use.
+To retrieve the preferred locale of the user, use the method xSession.PreferredLocale."'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYTSUpdateAttendence/Method/updateLeavers</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ObsoleteEntityUsageWithReason</Moniker>
+      <Line>75</Line>
+      <Column>23</Column>
+      <EndLine>75</EndLine>
       <EndColumn>98</EndColumn>
-      <Message>The type conversion from 'real' to 'int64' loses precision.</Message>
+      <Message>'dateEndYr' is obsolete: '"This method is deprecated and will be removed in future releases.
+Please use the DateTimeUtil::getEndOfYearDate method by specifying the locale to use.
+To retrieve the preferred locale of the user, use the method xSession.PreferredLocale."'.</Message>
     </Diagnostic>
     <Diagnostic>
       <DiagnosticType>Compile</DiagnosticType>
       <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYPayProcessService/Method/processPayElement</Path>
+      <Path>dynamics://Class/SPYEOSService/Method/postToRunProcess</Path>
       <ElementType>Class Method</ElementType>
       <Moniker>ObsoleteEntityUsageWithReason</Moniker>
-      <Line>132</Line>
+      <Line>581</Line>
       <Column>9</Column>
-      <EndLine>132</EndLine>
+      <EndLine>581</EndLine>
       <EndColumn>42</EndColumn>
       <Message>'setAnimation' is obsolete: ''This method is obsolete as the progress indicator form no longer displays an animation. Please remove the call.''.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYPayrollFinalizeProcessService/Method/process</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>ObsoleteEntityUsageWithReason</Moniker>
-      <Line>52</Line>
-      <Column>9</Column>
-      <EndLine>52</EndLine>
-      <EndColumn>42</EndColumn>
-      <Message>'setAnimation' is obsolete: ''This method is obsolete as the progress indicator form no longer displays an animation. Please remove the call.''.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYExpressionSystemFunctionMethod_Extension/Method/EMP_DOT</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>ImplicitConversionFromUtcDateTimeToDate</Moniker>
-      <Line>388</Line>
-      <Column>9</Column>
-      <EndLine>388</EndLine>
-      <EndColumn>96</EndColumn>
-      <Message>The implicit conversion from utcDateTime to date is not supported.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYExpressionSystemFunctionMethod_Extension/Method/EMP_DOT</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>ImplicitConversionFromDateToUtcDateTime</Moniker>
-      <Line>390</Line>
-      <Column>98</Column>
-      <EndLine>390</EndLine>
-      <EndColumn>107</EndColumn>
-      <Message>The implicit conversion from date to utcDateTime is not supported.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYExpressionSystemFunctionMethod_Extension/Method/EMP_DOT</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>ImplicitConversionFromDateToUtcDateTime</Moniker>
-      <Line>390</Line>
-      <Column>108</Column>
-      <EndLine>390</EndLine>
-      <EndColumn>117</EndColumn>
-      <Message>The implicit conversion from date to utcDateTime is not supported.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYExpressionSystemFunctionMethod_Extension/Method/EMP_NATIONALITY</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>ObsoleteEntityUsage</Moniker>
-      <Line>602</Line>
-      <Column>12</Column>
-      <EndLine>602</EndLine>
-      <EndColumn>25</EndColumn>
-      <Message>'CitizenshipCountryRegion' is obsolete.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYExpressionSystemFunctionMethod_Extension/Method/EMP_NATIONALITY</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>ObsoleteEntityUsage</Moniker>
-      <Line>603</Line>
-      <Column>20</Column>
-      <EndLine>603</EndLine>
-      <EndColumn>33</EndColumn>
-      <Message>'CitizenshipCountryRegion' is obsolete.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYExpressionSystemFunctionMethod_Extension/Method/EMP_MARITAL_STATUS</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>ExtensibleEnumInNumericalAssignment</Moniker>
-      <Line>964</Line>
-      <Column>18</Column>
-      <EndLine>964</EndLine>
-      <EndColumn>19</EndColumn>
-      <Message>Assigning a numerical value to extensible enum 'Extensible Enumeration(HcmPersonMaritalStatus)' will yield unexpected results. Extensible enum values are not deterministically assigned to a numerical value.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYExpressionSystemFunctionMethod_Extension/Method/EMP_MARITAL_STATUS</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>ExtensibleEnumInNumericalAssignment</Moniker>
-      <Line>966</Line>
-      <Column>18</Column>
-      <EndLine>966</EndLine>
-      <EndColumn>19</EndColumn>
-      <Message>Assigning a numerical value to extensible enum 'Extensible Enumeration(HcmPersonMaritalStatus)' will yield unexpected results. Extensible enum values are not deterministically assigned to a numerical value.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYExpressionSystemFunctionMethod_Extension/Method/EOS_REASON</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
-      <Line>1729</Line>
-      <Column>17</Column>
-      <EndLine>1729</EndLine>
-      <EndColumn>49</EndColumn>
-      <Message>The variable 'dateFrom' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmEmploymentDetail'.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYExpressionSystemFunctionMethod_Extension/Method/EOS_REASON</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
-      <Line>1729</Line>
-      <Column>17</Column>
-      <EndLine>1729</EndLine>
-      <EndColumn>49</EndColumn>
-      <Message>The variable 'dateFrom' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmEmployment'.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYWritePayElementsOfWorker/Method/insertWorkerPayelements</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
-      <Line>126</Line>
-      <Column>24</Column>
-      <EndLine>126</EndLine>
-      <EndColumn>64</EndColumn>
-      <Message>The variable 'currentDate' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmEmploymentDetail'.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYWritePayElementsOfWorker/Method/insertWorkerPayelements</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
-      <Line>126</Line>
-      <Column>24</Column>
-      <EndLine>126</EndLine>
-      <EndColumn>64</EndColumn>
-      <Message>The variable 'currentDate' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmEmployment'.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYWritePayElementsOfWorker/Method/insertWorkerPayelements</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
-      <Line>167</Line>
-      <Column>28</Column>
-      <EndLine>167</EndLine>
-      <EndColumn>68</EndColumn>
-      <Message>The variable 'currentDate' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmEmploymentDetail'.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYWritePayElementsOfWorker/Method/insertWorkerPayelements</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
-      <Line>167</Line>
-      <Column>28</Column>
-      <EndLine>167</EndLine>
-      <EndColumn>68</EndColumn>
-      <Message>The variable 'currentDate' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmEmployment'.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYExpressionSystemFunctionMethod_Extension/Method/EMP_JOB</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
-      <Line>2144</Line>
-      <Column>26</Column>
-      <EndLine>2144</EndLine>
-      <EndColumn>52</EndColumn>
-      <Message>The variable 'periodFrom' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmPositionWorkerAssignment'.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYExpressionSystemFunctionMethod_Extension/Method/EMP_JOB</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
-      <Line>2144</Line>
-      <Column>26</Column>
-      <EndLine>2144</EndLine>
-      <EndColumn>52</EndColumn>
-      <Message>The variable 'periodFrom' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmPositionDetail'.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYPayProcessBatch/Method/addTask</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>TypeConversionLosesRangeAndPrecision</Moniker>
-      <Line>28</Line>
-      <Column>9</Column>
-      <EndLine>28</EndLine>
-      <EndColumn>63</EndColumn>
-      <Message>The type conversion from 'real' to 'int' loses range and precision.</Message>
     </Diagnostic>
     <Diagnostic>
       <DiagnosticType>Compile</DiagnosticType>
@@ -2338,18 +2002,6 @@ To retrieve the preferred locale of the user, use the method xSession.PreferredL
       <EndLine>100</EndLine>
       <EndColumn>50</EndColumn>
       <Message>'setAnimation' is obsolete: ''This method is obsolete as the progress indicator form no longer displays an animation. Please remove the call.''.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Compile</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYBenefitDecoratorCalculation/Method/new</Path>
-      <ElementType>Class Method</ElementType>
-      <Moniker>ConstructorMustCallSuper</Moniker>
-      <Line>61</Line>
-      <Column>5</Column>
-      <EndLine>61</EndLine>
-      <EndColumn>20</EndColumn>
-      <Message>Not all paths in the constructor call 'super()'.</Message>
     </Diagnostic>
     <Diagnostic>
       <DiagnosticType>Compile</DiagnosticType>
@@ -2385,6 +2037,78 @@ To retrieve the preferred locale of the user, use the method xSession.PreferredL
       <Column>66</Column>
       <EndLine>388</EndLine>
       <EndColumn>74</EndColumn>
+      <Message>The type conversion from 'real' to 'int' loses range and precision.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYWpsGenerationService/Method/generateText</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeConversionLosesRangeAndPrecision</Moniker>
+      <Line>105</Line>
+      <Column>9</Column>
+      <EndLine>105</EndLine>
+      <EndColumn>124</EndColumn>
+      <Message>The type conversion from 'real' to 'int' loses range and precision.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYWpsGenerationService/Method/generateText</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeConversionLosesRangeAndPrecision</Moniker>
+      <Line>106</Line>
+      <Column>9</Column>
+      <EndLine>106</EndLine>
+      <EndColumn>133</EndColumn>
+      <Message>The type conversion from 'real' to 'int' loses range and precision.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYBenefitRegisterDP/Method/insertIntoBenefitRegisterTmp</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>DuplicateSelectField</Moniker>
+      <Line>225</Line>
+      <Column>26</Column>
+      <EndLine>226</EndLine>
+      <EndColumn>52</EndColumn>
+      <Message>The selection field 'Sum(AccountingCurPnLAmount)' cannot be given more than one time.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYBenefitRegisterDP/Method/insertIntoBenefitRegisterTmp</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>DuplicateSelectField</Moniker>
+      <Line>225</Line>
+      <Column>26</Column>
+      <EndLine>226</EndLine>
+      <EndColumn>52</EndColumn>
+      <Message>The selection field 'Sum(TransactionCurPnLAmount)' cannot be given more than one time.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYWpsGenerationService/Method/generateText_ae</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeConversionLosesRangeAndPrecision</Moniker>
+      <Line>286</Line>
+      <Column>9</Column>
+      <EndLine>286</EndLine>
+      <EndColumn>124</EndColumn>
+      <Message>The type conversion from 'real' to 'int' loses range and precision.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYWpsGenerationService/Method/generateText_ae</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeConversionLosesRangeAndPrecision</Moniker>
+      <Line>287</Line>
+      <Column>9</Column>
+      <EndLine>287</EndLine>
+      <EndColumn>133</EndColumn>
       <Message>The type conversion from 'real' to 'int' loses range and precision.</Message>
     </Diagnostic>
     <Diagnostic>
@@ -2594,14 +2318,278 @@ To retrieve the preferred locale of the user, use the method xSession.PreferredL
     <Diagnostic>
       <DiagnosticType>Compile</DiagnosticType>
       <Severity>Warning</Severity>
-      <Path>dynamics://Class/SPYAbsenceAccrualUpdateService/Method/process</Path>
+      <Path>dynamics://Class/SPYEOSRunDP/Method/insertIntoSPYEOSRunTableTmp</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeConversionLosesPrecision</Moniker>
+      <Line>121</Line>
+      <Column>9</Column>
+      <EndLine>121</EndLine>
+      <EndColumn>98</EndColumn>
+      <Message>The type conversion from 'real' to 'int64' loses precision.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYWorkingProfile/Method/workerIsCalendar</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
+      <Line>20</Line>
+      <Column>26</Column>
+      <EndLine>20</EndLine>
+      <EndColumn>52</EndColumn>
+      <Message>The variable '_transDate' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmEmploymentDetail'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYWorkingProfile/Method/workerIsCalendar</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
+      <Line>20</Line>
+      <Column>26</Column>
+      <EndLine>20</EndLine>
+      <EndColumn>52</EndColumn>
+      <Message>The variable '_transDate' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmEmployment'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYProjCatEnableStdHoursParam/Method/ProjCategory_OnActivated</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>UnreachableStatement</Moniker>
+      <Line>23</Line>
+      <Column>13</Column>
+      <EndLine>23</EndLine>
+      <EndColumn>36</EndColumn>
+      <Message>The statement is unreachable.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYExpressionTable_Extension/Method/SPYExpressionTable_Post_callSystemFunction</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>UnreachableStatement</Moniker>
+      <Line>326</Line>
+      <Column>17</Column>
+      <EndLine>326</EndLine>
+      <EndColumn>23</EndColumn>
+      <Message>The statement is unreachable.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYPayProcessBatch/Method/addTask</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeConversionLosesRangeAndPrecision</Moniker>
+      <Line>28</Line>
+      <Column>9</Column>
+      <EndLine>28</EndLine>
+      <EndColumn>63</EndColumn>
+      <Message>The type conversion from 'real' to 'int' loses range and precision.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYTimesheetProcessService/Method/process</Path>
       <ElementType>Class Method</ElementType>
       <Moniker>ObsoleteEntityUsageWithReason</Moniker>
-      <Line>113</Line>
-      <Column>13</Column>
-      <EndLine>113</EndLine>
-      <EndColumn>46</EndColumn>
+      <Line>902</Line>
+      <Column>9</Column>
+      <EndLine>902</EndLine>
+      <EndColumn>42</EndColumn>
       <Message>'setAnimation' is obsolete: ''This method is obsolete as the progress indicator form no longer displays an animation. Please remove the call.''.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYPayrollFinalizeProcessService/Method/process</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ObsoleteEntityUsageWithReason</Moniker>
+      <Line>50</Line>
+      <Column>9</Column>
+      <EndLine>50</EndLine>
+      <EndColumn>42</EndColumn>
+      <Message>'setAnimation' is obsolete: ''This method is obsolete as the progress indicator form no longer displays an animation. Please remove the call.''.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYExpressionSystemFunctionMethod_Extension/Method/EMP_DOT</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ImplicitConversionFromUtcDateTimeToDate</Moniker>
+      <Line>388</Line>
+      <Column>9</Column>
+      <EndLine>388</EndLine>
+      <EndColumn>96</EndColumn>
+      <Message>The implicit conversion from utcDateTime to date is not supported.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYExpressionSystemFunctionMethod_Extension/Method/EMP_DOT</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ImplicitConversionFromDateToUtcDateTime</Moniker>
+      <Line>390</Line>
+      <Column>98</Column>
+      <EndLine>390</EndLine>
+      <EndColumn>107</EndColumn>
+      <Message>The implicit conversion from date to utcDateTime is not supported.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYExpressionSystemFunctionMethod_Extension/Method/EMP_DOT</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ImplicitConversionFromDateToUtcDateTime</Moniker>
+      <Line>390</Line>
+      <Column>108</Column>
+      <EndLine>390</EndLine>
+      <EndColumn>117</EndColumn>
+      <Message>The implicit conversion from date to utcDateTime is not supported.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYExpressionSystemFunctionMethod_Extension/Method/EMP_NATIONALITY</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ObsoleteEntityUsage</Moniker>
+      <Line>651</Line>
+      <Column>12</Column>
+      <EndLine>651</EndLine>
+      <EndColumn>25</EndColumn>
+      <Message>'CitizenshipCountryRegion' is obsolete.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYExpressionSystemFunctionMethod_Extension/Method/EMP_NATIONALITY</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ObsoleteEntityUsage</Moniker>
+      <Line>652</Line>
+      <Column>20</Column>
+      <EndLine>652</EndLine>
+      <EndColumn>33</EndColumn>
+      <Message>'CitizenshipCountryRegion' is obsolete.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYExpressionSystemFunctionMethod_Extension/Method/EMP_MARITAL_STATUS</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ExtensibleEnumInNumericalAssignment</Moniker>
+      <Line>1013</Line>
+      <Column>18</Column>
+      <EndLine>1013</EndLine>
+      <EndColumn>19</EndColumn>
+      <Message>Assigning a numerical value to extensible enum 'Extensible Enumeration(HcmPersonMaritalStatus)' will yield unexpected results. Extensible enum values are not deterministically assigned to a numerical value.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYExpressionSystemFunctionMethod_Extension/Method/EMP_MARITAL_STATUS</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ExtensibleEnumInNumericalAssignment</Moniker>
+      <Line>1015</Line>
+      <Column>18</Column>
+      <EndLine>1015</EndLine>
+      <EndColumn>19</EndColumn>
+      <Message>Assigning a numerical value to extensible enum 'Extensible Enumeration(HcmPersonMaritalStatus)' will yield unexpected results. Extensible enum values are not deterministically assigned to a numerical value.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYExpressionSystemFunctionMethod_Extension/Method/EOS_REASON</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
+      <Line>1778</Line>
+      <Column>17</Column>
+      <EndLine>1778</EndLine>
+      <EndColumn>49</EndColumn>
+      <Message>The variable 'dateFrom' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmEmploymentDetail'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYExpressionSystemFunctionMethod_Extension/Method/EOS_REASON</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
+      <Line>1778</Line>
+      <Column>17</Column>
+      <EndLine>1778</EndLine>
+      <EndColumn>49</EndColumn>
+      <Message>The variable 'dateFrom' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmEmployment'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYExpressionSystemFunctionMethod_Extension/Method/EMP_JOB</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
+      <Line>2194</Line>
+      <Column>26</Column>
+      <EndLine>2194</EndLine>
+      <EndColumn>62</EndColumn>
+      <Message>The variable 'periodFrom' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmPositionWorkerAssignment'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYExpressionSystemFunctionMethod_Extension/Method/EMP_JOB</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
+      <Line>2194</Line>
+      <Column>26</Column>
+      <EndLine>2194</EndLine>
+      <EndColumn>62</EndColumn>
+      <Message>The variable 'periodFrom' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmPositionDetail'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYWritePayElementsOfWorker/Method/insertWorkerPayelements</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
+      <Line>126</Line>
+      <Column>24</Column>
+      <EndLine>126</EndLine>
+      <EndColumn>64</EndColumn>
+      <Message>The variable 'currentDate' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmEmploymentDetail'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYWritePayElementsOfWorker/Method/insertWorkerPayelements</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
+      <Line>126</Line>
+      <Column>24</Column>
+      <EndLine>126</EndLine>
+      <EndColumn>64</EndColumn>
+      <Message>The variable 'currentDate' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmEmployment'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYWritePayElementsOfWorker/Method/insertWorkerPayelements</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
+      <Line>167</Line>
+      <Column>28</Column>
+      <EndLine>167</EndLine>
+      <EndColumn>68</EndColumn>
+      <Message>The variable 'currentDate' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmEmploymentDetail'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYWritePayElementsOfWorker/Method/insertWorkerPayelements</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
+      <Line>167</Line>
+      <Column>28</Column>
+      <EndLine>167</EndLine>
+      <EndColumn>68</EndColumn>
+      <Message>The variable 'currentDate' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmEmployment'.</Message>
     </Diagnostic>
     <Diagnostic>
       <DiagnosticType>Compile</DiagnosticType>
@@ -2664,6 +2652,30 @@ To retrieve the preferred locale of the user, use the method xSession.PreferredL
       <Message>'deleteFile' is obsolete: ''WinAPI has been deprecated and should not be used.''.</Message>
     </Diagnostic>
     <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYBenefitDecoratorCalculation/Method/new</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ConstructorMustCallSuper</Moniker>
+      <Line>61</Line>
+      <Column>5</Column>
+      <EndLine>61</EndLine>
+      <EndColumn>20</EndColumn>
+      <Message>Not all paths in the constructor call 'super()'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYAbsenceAccrualUpdateService/Method/process</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ObsoleteEntityUsageWithReason</Moniker>
+      <Line>113</Line>
+      <Column>13</Column>
+      <EndLine>113</EndLine>
+      <EndColumn>46</EndColumn>
+      <Message>'setAnimation' is obsolete: ''This method is obsolete as the progress indicator form no longer displays an animation. Please remove the call.''.</Message>
+    </Diagnostic>
+    <Diagnostic>
       <DiagnosticType>Metadata</DiagnosticType>
       <Severity>Warning</Severity>
       <Path>AxDataEntityView/SPYAbsenceCodeEntity/PublicCollectionName</Path>
@@ -2680,7 +2692,42 @@ To retrieve the preferred locale of the user, use the method xSession.PreferredL
     <Diagnostic>
       <DiagnosticType>Metadata</DiagnosticType>
       <Severity>Warning</Severity>
+      <Path>AxTable/SPYCompensationPlanTableStaging/Relations/HcmCompensationLevelBand/Constraints/Type/Value</Path>
+      <Moniker>RelationConstraintValueStrNonEnumType</Moniker>
+      <Message>The enum value name should be specified since the field is of type extensible enum.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxTable/SPYCompensationPlanTableStaging/Relations/HcmCompensationLevelGrade/Constraints/Type/Value</Path>
+      <Moniker>RelationConstraintValueStrNonEnumType</Moniker>
+      <Message>The enum value name should be specified since the field is of type extensible enum.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxTable/SPYCompensationPlanTableStaging/Relations/HcmCompensationLevelStep/Constraints/Type/Value</Path>
+      <Moniker>RelationConstraintValueStrNonEnumType</Moniker>
+      <Message>The enum value name should be specified since the field is of type extensible enum.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Warning</Severity>
       <Path>AxTable/SPYCompensationPlanTable/Relations/HcmCompensationLevelBand/Constraints/Type/Value</Path>
+      <Moniker>RelationConstraintValueStrNonEnumType</Moniker>
+      <Message>The enum value name should be specified since the field is of type extensible enum.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxTable/SPYCompensationPlanTable/Relations/HcmCompensationLevelGrade/Constraints/Type/Value</Path>
+      <Moniker>RelationConstraintValueStrNonEnumType</Moniker>
+      <Message>The enum value name should be specified since the field is of type extensible enum.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxTable/SPYCompensationPlanTable/Relations/HcmCompensationLevelStep/Constraints/Type/Value</Path>
       <Moniker>RelationConstraintValueStrNonEnumType</Moniker>
       <Message>The enum value name should be specified since the field is of type extensible enum.</Message>
     </Diagnostic>
@@ -2694,14 +2741,42 @@ To retrieve the preferred locale of the user, use the method xSession.PreferredL
     <Diagnostic>
       <DiagnosticType>Metadata</DiagnosticType>
       <Severity>Warning</Severity>
-      <Path>AxTable/SPYCompensationPlanTable/Relations/HcmCompensationLevelGrade/Constraints/Type/Value</Path>
+      <Path>AxTableExtension/HcmPositionDetail.ExtensionSPY/Relations/SPYCompensationLevelGrade/Constraints/Type/Value</Path>
       <Moniker>RelationConstraintValueStrNonEnumType</Moniker>
       <Message>The enum value name should be specified since the field is of type extensible enum.</Message>
     </Diagnostic>
     <Diagnostic>
       <DiagnosticType>Metadata</DiagnosticType>
       <Severity>Warning</Severity>
-      <Path>AxTable/SPYCompensationPlanTable/Relations/HcmCompensationLevelStep/Constraints/Type/Value</Path>
+      <Path>AxTableExtension/HcmPositionDetail.ExtensionSPY/Relations/SPYCompensationLevelBand/Constraints/Type/Value</Path>
+      <Moniker>RelationConstraintValueStrNonEnumType</Moniker>
+      <Message>The enum value name should be specified since the field is of type extensible enum.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxTableExtension/HcmPositionDetail.ExtensionSPY/Relations/SPYCompensationLevelStep/Constraints/Type/Value</Path>
+      <Moniker>RelationConstraintValueStrNonEnumType</Moniker>
+      <Message>The enum value name should be specified since the field is of type extensible enum.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxTableExtension/HcmPositionStaging.ExtensionSPY/Relations/SPYCompensationLevelGrade/Constraints/Type/Value</Path>
+      <Moniker>RelationConstraintValueStrNonEnumType</Moniker>
+      <Message>The enum value name should be specified since the field is of type extensible enum.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxTableExtension/HcmPositionStaging.ExtensionSPY/Relations/SPYCompensationLevelBand/Constraints/Type/Value</Path>
+      <Moniker>RelationConstraintValueStrNonEnumType</Moniker>
+      <Message>The enum value name should be specified since the field is of type extensible enum.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxTableExtension/HcmPositionStaging.ExtensionSPY/Relations/SPYCompensationLevelStep/Constraints/Type/Value</Path>
       <Moniker>RelationConstraintValueStrNonEnumType</Moniker>
       <Message>The enum value name should be specified since the field is of type extensible enum.</Message>
     </Diagnostic>
@@ -2729,37 +2804,23 @@ To retrieve the preferred locale of the user, use the method xSession.PreferredL
     <Diagnostic>
       <DiagnosticType>Metadata</DiagnosticType>
       <Severity>Warning</Severity>
-      <Path>AxTableExtension/HcmPositionDetail.ExtensionSPY/Relations/SPYCompensationLevelGrade/Constraints/Type/Value</Path>
-      <Moniker>RelationConstraintValueStrNonEnumType</Moniker>
-      <Message>The enum value name should be specified since the field is of type extensible enum.</Message>
+      <Path>AxDataEntityView/SPYCompensationPlanTableEntity/Metadata/SPYCompensationPlanTable/DataSources/CompanyInfo/Relations/CompanyInfo/CompanyInfo/RelationshipType</Path>
+      <Moniker>InvalidProperty</Moniker>
+      <Message>NotSpecified is not allowed; the only allowed values are Association, Aggregation or Composition for the data source SPYCompensationPlanTable table SPYCompensationPlanTable relation CompanyInfo relationship type..</Message>
     </Diagnostic>
     <Diagnostic>
       <DiagnosticType>Metadata</DiagnosticType>
       <Severity>Warning</Severity>
-      <Path>AxTableExtension/HcmPositionDetail.ExtensionSPY/Relations/SPYCompensationLevelBand/Constraints/Type/Value</Path>
-      <Moniker>RelationConstraintValueStrNonEnumType</Moniker>
-      <Message>The enum value name should be specified since the field is of type extensible enum.</Message>
+      <Path>AxDataEntityView/SPYCompensationPlanTableEntity/Metadata/SPYCompensationPlanTable/DataSources/CompanyInfo/Relations/CompanyInfo/CompanyInfo/Cardinality</Path>
+      <Moniker>InvalidProperty</Moniker>
+      <Message>NotSpecified is not allowed; the only allowed values are ExactlyOne, OneMore, ZeroMore or ZeroOne for the data source SPYCompensationPlanTable table SPYCompensationPlanTable relation CompanyInfo cardinality..</Message>
     </Diagnostic>
     <Diagnostic>
       <DiagnosticType>Metadata</DiagnosticType>
       <Severity>Warning</Severity>
-      <Path>AxTableExtension/HcmPositionDetail.ExtensionSPY/Relations/SPYCompensationLevelStep/Constraints/Type/Value</Path>
-      <Moniker>RelationConstraintValueStrNonEnumType</Moniker>
-      <Message>The enum value name should be specified since the field is of type extensible enum.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Metadata</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>AxForm/SPYDisbursementJournalTable/Design/Controls/Tab/Controls/TabFinancialDimensions/Controls/DimensionEntryControl/Data Source</Path>
-      <Moniker>DataSourceDoesNotExist</Moniker>
-      <Message>Data source 'SPYPayrollJournalTable' does not exist.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>Metadata</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>AxForm/SPYDisbursementJournalTable/Design/Controls/Tab/Controls/TabFinancialDimensions/Controls/DimensionEntryControl/parmValueSetReferenceField</Path>
-      <Moniker>DataSourceDoesNotExist</Moniker>
-      <Message>Data source 'SPYPayrollJournalTable' does not exist.</Message>
+      <Path>AxDataEntityView/SPYCompensationPlanTableEntity/Metadata/SPYCompensationPlanTable/DataSources/CompanyInfo/Relations/CompanyInfo/CompanyInfo/RelatedTableCardinality</Path>
+      <Moniker>InvalidProperty</Moniker>
+      <Message>NotSpecified is not allowed; the only allowed values are ExactlyOne or ZeroOne for the data source SPYCompensationPlanTable table SPYCompensationPlanTable relation CompanyInfo related table cardinality..</Message>
     </Diagnostic>
     <Diagnostic>
       <DiagnosticType>Metadata</DiagnosticType>
@@ -2790,16 +2851,30 @@ To retrieve the preferred locale of the user, use the method xSession.PreferredL
       <Message>Data source 'SPYPayrollJournalTable' does not exist.</Message>
     </Diagnostic>
     <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxForm/SPYDisbursementJournalTable/Design/Controls/Tab/Controls/TabFinancialDimensions/Controls/DimensionEntryControl/Data Source</Path>
+      <Moniker>DataSourceDoesNotExist</Moniker>
+      <Message>Data source 'SPYPayrollJournalTable' does not exist.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxForm/SPYDisbursementJournalTable/Design/Controls/Tab/Controls/TabFinancialDimensions/Controls/DimensionEntryControl/parmValueSetReferenceField</Path>
+      <Moniker>DataSourceDoesNotExist</Moniker>
+      <Message>Data source 'SPYPayrollJournalTable' does not exist.</Message>
+    </Diagnostic>
+    <Diagnostic>
       <DiagnosticType>BestPractices</DiagnosticType>
       <Severity>Warning</Severity>
-      <Path>AxForm/SPYPayrollManagerWorkspace/Design</Path>
+      <Path>AxForm/SPYPayAdjustmentTypeTable/Design</Path>
       <Moniker>BPErrorFormDesignPatternUnspecified</Moniker>
       <Message>'FormDesign' has not specified a pattern. Please apply one of the available patterns.</Message>
     </Diagnostic>
     <Diagnostic>
       <DiagnosticType>BestPractices</DiagnosticType>
       <Severity>Warning</Severity>
-      <Path>AxForm/SPYAirFare/Design</Path>
+      <Path>AxForm/SPYOvertimeJournalListPagePreview/Design</Path>
       <Moniker>BPErrorFormDesignPatternUnspecified</Moniker>
       <Message>'FormDesign' has not specified a pattern. Please apply one of the available patterns.</Message>
     </Diagnostic>
@@ -2813,7 +2888,21 @@ To retrieve the preferred locale of the user, use the method xSession.PreferredL
     <Diagnostic>
       <DiagnosticType>BestPractices</DiagnosticType>
       <Severity>Warning</Severity>
-      <Path>AxForm/SPYPayrollDisbursementTable/Design</Path>
+      <Path>AxForm/SPYLoanTypeTable/Design/Controls/DetailsHeaderGroup</Path>
+      <Moniker>BPErrorFormControlPatternUnspecified</Moniker>
+      <Message>'AxForm/SPYLoanTypeTable/Design/Controls/DetailsHeaderGroup' has not specified a pattern. Please apply one of the available patterns.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>BestPractices</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxForm/SPYPayAdjustmentTable/Design</Path>
+      <Moniker>BPErrorFormDesignPatternUnspecified</Moniker>
+      <Message>'FormDesign' has not specified a pattern. Please apply one of the available patterns.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>BestPractices</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxForm/SPYSocialSecurityTable/Design</Path>
       <Moniker>BPErrorFormDesignPatternUnspecified</Moniker>
       <Message>'FormDesign' has not specified a pattern. Please apply one of the available patterns.</Message>
     </Diagnostic>
@@ -2827,14 +2916,28 @@ To retrieve the preferred locale of the user, use the method xSession.PreferredL
     <Diagnostic>
       <DiagnosticType>BestPractices</DiagnosticType>
       <Severity>Warning</Severity>
-      <Path>AxForm/SPYBenefitDateManager/Design</Path>
+      <Path>AxForm/SPYAirFare/Design</Path>
       <Moniker>BPErrorFormDesignPatternUnspecified</Moniker>
       <Message>'FormDesign' has not specified a pattern. Please apply one of the available patterns.</Message>
     </Diagnostic>
     <Diagnostic>
       <DiagnosticType>BestPractices</DiagnosticType>
       <Severity>Warning</Severity>
-      <Path>AxForm/SPYPayLoanListPagePreviewPane/Design</Path>
+      <Path>AxForm/SPYPayPeriodCloseEdit/Design/Controls/Group_</Path>
+      <Moniker>BPErrorFormControlPatternUnspecified</Moniker>
+      <Message>'AxForm/SPYPayPeriodCloseEdit/Design/Controls/Group_' has not specified a pattern. Please apply one of the available patterns.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>BestPractices</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxForm/SPYAirFareUpload/Design</Path>
+      <Moniker>BPErrorFormDesignPatternUnspecified</Moniker>
+      <Message>'FormDesign' has not specified a pattern. Please apply one of the available patterns.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>BestPractices</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxForm/SPYBenefitDateManager/Design</Path>
       <Moniker>BPErrorFormDesignPatternUnspecified</Moniker>
       <Message>'FormDesign' has not specified a pattern. Please apply one of the available patterns.</Message>
     </Diagnostic>
@@ -2851,6 +2954,13 @@ To retrieve the preferred locale of the user, use the method xSession.PreferredL
       <Path>AxForm/SPYAirFareDetails/Design</Path>
       <Moniker>BPErrorFormDesignPatternUnspecified</Moniker>
       <Message>'FormDesign' has not specified a pattern. Please apply one of the available patterns.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>BestPractices</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxForm/SPYPromotionProcessEdit/Design/Controls/Group_</Path>
+      <Moniker>BPErrorFormControlPatternUnspecified</Moniker>
+      <Message>'AxForm/SPYPromotionProcessEdit/Design/Controls/Group_' has not specified a pattern. Please apply one of the available patterns.</Message>
     </Diagnostic>
     <Diagnostic>
       <DiagnosticType>BestPractices</DiagnosticType>
@@ -2876,7 +2986,42 @@ To retrieve the preferred locale of the user, use the method xSession.PreferredL
     <Diagnostic>
       <DiagnosticType>BestPractices</DiagnosticType>
       <Severity>Warning</Severity>
-      <Path>AxForm/SPYAirFareUpload/Design</Path>
+      <Path>AxForm/SPYPayrollParameters/Design/Controls/TOCGroup/NumberSequencesTabPage/NumberSequencesBody</Path>
+      <Moniker>BPErrorFormControlPatternUnspecified</Moniker>
+      <Message>'AxForm/SPYPayrollParameters/Design/Controls/TOCGroup/NumberSequencesTabPage/NumberSequencesBody' has not specified a pattern. Please apply one of the available patterns.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>BestPractices</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxForm/SPYPayrollManagerWorkspace/Design</Path>
+      <Moniker>BPErrorFormDesignPatternUnspecified</Moniker>
+      <Message>'FormDesign' has not specified a pattern. Please apply one of the available patterns.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>BestPractices</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxForm/SPYCompensationPlanLevel/Design/Controls/Tab/TabPageCondition</Path>
+      <Moniker>BPErrorFormControlPatternUnspecified</Moniker>
+      <Message>'AxForm/SPYCompensationPlanLevel/Design/Controls/Tab/TabPageCondition' has not specified a pattern. Please apply one of the available patterns.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>BestPractices</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxForm/SPYPayrollDisbursementTable/Design</Path>
+      <Moniker>BPErrorFormDesignPatternUnspecified</Moniker>
+      <Message>'FormDesign' has not specified a pattern. Please apply one of the available patterns.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>BestPractices</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxForm/SPYPayLoanListPagePreviewPane/Design</Path>
+      <Moniker>BPErrorFormDesignPatternUnspecified</Moniker>
+      <Message>'FormDesign' has not specified a pattern. Please apply one of the available patterns.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>BestPractices</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxForm/SPYMobileUser/Design</Path>
       <Moniker>BPErrorFormDesignPatternUnspecified</Moniker>
       <Message>'FormDesign' has not specified a pattern. Please apply one of the available patterns.</Message>
     </Diagnostic>
@@ -2904,7 +3049,7 @@ To retrieve the preferred locale of the user, use the method xSession.PreferredL
     <Diagnostic>
       <DiagnosticType>BestPractices</DiagnosticType>
       <Severity>Warning</Severity>
-      <Path>AxForm/SPYMobileUser/Design</Path>
+      <Path>AxForm/SPYAirClass/Design</Path>
       <Moniker>BPErrorFormDesignPatternUnspecified</Moniker>
       <Message>'FormDesign' has not specified a pattern. Please apply one of the available patterns.</Message>
     </Diagnostic>
@@ -2912,76 +3057,6 @@ To retrieve the preferred locale of the user, use the method xSession.PreferredL
       <DiagnosticType>BestPractices</DiagnosticType>
       <Severity>Warning</Severity>
       <Path>AxForm/SPYLeaveApplicationListPagePreviewPane/Design</Path>
-      <Moniker>BPErrorFormDesignPatternUnspecified</Moniker>
-      <Message>'FormDesign' has not specified a pattern. Please apply one of the available patterns.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>BestPractices</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>AxForm/SPYLoanTypeTable/Design/Controls/DetailsHeaderGroup</Path>
-      <Moniker>BPErrorFormControlPatternUnspecified</Moniker>
-      <Message>'AxForm/SPYLoanTypeTable/Design/Controls/DetailsHeaderGroup' has not specified a pattern. Please apply one of the available patterns.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>BestPractices</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>AxForm/SPYPayrollParameters/Design/Controls/TOCGroup/NumberSequencesTabPage/NumberSequencesBody</Path>
-      <Moniker>BPErrorFormControlPatternUnspecified</Moniker>
-      <Message>'AxForm/SPYPayrollParameters/Design/Controls/TOCGroup/NumberSequencesTabPage/NumberSequencesBody' has not specified a pattern. Please apply one of the available patterns.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>BestPractices</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>AxForm/SPYPayAdjustmentTable/Design</Path>
-      <Moniker>BPErrorFormDesignPatternUnspecified</Moniker>
-      <Message>'FormDesign' has not specified a pattern. Please apply one of the available patterns.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>BestPractices</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>AxForm/SPYOvertimeJournalListPagePreview/Design</Path>
-      <Moniker>BPErrorFormDesignPatternUnspecified</Moniker>
-      <Message>'FormDesign' has not specified a pattern. Please apply one of the available patterns.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>BestPractices</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>AxForm/SPYSocialSecurityTable/Design</Path>
-      <Moniker>BPErrorFormDesignPatternUnspecified</Moniker>
-      <Message>'FormDesign' has not specified a pattern. Please apply one of the available patterns.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>BestPractices</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>AxForm/SPYCompensationPlanLevel/Design/Controls/Tab/TabPageCondition</Path>
-      <Moniker>BPErrorFormControlPatternUnspecified</Moniker>
-      <Message>'AxForm/SPYCompensationPlanLevel/Design/Controls/Tab/TabPageCondition' has not specified a pattern. Please apply one of the available patterns.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>BestPractices</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>AxForm/SPYPayAdjustmentTypeTable/Design</Path>
-      <Moniker>BPErrorFormDesignPatternUnspecified</Moniker>
-      <Message>'FormDesign' has not specified a pattern. Please apply one of the available patterns.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>BestPractices</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>AxForm/SPYPromotionProcessEdit/Design/Controls/Group_</Path>
-      <Moniker>BPErrorFormControlPatternUnspecified</Moniker>
-      <Message>'AxForm/SPYPromotionProcessEdit/Design/Controls/Group_' has not specified a pattern. Please apply one of the available patterns.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>BestPractices</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>AxForm/SPYPayPeriodCloseEdit/Design/Controls/Group_</Path>
-      <Moniker>BPErrorFormControlPatternUnspecified</Moniker>
-      <Message>'AxForm/SPYPayPeriodCloseEdit/Design/Controls/Group_' has not specified a pattern. Please apply one of the available patterns.</Message>
-    </Diagnostic>
-    <Diagnostic>
-      <DiagnosticType>BestPractices</DiagnosticType>
-      <Severity>Warning</Severity>
-      <Path>AxForm/SPYAirClass/Design</Path>
       <Moniker>BPErrorFormDesignPatternUnspecified</Moniker>
       <Message>'FormDesign' has not specified a pattern. Please apply one of the available patterns.</Message>
     </Diagnostic>

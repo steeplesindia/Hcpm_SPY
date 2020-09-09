@@ -491,20 +491,69 @@ final class SPYExpressionSystemFunctionMethod_Extension
         LegalEntityRecId legalEntity = expressionContext.legalEntity();
         FromDate periodFromDate = expressionContext.periodFromDate();
         ToDate periodToDate = expressionContext.PeriodToDate();
-
-        HcmEmployment   hcmEmpoyment = HcmEmployment::findByWorkerLegalEntity(worker,legalEntity);
-        date      startDate = max(mkDate(1,1,year(periodToDate)), DateTimeUtil::date(hcmEmpoyment.ValidFrom));
-        SPYAmount   months = startDate == DateTimeUtil::date(hcmEmpoyment.ValidFrom) ? (endMth(startDate) - startDate) / 30 : 1;
-        int cnt = 2;
-        date monthStartDate,monthEndDate;
+        SPYAbsenceLedger    absenceLedger;
+        HRMAbsenceCode  hrmAbsenceCode;
+        TransDate   monthStartDate, monthEndDate;
         SPYAmount absenceDays;
+        HcmEmployment   hcmEmpoyment = HcmEmployment::findByWorkerLegalEntity(worker,legalEntity);
+        TransDateTime employmentStartDateTime = DateTimeUtil::applyTimeZoneOffset(hcmEmpoyment.ValidFrom, DateTimeUtil::getClientMachineTimeZone());
+        date    employmentStartDate = DateTimeUtil::date(employmentStartDateTime);
+        date      startDate = max(mkDate(1,1,year(periodToDate)), employmentStartDate);
+        int mthCount = mthOfYr(startDate);
+        SPYAmount   months;
+
+        //---check first employment month
+        monthStartDate = startDate;
+        monthEndDate = endMth(startDate);
+        if(startDate == mkDate(1, mthOfYr(startDate), year(startDate))) //if startdate is1st of month
+            months = 1;
+        else
+            months = (monthEndDate - monthStartDate) / 30;        
+        select sum(AbsenceDays)
+            from absenceLedger
+            join hrmAbsenceCode
+                where hrmAbsenceCode.hrmAbsenceCodeId == absenceLedger.HRMAbsenceCodeId  &&
+                 hrmAbsenceCode.SPYIsUnpaid == NoYes::Yes &&
+                absenceLedger.Worker == worker &&
+                absenceLedger.AbsenceDate >= monthStartDate &&
+                absenceLedger.AbsenceDate <= monthEndDate;
+        absenceDays = absenceLedger.AbsenceDays;
+        if(absenceDays)
+            months = months + max(-30,absenceDays)/30;
+        mthCount += 1;
+        while(mthCount <= mthOfYr(periodToDate)) //check next months
+        {
+            monthStartDate = mkDate(1, mthCount, year(periodToDate));
+            monthEndDate = endMth(monthStartDate);
+            select sum(AbsenceDays)
+            from absenceLedger
+            join hrmAbsenceCode
+                where hrmAbsenceCode.hrmAbsenceCodeId == absenceLedger.HRMAbsenceCodeId  &&
+                 hrmAbsenceCode.SPYIsUnpaid == NoYes::Yes && 
+                absenceLedger.Worker == worker && 
+                absenceLedger.AbsenceDate >= monthStartDate && 
+                absenceLedger.AbsenceDate <= monthEndDate;
+            absenceDays = absenceLedger.AbsenceDays;
+            absenceDays = absenceDays > 30 ? 30 : absenceDays;
+            months += (30+absenceDays)/30;
+            mthCount++;
+        }
+        /*
+        SPYAmount   months = startDate == employmentStartDate ? (endMth(startDate) - startDate + 1) / 30 : 1;
+        int cnt = 2;
+        if(year(employmentStartDate) < year(periodToDate))
+            cnt = 2;
+        else if(year(employmentStartDate) == year(periodToDate))
+            cnt = mthOfYr(employmentStartDate);
+        else
+            return 0;        
 
         monthStartDate = startDate;
         monthEndDate = endMth(startDate);
         absenceDays = this.AB_UNPAID_DAYS();
         if(absenceDays)
             months = months + max(-30,absenceDays)/30;
-        while (cnt <= mthOfYr(periodToDate))
+        while (cnt < mthOfYr(periodToDate))
         {
             monthStartDate = mkDate(1,cnt,year(periodToDate));
             monthEndDate = endMth(monthStartDate);
@@ -514,7 +563,7 @@ final class SPYExpressionSystemFunctionMethod_Extension
             months += (30+absenceDays)/30;
             cnt++;
         }
-
+    */
         return months;
     }
 
@@ -2503,11 +2552,12 @@ final class SPYExpressionSystemFunctionMethod_Extension
     {
         HcmWorkerRecId worker = expressionContext.worker();
         date periodFrom = expressionContext.periodFromDate();
+        date periodTo = expressionContext.periodToDate();
         HcmPositionWorkerAssignment     positionWorkerAssignment;
         HcmPositionDetail   positionDetail;
         HcmJob   job;
 
-        select firstonly validtimestate(periodFrom) positionWorkerAssignment
+        select firstonly validtimestate(periodFrom, periodTo) positionWorkerAssignment
             where positionWorkerAssignment.Worker == worker
             join positionDetail
             where positionDetail.Position == positionWorkerAssignment.Position

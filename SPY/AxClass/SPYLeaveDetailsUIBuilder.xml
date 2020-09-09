@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>SPYLeaveDetailsUIBuilder</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+class SPYLeaveDetailsUIBuilder extends SysOperationAutomaticUIBuilder
+{
+    SPYLeaveDetailsContract       leaveDetailContract;
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>build</Name>
+				<Source><![CDATA[
+    public void build()
+    {
+        leaveDetailContract = this.dataContractObject();
+        this.addDialogField(methodStr(SPYLeaveDetailsContract, parmHcmWorkerRecId),leaveDetailContract);
+        this.addDialogField(methodStr(SPYLeaveDetailsContract, parmPayrollPeriodLineFrom),leaveDetailContract);
+        this.addDialogField(methodStr(SPYLeaveDetailsContract, parmPayrollPeriodLineTo),leaveDetailContract);
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>initializeFields</Name>
+				<Source><![CDATA[
+    public void initializeFields()
+    {
+        leaveDetailContract= this.dataContractObject();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>getFromDialog</Name>
+				<Source><![CDATA[
+    public void getFromDialog()
+    {
+        
+        super();
+        leaveDetailContract = this.dataContractObject();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>postRun</Name>
+				<Source><![CDATA[
+    public void postRun()
+    {
+        Dialog          dialogLocal = this.dialog();
+        DialogField     dialogField;
+
+        super();
+
+        
+        // This method should be called in order to handle events on dialogs.
+        dialogLocal.dialogForm().formRun().controlMethodOverload(false);
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>postBuild</Name>
+				<Source><![CDATA[
+    public void postBuild()
+    {
+        super();
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

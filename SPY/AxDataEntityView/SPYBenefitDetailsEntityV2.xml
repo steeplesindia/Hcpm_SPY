@@ -6,12 +6,39 @@
 public class SPYBenefitDetailsEntityV2 extends common
 {
 }
-
 ]]></Declaration>
-		<Methods />
+		<Methods>
+			<Method>
+				<Name>insertEntityDataSource</Name>
+				<Source><![CDATA[
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name = "_entityCtx"></param>
+    /// <param name = "_dataSourceCtx"></param>
+    /// <returns></returns>
+    public boolean insertEntityDataSource(DataEntityRuntimeContext _entityCtx, DataEntityDataSourceRuntimeContext _dataSourceCtx)
+    {
+        boolean ret;
+    
+        switch (_dataSourceCtx.name())
+        {
+            case dataEntityDataSourceStr(SPYBenefitDetailsEntityV2, SPYBenefitDetails) :
+                SPYBenefitDetails benefitDetails = _dataSourceCtx.getBuffer();
+                benefitDetails.LegalEntity = this.LegalEntity;
+                break;
+        }
+        ret = super(_entityCtx, _dataSourceCtx);
+    
+        return ret;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
 	</SourceCode>
 	<ConfigurationKey>SPYPayroll</ConfigurationKey>
-	<Label>@Benefits:PayrollDetails</Label>
+	<Label>Benifit details V2</Label>
 	<SubscriberAccessLevel>
 		<Read>Allow</Read>
 	</SubscriberAccessLevel>
@@ -51,12 +78,6 @@ public class SPYBenefitDetailsEntityV2 extends common
 			i:type="AxDataEntityViewMappedField">
 			<Name>Description</Name>
 			<DataField>Description</DataField>
-			<DataSource>SPYBenefitTable</DataSource>
-		</AxDataEntityViewField>
-		<AxDataEntityViewField xmlns=""
-			i:type="AxDataEntityViewMappedField">
-			<Name>InstanceRelationType</Name>
-			<DataField>InstanceRelationType</DataField>
 			<DataSource>SPYBenefitTable</DataSource>
 		</AxDataEntityViewField>
 		<AxDataEntityViewField xmlns=""
@@ -211,6 +232,7 @@ public class Metadata extends QueryRun
 						<ApplyDateFilter>Yes</ApplyDateFilter>
 						<DynamicFields>Yes</DynamicFields>
 						<Table>SPYPayelementDetails</Table>
+						<ValidTimeStateUpdate>Correction</ValidTimeStateUpdate>
 						<DataSources />
 						<DerivedDataSources />
 						<Fields />
@@ -229,6 +251,7 @@ public class Metadata extends QueryRun
 						<ApplyDateFilter>Yes</ApplyDateFilter>
 						<DynamicFields>Yes</DynamicFields>
 						<Table>SPYBenefitDetails</Table>
+						<ValidTimeStateUpdate>Correction</ValidTimeStateUpdate>
 						<DataSources>
 							<AxQuerySimpleEmbeddedDataSource>
 								<Name>SPYExpressionTableAmount</Name>

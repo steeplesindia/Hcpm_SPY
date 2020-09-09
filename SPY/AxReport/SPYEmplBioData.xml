@@ -90,6 +90,13 @@
 					<UserDefined>false</UserDefined>
 				</AxReportDataSetField>
 				<AxReportDataSetField>
+					<Name>IdentificationTypeStr</Name>
+					<Alias>SPYEmployeeBioDataTmp.1.IdentificationTypeStr</Alias>
+					<Caption>@SYS7576</Caption>
+					<DisplayWidth>Auto</DisplayWidth>
+					<UserDefined>false</UserDefined>
+				</AxReportDataSetField>
+				<AxReportDataSetField>
 					<Name>IncrementDate</Name>
 					<Alias>SPYEmployeeBioDataTmp.1.IncrementDate</Alias>
 					<Caption>@SYS54242</Caption>
@@ -117,6 +124,13 @@
 					<Alias>SPYEmployeeBioDataTmp.1.IssuingAgency</Alias>
 					<Caption>@SYS110082</Caption>
 					<DataType>System.Int64</DataType>
+					<DisplayWidth>Auto</DisplayWidth>
+					<UserDefined>false</UserDefined>
+				</AxReportDataSetField>
+				<AxReportDataSetField>
+					<Name>IssuingAgencyStr</Name>
+					<Alias>SPYEmployeeBioDataTmp.1.IssuingAgencyStr</Alias>
+					<Caption>@SYS7399</Caption>
 					<DisplayWidth>Auto</DisplayWidth>
 					<UserDefined>false</UserDefined>
 				</AxReportDataSetField>
@@ -538,7 +552,7 @@
         &lt;ConnectString /&gt;
         &lt;IntegratedSecurity&gt;true&lt;/IntegratedSecurity&gt;
       &lt;/ConnectionProperties&gt;
-      &lt;rd:DataSourceID&gt;d5202e1d-12b1-45aa-b62c-3197f870fbd5&lt;/rd:DataSourceID&gt;
+      &lt;rd:DataSourceID&gt;b2ee9e8c-241c-40ce-9e48-e03c59f5af9d&lt;/rd:DataSourceID&gt;
     &lt;/DataSource&gt;
   &lt;/DataSources&gt;
   &lt;DataSets&gt;
@@ -637,6 +651,10 @@
           &lt;DataField&gt;SPYEmployeeBioDataTmp.1.IdentificationType&lt;/DataField&gt;
           &lt;rd:TypeName&gt;System.Int64&lt;/rd:TypeName&gt;
         &lt;/Field&gt;
+        &lt;Field Name="IdentificationTypeStr"&gt;
+          &lt;DataField&gt;SPYEmployeeBioDataTmp.1.IdentificationTypeStr&lt;/DataField&gt;
+          &lt;rd:TypeName&gt;System.String&lt;/rd:TypeName&gt;
+        &lt;/Field&gt;
         &lt;Field Name="IncrementDate"&gt;
           &lt;DataField&gt;SPYEmployeeBioDataTmp.1.IncrementDate&lt;/DataField&gt;
           &lt;rd:TypeName&gt;System.DateTime&lt;/rd:TypeName&gt;
@@ -652,6 +670,10 @@
         &lt;Field Name="IssuingAgency"&gt;
           &lt;DataField&gt;SPYEmployeeBioDataTmp.1.IssuingAgency&lt;/DataField&gt;
           &lt;rd:TypeName&gt;System.Int64&lt;/rd:TypeName&gt;
+        &lt;/Field&gt;
+        &lt;Field Name="IssuingAgencyStr"&gt;
+          &lt;DataField&gt;SPYEmployeeBioDataTmp.1.IssuingAgencyStr&lt;/DataField&gt;
+          &lt;rd:TypeName&gt;System.String&lt;/rd:TypeName&gt;
         &lt;/Field&gt;
         &lt;Field Name="JoinDate"&gt;
           &lt;DataField&gt;SPYEmployeeBioDataTmp.1.JoinDate&lt;/DataField&gt;
@@ -2293,23 +2315,24 @@
                   &lt;TablixCells&gt;
                     &lt;TablixCell&gt;
                       &lt;CellContents&gt;
-                        &lt;Textbox Name="IdentificationType1"&gt;
+                        &lt;Textbox Name="IdentificationTypeStr"&gt;
                           &lt;CanGrow&gt;true&lt;/CanGrow&gt;
                           &lt;KeepTogether&gt;true&lt;/KeepTogether&gt;
                           &lt;Paragraphs&gt;
                             &lt;Paragraph&gt;
                               &lt;TextRuns&gt;
                                 &lt;TextRun&gt;
-                                  &lt;Value&gt;=Fields!IdentificationType.Value&lt;/Value&gt;
+                                  &lt;Value&gt;=Fields!IdentificationTypeStr.Value&lt;/Value&gt;
                                   &lt;Style&gt;
                                     &lt;FontFamily&gt;Segoe UI&lt;/FontFamily&gt;
+                                    &lt;FontSize&gt;8pt&lt;/FontSize&gt;
                                   &lt;/Style&gt;
                                 &lt;/TextRun&gt;
                               &lt;/TextRuns&gt;
                               &lt;Style /&gt;
                             &lt;/Paragraph&gt;
                           &lt;/Paragraphs&gt;
-                          &lt;rd:DefaultName&gt;IdentificationType1&lt;/rd:DefaultName&gt;
+                          &lt;rd:DefaultName&gt;IdentificationTypeStr&lt;/rd:DefaultName&gt;
                           &lt;CustomProperties&gt;
                             &lt;CustomProperty&gt;
                               &lt;Name&gt;AXDataType&lt;/Name&gt;
@@ -2317,15 +2340,15 @@
                             &lt;/CustomProperty&gt;
                             &lt;CustomProperty&gt;
                               &lt;Name&gt;AXEDTFormat&lt;/Name&gt;
-                              &lt;Value&gt;SPYEmployeeBioDataTmp.IdentificationType&lt;/Value&gt;
+                              &lt;Value&gt;SPYEmployeeBioDataTmp.IdentificationTypeStr&lt;/Value&gt;
                             &lt;/CustomProperty&gt;
                             &lt;CustomProperty&gt;
                               &lt;Name&gt;AXEDTTextAlign&lt;/Name&gt;
-                              &lt;Value&gt;SPYEmployeeBioDataTmp.IdentificationType&lt;/Value&gt;
+                              &lt;Value&gt;SPYEmployeeBioDataTmp.IdentificationTypeStr&lt;/Value&gt;
                             &lt;/CustomProperty&gt;
                             &lt;CustomProperty&gt;
                               &lt;Name&gt;AXEDTDirection&lt;/Name&gt;
-                              &lt;Value&gt;SPYEmployeeBioDataTmp.IdentificationType&lt;/Value&gt;
+                              &lt;Value&gt;SPYEmployeeBioDataTmp.IdentificationTypeStr&lt;/Value&gt;
                             &lt;/CustomProperty&gt;
                           &lt;/CustomProperties&gt;
                           &lt;Style&gt;
@@ -2349,6 +2372,7 @@
                                   &lt;Value&gt;=Fields!IdentificationNumber.Value&lt;/Value&gt;
                                   &lt;Style&gt;
                                     &lt;FontFamily&gt;Segoe UI&lt;/FontFamily&gt;
+                                    &lt;FontSize&gt;8pt&lt;/FontSize&gt;
                                   &lt;/Style&gt;
                                 &lt;/TextRun&gt;
                               &lt;/TextRuns&gt;
@@ -2395,6 +2419,7 @@
                                   &lt;Value&gt;=Fields!IdentificationDescription.Value&lt;/Value&gt;
                                   &lt;Style&gt;
                                     &lt;FontFamily&gt;Segoe UI&lt;/FontFamily&gt;
+                                    &lt;FontSize&gt;8pt&lt;/FontSize&gt;
                                   &lt;/Style&gt;
                                 &lt;/TextRun&gt;
                               &lt;/TextRuns&gt;
@@ -2441,6 +2466,7 @@
                                   &lt;Value&gt;=Fields!IssuedDate.Value&lt;/Value&gt;
                                   &lt;Style&gt;
                                     &lt;FontFamily&gt;Segoe UI&lt;/FontFamily&gt;
+                                    &lt;FontSize&gt;8pt&lt;/FontSize&gt;
                                   &lt;/Style&gt;
                                 &lt;/TextRun&gt;
                               &lt;/TextRuns&gt;
@@ -2477,23 +2503,24 @@
                     &lt;/TablixCell&gt;
                     &lt;TablixCell&gt;
                       &lt;CellContents&gt;
-                        &lt;Textbox Name="IssuingAgency"&gt;
+                        &lt;Textbox Name="IssuingAgencyStr"&gt;
                           &lt;CanGrow&gt;true&lt;/CanGrow&gt;
                           &lt;KeepTogether&gt;true&lt;/KeepTogether&gt;
                           &lt;Paragraphs&gt;
                             &lt;Paragraph&gt;
                               &lt;TextRuns&gt;
                                 &lt;TextRun&gt;
-                                  &lt;Value&gt;=Fields!IssuingAgency.Value&lt;/Value&gt;
+                                  &lt;Value&gt;=Fields!IssuingAgencyStr.Value&lt;/Value&gt;
                                   &lt;Style&gt;
                                     &lt;FontFamily&gt;Segoe UI&lt;/FontFamily&gt;
+                                    &lt;FontSize&gt;8pt&lt;/FontSize&gt;
                                   &lt;/Style&gt;
                                 &lt;/TextRun&gt;
                               &lt;/TextRuns&gt;
                               &lt;Style /&gt;
                             &lt;/Paragraph&gt;
                           &lt;/Paragraphs&gt;
-                          &lt;rd:DefaultName&gt;IssuingAgency&lt;/rd:DefaultName&gt;
+                          &lt;rd:DefaultName&gt;IssuingAgencyStr&lt;/rd:DefaultName&gt;
                           &lt;CustomProperties&gt;
                             &lt;CustomProperty&gt;
                               &lt;Name&gt;AXDataType&lt;/Name&gt;
@@ -2501,15 +2528,15 @@
                             &lt;/CustomProperty&gt;
                             &lt;CustomProperty&gt;
                               &lt;Name&gt;AXEDTFormat&lt;/Name&gt;
-                              &lt;Value&gt;SPYEmployeeBioDataTmp.IssuingAgency&lt;/Value&gt;
+                              &lt;Value&gt;SPYEmployeeBioDataTmp.IssuingAgencyStr&lt;/Value&gt;
                             &lt;/CustomProperty&gt;
                             &lt;CustomProperty&gt;
                               &lt;Name&gt;AXEDTTextAlign&lt;/Name&gt;
-                              &lt;Value&gt;SPYEmployeeBioDataTmp.IssuingAgency&lt;/Value&gt;
+                              &lt;Value&gt;SPYEmployeeBioDataTmp.IssuingAgencyStr&lt;/Value&gt;
                             &lt;/CustomProperty&gt;
                             &lt;CustomProperty&gt;
                               &lt;Name&gt;AXEDTDirection&lt;/Name&gt;
-                              &lt;Value&gt;SPYEmployeeBioDataTmp.IssuingAgency&lt;/Value&gt;
+                              &lt;Value&gt;SPYEmployeeBioDataTmp.IssuingAgencyStr&lt;/Value&gt;
                             &lt;/CustomProperty&gt;
                           &lt;/CustomProperties&gt;
                           &lt;Style&gt;
@@ -2659,7 +2686,9 @@
                                   &lt;/Style&gt;
                                 &lt;/TextRun&gt;
                               &lt;/TextRuns&gt;
-                              &lt;Style /&gt;
+                              &lt;Style&gt;
+                                &lt;TextAlign&gt;Right&lt;/TextAlign&gt;
+                              &lt;/Style&gt;
                             &lt;/Paragraph&gt;
                           &lt;/Paragraphs&gt;
                           &lt;rd:DefaultName&gt;Textbox64&lt;/rd:DefaultName&gt;
@@ -2744,7 +2773,9 @@
                                   &lt;/Style&gt;
                                 &lt;/TextRun&gt;
                               &lt;/TextRuns&gt;
-                              &lt;Style /&gt;
+                              &lt;Style&gt;
+                                &lt;TextAlign&gt;Right&lt;/TextAlign&gt;
+                              &lt;/Style&gt;
                             &lt;/Paragraph&gt;
                           &lt;/Paragraphs&gt;
                           &lt;rd:DefaultName&gt;MonthlyAmt&lt;/rd:DefaultName&gt;
@@ -2792,7 +2823,7 @@
                             &lt;Paragraph&gt;
                               &lt;TextRuns&gt;
                                 &lt;TextRun&gt;
-                                  &lt;Value&gt;Total&lt;/Value&gt;
+                                  &lt;Value&gt;Gross&lt;/Value&gt;
                                   &lt;Style&gt;
                                     &lt;FontFamily&gt;Segoe UI&lt;/FontFamily&gt;
                                     &lt;FontWeight&gt;Bold&lt;/FontWeight&gt;
@@ -2832,7 +2863,9 @@
                                   &lt;/Style&gt;
                                 &lt;/TextRun&gt;
                               &lt;/TextRuns&gt;
-                              &lt;Style /&gt;
+                              &lt;Style&gt;
+                                &lt;TextAlign&gt;Right&lt;/TextAlign&gt;
+                              &lt;/Style&gt;
                             &lt;/Paragraph&gt;
                           &lt;/Paragraphs&gt;
                           &lt;rd:DefaultName&gt;MonthlyAmt1&lt;/rd:DefaultName&gt;
@@ -3508,7 +3541,9 @@
                                   &lt;/Style&gt;
                                 &lt;/TextRun&gt;
                               &lt;/TextRuns&gt;
-                              &lt;Style /&gt;
+                              &lt;Style&gt;
+                                &lt;TextAlign&gt;Right&lt;/TextAlign&gt;
+                              &lt;/Style&gt;
                             &lt;/Paragraph&gt;
                           &lt;/Paragraphs&gt;
                           &lt;rd:DefaultName&gt;Textbox94&lt;/rd:DefaultName&gt;
@@ -3725,7 +3760,9 @@
                                   &lt;/Style&gt;
                                 &lt;/TextRun&gt;
                               &lt;/TextRuns&gt;
-                              &lt;Style /&gt;
+                              &lt;Style&gt;
+                                &lt;TextAlign&gt;Right&lt;/TextAlign&gt;
+                              &lt;/Style&gt;
                             &lt;/Paragraph&gt;
                           &lt;/Paragraphs&gt;
                           &lt;rd:DefaultName&gt;LeaveDays&lt;/rd:DefaultName&gt;
@@ -3839,6 +3876,9 @@
                 &lt;TablixColumn&gt;
                   &lt;Width&gt;0.98916in&lt;/Width&gt;
                 &lt;/TablixColumn&gt;
+                &lt;TablixColumn&gt;
+                  &lt;Width&gt;1in&lt;/Width&gt;
+                &lt;/TablixColumn&gt;
               &lt;/TablixColumns&gt;
               &lt;TablixRows&gt;
                 &lt;TablixRow&gt;
@@ -3860,10 +3900,43 @@
                                   &lt;/Style&gt;
                                 &lt;/TextRun&gt;
                               &lt;/TextRuns&gt;
-                              &lt;Style /&gt;
+                              &lt;Style&gt;
+                                &lt;TextAlign&gt;Right&lt;/TextAlign&gt;
+                              &lt;/Style&gt;
                             &lt;/Paragraph&gt;
                           &lt;/Paragraphs&gt;
                           &lt;rd:DefaultName&gt;PayElementAmt&lt;/rd:DefaultName&gt;
+                          &lt;Style&gt;
+                            &lt;Border&gt;
+                              &lt;Style&gt;Solid&lt;/Style&gt;
+                            &lt;/Border&gt;
+                            &lt;PaddingLeft&gt;2pt&lt;/PaddingLeft&gt;
+                          &lt;/Style&gt;
+                        &lt;/Textbox&gt;
+                      &lt;/CellContents&gt;
+                    &lt;/TablixCell&gt;
+                    &lt;TablixCell&gt;
+                      &lt;CellContents&gt;
+                        &lt;Textbox Name="PayElementAmt1"&gt;
+                          &lt;CanGrow&gt;true&lt;/CanGrow&gt;
+                          &lt;KeepTogether&gt;true&lt;/KeepTogether&gt;
+                          &lt;Paragraphs&gt;
+                            &lt;Paragraph&gt;
+                              &lt;TextRuns&gt;
+                                &lt;TextRun&gt;
+                                  &lt;Value&gt;=Sum(Fields!PayElementAmt.Value)&lt;/Value&gt;
+                                  &lt;Style&gt;
+                                    &lt;FontFamily&gt;Segoe UI&lt;/FontFamily&gt;
+                                    &lt;Format&gt;0.00;(0.00)&lt;/Format&gt;
+                                  &lt;/Style&gt;
+                                &lt;/TextRun&gt;
+                              &lt;/TextRuns&gt;
+                              &lt;Style&gt;
+                                &lt;TextAlign&gt;Right&lt;/TextAlign&gt;
+                              &lt;/Style&gt;
+                            &lt;/Paragraph&gt;
+                          &lt;/Paragraphs&gt;
+                          &lt;rd:DefaultName&gt;PayElementAmt1&lt;/rd:DefaultName&gt;
                           &lt;Style&gt;
                             &lt;Border&gt;
                               &lt;Style&gt;Solid&lt;/Style&gt;
@@ -3906,7 +3979,9 @@
                                 &lt;/Style&gt;
                               &lt;/TextRun&gt;
                             &lt;/TextRuns&gt;
-                            &lt;Style /&gt;
+                            &lt;Style&gt;
+                              &lt;TextAlign&gt;Right&lt;/TextAlign&gt;
+                            &lt;/Style&gt;
                           &lt;/Paragraph&gt;
                         &lt;/Paragraphs&gt;
                         &lt;rd:DefaultName&gt;IncrementPayElementCode&lt;/rd:DefaultName&gt;
@@ -3940,6 +4015,39 @@
                   &lt;Visibility&gt;
                     &lt;Hidden&gt;=iif(Fields!BioDataCategoryLabel.Value = "5", false, true)&lt;/Hidden&gt;
                   &lt;/Visibility&gt;
+                &lt;/TablixMember&gt;
+                &lt;TablixMember&gt;
+                  &lt;TablixHeader&gt;
+                    &lt;Size&gt;0.25in&lt;/Size&gt;
+                    &lt;CellContents&gt;
+                      &lt;Textbox Name="Textbox10"&gt;
+                        &lt;CanGrow&gt;true&lt;/CanGrow&gt;
+                        &lt;KeepTogether&gt;true&lt;/KeepTogether&gt;
+                        &lt;Paragraphs&gt;
+                          &lt;Paragraph&gt;
+                            &lt;TextRuns&gt;
+                              &lt;TextRun&gt;
+                                &lt;Value&gt;Total&lt;/Value&gt;
+                                &lt;Style&gt;
+                                  &lt;FontFamily&gt;Segoe UI&lt;/FontFamily&gt;
+                                &lt;/Style&gt;
+                              &lt;/TextRun&gt;
+                            &lt;/TextRuns&gt;
+                            &lt;Style&gt;
+                              &lt;TextAlign&gt;Right&lt;/TextAlign&gt;
+                            &lt;/Style&gt;
+                          &lt;/Paragraph&gt;
+                        &lt;/Paragraphs&gt;
+                        &lt;rd:DefaultName&gt;Textbox10&lt;/rd:DefaultName&gt;
+                        &lt;Style&gt;
+                          &lt;Border&gt;
+                            &lt;Style&gt;Solid&lt;/Style&gt;
+                          &lt;/Border&gt;
+                          &lt;PaddingLeft&gt;2pt&lt;/PaddingLeft&gt;
+                        &lt;/Style&gt;
+                      &lt;/Textbox&gt;
+                    &lt;/CellContents&gt;
+                  &lt;/TablixHeader&gt;
                 &lt;/TablixMember&gt;
               &lt;/TablixMembers&gt;
             &lt;/TablixColumnHierarchy&gt;
@@ -4012,7 +4120,7 @@
             &lt;DataSetName&gt;BioDataDS&lt;/DataSetName&gt;
             &lt;Top&gt;5.79042in&lt;/Top&gt;
             &lt;Height&gt;0.5in&lt;/Height&gt;
-            &lt;Width&gt;1.69405in&lt;/Width&gt;
+            &lt;Width&gt;2.69405in&lt;/Width&gt;
             &lt;ZIndex&gt;5&lt;/ZIndex&gt;
             &lt;Visibility&gt;
               &lt;Hidden&gt;=iif(Parameters!BioDataDS_parmIncrement.Value = "Yes", false, true)&lt;/Hidden&gt;

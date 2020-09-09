@@ -6,12 +6,39 @@
 public class SPYPayrollDetailsEntityV2 extends common
 {
 }
-
 ]]></Declaration>
-		<Methods />
+		<Methods>
+			<Method>
+				<Name>insertEntityDataSource</Name>
+				<Source><![CDATA[
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name = "_entityCtx"></param>
+    /// <param name = "_dataSourceCtx"></param>
+    /// <returns></returns>
+    public boolean insertEntityDataSource(DataEntityRuntimeContext _entityCtx, DataEntityDataSourceRuntimeContext _dataSourceCtx)
+    {
+        boolean ret;
+    
+        switch (_dataSourceCtx.name())
+        {
+            case dataEntityDataSourceStr(SPYPayrollDetailsEntityV2, SPYPayrollDetails) :
+                SPYPayrollDetails payrollDetails = _dataSourceCtx.getBuffer();
+                payrollDetails.LegalEntity = this.LegalEntity;
+                break;
+        }
+        ret = super(_entityCtx, _dataSourceCtx);
+    
+        return ret;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
 	</SourceCode>
 	<ConfigurationKey>SPYPayroll</ConfigurationKey>
-	<Label>@Benefits:PayrollDetails</Label>
+	<Label>Payroll details V2</Label>
 	<SubscriberAccessLevel>
 		<Read>Allow</Read>
 	</SubscriberAccessLevel>
@@ -146,20 +173,21 @@ public class SPYPayrollDetailsEntityV2 extends common
 		<AxDataEntityViewField xmlns=""
 			i:type="AxDataEntityViewMappedField">
 			<Name>ExpressionCode</Name>
+			<Mandatory>No</Mandatory>
 			<DataField>ExpressionCode</DataField>
 			<DataSource>SPYExpressionTable</DataSource>
-		</AxDataEntityViewField>
-		<AxDataEntityViewField xmlns=""
-			i:type="AxDataEntityViewMappedField">
-			<Name>LegalEntity</Name>
-			<DataField>LegalEntity</DataField>
-			<DataSource>SPYPayelementDetails</DataSource>
 		</AxDataEntityViewField>
 		<AxDataEntityViewField xmlns=""
 			i:type="AxDataEntityViewMappedField">
 			<Name>ParentPayElementCode</Name>
 			<DataField>PayElementCode</DataField>
 			<DataSource>SPYParentPayrollTable</DataSource>
+		</AxDataEntityViewField>
+		<AxDataEntityViewField xmlns=""
+			i:type="AxDataEntityViewMappedField">
+			<Name>LegalEntity</Name>
+			<DataField>LegalEntity</DataField>
+			<DataSource>SPYPayelementDetails</DataSource>
 		</AxDataEntityViewField>
 	</Fields>
 	<Keys>
@@ -205,6 +233,7 @@ public class Metadata extends QueryRun
 						<ApplyDateFilter>Yes</ApplyDateFilter>
 						<DynamicFields>Yes</DynamicFields>
 						<Table>SPYPayelementDetails</Table>
+						<ValidTimeStateUpdate>Correction</ValidTimeStateUpdate>
 						<DataSources />
 						<DerivedDataSources />
 						<Fields />
@@ -223,6 +252,7 @@ public class Metadata extends QueryRun
 						<ApplyDateFilter>Yes</ApplyDateFilter>
 						<DynamicFields>Yes</DynamicFields>
 						<Table>SPYPayrollDetails</Table>
+						<ValidTimeStateUpdate>Correction</ValidTimeStateUpdate>
 						<DataSources>
 							<AxQuerySimpleEmbeddedDataSource>
 								<Name>SPYExpressionTable</Name>

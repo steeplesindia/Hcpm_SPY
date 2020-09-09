@@ -110,7 +110,8 @@ public class SPYOvertimeLedgerDP extends SrsReportDataProviderPreProcess
     
         sqlQuery = "";
         sqlQuery +=  " select W.RECID, PT.NAME, W.PERSONNELNUMBER, DEPT.NAME, JD.DESCRIPTION JobTitle, CL.CompensationLevelID Grade, PP.MONTHLY BasicAmt";
-        sqlQuery +=  " , OTH.OVERTIMETYPECODE, OTH.TotalHours, OTA.TotalAmount";
+        //sqlQuery +=  " , OTH.OVERTIMETYPECODE, OTH.TotalHours, OTA.TotalAmount";
+        sqlQuery +=  " , OTH.OVERTIMETYPECODE, OTH.TotalHours, OTH.Payrollperiod, OTA.TotalAmount";
         sqlQuery += SPYSQLQueries::HRQuery(payrollperiodlineFrom.PeriodStartDate, payrollperiodlineTo.PeriodEndDate);
         sqlQuery = sqlQuery + " cross join SPYPAYROLLPERIODLINE PPL";
         sqlQuery = sqlQuery + "     inner join SPYWORKERPOSITIONPAYROLL PP";
@@ -174,7 +175,7 @@ public class SPYOvertimeLedgerDP extends SrsReportDataProviderPreProcess
         sqlQuery = sqlQuery + "    and OTH.OVERTIMETYPECODE <> 'Normal' ";
     
     
-        info(sqlQuery);
+        //info(sqlQuery);
         this.processSQLQuery( sqlQuery);
         //>>2016-02-15_SNK_STOP
     }
@@ -184,7 +185,7 @@ public class SPYOvertimeLedgerDP extends SrsReportDataProviderPreProcess
 			<Method>
 				<Name>processSQLQuery</Name>
 				<Source><![CDATA[
-    [SuppressBPWarningAttribute("BPCheckSQLCode","To improve peromoance, SQL query need to be executed")]
+    [SuppressBPWarningAttribute("BPCheckSQLCode","To improve performance, SQL query need to be executed")]
     private void processSQLQuery(str SQLQuery)
     {
         Connection                      connection = new Connection();
@@ -193,6 +194,9 @@ public class SPYOvertimeLedgerDP extends SrsReportDataProviderPreProcess
         SqlStatementExecutePermission   permission;
         RecordInsertList                recordInsertOvertime;
         str                             sqlStatement;
+        SPYReferencePayElementLedger    referencePayrollLedger;
+        SPYOvertimeTypeTable            overtimeTypeTableLoc;
+        RecId                           payrollPeriodLineRecID;
     
         sqlStatement = sqlQuery;
     
@@ -210,6 +214,7 @@ public class SPYOvertimeLedgerDP extends SrsReportDataProviderPreProcess
             where ((overtimeLedgerTmp.createdTransactionId == sessionId() ));
             
             recordInsertOvertime = new RecordInsertList(tableNum(SPYOvertimeLedgerTmp));
+            
             while(resultSet.next())
             {
                 overtimeLedgerTmp.initValue();
@@ -223,7 +228,17 @@ public class SPYOvertimeLedgerDP extends SrsReportDataProviderPreProcess
                 overtimeLedgerTmp.Basic                     = resultSet.getReal(7);
                 overtimeLedgerTmp.OvertimeTypeCode          = resultSet.getString(8);
                 overtimeLedgerTmp.OTHours                   = resultSet.getReal(9);
-                overtimeLedgerTmp.OTAmount                  = resultSet.getReal(10);
+
+                payrollPeriodLineRecID = resultSet.getInt64(10);
+
+                select sum(TransactionCurrencyAmount) from referencePayrollLedger
+                    where referencePayrollLedger.PayrollPeriodLine == payrollPeriodLineRecID &&
+                        referencePayrollLedger.Worker == overtimeLedgerTmp.Worker
+                join overtimeTypeTableLoc
+                    where overtimeTypeTableLoc.OvertimePayroll == referencePayrollLedger.PayElement &&
+                    overtimeTypeTableLoc.OvertimeTypeCode == overtimeLedgerTmp.OvertimeTypeCode;
+
+                overtimeLedgerTmp.OTAmount                  = resultSet.getReal(11) + referencePayrollLedger.TransactionCurrencyAmount;
                 recordInsertOvertime.add(overtimeLedgerTmp);
             }
             recordInsertOvertime.insertDatabase();

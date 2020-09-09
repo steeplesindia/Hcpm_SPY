@@ -195,3 +195,37 @@ TimeAndAttendanceRegistrationWorkers=Time and attendance registration workers en
  ;Time and attendance registration workers entity
 HCPMDataManagment=HCPM Data managment
  ;HCPM Data managment
+LblPayrollProcessLogStatus=Payroll process status
+ ;Label for Payroll Process Status Log
+LblPayrollProcessLogStatusHelp=Base enum to be used for maintaining payroll process log status.
+ ;Help Text for payroll process log status enum.
+LblPayrollProcessLogLineTable=Payroll process log line
+ ;Label for payroll process log Line table.
+LblPayrollProcessLogLineTableDevDoc=The SPYPayrollProcessLogLine table contains line records for maintaining payroll process records.
+ ;Dev doc for payroll process log line table.
+LblPayProcessHeaderReference=Pay process header reference
+ ;Label for pay process header reference.
+LblPayrollProcessLogHeader=Payroll process log header
+ ;Label for payroll process log header.
+LblPayProcessDateTime=Pay process date time
+ ;Label for payroll process date time.
+LblPayProcessRunDate=Pay process run date
+ ;Label for pay process run date.
+LblPayProcessStartTime=Pay process start time
+ ;Label for pay process start time.
+LblPayProcessEndTime=Pay process end time
+ ;Label for pay process end time.
+LblPayrollProcessLogHeaderDevDoc=The SPYPayrollProcessLogHeader table contains header records for payroll process logging mechanism.
+ ;Lable for payroll process log header table.
+LblPayrollProcessSuccess=Payroll process run successfully for worker %1.
+ ;Label for payroll process successful run.
+LblBasicInfo=Basic info
+ ;Label for basic info.
+LblPayrollLines=Log lines
+ ;Label for log lines tab page on payroll process Log form.
+LblPayrollProcessLog=Payroll process log
+ ;Label for payroll process log caption on payroll process log form.
+LblPayrollProcessLogHelpText=Logging mechanism to maintain information regarding payroll process.
+ ;Label for payroll process log help text.
+LblClearPayrollLogUtility=Clear payroll log
+ ;Label for clearing out the payroll log clear utility.

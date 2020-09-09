@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxMenuItemAction xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="Microsoft.Dynamics.AX.Metadata.V1">
+	<Name>SPYClearPayrollLog</Name>
+	<ConfigurationKey>SPYPayroll</ConfigurationKey>
+	<HelpText>@SPYLabel:LblClearPayrollLogUtility</HelpText>
+	<Label>@SPYLabel:LblClearPayrollLogUtility</Label>
+	<MaintainUserLicense>Enterprise</MaintainUserLicense>
+	<Object>SPYClearPayrollLogUtilityController</Object>
+	<ObjectType>Class</ObjectType>
+	<SubscriberAccessLevel>
+		<Read xmlns="">Allow</Read>
+	</SubscriberAccessLevel>
+	<ViewUserLicense>Enterprise</ViewUserLicense>
+</AxMenuItemAction>

@@ -36,8 +36,8 @@ class SPYEOSRunDP extends SRSReportDataProviderBase
     SPYAbsenceLedger            sPYAbsenceLedger;
     SPYBenefitTable             sPYBenefitTable;
     SPYBenefitTable             sPYBenefitTableLv;
-
-
+    SPYBenefitLedger            benefitLedger, benefitLedgerOpenBal;
+    SPYWorkerPayrollPeriodFinalize  workerPayrollPeriodFinalize;
 
     str 50                      paylineTmp;
     RecId                       employmentRecId;
@@ -162,40 +162,82 @@ class SPYEOSRunDP extends SRSReportDataProviderBase
         where hcmWorkerTitle.Worker == hcmWorker.RecId;
         select hcmTitle where hcmTitle.RecId == hcmWorkerTitle.Title;
         eOSRunTableTmp.JobTitle         = hcmTitle.TitleId;
+
+        eOSRunTableTmp.CurrencyCode     = hcmEmploymentDetail.SPYDefaultPayrollCurrency;
+        eOSRunTableTmp.AccCurCode       = Ledger::accountingCurrency(); //Company Currency code
+        eOSRunTableTmp.ReasonCode       = HcmReasonCode::find(hcmEmploymentDetail.TransitionReasonCode).ReasonCodeId;
     
         //Unpaid
         select sum(AbsenceDays) from sPYAbsenceLedger
-            where sPYAbsenceLedger.Worker == eOSRunTable.Worker && 
+            where sPYAbsenceLedger.Worker == eOSRunTable.Worker &&
             sPYAbsenceLedger.HRMAbsenceCodeId == SPYExpressionConfigurationTable::findByKey("UnpaidLeave").Value;
+
         eOSRunTableTmp.AbsenceDays      = sPYAbsenceLedger.AbsenceDays;
     
         //Gratuity_Provision
-        select RecId from sPYBenefitTable 
+        select RecId from sPYBenefitTable
             where sPYBenefitTable.PayElementCode == SPYExpressionConfigurationTable::findByKey("GratuityProvision").Value;
+
         select eOSRunBenefitGr
-            where eOSRunBenefitGr.EOSRun    == eOSRunTable.RecId && eOSRunBenefitGr.Benefit == sPYBenefitTable.RecId && 
+            where eOSRunBenefitGr.EOSRun    == eOSRunTable.RecId && eOSRunBenefitGr.Benefit == sPYBenefitTable.RecId &&
             eOSRunBenefitGr.JournalType == SPYBenefitJournalType::Encashment;
+
         eOSRunTableTmp.GratuityAmount   = eOSRunBenefitGr.disbursementAmount();
         eOSRunTableTmp.GratuityDays     = eOSRunBenefitGr.Quantity;
     
         //Leave_Provision
-        select RecId from sPYBenefitTableLv 
+        select RecId from sPYBenefitTableLv
             where sPYBenefitTableLv.PayElementCode ==  SPYExpressionConfigurationTable::findByKey("LeaveProvision").Value;
-        select Quantity from eOSRunBenefitLv
-            where eOSRunBenefitLv.EOSRun    == eOSRunTable.RecId && 
-            eOSRunBenefitLv.Benefit == sPYBenefitTableLv.RecId && eOSRunBenefitLv.JournalType == SPYBenefitJournalType::Accrual;
+
+        //Opening Balance
+        select sum(Quantity) from benefitLedgerOpenBal
+            where benefitLedgerOpenBal.Worker == hcmWorker.RecId &&
+                 benefitLedgerOpenBal.PayrollPeriodLine < workerPayrollPeriodFinalize.PayrollPeriodLine &&
+                benefitLedgerOpenBal.Benefit == sPYBenefitTableLv.RecId &&
+                benefitLedgerOpenBal.PayrollJournalLine;
+        
+        eOSRunTableTmp.LeaveOpenBal      = benefitLedgerOpenBal.Quantity;
+        
+        //Leave entitlement
+        eOSRunBenefitLv.clear();
+        select sum(Quantity) from eOSRunBenefitLv
+            where eOSRunBenefitLv.Worker == hcmWorker.RecId &&
+            eOSRunBenefitLv.JournalType == SPYBenefitJournalType::Accrual;
+
         eOSRunTableTmp.LeaveEntitlement  = eOSRunBenefitLv.Quantity;
-    
-        select eOSRunBenefitLve
-            where eOSRunBenefitLve.EOSRun    == eOSRunTable.RecId && 
-            eOSRunBenefitLve.Benefit == sPYBenefitTableLv.RecId && 
-            eOSRunBenefitLve.JournalType == SPYBenefitJournalType::Encashment;
-    
-        eOSRunTableTmp.LeaveDaysEncashed = eosRunBenefitLve.Quantity;
-        eOSRunTableTmp.LeaveEncashment   = eosRunBenefitLve.TransactionCurrencyAmount;
-    
-        openBal                          = eosRunBenefitLve.Quantity - (-eOSRunBenefitLv.Quantity);
-        eOSRunTableTmp.LeaveOpenBal      = openBal;
+
+        //Leave taken
+        select sum(Quantity) from benefitLedger
+            where benefitLedger.Worker == hcmWorker.RecId
+                && benefitLedger.PayrollPeriodLine > workerPayrollPeriodFinalize.PayrollPeriodLine
+                && benefitLedger.Benefit == sPYBenefitTableLv.RecId
+                && benefitLedger.JournalType == SPYBenefitJournalType::Encashment;
+
+        eOSRunTableTmp.LeaveTaken       = benefitLedger.Quantity;
+
+        //Leave adjustment
+        benefitLedgerOpenBal.clear();
+
+        select sum(Quantity) from benefitLedgerOpenBal
+            where benefitLedgerOpenBal.Worker == hcmWorker.RecId &&
+                 benefitLedgerOpenBal.PayrollPeriodLine > workerPayrollPeriodFinalize.PayrollPeriodLine &&
+                benefitLedgerOpenBal.Benefit == sPYBenefitTableLv.RecId &&
+                benefitLedgerOpenBal.PayrollJournalLine;
+        
+        eOSRunTableTmp.LeaveAdjustment      = benefitLedgerOpenBal.Quantity;
+
+        //Closing Balance
+        eOSRunTableTmp.LeaveClosingBal      = eOSRunTableTmp.LeaveOpenBal + eOSRunTableTmp.LeaveEntitlement + eOSRunTableTmp.LeaveTaken 
+                                                        + eOSRunTableTmp.LeaveAdjustment;
+        //Leave encashment
+        eOSRunBenefitLv.clear();
+        select sum(Quantity), sum(AccountingCurrencyAmount) from eOSRunBenefitLv
+            where eOSRunBenefitLv.Worker == hcmWorker.RecId &&
+            eOSRunBenefitLv.JournalType == SPYBenefitJournalType::Encashment &&
+            eOSRunBenefitLv.Benefit == sPYBenefitTableLv.RecId;
+
+        eOSRunTableTmp.LeaveDaysEncashed    = eOSRunBenefitLv.Quantity;
+        eOSRunTableTmp.LeaveEncashment      = eOSRunBenefitLv.AccountingCurrencyAmount;
     
         // insert data
     
@@ -232,7 +274,7 @@ class SPYEOSRunDP extends SRSReportDataProviderBase
     
                 eOSRunPayrollTmp.clear();
                 eOSRunPayrollTmp.AccountingCurrencyAmount               = eOSRunPayroll.AccountingCurrencyAmount;
-                eOSRunPayrollTmp.AccountingDistributionTemplate         = eOSRunPayroll.AccountingDistributionTemplate;
+                eOSRunPayrollTmp.AccountingDistributionTemplate = eOSRunPayroll.AccountingDistributionTemplate;
                 eOSRunPayrollTmp.Currency                               = eOSRunPayroll.Currency;
                 eOSRunPayrollTmp.DefaultDimension                       = eOSRunPayroll.DefaultDimension;
                 eOSRunPayrollTmp.EOSRun                                 = eOSRunPayroll.EOSRun;
@@ -244,12 +286,13 @@ class SPYEOSRunDP extends SRSReportDataProviderBase
                 eOSRunPayrollTmp.Description                            = sPYPayrollTable.Description;
                 eOSRunPayrollTmp.PayrollLedger                          = eOSRunPayroll.PayrollLedger;
                 eOSRunPayrollTmp.PayrollPeriodLine                      = eOSRunPayroll.PayrollPeriodLine;
-                eOSRunPayrollTmp.TransactionCurrencyAmount              = eOSRunPayroll.TransactionCurrencyAmount;
-                eOSRunPayrollTmp.TransDate                              = eOSRunPayroll.TransDate;
-                eOSRunPayrollTmp.Txt                                    = eOSRunPayroll.Txt;
-                eOSRunPayrollTmp.Worker                                 = eOSRunPayroll.Worker;
-                eOSRunPayrollTmp.PaylineTmp                             = paylineTmp;
-                eOSRunPayrollTmp.PayrollType                            = sPYPayrollTable.PayrollType;
+                eOSRunPayrollTmp.TransactionCurrencyAmount      = eOSRunPayroll.TransactionCurrencyAmount;
+                eOSRunPayrollTmp.CalculationOrder               = sPYPayrollTable.DisplayOrder;
+                eOSRunPayrollTmp.TransDate                      = eOSRunPayroll.TransDate;
+                eOSRunPayrollTmp.Txt                            = eOSRunPayroll.Txt;
+                eOSRunPayrollTmp.Worker                         = eOSRunPayroll.Worker;
+                eOSRunPayrollTmp.PaylineTmp                     = paylineTmp;
+                eOSRunPayrollTmp.PayrollType                    = sPYPayrollTable.PayrollType;
                 eOSRunPayrollTmp.insert();
             }
     
@@ -295,10 +338,11 @@ class SPYEOSRunDP extends SRSReportDataProviderBase
             {    
                 sPYPayrollTable                   = SPYPayrollTable::find(sPYWorkerPositionPayroll.Payroll);    
                 sPYWorkerPositionPayrollTmp.clear();    
-                sPYWorkerPositionPayrollTmp.Payroll                   = sPYWorkerPositionPayroll.Payroll;
-                sPYWorkerPositionPayrollTmp.Description               = sPYPayrollTable.Description;
-                sPYWorkerPositionPayrollTmp.Monthly                   = sPYWorkerPositionPayroll.Monthly;
-                sPYWorkerPositionPayrollTmp.Daily                     = sPYWorkerPositionPayroll.Daily;
+                sPYWorkerPositionPayrollTmp.Payroll         = sPYWorkerPositionPayroll.Payroll;
+                sPYWorkerPositionPayrollTmp.Description     = sPYPayrollTable.Description;
+                sPYWorkerPositionPayrollTmp.Monthly         = sPYWorkerPositionPayroll.Monthly;
+                sPYWorkerPositionPayrollTmp.Daily           = sPYWorkerPositionPayroll.Daily;
+                sPYWorkerPositionPayrollTmp.CurrencyCode        = sPYWorkerPositionPayroll.Currency;
     
                 sPYWorkerPositionPayrollTmp.insert();
             }    

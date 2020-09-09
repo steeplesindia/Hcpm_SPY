@@ -2678,7 +2678,7 @@ UploadFile=Upload file
  ;New Comment
 ExceptionOccured=Exception Occured
  ;New Comment
-UploadOverTimeJournal=Upload OverTime Journal
+UploadOverTimeJournal=Upload overtime journal
  ;New Comment
 Uploadadjustmentjournal=Upload adjustment journal
  ;New Comment
@@ -2702,7 +2702,7 @@ UploadedRecords=%1 Records have been uploaded.
  ;New Comment
 BenefitJournalUpload=Benefit Journal Upload.
  ;New Comment
-UploadOverTimeJournalDetails=Upload Benefit Journal Details.
+UploadOverTimeJournalDetails=Upload benefit journal
  ;New Comment
 OvertimeTypeNotFound=The OvertimeType %1 specified is not found in the related table.Please rectify.
  ;New Comment
@@ -3372,13 +3372,13 @@ ReferencePayLedgerCantBeDeleted=Reference pay ledger for '%1' cant be deleted as
  ;New Comment
 ReportCode=Report code
  ;New Comment
-ReportConfiguration=Report configuration
+ReportConfiguration=Report writer
  ;New Comment
-ReportConfigFields=Report configuration fields
+ReportConfigFields=Report writer fields
  ;New Comment
 FieldCode=Field code
  ;New Comment
-ReportConfigField=Report configuration field
+ReportConfigField=Report writer field
  ;New Comment
 Operator=Operator
  ;New Comment
@@ -3388,7 +3388,7 @@ Fields=Fields
  ;New Comment
 PayElements=Pay elements
  ;New Comment
-RepConfigFilter=Report config filter
+RepConfigFilter=Report writer filter
  ;New Comment
 DefineFilter=Define filter
  ;New Comment
@@ -3718,7 +3718,7 @@ ProposedPosition=Proposed position
  ;ProposedPosition
 ProposedDepartment=Proposed department
  ;ProposedDepartment
-ProfileAssignmentsForWorker=Upload Profile/Shift assignments for worker
+ProfileAssignmentsForWorker=Upload profile/shift assignments for worker
  ;Profile assignments for worker
 WorkerDoesnotHaveProfile=Worker %1 doesnot have profile for %2.
  ;New Comment
@@ -3866,7 +3866,7 @@ ReportID=Report Id
  ;For report configuration selection
 GrpByWorker=Group by worker
  ;group by worker field on report configuration
-PdfReport=Payroll pdf reports
+PdfReport=Payroll report
  ;menu for pdf rpoet generation
 EncshLeaveApp=Encash leaves availed
  ;Payroll parameter
@@ -3898,3 +3898,35 @@ URLTypeAllowed=Document type 'URL' is allowed.
  ;New Comment
 ExecSeq=Execution sequence
  ;Report config field
+Layout=Layout
+ ;New Comment
+Form=Form
+ ;New Comment
+Tabular=Tabular
+ ;New Comment
+Format=Format
+ ;New Comment
+Pdf=Pdf
+ ;New Comment
+Html=Html
+ ;New Comment
+Print=Print
+ ;New Comment
+Excel=Excel
+ ;New Comment
+FormatExcelFormLayout=Format can't be excel with form layout.
+ ;New Comment
+DeletingWebDocLog=Deleting web document log
+ ;New Comment
+DoUContinue=Do you want to continue?
+ ;New Comment
+WebDocumentLogDelete=Web document log delete
+ ;New Comment
+EmployeeLeaveBalance=Employee leave balance
+ ;EmployeeLeaveBalance
+GeneratesEmployeeLeaveBalancereport=Generates leave balance report of employee
+ ;GeneratesEmployeeLeaveBalancereport
+ReportTitle=Report title
+ ;New Comment
+CompensationPlanDetails=Compensation plan details
+ ;Compensation plan details

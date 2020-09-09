@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>SPYLeaveBalanceContract</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[DataContractAttribute,SysOperationContractProcessingAttribute(classstr(SPYLeaveBalanceUIBuilder))]
+    class SPYLeaveBalanceContract implements SysOperationInitializable, SysOperationValidatable
+{
+    HcmWorkerRecId          hcmWorkerRecId;
+    date                    tillDate;
+    HrmAbsenceCodeId        absenceCodeId;
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>parmHcmWorkerRecId</Name>
+				<Source><![CDATA[
+    [DataMemberAttribute,
+        SysOperationLabel("Worker")
+        ,SysOperationDisplayOrderAttribute("1")]
+    public HcmWorkerRecId parmHcmWorkerRecId(HcmWorkerRecId _hcmWorkerRecId = hcmWorkerRecId)
+    {
+        hcmWorkerRecId = _hcmWorkerRecId;
+        return hcmWorkerRecId;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmTillDate</Name>
+				<Source><![CDATA[
+    [DataMemberAttribute,
+        SysOperationLabel("Till date"),
+        SysOperationDisplayOrderAttribute("2")]
+    public date parmTillDate(FromDate _tillDate = tillDate)
+    {
+        tillDate = _tillDate;
+        return tillDate;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>initialize</Name>
+				<Source><![CDATA[
+    //[DataMemberAttribute,
+    //    SysOperationLabel("Absence code"),
+    //    SysOperationDisplayOrderAttribute("3")]
+    //public HrmabsenceCodeId  parmAbsenceCode(HrmAbsenceCodeId _absenceCodeId = absenceCodeId)
+    //{
+    //    absenceCodeId = _absenceCodeId;
+    //    return absenceCodeId;
+    //}
+
+    public void initialize()
+
+    {
+        tillDate = systemDateGet();
+        hcmWorkerRecId = -1;
+        absenceCodeId = "";
+
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>validate</Name>
+				<Source><![CDATA[
+    public boolean validate()
+    {
+        if (!tillDate)
+        {
+            return checkFailed("Date is mandatory.");
+        }
+        return true;
+        
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

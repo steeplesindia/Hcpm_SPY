@@ -1,9 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <AxDataEntityViewExtension xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
 	<Name>HcmPositionEntity.ExtensionSPY</Name>
-	<DataSources />
+	<DataSources>
+		<AxQueryExtensionEmbeddedDataSource>
+			<Parent>HcmPositionDetail</Parent>
+			<DataSource>
+				<Name>HcmCompensationLevelGrade</Name>
+				<DynamicFields>Yes</DynamicFields>
+				<Table>HcmCompensationLevel</Table>
+				<DataSources />
+				<DerivedDataSources />
+				<Fields />
+				<Ranges />
+				<JoinMode>OuterJoin</JoinMode>
+				<Relations>
+					<AxQuerySimpleDataSourceRelation>
+						<Name>QueryDataSourceRelation1</Name>
+						<Field>SPYCompensationLevelGrade</Field>
+						<JoinDataSource>HcmPositionDetail</JoinDataSource>
+						<RelatedField>RecId</RelatedField>
+					</AxQuerySimpleDataSourceRelation>
+				</Relations>
+			</DataSource>
+		</AxQueryExtensionEmbeddedDataSource>
+		<AxQueryExtensionEmbeddedDataSource>
+			<Parent>HcmPositionDetail</Parent>
+			<DataSource>
+				<Name>HcmCompensationLevelBand</Name>
+				<DynamicFields>Yes</DynamicFields>
+				<Table>HcmCompensationLevel</Table>
+				<DataSources />
+				<DerivedDataSources />
+				<Fields />
+				<Ranges />
+				<JoinMode>OuterJoin</JoinMode>
+				<Relations>
+					<AxQuerySimpleDataSourceRelation>
+						<Name>QueryDataSourceRelation1</Name>
+						<Field>SPYCompensationLevelBand</Field>
+						<JoinDataSource>HcmPositionDetail</JoinDataSource>
+						<RelatedField>RecId</RelatedField>
+					</AxQuerySimpleDataSourceRelation>
+				</Relations>
+			</DataSource>
+		</AxQueryExtensionEmbeddedDataSource>
+		<AxQueryExtensionEmbeddedDataSource>
+			<Parent>HcmPositionDetail</Parent>
+			<DataSource>
+				<Name>HcmCompensationLevelStep</Name>
+				<DynamicFields>Yes</DynamicFields>
+				<Table>HcmCompensationLevel</Table>
+				<DataSources />
+				<DerivedDataSources />
+				<Fields />
+				<Ranges />
+				<JoinMode>OuterJoin</JoinMode>
+				<Relations>
+					<AxQuerySimpleDataSourceRelation>
+						<Name>QueryDataSourceRelation1</Name>
+						<Field>SPYCompensationLevelStep</Field>
+						<JoinDataSource>HcmPositionDetail</JoinDataSource>
+						<RelatedField>RecId</RelatedField>
+					</AxQuerySimpleDataSourceRelation>
+				</Relations>
+			</DataSource>
+		</AxQueryExtensionEmbeddedDataSource>
+	</DataSources>
 	<FieldGroupExtensions />
 	<FieldGroups />
+	<FieldModifications />
 	<Fields>
 		<AxDataEntityViewField xmlns=""
 			i:type="AxDataEntityViewMappedField">
@@ -23,8 +88,93 @@
 			<DataField>SPYCompensationLevelStep</DataField>
 			<DataSource>HcmPositionDetail</DataSource>
 		</AxDataEntityViewField>
+		<AxDataEntityViewField xmlns=""
+			i:type="AxDataEntityViewMappedField">
+			<Name>CompensationLevelBandId</Name>
+			<Label>Compensation bandId</Label>
+			<DataField>CompensationLevelId</DataField>
+			<DataSource>HcmCompensationLevelBand</DataSource>
+		</AxDataEntityViewField>
+		<AxDataEntityViewField xmlns=""
+			i:type="AxDataEntityViewMappedField">
+			<Name>CompensationLevelGradeId</Name>
+			<Label>Compensation gradeId</Label>
+			<DataField>CompensationLevelId</DataField>
+			<DataSource>HcmCompensationLevelGrade</DataSource>
+		</AxDataEntityViewField>
+		<AxDataEntityViewField xmlns=""
+			i:type="AxDataEntityViewMappedField">
+			<Name>CompensationLevelStepId</Name>
+			<Label>Compensation stepId</Label>
+			<DataField>CompensationLevelId</DataField>
+			<DataSource>HcmCompensationLevelStep</DataSource>
+		</AxDataEntityViewField>
 	</Fields>
 	<Mappings />
 	<PropertyModifications />
-	<Relations />
+	<Relations>
+		<AxDataEntityViewRelation>
+			<Name>SPYCompensationLevelGrade</Name>
+			<Cardinality>ZeroOne</Cardinality>
+			<RelatedDataEntity>HcmCompensationLevel</RelatedDataEntity>
+			<RelatedDataEntityCardinality>ExactlyOne</RelatedDataEntityCardinality>
+			<RelationshipType>Association</RelationshipType>
+			<Constraints>
+				<AxDataEntityViewRelationConstraint xmlns=""
+					i:type="AxDataEntityViewRelationConstraintField">
+					<Name>RelationConstraintField1</Name>
+					<Field>SPYCompensationLevelGrade</Field>
+					<RelatedField>RecId</RelatedField>
+				</AxDataEntityViewRelationConstraint>
+				<AxDataEntityViewRelationConstraint xmlns=""
+					i:type="AxDataEntityViewRelationConstraintRelatedFixed">
+					<Name>RelationConstraintRelatedFixed1</Name>
+					<RelatedField>Type</RelatedField>
+					<ValueStr>HcmCompensationType::Grade</ValueStr>
+				</AxDataEntityViewRelationConstraint>
+			</Constraints>
+		</AxDataEntityViewRelation>
+		<AxDataEntityViewRelation>
+			<Name>SPYCompensationLevelBand</Name>
+			<Cardinality>ZeroOne</Cardinality>
+			<RelatedDataEntity>HcmCompensationLevel</RelatedDataEntity>
+			<RelatedDataEntityCardinality>ExactlyOne</RelatedDataEntityCardinality>
+			<RelationshipType>Association</RelationshipType>
+			<Constraints>
+				<AxDataEntityViewRelationConstraint xmlns=""
+					i:type="AxDataEntityViewRelationConstraintField">
+					<Name>RelationConstraintField1</Name>
+					<Field>SPYCompensationLevelBand</Field>
+					<RelatedField>RecId</RelatedField>
+				</AxDataEntityViewRelationConstraint>
+				<AxDataEntityViewRelationConstraint xmlns=""
+					i:type="AxDataEntityViewRelationConstraintRelatedFixed">
+					<Name>RelationConstraintRelatedFixed1</Name>
+					<RelatedField>Type</RelatedField>
+					<ValueStr>HcmCompensationType::Band</ValueStr>
+				</AxDataEntityViewRelationConstraint>
+			</Constraints>
+		</AxDataEntityViewRelation>
+		<AxDataEntityViewRelation>
+			<Name>SPYCompensationLevelStep</Name>
+			<Cardinality>ZeroOne</Cardinality>
+			<RelatedDataEntity>HcmCompensationLevel</RelatedDataEntity>
+			<RelatedDataEntityCardinality>ExactlyOne</RelatedDataEntityCardinality>
+			<RelationshipType>Association</RelationshipType>
+			<Constraints>
+				<AxDataEntityViewRelationConstraint xmlns=""
+					i:type="AxDataEntityViewRelationConstraintField">
+					<Name>RelationConstraintField1</Name>
+					<Field>SPYCompensationLevelStep</Field>
+					<RelatedField>RecId</RelatedField>
+				</AxDataEntityViewRelationConstraint>
+				<AxDataEntityViewRelationConstraint xmlns=""
+					i:type="AxDataEntityViewRelationConstraintRelatedFixed">
+					<Name>RelationConstraintRelatedFixed1</Name>
+					<RelatedField>Type</RelatedField>
+					<ValueStr>HcmCompensationType::Step</ValueStr>
+				</AxDataEntityViewRelationConstraint>
+			</Constraints>
+		</AxDataEntityViewRelation>
+	</Relations>
 </AxDataEntityViewExtension>

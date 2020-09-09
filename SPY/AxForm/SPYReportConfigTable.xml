@@ -199,7 +199,7 @@ public class SPYReportConfigTable extends FormRun
 				<Controls>
 					<AxFormControl xmlns=""
 						i:type="AxFormTabPageControl">
-						<Name>TabPage1</Name>
+						<Name>TabPageGeneral</Name>
 						<Pattern>FieldsFieldGroups</Pattern>
 						<PatternVersion>1.1</PatternVersion>
 						<Type>TabPage</Type>
@@ -230,7 +230,7 @@ public class SPYReportConfigTable extends FormRun
 					</AxFormControl>
 					<AxFormControl xmlns=""
 						i:type="AxFormTabPageControl">
-						<Name>FormTabPageControl1</Name>
+						<Name>TabPageDetails</Name>
 						<Pattern>FieldsFieldGroups</Pattern>
 						<PatternVersion>1.1</PatternVersion>
 						<Type>TabPage</Type>
@@ -239,7 +239,7 @@ public class SPYReportConfigTable extends FormRun
 						<Controls>
 							<AxFormControl xmlns=""
 								i:type="AxFormGroupControl">
-								<Name>Options</Name>
+								<Name>OptionsGroup</Name>
 								<Type>Group</Type>
 								<FormControlExtension
 									i:nil="true" />
@@ -264,6 +264,37 @@ public class SPYReportConfigTable extends FormRun
 									</AxFormControl>
 								</Controls>
 								<DataGroup>Options</DataGroup>
+								<DataSource>SPYReportConfigTable</DataSource>
+							</AxFormControl>
+							<AxFormControl xmlns=""
+								i:type="AxFormGroupControl">
+								<Name>PrintGroup</Name>
+								<Type>Group</Type>
+								<FormControlExtension
+									i:nil="true" />
+								<Controls>
+									<AxFormControl xmlns=""
+										i:type="AxFormComboBoxControl">
+										<Name>FormGroupControl1_Layout</Name>
+										<Type>ComboBox</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataField>Layout</DataField>
+										<DataSource>SPYReportConfigTable</DataSource>
+										<Items />
+									</AxFormControl>
+									<AxFormControl xmlns=""
+										i:type="AxFormComboBoxControl">
+										<Name>FormGroupControl1_Format</Name>
+										<Type>ComboBox</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataField>Format</DataField>
+										<DataSource>SPYReportConfigTable</DataSource>
+										<Items />
+									</AxFormControl>
+								</Controls>
+								<DataGroup>Print</DataGroup>
 								<DataSource>SPYReportConfigTable</DataSource>
 							</AxFormControl>
 						</Controls>

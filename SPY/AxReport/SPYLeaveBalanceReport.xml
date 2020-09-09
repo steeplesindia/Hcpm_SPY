@@ -1,0 +1,888 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxReport xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="Microsoft.Dynamics.AX.Metadata.V2">
+	<Name>SPYLeaveBalanceReport</Name>
+	<DataMethods />
+	<DataSets>
+		<AxReportDataSet xmlns="">
+			<Name>SPYLeaveBalanceTmp</Name>
+			<DataSourceType>ReportDataProvider</DataSourceType>
+			<DynamicFilters>false</DynamicFilters>
+			<Query>SELECT * FROM SPYLeaveBalanceDP.SPYLeaveBalanceTMP</Query>
+			<FieldGroups />
+			<Fields>
+				<AxReportDataSetField>
+					<Name>AbsenceCode</Name>
+					<Alias>SPYLeaveBalanceTMP.1.AbsenceCode</Alias>
+					<Caption>@SYS32270</Caption>
+					<DisplayWidth>Auto</DisplayWidth>
+					<UserDefined>false</UserDefined>
+				</AxReportDataSetField>
+				<AxReportDataSetField>
+					<Name>Balance</Name>
+					<Alias>SPYLeaveBalanceTMP.1.Balance</Alias>
+					<Caption>@SPYExpression:Amount</Caption>
+					<DataType>System.Double</DataType>
+					<DisplayWidth>Auto</DisplayWidth>
+					<UserDefined>false</UserDefined>
+				</AxReportDataSetField>
+				<AxReportDataSetField>
+					<Name>CompanyName</Name>
+					<Alias>SPYLeaveBalanceTMP.1.CompanyName</Alias>
+					<Caption>@SYS7399</Caption>
+					<DisplayWidth>Auto</DisplayWidth>
+					<UserDefined>false</UserDefined>
+				</AxReportDataSetField>
+				<AxReportDataSetField>
+					<Name>CreatedTransactionId</Name>
+					<Alias>SPYLeaveBalanceTMP.1.CreatedTransactionId</Alias>
+					<Caption>Created ID</Caption>
+					<DataType>System.Int64</DataType>
+					<DisplayWidth>Auto</DisplayWidth>
+					<UserDefined>false</UserDefined>
+				</AxReportDataSetField>
+				<AxReportDataSetField>
+					<Name>EmpId</Name>
+					<Alias>SPYLeaveBalanceTMP.1.EmpId</Alias>
+					<Caption>@SYS303656</Caption>
+					<DisplayWidth>Auto</DisplayWidth>
+					<UserDefined>false</UserDefined>
+				</AxReportDataSetField>
+				<AxReportDataSetField>
+					<Name>EmpName</Name>
+					<Alias>SPYLeaveBalanceTMP.1.EmpName</Alias>
+					<DisplayWidth>Auto</DisplayWidth>
+					<UserDefined>false</UserDefined>
+				</AxReportDataSetField>
+				<AxReportDataSetField>
+					<Name>Worker</Name>
+					<Alias>SPYLeaveBalanceTMP.1.Worker</Alias>
+					<Caption>@SYS80745</Caption>
+					<DataType>System.Int64</DataType>
+					<DisplayWidth>Auto</DisplayWidth>
+					<UserDefined>false</UserDefined>
+				</AxReportDataSetField>
+			</Fields>
+			<Parameters>
+				<AxReportDataSetParameter>
+					<Name>AX_PartitionKey</Name>
+					<Alias>AX_PartitionKey</Alias>
+					<DataType>System.String</DataType>
+					<Parameter>AX_PartitionKey</Parameter>
+				</AxReportDataSetParameter>
+				<AxReportDataSetParameter>
+					<Name>AX_CompanyName</Name>
+					<Alias>AX_CompanyName</Alias>
+					<DataType>System.String</DataType>
+					<Parameter>AX_CompanyName</Parameter>
+				</AxReportDataSetParameter>
+				<AxReportDataSetParameter>
+					<Name>AX_UserContext</Name>
+					<Alias>AX_UserContext</Alias>
+					<DataType>System.String</DataType>
+					<Parameter>AX_UserContext</Parameter>
+				</AxReportDataSetParameter>
+				<AxReportDataSetParameter>
+					<Name>AX_RenderingCulture</Name>
+					<Alias>AX_RenderingCulture</Alias>
+					<DataType>System.String</DataType>
+					<Parameter>AX_RenderingCulture</Parameter>
+				</AxReportDataSetParameter>
+				<AxReportDataSetParameter>
+					<Name>AX_ReportContext</Name>
+					<Alias>AX_ReportContext</Alias>
+					<DataType>System.String</DataType>
+					<Parameter>AX_ReportContext</Parameter>
+				</AxReportDataSetParameter>
+				<AxReportDataSetParameter>
+					<Name>AX_RdpPreProcessedId</Name>
+					<Alias>AX_RdpPreProcessedId</Alias>
+					<DataType>System.String</DataType>
+					<Parameter>AX_RdpPreProcessedId</Parameter>
+				</AxReportDataSetParameter>
+				<AxReportDataSetParameter>
+					<Name>parmHcmWorkerRecId</Name>
+					<Alias>parmHcmWorkerRecId</Alias>
+					<DataType>System.Int64</DataType>
+					<Parameter>SPYLeaveBalanceTmp_parmHcmWorkerRecId</Parameter>
+				</AxReportDataSetParameter>
+				<AxReportDataSetParameter>
+					<Name>parmTillDate</Name>
+					<Alias>parmTillDate</Alias>
+					<DataType>System.DateTime</DataType>
+					<Parameter>SPYLeaveBalanceTmp_parmTillDate</Parameter>
+				</AxReportDataSetParameter>
+			</Parameters>
+		</AxReportDataSet>
+	</DataSets>
+	<DefaultParameterGroup>
+		<Name xmlns="">Parameters</Name>
+		<ReportParameterBases xmlns="">
+			<AxReportParameterBase xmlns=""
+				i:type="AxReportParameter">
+				<Name>AX_PartitionKey</Name>
+				<AllowBlank>true</AllowBlank>
+				<Nullable>true</Nullable>
+				<UserVisibility>Hidden</UserVisibility>
+				<DefaultValue />
+				<Values />
+			</AxReportParameterBase>
+			<AxReportParameterBase xmlns=""
+				i:type="AxReportParameter">
+				<Name>AX_CompanyName</Name>
+				<UserVisibility>Hidden</UserVisibility>
+				<DefaultValue />
+				<Values />
+			</AxReportParameterBase>
+			<AxReportParameterBase xmlns=""
+				i:type="AxReportParameter">
+				<Name>AX_UserContext</Name>
+				<AllowBlank>true</AllowBlank>
+				<Nullable>true</Nullable>
+				<UserVisibility>Hidden</UserVisibility>
+				<DefaultValue />
+				<Values />
+			</AxReportParameterBase>
+			<AxReportParameterBase xmlns=""
+				i:type="AxReportParameter">
+				<Name>AX_RenderingCulture</Name>
+				<AllowBlank>true</AllowBlank>
+				<Nullable>true</Nullable>
+				<UserVisibility>Hidden</UserVisibility>
+				<DefaultValue />
+				<Values />
+			</AxReportParameterBase>
+			<AxReportParameterBase xmlns=""
+				i:type="AxReportParameter">
+				<Name>AX_ReportContext</Name>
+				<AllowBlank>true</AllowBlank>
+				<Nullable>true</Nullable>
+				<UserVisibility>Hidden</UserVisibility>
+				<DefaultValue />
+				<Values />
+			</AxReportParameterBase>
+			<AxReportParameterBase xmlns=""
+				i:type="AxReportParameter">
+				<Name>AX_RdpPreProcessedId</Name>
+				<AllowBlank>true</AllowBlank>
+				<Nullable>true</Nullable>
+				<UserVisibility>Hidden</UserVisibility>
+				<DefaultValue />
+				<Values />
+			</AxReportParameterBase>
+			<AxReportParameterBase xmlns=""
+				i:type="AxReportParameter">
+				<Name>SPYLeaveBalanceTmp_parmHcmWorkerRecId</Name>
+				<DataType>System.Int64</DataType>
+				<PromptString>Worker</PromptString>
+				<DefaultValue />
+				<Values />
+			</AxReportParameterBase>
+			<AxReportParameterBase xmlns=""
+				i:type="AxReportParameter">
+				<Name>SPYLeaveBalanceTmp_parmTillDate</Name>
+				<DataType>System.DateTime</DataType>
+				<PromptString>Till date</PromptString>
+				<DefaultValue />
+				<Values />
+			</AxReportParameterBase>
+		</ReportParameterBases>
+	</DefaultParameterGroup>
+	<Designs>
+		<AxReportDesign xmlns=""
+			i:type="AxReportPrecisionDesign">
+			<Name>Report</Name>
+			<Text>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:cl="http://schemas.microsoft.com/sqlserver/reporting/2010/01/componentdefinition" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/reportdefinition"&gt;
+  &lt;AutoRefresh&gt;0&lt;/AutoRefresh&gt;
+  &lt;DataSources&gt;
+    &lt;DataSource Name="AutoGen__ReportDataProvider"&gt;
+      &lt;Transaction&gt;true&lt;/Transaction&gt;
+      &lt;ConnectionProperties&gt;
+        &lt;DataProvider&gt;AXREPORTDATAPROVIDER&lt;/DataProvider&gt;
+        &lt;ConnectString /&gt;
+        &lt;IntegratedSecurity&gt;true&lt;/IntegratedSecurity&gt;
+      &lt;/ConnectionProperties&gt;
+      &lt;rd:DataSourceID&gt;6635abcb-09a1-41c5-9592-ed1c4477110b&lt;/rd:DataSourceID&gt;
+    &lt;/DataSource&gt;
+  &lt;/DataSources&gt;
+  &lt;DataSets&gt;
+    &lt;DataSet Name="SPYLeaveBalanceTmp"&gt;
+      &lt;Query&gt;
+        &lt;DataSourceName&gt;AutoGen__ReportDataProvider&lt;/DataSourceName&gt;
+        &lt;QueryParameters&gt;
+          &lt;QueryParameter Name="AX_PartitionKey"&gt;
+            &lt;Value&gt;=Parameters!AX_PartitionKey.Value&lt;/Value&gt;
+          &lt;/QueryParameter&gt;
+          &lt;QueryParameter Name="AX_CompanyName"&gt;
+            &lt;Value&gt;=Parameters!AX_CompanyName.Value&lt;/Value&gt;
+          &lt;/QueryParameter&gt;
+          &lt;QueryParameter Name="AX_UserContext"&gt;
+            &lt;Value&gt;=Parameters!AX_UserContext.Value&lt;/Value&gt;
+          &lt;/QueryParameter&gt;
+          &lt;QueryParameter Name="AX_RenderingCulture"&gt;
+            &lt;Value&gt;=Parameters!AX_RenderingCulture.Value&lt;/Value&gt;
+          &lt;/QueryParameter&gt;
+          &lt;QueryParameter Name="AX_ReportContext"&gt;
+            &lt;Value&gt;=Parameters!AX_ReportContext.Value&lt;/Value&gt;
+          &lt;/QueryParameter&gt;
+          &lt;QueryParameter Name="AX_RdpPreProcessedId"&gt;
+            &lt;Value&gt;=Parameters!AX_RdpPreProcessedId.Value&lt;/Value&gt;
+          &lt;/QueryParameter&gt;
+          &lt;QueryParameter Name="parmHcmWorkerRecId"&gt;
+            &lt;Value&gt;=Parameters!SPYLeaveBalanceTmp_parmHcmWorkerRecId.Value&lt;/Value&gt;
+          &lt;/QueryParameter&gt;
+          &lt;QueryParameter Name="parmTillDate"&gt;
+            &lt;Value&gt;=Parameters!SPYLeaveBalanceTmp_parmTillDate.Value&lt;/Value&gt;
+          &lt;/QueryParameter&gt;
+        &lt;/QueryParameters&gt;
+        &lt;CommandText&gt;SELECT * FROM SPYLeaveBalanceDP.SPYLeaveBalanceTMP&lt;/CommandText&gt;
+        &lt;rd:UseGenericDesigner&gt;true&lt;/rd:UseGenericDesigner&gt;
+      &lt;/Query&gt;
+      &lt;Fields&gt;
+        &lt;Field Name="AbsenceCode"&gt;
+          &lt;DataField&gt;SPYLeaveBalanceTMP.1.AbsenceCode&lt;/DataField&gt;
+          &lt;rd:TypeName&gt;System.String&lt;/rd:TypeName&gt;
+        &lt;/Field&gt;
+        &lt;Field Name="Balance"&gt;
+          &lt;DataField&gt;SPYLeaveBalanceTMP.1.Balance&lt;/DataField&gt;
+          &lt;rd:TypeName&gt;System.Double&lt;/rd:TypeName&gt;
+        &lt;/Field&gt;
+        &lt;Field Name="CompanyName"&gt;
+          &lt;DataField&gt;SPYLeaveBalanceTMP.1.CompanyName&lt;/DataField&gt;
+          &lt;rd:TypeName&gt;System.String&lt;/rd:TypeName&gt;
+        &lt;/Field&gt;
+        &lt;Field Name="CreatedTransactionId"&gt;
+          &lt;DataField&gt;SPYLeaveBalanceTMP.1.CreatedTransactionId&lt;/DataField&gt;
+          &lt;rd:TypeName&gt;System.Int64&lt;/rd:TypeName&gt;
+        &lt;/Field&gt;
+        &lt;Field Name="EmpId"&gt;
+          &lt;DataField&gt;SPYLeaveBalanceTMP.1.EmpId&lt;/DataField&gt;
+          &lt;rd:TypeName&gt;System.String&lt;/rd:TypeName&gt;
+        &lt;/Field&gt;
+        &lt;Field Name="EmpName"&gt;
+          &lt;DataField&gt;SPYLeaveBalanceTMP.1.EmpName&lt;/DataField&gt;
+          &lt;rd:TypeName&gt;System.String&lt;/rd:TypeName&gt;
+        &lt;/Field&gt;
+        &lt;Field Name="Worker"&gt;
+          &lt;DataField&gt;SPYLeaveBalanceTMP.1.Worker&lt;/DataField&gt;
+          &lt;rd:TypeName&gt;System.Int64&lt;/rd:TypeName&gt;
+        &lt;/Field&gt;
+      &lt;/Fields&gt;
+      &lt;rd:DataSetInfo&gt;
+        &lt;rd:DataSetName&gt;SPYLeaveBalanceTmp&lt;/rd:DataSetName&gt;
+        &lt;rd:TableName&gt;Fields&lt;/rd:TableName&gt;
+        &lt;rd:TableAdapterFillMethod&gt;Fill&lt;/rd:TableAdapterFillMethod&gt;
+        &lt;rd:TableAdapterGetDataMethod&gt;GetData&lt;/rd:TableAdapterGetDataMethod&gt;
+        &lt;rd:TableAdapterName&gt;FieldsTableAdapter&lt;/rd:TableAdapterName&gt;
+      &lt;/rd:DataSetInfo&gt;
+    &lt;/DataSet&gt;
+  &lt;/DataSets&gt;
+  &lt;ReportSections&gt;
+    &lt;ReportSection&gt;
+      &lt;Body&gt;
+        &lt;ReportItems&gt;
+          &lt;Tablix Name="Tablix3"&gt;
+            &lt;TablixCorner&gt;
+              &lt;TablixCornerRows&gt;
+                &lt;TablixCornerRow&gt;
+                  &lt;TablixCornerCell&gt;
+                    &lt;CellContents&gt;
+                      &lt;Textbox Name="Textbox56"&gt;
+                        &lt;CanGrow&gt;true&lt;/CanGrow&gt;
+                        &lt;KeepTogether&gt;true&lt;/KeepTogether&gt;
+                        &lt;Paragraphs&gt;
+                          &lt;Paragraph&gt;
+                            &lt;TextRuns&gt;
+                              &lt;TextRun&gt;
+                                &lt;Value&gt;=First(Fields!CompanyName.Value)&lt;/Value&gt;
+                                &lt;Style&gt;
+                                  &lt;FontStyle&gt;Normal&lt;/FontStyle&gt;
+                                  &lt;FontFamily&gt;Segoe UI&lt;/FontFamily&gt;
+                                  &lt;FontSize&gt;11pt&lt;/FontSize&gt;
+                                  &lt;FontWeight&gt;Bold&lt;/FontWeight&gt;
+                                  &lt;TextDecoration&gt;None&lt;/TextDecoration&gt;
+                                &lt;/Style&gt;
+                              &lt;/TextRun&gt;
+                            &lt;/TextRuns&gt;
+                            &lt;Style /&gt;
+                          &lt;/Paragraph&gt;
+                        &lt;/Paragraphs&gt;
+                        &lt;rd:DefaultName&gt;Textbox56&lt;/rd:DefaultName&gt;
+                        &lt;CustomProperties&gt;
+                          &lt;CustomProperty&gt;
+                            &lt;Name&gt;AXDataType&lt;/Name&gt;
+                            &lt;Value&gt;String&lt;/Value&gt;
+                          &lt;/CustomProperty&gt;
+                        &lt;/CustomProperties&gt;
+                        &lt;Style&gt;
+                          &lt;Border&gt;
+                            &lt;Style&gt;Solid&lt;/Style&gt;
+                          &lt;/Border&gt;
+                          &lt;PaddingLeft&gt;2pt&lt;/PaddingLeft&gt;
+                          &lt;PaddingRight&gt;2pt&lt;/PaddingRight&gt;
+                          &lt;PaddingTop&gt;2pt&lt;/PaddingTop&gt;
+                          &lt;PaddingBottom&gt;2pt&lt;/PaddingBottom&gt;
+                        &lt;/Style&gt;
+                      &lt;/Textbox&gt;
+                      &lt;ColSpan&gt;2&lt;/ColSpan&gt;
+                    &lt;/CellContents&gt;
+                  &lt;/TablixCornerCell&gt;
+                  &lt;TablixCornerCell /&gt;
+                &lt;/TablixCornerRow&gt;
+                &lt;TablixCornerRow&gt;
+                  &lt;TablixCornerCell&gt;
+                    &lt;CellContents&gt;
+                      &lt;Textbox Name="Textbox48"&gt;
+                        &lt;CanGrow&gt;true&lt;/CanGrow&gt;
+                        &lt;KeepTogether&gt;true&lt;/KeepTogether&gt;
+                        &lt;Paragraphs&gt;
+                          &lt;Paragraph&gt;
+                            &lt;TextRuns&gt;
+                              &lt;TextRun&gt;
+                                &lt;Value&gt;Employee id&lt;/Value&gt;
+                                &lt;Style&gt;
+                                  &lt;FontStyle&gt;Normal&lt;/FontStyle&gt;
+                                  &lt;FontFamily&gt;Segoe UI&lt;/FontFamily&gt;
+                                  &lt;FontSize&gt;8pt&lt;/FontSize&gt;
+                                  &lt;FontWeight&gt;Bold&lt;/FontWeight&gt;
+                                  &lt;TextDecoration&gt;None&lt;/TextDecoration&gt;
+                                &lt;/Style&gt;
+                              &lt;/TextRun&gt;
+                            &lt;/TextRuns&gt;
+                            &lt;Style /&gt;
+                          &lt;/Paragraph&gt;
+                        &lt;/Paragraphs&gt;
+                        &lt;rd:DefaultName&gt;Textbox48&lt;/rd:DefaultName&gt;
+                        &lt;Style&gt;
+                          &lt;Border&gt;
+                            &lt;Style&gt;Solid&lt;/Style&gt;
+                          &lt;/Border&gt;
+                          &lt;PaddingLeft&gt;2pt&lt;/PaddingLeft&gt;
+                          &lt;PaddingRight&gt;2pt&lt;/PaddingRight&gt;
+                          &lt;PaddingTop&gt;2pt&lt;/PaddingTop&gt;
+                          &lt;PaddingBottom&gt;2pt&lt;/PaddingBottom&gt;
+                        &lt;/Style&gt;
+                      &lt;/Textbox&gt;
+                    &lt;/CellContents&gt;
+                  &lt;/TablixCornerCell&gt;
+                  &lt;TablixCornerCell&gt;
+                    &lt;CellContents&gt;
+                      &lt;Textbox Name="Textbox1"&gt;
+                        &lt;CanGrow&gt;true&lt;/CanGrow&gt;
+                        &lt;KeepTogether&gt;true&lt;/KeepTogether&gt;
+                        &lt;Paragraphs&gt;
+                          &lt;Paragraph&gt;
+                            &lt;TextRuns&gt;
+                              &lt;TextRun&gt;
+                                &lt;Value&gt;Employee name&lt;/Value&gt;
+                                &lt;Style&gt;
+                                  &lt;FontStyle&gt;Normal&lt;/FontStyle&gt;
+                                  &lt;FontFamily&gt;Segoe UI&lt;/FontFamily&gt;
+                                  &lt;FontSize&gt;8pt&lt;/FontSize&gt;
+                                  &lt;FontWeight&gt;Bold&lt;/FontWeight&gt;
+                                  &lt;TextDecoration&gt;None&lt;/TextDecoration&gt;
+                                &lt;/Style&gt;
+                              &lt;/TextRun&gt;
+                            &lt;/TextRuns&gt;
+                            &lt;Style /&gt;
+                          &lt;/Paragraph&gt;
+                        &lt;/Paragraphs&gt;
+                        &lt;rd:DefaultName&gt;Textbox1&lt;/rd:DefaultName&gt;
+                        &lt;Style&gt;
+                          &lt;Border&gt;
+                            &lt;Style&gt;Solid&lt;/Style&gt;
+                          &lt;/Border&gt;
+                          &lt;PaddingLeft&gt;2pt&lt;/PaddingLeft&gt;
+                          &lt;PaddingRight&gt;2pt&lt;/PaddingRight&gt;
+                          &lt;PaddingTop&gt;2pt&lt;/PaddingTop&gt;
+                          &lt;PaddingBottom&gt;2pt&lt;/PaddingBottom&gt;
+                        &lt;/Style&gt;
+                      &lt;/Textbox&gt;
+                    &lt;/CellContents&gt;
+                  &lt;/TablixCornerCell&gt;
+                &lt;/TablixCornerRow&gt;
+              &lt;/TablixCornerRows&gt;
+            &lt;/TablixCorner&gt;
+            &lt;TablixBody&gt;
+              &lt;TablixColumns&gt;
+                &lt;TablixColumn&gt;
+                  &lt;Width&gt;0.73958in&lt;/Width&gt;
+                &lt;/TablixColumn&gt;
+              &lt;/TablixColumns&gt;
+              &lt;TablixRows&gt;
+                &lt;TablixRow&gt;
+                  &lt;Height&gt;0.25in&lt;/Height&gt;
+                  &lt;TablixCells&gt;
+                    &lt;TablixCell&gt;
+                      &lt;CellContents&gt;
+                        &lt;Textbox Name="Balance"&gt;
+                          &lt;CanGrow&gt;true&lt;/CanGrow&gt;
+                          &lt;KeepTogether&gt;true&lt;/KeepTogether&gt;
+                          &lt;Paragraphs&gt;
+                            &lt;Paragraph&gt;
+                              &lt;TextRuns&gt;
+                                &lt;TextRun&gt;
+                                  &lt;Value&gt;=Sum(Fields!Balance.Value)&lt;/Value&gt;
+                                  &lt;Style&gt;
+                                    &lt;FontFamily&gt;Segoe UI&lt;/FontFamily&gt;
+                                    &lt;FontSize&gt;8pt&lt;/FontSize&gt;
+                                    &lt;Format&gt;0.000;(0.000)&lt;/Format&gt;
+                                  &lt;/Style&gt;
+                                &lt;/TextRun&gt;
+                              &lt;/TextRuns&gt;
+                              &lt;Style&gt;
+                                &lt;TextAlign&gt;Right&lt;/TextAlign&gt;
+                              &lt;/Style&gt;
+                            &lt;/Paragraph&gt;
+                          &lt;/Paragraphs&gt;
+                          &lt;rd:DefaultName&gt;Balance&lt;/rd:DefaultName&gt;
+                          &lt;CustomProperties&gt;
+                            &lt;CustomProperty&gt;
+                              &lt;Name&gt;AXDataType&lt;/Name&gt;
+                              &lt;Value&gt;Float&lt;/Value&gt;
+                            &lt;/CustomProperty&gt;
+                          &lt;/CustomProperties&gt;
+                          &lt;Style&gt;
+                            &lt;Border&gt;
+                              &lt;Style&gt;Solid&lt;/Style&gt;
+                            &lt;/Border&gt;
+                            &lt;PaddingLeft&gt;2pt&lt;/PaddingLeft&gt;
+                            &lt;PaddingRight&gt;2pt&lt;/PaddingRight&gt;
+                            &lt;PaddingTop&gt;2pt&lt;/PaddingTop&gt;
+                            &lt;PaddingBottom&gt;2pt&lt;/PaddingBottom&gt;
+                          &lt;/Style&gt;
+                        &lt;/Textbox&gt;
+                      &lt;/CellContents&gt;
+                    &lt;/TablixCell&gt;
+                  &lt;/TablixCells&gt;
+                &lt;/TablixRow&gt;
+              &lt;/TablixRows&gt;
+            &lt;/TablixBody&gt;
+            &lt;TablixColumnHierarchy&gt;
+              &lt;TablixMembers&gt;
+                &lt;TablixMember&gt;
+                  &lt;Group Name="AbsenceCdoe"&gt;
+                    &lt;GroupExpressions&gt;
+                      &lt;GroupExpression&gt;=Fields!AbsenceCode.Value&lt;/GroupExpression&gt;
+                    &lt;/GroupExpressions&gt;
+                  &lt;/Group&gt;
+                  &lt;SortExpressions&gt;
+                    &lt;SortExpression&gt;
+                      &lt;Value&gt;=Fields!AbsenceCode.Value&lt;/Value&gt;
+                    &lt;/SortExpression&gt;
+                  &lt;/SortExpressions&gt;
+                  &lt;TablixHeader&gt;
+                    &lt;Size&gt;0.30208in&lt;/Size&gt;
+                    &lt;CellContents&gt;
+                      &lt;Textbox Name="Textbox58"&gt;
+                        &lt;CanGrow&gt;true&lt;/CanGrow&gt;
+                        &lt;KeepTogether&gt;true&lt;/KeepTogether&gt;
+                        &lt;Paragraphs&gt;
+                          &lt;Paragraph&gt;
+                            &lt;TextRuns&gt;
+                              &lt;TextRun&gt;
+                                &lt;Value /&gt;
+                                &lt;Style&gt;
+                                  &lt;FontStyle&gt;Normal&lt;/FontStyle&gt;
+                                  &lt;FontFamily&gt;Segoe UI&lt;/FontFamily&gt;
+                                  &lt;FontSize&gt;8pt&lt;/FontSize&gt;
+                                  &lt;FontWeight&gt;Bold&lt;/FontWeight&gt;
+                                  &lt;TextDecoration&gt;None&lt;/TextDecoration&gt;
+                                &lt;/Style&gt;
+                              &lt;/TextRun&gt;
+                            &lt;/TextRuns&gt;
+                            &lt;Style&gt;
+                              &lt;TextAlign&gt;Right&lt;/TextAlign&gt;
+                            &lt;/Style&gt;
+                          &lt;/Paragraph&gt;
+                        &lt;/Paragraphs&gt;
+                        &lt;rd:DefaultName&gt;Textbox58&lt;/rd:DefaultName&gt;
+                        &lt;Style&gt;
+                          &lt;Border&gt;
+                            &lt;Style&gt;Solid&lt;/Style&gt;
+                          &lt;/Border&gt;
+                          &lt;PaddingLeft&gt;2pt&lt;/PaddingLeft&gt;
+                          &lt;PaddingRight&gt;2pt&lt;/PaddingRight&gt;
+                          &lt;PaddingTop&gt;2pt&lt;/PaddingTop&gt;
+                          &lt;PaddingBottom&gt;2pt&lt;/PaddingBottom&gt;
+                        &lt;/Style&gt;
+                      &lt;/Textbox&gt;
+                    &lt;/CellContents&gt;
+                  &lt;/TablixHeader&gt;
+                  &lt;TablixMembers&gt;
+                    &lt;TablixMember&gt;
+                      &lt;TablixHeader&gt;
+                        &lt;Size&gt;0.25in&lt;/Size&gt;
+                        &lt;CellContents&gt;
+                          &lt;Textbox Name="Group1"&gt;
+                            &lt;CanGrow&gt;true&lt;/CanGrow&gt;
+                            &lt;KeepTogether&gt;true&lt;/KeepTogether&gt;
+                            &lt;Paragraphs&gt;
+                              &lt;Paragraph&gt;
+                                &lt;TextRuns&gt;
+                                  &lt;TextRun&gt;
+                                    &lt;Value&gt;=Fields!AbsenceCode.Value&lt;/Value&gt;
+                                    &lt;Style&gt;
+                                      &lt;FontStyle&gt;Normal&lt;/FontStyle&gt;
+                                      &lt;FontFamily&gt;Segoe UI&lt;/FontFamily&gt;
+                                      &lt;FontSize&gt;8pt&lt;/FontSize&gt;
+                                      &lt;FontWeight&gt;Bold&lt;/FontWeight&gt;
+                                      &lt;TextDecoration&gt;None&lt;/TextDecoration&gt;
+                                    &lt;/Style&gt;
+                                  &lt;/TextRun&gt;
+                                &lt;/TextRuns&gt;
+                                &lt;Style&gt;
+                                  &lt;TextAlign&gt;Right&lt;/TextAlign&gt;
+                                &lt;/Style&gt;
+                              &lt;/Paragraph&gt;
+                            &lt;/Paragraphs&gt;
+                            &lt;rd:DefaultName&gt;Group1&lt;/rd:DefaultName&gt;
+                            &lt;CustomProperties&gt;
+                              &lt;CustomProperty&gt;
+                                &lt;Name&gt;AXDataType&lt;/Name&gt;
+                                &lt;Value&gt;String&lt;/Value&gt;
+                              &lt;/CustomProperty&gt;
+                              &lt;CustomProperty&gt;
+                                &lt;Name&gt;AXEDTFormat&lt;/Name&gt;
+                                &lt;Value&gt;SPYLeaveBalanceTMP.AbsenceCode&lt;/Value&gt;
+                              &lt;/CustomProperty&gt;
+                              &lt;CustomProperty&gt;
+                                &lt;Name&gt;AXEDTTextAlign&lt;/Name&gt;
+                                &lt;Value&gt;SPYLeaveBalanceTMP.AbsenceCode&lt;/Value&gt;
+                              &lt;/CustomProperty&gt;
+                              &lt;CustomProperty&gt;
+                                &lt;Name&gt;AXEDTDirection&lt;/Name&gt;
+                                &lt;Value&gt;SPYLeaveBalanceTMP.AbsenceCode&lt;/Value&gt;
+                              &lt;/CustomProperty&gt;
+                            &lt;/CustomProperties&gt;
+                            &lt;Style&gt;
+                              &lt;Border&gt;
+                                &lt;Style&gt;Solid&lt;/Style&gt;
+                              &lt;/Border&gt;
+                              &lt;PaddingLeft&gt;2pt&lt;/PaddingLeft&gt;
+                              &lt;PaddingRight&gt;2pt&lt;/PaddingRight&gt;
+                              &lt;PaddingTop&gt;2pt&lt;/PaddingTop&gt;
+                              &lt;PaddingBottom&gt;2pt&lt;/PaddingBottom&gt;
+                            &lt;/Style&gt;
+                          &lt;/Textbox&gt;
+                        &lt;/CellContents&gt;
+                      &lt;/TablixHeader&gt;
+                    &lt;/TablixMember&gt;
+                  &lt;/TablixMembers&gt;
+                &lt;/TablixMember&gt;
+              &lt;/TablixMembers&gt;
+            &lt;/TablixColumnHierarchy&gt;
+            &lt;TablixRowHierarchy&gt;
+              &lt;TablixMembers&gt;
+                &lt;TablixMember&gt;
+                  &lt;Group Name="Worker"&gt;
+                    &lt;GroupExpressions&gt;
+                      &lt;GroupExpression&gt;=Fields!Worker.Value&lt;/GroupExpression&gt;
+                    &lt;/GroupExpressions&gt;
+                  &lt;/Group&gt;
+                  &lt;SortExpressions&gt;
+                    &lt;SortExpression&gt;
+                      &lt;Value&gt;=Fields!Worker.Value&lt;/Value&gt;
+                    &lt;/SortExpression&gt;
+                  &lt;/SortExpressions&gt;
+                  &lt;TablixMembers&gt;
+                    &lt;TablixMember&gt;
+                      &lt;TablixHeader&gt;
+                        &lt;Size&gt;1.46875in&lt;/Size&gt;
+                        &lt;CellContents&gt;
+                          &lt;Textbox Name="EmpId1"&gt;
+                            &lt;CanGrow&gt;true&lt;/CanGrow&gt;
+                            &lt;KeepTogether&gt;true&lt;/KeepTogether&gt;
+                            &lt;Paragraphs&gt;
+                              &lt;Paragraph&gt;
+                                &lt;TextRuns&gt;
+                                  &lt;TextRun&gt;
+                                    &lt;Value&gt;=Fields!EmpId.Value&lt;/Value&gt;
+                                    &lt;Style&gt;
+                                      &lt;FontFamily&gt;Segoe UI&lt;/FontFamily&gt;
+                                      &lt;FontSize&gt;8pt&lt;/FontSize&gt;
+                                    &lt;/Style&gt;
+                                  &lt;/TextRun&gt;
+                                &lt;/TextRuns&gt;
+                                &lt;Style /&gt;
+                              &lt;/Paragraph&gt;
+                            &lt;/Paragraphs&gt;
+                            &lt;rd:DefaultName&gt;EmpId1&lt;/rd:DefaultName&gt;
+                            &lt;CustomProperties&gt;
+                              &lt;CustomProperty&gt;
+                                &lt;Name&gt;AXDataType&lt;/Name&gt;
+                                &lt;Value&gt;String&lt;/Value&gt;
+                              &lt;/CustomProperty&gt;
+                            &lt;/CustomProperties&gt;
+                            &lt;Style&gt;
+                              &lt;Border&gt;
+                                &lt;Style&gt;Solid&lt;/Style&gt;
+                              &lt;/Border&gt;
+                              &lt;PaddingLeft&gt;2pt&lt;/PaddingLeft&gt;
+                              &lt;PaddingRight&gt;2pt&lt;/PaddingRight&gt;
+                              &lt;PaddingTop&gt;2pt&lt;/PaddingTop&gt;
+                              &lt;PaddingBottom&gt;2pt&lt;/PaddingBottom&gt;
+                            &lt;/Style&gt;
+                          &lt;/Textbox&gt;
+                        &lt;/CellContents&gt;
+                      &lt;/TablixHeader&gt;
+                      &lt;TablixMembers&gt;
+                        &lt;TablixMember&gt;
+                          &lt;TablixHeader&gt;
+                            &lt;Size&gt;1.875in&lt;/Size&gt;
+                            &lt;CellContents&gt;
+                              &lt;Textbox Name="EmpName1"&gt;
+                                &lt;CanGrow&gt;true&lt;/CanGrow&gt;
+                                &lt;KeepTogether&gt;true&lt;/KeepTogether&gt;
+                                &lt;Paragraphs&gt;
+                                  &lt;Paragraph&gt;
+                                    &lt;TextRuns&gt;
+                                      &lt;TextRun&gt;
+                                        &lt;Value&gt;=Fields!EmpName.Value&lt;/Value&gt;
+                                        &lt;Style&gt;
+                                          &lt;FontFamily&gt;Segoe UI&lt;/FontFamily&gt;
+                                          &lt;FontSize&gt;8pt&lt;/FontSize&gt;
+                                        &lt;/Style&gt;
+                                      &lt;/TextRun&gt;
+                                    &lt;/TextRuns&gt;
+                                    &lt;Style /&gt;
+                                  &lt;/Paragraph&gt;
+                                &lt;/Paragraphs&gt;
+                                &lt;rd:DefaultName&gt;EmpName1&lt;/rd:DefaultName&gt;
+                                &lt;CustomProperties&gt;
+                                  &lt;CustomProperty&gt;
+                                    &lt;Name&gt;AXDataType&lt;/Name&gt;
+                                    &lt;Value&gt;String&lt;/Value&gt;
+                                  &lt;/CustomProperty&gt;
+                                &lt;/CustomProperties&gt;
+                                &lt;Style&gt;
+                                  &lt;Border&gt;
+                                    &lt;Style&gt;Solid&lt;/Style&gt;
+                                  &lt;/Border&gt;
+                                  &lt;PaddingLeft&gt;2pt&lt;/PaddingLeft&gt;
+                                  &lt;PaddingRight&gt;2pt&lt;/PaddingRight&gt;
+                                  &lt;PaddingTop&gt;2pt&lt;/PaddingTop&gt;
+                                  &lt;PaddingBottom&gt;2pt&lt;/PaddingBottom&gt;
+                                &lt;/Style&gt;
+                              &lt;/Textbox&gt;
+                            &lt;/CellContents&gt;
+                          &lt;/TablixHeader&gt;
+                          &lt;TablixMembers&gt;
+                            &lt;TablixMember /&gt;
+                          &lt;/TablixMembers&gt;
+                        &lt;/TablixMember&gt;
+                      &lt;/TablixMembers&gt;
+                    &lt;/TablixMember&gt;
+                  &lt;/TablixMembers&gt;
+                &lt;/TablixMember&gt;
+              &lt;/TablixMembers&gt;
+            &lt;/TablixRowHierarchy&gt;
+            &lt;RepeatColumnHeaders&gt;true&lt;/RepeatColumnHeaders&gt;
+            &lt;DataSetName&gt;SPYLeaveBalanceTmp&lt;/DataSetName&gt;
+            &lt;SortExpressions&gt;
+              &lt;SortExpression&gt;
+                &lt;Value&gt;=Fields!EmpId.Value&lt;/Value&gt;
+              &lt;/SortExpression&gt;
+            &lt;/SortExpressions&gt;
+            &lt;Top&gt;0.125in&lt;/Top&gt;
+            &lt;Height&gt;0.80208in&lt;/Height&gt;
+            &lt;Width&gt;4.08333in&lt;/Width&gt;
+            &lt;Style&gt;
+              &lt;Border&gt;
+                &lt;Style&gt;None&lt;/Style&gt;
+              &lt;/Border&gt;
+            &lt;/Style&gt;
+          &lt;/Tablix&gt;
+        &lt;/ReportItems&gt;
+        &lt;Height&gt;3in&lt;/Height&gt;
+        &lt;Style /&gt;
+      &lt;/Body&gt;
+      &lt;Width&gt;6.42583in&lt;/Width&gt;
+      &lt;Page&gt;
+        &lt;PageHeader&gt;
+          &lt;Height&gt;0.70833in&lt;/Height&gt;
+          &lt;PrintOnFirstPage&gt;true&lt;/PrintOnFirstPage&gt;
+          &lt;PrintOnLastPage&gt;true&lt;/PrintOnLastPage&gt;
+          &lt;ReportItems&gt;
+            &lt;Textbox Name="Textbox2"&gt;
+              &lt;CanGrow&gt;true&lt;/CanGrow&gt;
+              &lt;KeepTogether&gt;true&lt;/KeepTogether&gt;
+              &lt;Paragraphs&gt;
+                &lt;Paragraph&gt;
+                  &lt;TextRuns&gt;
+                    &lt;TextRun&gt;
+                      &lt;Value&gt;="Employee Leave Balance"&lt;/Value&gt;
+                      &lt;Style&gt;
+                        &lt;FontFamily&gt;Segoe UI&lt;/FontFamily&gt;
+                        &lt;FontSize&gt;14pt&lt;/FontSize&gt;
+                        &lt;FontWeight&gt;Bold&lt;/FontWeight&gt;
+                      &lt;/Style&gt;
+                    &lt;/TextRun&gt;
+                  &lt;/TextRuns&gt;
+                  &lt;Style /&gt;
+                &lt;/Paragraph&gt;
+              &lt;/Paragraphs&gt;
+              &lt;rd:DefaultName&gt;Textbox2&lt;/rd:DefaultName&gt;
+              &lt;Top&gt;0.19667in&lt;/Top&gt;
+              &lt;Height&gt;0.37625in&lt;/Height&gt;
+              &lt;Width&gt;4.09375in&lt;/Width&gt;
+              &lt;Style&gt;
+                &lt;Border&gt;
+                  &lt;Style&gt;None&lt;/Style&gt;
+                &lt;/Border&gt;
+                &lt;PaddingLeft&gt;2pt&lt;/PaddingLeft&gt;
+                &lt;PaddingRight&gt;2pt&lt;/PaddingRight&gt;
+                &lt;PaddingTop&gt;2pt&lt;/PaddingTop&gt;
+                &lt;PaddingBottom&gt;2pt&lt;/PaddingBottom&gt;
+              &lt;/Style&gt;
+            &lt;/Textbox&gt;
+            &lt;Textbox Name="Textbox3"&gt;
+              &lt;CanGrow&gt;true&lt;/CanGrow&gt;
+              &lt;KeepTogether&gt;true&lt;/KeepTogether&gt;
+              &lt;Paragraphs&gt;
+                &lt;Paragraph&gt;
+                  &lt;TextRuns&gt;
+                    &lt;TextRun&gt;
+                      &lt;Value&gt;=System.String.Format(Labels!@SYS182566, "" &amp;amp; Globals!PageNumber &amp;amp; "", "" &amp;amp; Globals!TotalPages &amp;amp; "")&lt;/Value&gt;
+                      &lt;Style&gt;
+                        &lt;FontFamily&gt;Segoe UI&lt;/FontFamily&gt;
+                        &lt;FontSize&gt;8pt&lt;/FontSize&gt;
+                        &lt;FontWeight&gt;Bold&lt;/FontWeight&gt;
+                      &lt;/Style&gt;
+                    &lt;/TextRun&gt;
+                  &lt;/TextRuns&gt;
+                  &lt;Style&gt;
+                    &lt;TextAlign&gt;Right&lt;/TextAlign&gt;
+                  &lt;/Style&gt;
+                &lt;/Paragraph&gt;
+              &lt;/Paragraphs&gt;
+              &lt;rd:DefaultName&gt;Textbox3&lt;/rd:DefaultName&gt;
+              &lt;Top&gt;0.25917in&lt;/Top&gt;
+              &lt;Left&gt;4.86333in&lt;/Left&gt;
+              &lt;Height&gt;0.18875in&lt;/Height&gt;
+              &lt;Width&gt;1.3125in&lt;/Width&gt;
+              &lt;ZIndex&gt;1&lt;/ZIndex&gt;
+              &lt;Style&gt;
+                &lt;Border&gt;
+                  &lt;Style&gt;None&lt;/Style&gt;
+                &lt;/Border&gt;
+                &lt;PaddingLeft&gt;2pt&lt;/PaddingLeft&gt;
+                &lt;PaddingRight&gt;2pt&lt;/PaddingRight&gt;
+                &lt;PaddingTop&gt;2pt&lt;/PaddingTop&gt;
+                &lt;PaddingBottom&gt;2pt&lt;/PaddingBottom&gt;
+              &lt;/Style&gt;
+            &lt;/Textbox&gt;
+            &lt;Textbox Name="Textbox4"&gt;
+              &lt;CanGrow&gt;true&lt;/CanGrow&gt;
+              &lt;KeepTogether&gt;true&lt;/KeepTogether&gt;
+              &lt;Paragraphs&gt;
+                &lt;Paragraph&gt;
+                  &lt;TextRuns&gt;
+                    &lt;TextRun&gt;
+                      &lt;Value&gt;=Format(Now(), "dd/MM/yyyy hh:mm tt")&lt;/Value&gt;
+                      &lt;Style&gt;
+                        &lt;FontFamily&gt;Segoe UI&lt;/FontFamily&gt;
+                        &lt;FontSize&gt;8pt&lt;/FontSize&gt;
+                        &lt;FontWeight&gt;Bold&lt;/FontWeight&gt;
+                      &lt;/Style&gt;
+                    &lt;/TextRun&gt;
+                  &lt;/TextRuns&gt;
+                  &lt;Style&gt;
+                    &lt;TextAlign&gt;Right&lt;/TextAlign&gt;
+                  &lt;/Style&gt;
+                &lt;/Paragraph&gt;
+              &lt;/Paragraphs&gt;
+              &lt;rd:DefaultName&gt;Textbox3&lt;/rd:DefaultName&gt;
+              &lt;Top&gt;0.50979in&lt;/Top&gt;
+              &lt;Left&gt;4.565in&lt;/Left&gt;
+              &lt;Height&gt;0.18875in&lt;/Height&gt;
+              &lt;Width&gt;1.60417in&lt;/Width&gt;
+              &lt;ZIndex&gt;2&lt;/ZIndex&gt;
+              &lt;Style&gt;
+                &lt;Border&gt;
+                  &lt;Style&gt;None&lt;/Style&gt;
+                &lt;/Border&gt;
+                &lt;PaddingLeft&gt;2pt&lt;/PaddingLeft&gt;
+                &lt;PaddingRight&gt;2pt&lt;/PaddingRight&gt;
+                &lt;PaddingTop&gt;2pt&lt;/PaddingTop&gt;
+                &lt;PaddingBottom&gt;2pt&lt;/PaddingBottom&gt;
+              &lt;/Style&gt;
+            &lt;/Textbox&gt;
+          &lt;/ReportItems&gt;
+          &lt;Style&gt;
+            &lt;Border&gt;
+              &lt;Style&gt;None&lt;/Style&gt;
+            &lt;/Border&gt;
+          &lt;/Style&gt;
+        &lt;/PageHeader&gt;
+        &lt;InteractiveHeight&gt;11in&lt;/InteractiveHeight&gt;
+        &lt;InteractiveWidth&gt;8.5in&lt;/InteractiveWidth&gt;
+        &lt;LeftMargin&gt;1in&lt;/LeftMargin&gt;
+        &lt;RightMargin&gt;1in&lt;/RightMargin&gt;
+        &lt;TopMargin&gt;1in&lt;/TopMargin&gt;
+        &lt;BottomMargin&gt;1in&lt;/BottomMargin&gt;
+        &lt;Style /&gt;
+      &lt;/Page&gt;
+    &lt;/ReportSection&gt;
+  &lt;/ReportSections&gt;
+  &lt;ReportParameters&gt;
+    &lt;ReportParameter Name="AX_PartitionKey"&gt;
+      &lt;DataType&gt;String&lt;/DataType&gt;
+      &lt;Nullable&gt;true&lt;/Nullable&gt;
+      &lt;AllowBlank&gt;true&lt;/AllowBlank&gt;
+      &lt;Prompt&gt;AX_PartitionKey&lt;/Prompt&gt;
+      &lt;Hidden&gt;true&lt;/Hidden&gt;
+    &lt;/ReportParameter&gt;
+    &lt;ReportParameter Name="AX_CompanyName"&gt;
+      &lt;DataType&gt;String&lt;/DataType&gt;
+      &lt;Prompt&gt;AX_CompanyName&lt;/Prompt&gt;
+      &lt;Hidden&gt;true&lt;/Hidden&gt;
+    &lt;/ReportParameter&gt;
+    &lt;ReportParameter Name="AX_UserContext"&gt;
+      &lt;DataType&gt;String&lt;/DataType&gt;
+      &lt;Nullable&gt;true&lt;/Nullable&gt;
+      &lt;AllowBlank&gt;true&lt;/AllowBlank&gt;
+      &lt;Prompt&gt;AX_UserContext&lt;/Prompt&gt;
+      &lt;Hidden&gt;true&lt;/Hidden&gt;
+    &lt;/ReportParameter&gt;
+    &lt;ReportParameter Name="AX_RenderingCulture"&gt;
+      &lt;DataType&gt;String&lt;/DataType&gt;
+      &lt;Nullable&gt;true&lt;/Nullable&gt;
+      &lt;AllowBlank&gt;true&lt;/AllowBlank&gt;
+      &lt;Prompt&gt;AX_RenderingCulture&lt;/Prompt&gt;
+      &lt;Hidden&gt;true&lt;/Hidden&gt;
+    &lt;/ReportParameter&gt;
+    &lt;ReportParameter Name="AX_ReportContext"&gt;
+      &lt;DataType&gt;String&lt;/DataType&gt;
+      &lt;Nullable&gt;true&lt;/Nullable&gt;
+      &lt;AllowBlank&gt;true&lt;/AllowBlank&gt;
+      &lt;Prompt&gt;AX_ReportContext&lt;/Prompt&gt;
+      &lt;Hidden&gt;true&lt;/Hidden&gt;
+      &lt;UsedInQuery&gt;True&lt;/UsedInQuery&gt;
+    &lt;/ReportParameter&gt;
+    &lt;ReportParameter Name="AX_RdpPreProcessedId"&gt;
+      &lt;DataType&gt;String&lt;/DataType&gt;
+      &lt;Nullable&gt;true&lt;/Nullable&gt;
+      &lt;AllowBlank&gt;true&lt;/AllowBlank&gt;
+      &lt;Prompt&gt;AX_RdpPreProcessedId&lt;/Prompt&gt;
+      &lt;Hidden&gt;true&lt;/Hidden&gt;
+    &lt;/ReportParameter&gt;
+    &lt;ReportParameter Name="SPYLeaveBalanceTmp_parmHcmWorkerRecId"&gt;
+      &lt;DataType&gt;String&lt;/DataType&gt;
+      &lt;Prompt&gt;Worker&lt;/Prompt&gt;
+    &lt;/ReportParameter&gt;
+    &lt;ReportParameter Name="SPYLeaveBalanceTmp_parmTillDate"&gt;
+      &lt;DataType&gt;DateTime&lt;/DataType&gt;
+      &lt;Prompt&gt;Till date&lt;/Prompt&gt;
+    &lt;/ReportParameter&gt;
+  &lt;/ReportParameters&gt;
+  &lt;Language&gt;en-US&lt;/Language&gt;
+  &lt;rd:ReportUnitType&gt;Inch&lt;/rd:ReportUnitType&gt;
+  &lt;rd:ExpressionDialog&gt;Microsoft.Dynamics.Framework.Design.Reports.ExpressionEditor.ExpressionEditorDialog, Microsoft.Dynamics.Framework.Design.Reports&lt;/rd:ExpressionDialog&gt;
+  &lt;rd:ReportID&gt;d348a6cd-c246-408a-8dd3-86754beebcff&lt;/rd:ReportID&gt;
+&lt;/Report&gt;</Text>
+			<DisableIndividualTransformation />
+		</AxReportDesign>
+	</Designs>
+	<EmbeddedImages />
+</AxReport>

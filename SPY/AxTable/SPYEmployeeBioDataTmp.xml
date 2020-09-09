@@ -264,6 +264,16 @@ public class SPYEmployeeBioDataTmp extends common
 			<ExtendedDataType>HcmTitleId</ExtendedDataType>
 			<Mandatory>Yes</Mandatory>
 		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>IdentificationTypeStr</Name>
+			<ExtendedDataType>Description</ExtendedDataType>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>IssuingAgencyStr</Name>
+			<ExtendedDataType>Name</ExtendedDataType>
+		</AxTableField>
 	</Fields>
 	<FullTextIndexes />
 	<Indexes />

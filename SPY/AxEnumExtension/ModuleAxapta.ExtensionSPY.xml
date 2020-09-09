@@ -5,8 +5,9 @@
 		<AxEnumValue>
 			<Name>SPYPayroll</Name>
 			<ConfigurationKey>SPYPayroll</ConfigurationKey>
-			<Label>@SPY2</Label>
+			<Label>@SPY246</Label>
 		</AxEnumValue>
 	</EnumValues>
 	<PropertyModifications />
+	<ValueModifications />
 </AxEnumExtension>

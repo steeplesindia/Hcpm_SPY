@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>SPYLeaveBalanceDP</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[
+    SRSReportParameterAttribute(classStr(SPYLeaveBalanceContract)),
+    SRSReportQueryAttribute(queryStr(SPYHcmWorkerLookup))
+]
+public class SPYLeaveBalanceDP extends SrsReportDataProviderPreProcess
+{
+    SPYLeaveBalanceTMP         leavebalanceTmp;
+    SPYAbsenceLedger            absenceLedger;
+
+    HcmWorker                   hcmWorker;
+    date                        asOfNow;
+    HcmWorkerRecId              worker;
+    HrmAbsenceCodeId            absenceCodeId;
+    SPYWorkerPositionPayroll    workerPositionPayroll;
+
+    CompanyInfo                 companyInfo;
+   
+   
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>getLeaveBalanceTmp</Name>
+				<Source><![CDATA[
+    [SRSReportDataSetAttribute(tableStr(SPYLeaveBalanceTMP))]
+    public SPYLeaveBalanceTMP getLeaveBalanceTmp()
+    {
+        select leavebalanceTmp;
+        return leavebalanceTmp;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>insertIntoLeaveBalanceDetailsTmp</Name>
+				<Source><![CDATA[
+    public void insertIntoLeaveBalanceDetailsTmp()
+    {
+        while select absenceLedger group by HRMAbsenceCodeId 
+            where absenceLedger.Worker == hcmWorker.RecId 
+        {
+
+            leavebalanceTmp.clear();
+            leavebalanceTmp.CompanyName         = companyInfo.name();
+            leavebalanceTmp.Worker              = hcmWorker.RecId;
+            leavebalanceTmp.EmpName             = hcmWorker.name();
+            leavebalanceTmp.EmpId               = hcmWorker.PersonnelNumber;
+            leavebalanceTmp.AbsenceCode         = absenceLedger.HRMAbsenceCodeId;
+            leavebalanceTmp.Balance             = SPYLeaveBalanceDP::GetLeaveBal(hcmWorker.RecId,asOfNow,absenceLedger.HRMAbsenceCodeId);
+            leavebalanceTmp.insert();
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>GetLeaveBal</Name>
+				<Source><![CDATA[
+    public static SPYAmount GetLeaveBal(HcmWorkerRecId hcmWorkerRecId,Date  asOnDate,HrmAbsenceCodeId   absenceCodeId)
+    {
+        SPYAbsenceLedger        absenceLedger,absenceLedgerDate;
+        TransDate               startDate ;
+        SPYAmount               balance;
+
+        //For opening entry date
+
+        select maxof(AbsenceDate) from absenceLedgerDate
+            where absenceLedgerDate.Worker == hcmWorkerRecId &&
+                  absenceLedgerDate.HRMAbsenceCodeId == absenceCodeId &&
+                  absenceLedgerDate.AbsenceDate <= asOnDate &&
+                  absenceLedgerDate.EntryType == SPYAbsenceLedgerEntryType::OpeningEntry;
+
+        startDate =  absenceLedgerDate.AbsenceDate;
+
+        select sum(AbsenceDays) from absenceLedger
+        where absenceLedger.Worker == hcmWorkerRecId &&
+              absenceLedger.HRMAbsenceCodeId == absenceCodeId &&
+              absenceLedger.AbsenceDate >= startDate &&
+              absenceLedger.AbsenceDate <= asOnDate;
+        balance = absenceLedger.AbsenceDays;
+
+        return balance;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>processReport</Name>
+				<Source><![CDATA[
+    [SysEntryPointAttribute(false)]
+    public void processReport()
+    {
+        SPYLeaveBalanceContract     contract = this.parmDataContract() as SPYLeaveBalanceContract;
+        Query                       q;
+        QueryRun                    qr;
+        QueryBuildDataSource        qbdHcmWorker, qbdAbsenceLedger;
+    
+        worker          = contract.parmHcmWorkerRecId();
+        asOfNow         = contract.parmTillDate();
+        
+        companyInfo     = CompanyInfo::find();
+    
+        q = this.parmQuery();
+        qbdHcmWorker = q.dataSourceTable(tableNum(HcmWorker));
+        if(worker > 0)
+            qbdHcmWorker.addRange(fieldNum(HcmWorker,RecId)).value(int642Str(worker));
+       
+        qr = new QueryRun(q);
+        while(qr.next())
+        {
+            hcmWorker       = qr.get(tableNum(HcmWorker));
+            this.insertIntoLeaveBalanceDetailsTmp();
+        }
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

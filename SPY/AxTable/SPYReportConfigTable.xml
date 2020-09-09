@@ -6,9 +6,41 @@
 public class SPYReportConfigTable extends common
 {
 }
-
 ]]></Declaration>
-		<Methods />
+		<Methods>
+			<Method>
+				<Name>validateField</Name>
+				<Source><![CDATA[
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name = "_fieldIdToCheck"></param>
+    /// <returns></returns>
+    public boolean validateField(FieldId _fieldIdToCheck)
+    {
+        boolean ret;
+    
+        ret = super(_fieldIdToCheck);
+
+        switch(_fieldIdToCheck)
+        {
+            case fieldNum(SPYReportConfigTable, Format):
+                if(this.Layout == SPYReportConfigLayout::Form && this.Format == SPYReportConfigFormat::Excel)
+                    ret = checkFailed("@SPY:FormatExcelFormLayout");
+                break;
+
+            case fieldNum(SPYReportConfigTable, Layout):
+                if(this.Layout == SPYReportConfigLayout::Form && this.Format == SPYReportConfigFormat::Excel)
+                    ret = checkFailed("@SPY:FormatExcelFormLayout");
+                break;
+        }
+    
+        return ret;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
 	</SourceCode>
 	<ConfigurationKey>SPYPayroll</ConfigurationKey>
 	<Label>@SPY:ReportConfiguration</Label>
@@ -69,6 +101,18 @@ public class SPYReportConfigTable extends common
 				</AxTableFieldGroupField>
 			</Fields>
 		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>Print</Name>
+			<Label>@SPY:Print</Label>
+			<Fields>
+				<AxTableFieldGroupField>
+					<DataField>Layout</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>Format</DataField>
+				</AxTableFieldGroupField>
+			</Fields>
+		</AxTableFieldGroup>
 	</FieldGroups>
 	<Fields>
 		<AxTableField xmlns=""
@@ -104,6 +148,16 @@ public class SPYReportConfigTable extends common
 			<Name>WorkerQuery</Name>
 			<ExtendedDataType>SPYReportConfigFilterRecId</ExtendedDataType>
 			<Label>@SPY:WorkeryQuery</Label>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldEnum">
+			<Name>Layout</Name>
+			<EnumType>SPYReportConfigLayout</EnumType>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldEnum">
+			<Name>Format</Name>
+			<EnumType>SPYReportConfigFormat</EnumType>
 		</AxTableField>
 	</Fields>
 	<FullTextIndexes />

@@ -1,18 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Diagnostics
-  GenerationTime="2020-06-03T09:14:53.9856372+00:00">
+  GenerationTime="2020-07-29T09:59:31.5801767+00:00">
   <Items>
     <Diagnostic>
       <DiagnosticType>Compile</DiagnosticType>
       <Severity>Error</Severity>
-      <Path>dynamics://Class/SPYReportConfigService/Method/runReport</Path>
+      <Path>dynamics://Class/SPYLeaveDetailsDP/Method/processReport</Path>
       <ElementType>Class Method</ElementType>
-      <Moniker>ExpectedToken</Moniker>
-      <Line>103</Line>
-      <Column>150</Column>
-      <EndLine>103</EndLine>
-      <EndColumn>151</EndColumn>
-      <Message>')' expected.</Message>
+      <Moniker>TableDoesNotContainField</Moniker>
+      <Line>109</Line>
+      <Column>21</Column>
+      <EndLine>109</EndLine>
+      <EndColumn>50</EndColumn>
+      <Message>Table 'SPYLeaveDetailTmp' does not contain a field named 'PeriodSequence'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Error</Severity>
+      <Path>dynamics://Class/SPYLeaveDetailsDP/Method/processReport</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TableDoesNotContainField</Moniker>
+      <Line>110</Line>
+      <Column>21</Column>
+      <EndLine>110</EndLine>
+      <EndColumn>47</EndColumn>
+      <Message>Table 'SPYLeaveDetailTmp' does not contain a field named 'AbsenceCode'.</Message>
     </Diagnostic>
   </Items>
   <Aliases />

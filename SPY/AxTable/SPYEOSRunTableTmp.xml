@@ -209,6 +209,21 @@ public class SPYEOSRunTableTmp extends common
 			<Name>WorkflowStatus</Name>
 			<EnumType>SPYWorkflowStatus</EnumType>
 		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>CurrencyCode</Name>
+			<ExtendedDataType>CurrencyCode</ExtendedDataType>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>AccCurCode</Name>
+			<ExtendedDataType>CurrencyCode</ExtendedDataType>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>ReasonCode</Name>
+			<ExtendedDataType>HcmReasonCodeId</ExtendedDataType>
+		</AxTableField>
 	</Fields>
 	<FullTextIndexes />
 	<Indexes />

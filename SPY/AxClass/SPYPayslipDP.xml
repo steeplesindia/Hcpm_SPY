@@ -90,9 +90,17 @@ public class SPYPayslipDP extends SrsReportDataProviderPreProcess
         payslipDetailsTmp.PayElementCode            = payElementTable.PayElementCode;
         payslipDetailsTmp.DisplayOrder              = SPYPayrollTable::find(payElementTable.RecId).DisplayOrder;
         if(!payrollledger.ArrearPeriodLine)
+        {
             payslipDetailsTmp.PayElementDescription = payElementTable.Description;
+        }
+        else if(payrollledger.ArrearPeriodLine > payrollledger.PayrollPeriodLine)
+        {
+            payslipDetailsTmp.PayElementDescription = payElementTable.Description + "@SYS7604";
+        }
         else
+        {
             payslipDetailsTmp.PayElementDescription = payElementTable.Description + "@SPY1659";
+        }
         payslipDetailsTmp.CalcStartDate             = payrollledger.CalcStartDate;
         payslipDetailsTmp.CalcEndDate               = payrollledger.CalcEndDate;
         payslipDetailsTmp.TransDate                 = payrollledger.TransDate;

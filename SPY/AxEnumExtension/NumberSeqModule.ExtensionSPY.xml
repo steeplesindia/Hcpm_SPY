@@ -4,8 +4,9 @@
 	<EnumValues>
 		<AxEnumValue>
 			<Name>SPYPayroll</Name>
-			<Label>SPY Payroll</Label>
+			<Label>@SPY246</Label>
 		</AxEnumValue>
 	</EnumValues>
 	<PropertyModifications />
+	<ValueModifications />
 </AxEnumExtension>

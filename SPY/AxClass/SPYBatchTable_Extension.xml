@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>SPYBatchTable_Extension</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+/// <summary>
+/// Class extended to support the logging mechanism for 
+/// </summary>
+
+[ExtensionOf(tablestr(Batch))]
+final class SPYBatchTable_Extension
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>update</Name>
+				<Source><![CDATA[
+    public void update()
+    {
+        Batch                       batchRecordFind;
+        BatchJob                    batchJobLoc;
+        SPYPayrollProcessLogHeader  payrollProcessLogHeaderLoc;
+
+        next update();
+
+        select firstonly RecId from batchJobLoc
+        where batchJobLoc.RecId == this.BatchJobId
+           && batchJobLoc.Caption == 'Payroll Multiple Batch Task';
+
+        if (batchJobLoc.RecId != 0)
+        {
+            select firstonly RecId from batchRecordFind
+            where batchRecordFind.BatchJobId == batchJobLoc.RecId
+              &&  (batchRecordFind.Status != BatchStatus::Error
+                    && batchRecordFind.Status != BatchStatus::Finished);
+
+            if (batchRecordFind.RecId == 0)
+            {
+                ttsBegin;
+                select forupdate payrollProcessLogHeaderLoc
+                    order by RecId desc;
+
+                if (payrollProcessLogHeaderLoc)
+                {
+                    payrollProcessLogHeaderLoc.PayProcessEndTime = DateTimeUtil::time(DateTimeUtil::getSystemDateTime());
+                    payrollProcessLogHeaderLoc.update();
+                }
+                    
+                ttsCommit;
+            }
+        }
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

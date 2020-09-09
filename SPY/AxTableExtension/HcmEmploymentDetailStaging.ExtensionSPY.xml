@@ -103,6 +103,17 @@
 			<ExtendedDataType>SPYPayrollPeriodCode</ExtendedDataType>
 			<Mandatory>Yes</Mandatory>
 		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldEnum">
+			<Name>SPYPlannedWorkingHourSource</Name>
+			<ConfigurationKey>SPYPayroll</ConfigurationKey>
+			<EnumType>SPYPlannedWorkingHourSource</EnumType>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldEnum">
+			<Name>SPYTimesheetProcessSource</Name>
+			<EnumType>SPYTimesheetProcessSource</EnumType>
+		</AxTableField>
 	</Fields>
 	<Indexes />
 	<Mappings />

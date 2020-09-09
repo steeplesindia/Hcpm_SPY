@@ -28,16 +28,12 @@
                 <rd:DefaultName>Textbox4</rd:DefaultName>
                 <Top>0.02083in</Top>
                 <Left>0.00006in</Left>
-                <Height>0.18056in</Height>
+                <Height>0.16056in</Height>
                 <Width>1.05844in</Width>
                 <Style>
                   <Border>
                     <Style>None</Style>
                   </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
               <Textbox Name="Textbox5">
@@ -66,21 +62,16 @@
                 <rd:DefaultName>Textbox4</rd:DefaultName>
                 <Top>0.02361in</Top>
                 <Left>3.9987in</Left>
-                <Height>0.20834in</Height>
+                <Height>0.14in</Height>
                 <Width>1.15437in</Width>
                 <ZIndex>1</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
                   </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
               <Textbox Name="EOSDate">
-                <CanGrow>true</CanGrow>
                 <KeepTogether>true</KeepTogether>
                 <Paragraphs>
                   <Paragraph>
@@ -101,18 +92,14 @@
                 </Paragraphs>
                 <rd:DefaultName>EOSDate</rd:DefaultName>
                 <Top>0.20139in</Top>
-                <Left>5.22581in</Left>
-                <Height>0.19444in</Height>
-                <Width>1.71962in</Width>
+                <Left>5.48831in</Left>
+                <Height>0.14in</Height>
+                <Width>1.34939in</Width>
                 <ZIndex>2</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
                   </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
               <Textbox Name="Name">
@@ -135,17 +122,13 @@
                 <rd:DefaultName>Name</rd:DefaultName>
                 <Top>0.02083in</Top>
                 <Left>1.14942in</Left>
-                <Height>0.18056in</Height>
+                <Height>0.16in</Height>
                 <Width>2.65394in</Width>
                 <ZIndex>3</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
                   </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
               <Textbox Name="Textbox15">
@@ -171,21 +154,16 @@
                 <rd:DefaultName>Textbox15</rd:DefaultName>
                 <Top>0.20417in</Top>
                 <Left>3.9987in</Left>
-                <Height>0.19444in</Height>
+                <Height>0.14in</Height>
                 <Width>1.15437in</Width>
                 <ZIndex>4</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
                   </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
               <Textbox Name="WorkerStartDate">
-                <CanGrow>true</CanGrow>
                 <KeepTogether>true</KeepTogether>
                 <Paragraphs>
                   <Paragraph>
@@ -205,19 +183,15 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>WorkerStartDate</rd:DefaultName>
-                <Top>0.00278in</Top>
-                <Left>5.22581in</Left>
-                <Height>0.20139in</Height>
-                <Width>1.71962in</Width>
+                <Top>0.01528in</Top>
+                <Left>5.47581in</Left>
+                <Height>0.14in</Height>
+                <Width>1.34939in</Width>
                 <ZIndex>5</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
                   </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
               <Textbox Name="JobTittle">
@@ -240,17 +214,13 @@
                 <rd:DefaultName>JobTittle</rd:DefaultName>
                 <Top>0.20139in</Top>
                 <Left>1.14942in</Left>
-                <Height>0.19444in</Height>
+                <Height>0.16in</Height>
                 <Width>2.65394in</Width>
                 <ZIndex>6</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
                   </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
               <Textbox Name="Textbox16">
@@ -274,25 +244,21 @@
                 <rd:DefaultName>Textbox16</rd:DefaultName>
                 <Top>0.20139in</Top>
                 <Left>0.00006in</Left>
-                <Height>0.19444in</Height>
+                <Height>0.16in</Height>
                 <Width>1.05844in</Width>
                 <ZIndex>7</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
                   </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>0.06944in</Top>
+            <Top>0.45694in</Top>
             <Left>0.00018in</Left>
             <Height>0.42361in</Height>
-            <Width>6.94543in</Width>
+            <Width>6.90403in</Width>
             <Style>
               <Border>
                 <Color>Silver</Color>
@@ -321,18 +287,14 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>GratuityDays</rd:DefaultName>
-                <Top>0.51739in</Top>
-                <Left>3.40656in</Left>
-                <Height>0.1875in</Height>
+                <Top>0.32989in</Top>
+                <Left>3.1in</Left>
+                <Height>0.15in</Height>
                 <Width>0.84296in</Width>
                 <Style>
                   <Border>
                     <Style>None</Style>
                   </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
               <Textbox Name="GratuityAmount">
@@ -354,53 +316,15 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>GratuityAmount</rd:DefaultName>
-                <Top>0.51739in</Top>
-                <Left>6.18163in</Left>
-                <Height>0.1875in</Height>
+                <Top>0.29239in</Top>
+                <Left>6.11913in</Left>
+                <Height>0.16in</Height>
                 <Width>0.7375in</Width>
                 <ZIndex>1</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
                   </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="AFZOvertime1">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>=Sum(Fields!AbsenceDays.Value, "SPYEOSRunTableDS")</Value>
-                        <Style>
-                          <FontFamily>Segoe UI</FontFamily>
-                          <FontSize>8pt</FontSize>
-                          <Format>f2</Format>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>AFZOvertime1</rd:DefaultName>
-                <Top>0.35072in</Top>
-                <Left>3.40656in</Left>
-                <Height>0.16667in</Height>
-                <Width>0.84296in</Width>
-                <ZIndex>2</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
               <Textbox Name="Textbox6">
@@ -421,51 +345,14 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox6</rd:DefaultName>
-                <Top>0.19794in</Top>
-                <Left>0in</Left>
-                <Height>0.13889in</Height>
+                <Top>0.17294in</Top>
+                <Height>0.14in</Height>
                 <Width>2.66666in</Width>
-                <ZIndex>3</ZIndex>
+                <ZIndex>2</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
                   </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="Textbox9">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>No of Unpaid leave days during period of service</Value>
-                        <Style>
-                          <FontFamily>Segoe UI</FontFamily>
-                          <FontSize>8pt</FontSize>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox6</rd:DefaultName>
-                <Top>0.35072in</Top>
-                <Height>0.19444in</Height>
-                <Width>2.66666in</Width>
-                <ZIndex>4</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
               <Textbox Name="Textbox31">
@@ -486,18 +373,14 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox31</rd:DefaultName>
-                <Top>0.54169in</Top>
-                <Height>0.1632in</Height>
+                <Top>0.35419in</Top>
+                <Height>0.1432in</Height>
                 <Width>2.66666in</Width>
-                <ZIndex>5</ZIndex>
+                <ZIndex>3</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
                   </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
               <Textbox Name="NoOfDays">
@@ -518,26 +401,22 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>NoOfDays</rd:DefaultName>
-                <Top>0.17016in</Top>
-                <Left>3.40656in</Left>
-                <Height>0.16667in</Height>
+                <Top>0.14516in</Top>
+                <Left>3.1in</Left>
+                <Height>0.14in</Height>
                 <Width>0.84296in</Width>
-                <ZIndex>6</ZIndex>
+                <ZIndex>4</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
                   </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>0.89928in</Top>
-            <Height>0.7396in</Height>
-            <Width>6.95298in</Width>
+            <Top>1.33678in</Top>
+            <Height>0.49739in</Height>
+            <Width>6.91913in</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -553,15 +432,18 @@
                   <Width>2.13616in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.45935in</Width>
+                  <Width>1.83435in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.32602in</Width>
+                  <Width>1in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.94403in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.16145in</Height>
+                  <Height>0.1927in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -644,7 +526,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Daily</Value>
+                                  <Value>Currency</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -658,6 +540,42 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox13</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>Silver</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox25">
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=First(Fields!AccCurCode.Value, "SPYEOSRunTableDS")</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox25</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -724,10 +642,6 @@
                               <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -781,24 +695,20 @@
                               <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Daily">
+                        <Textbox Name="CurrencyCode">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Daily.Value</Value>
+                                  <Value>=Fields!CurrencyCode.Value</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -810,27 +720,27 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Daily</rd:DefaultName>
+                          <rd:DefaultName>CurrencyCode</rd:DefaultName>
                           <CustomProperties>
                             <CustomProperty>
                               <Name>AXDataType</Name>
-                              <Value><![CDATA[Float]]></Value>
+                              <Value><![CDATA[String]]></Value>
                             </CustomProperty>
                             <CustomProperty>
                               <Name>AXEDTFormat</Name>
-                              <Value><![CDATA[SPYWorkerPositionPayrollTmp.Daily]]></Value>
+                              <Value><![CDATA[SPYWorkerPositionPayrollTmp.CurrencyCode]]></Value>
                             </CustomProperty>
                             <CustomProperty>
                               <Name>AXEDTTextAlign</Name>
-                              <Value><![CDATA[SPYWorkerPositionPayrollTmp.Daily]]></Value>
+                              <Value><![CDATA[SPYWorkerPositionPayrollTmp.CurrencyCode]]></Value>
                             </CustomProperty>
                             <CustomProperty>
                               <Name>AXEDTDirection</Name>
-                              <Value><![CDATA[SPYWorkerPositionPayrollTmp.Daily]]></Value>
+                              <Value><![CDATA[SPYWorkerPositionPayrollTmp.CurrencyCode]]></Value>
                             </CustomProperty>
                             <CustomProperty>
                               <Name>AXFieldName</Name>
-                              <Value><![CDATA[Daily]]></Value>
+                              <Value><![CDATA[CurrencyCode]]></Value>
                             </CustomProperty>
                           </CustomProperties>
                           <Style>
@@ -838,10 +748,37 @@
                               <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox20">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox20</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>White</Color>
+                              <Style>Solid</Style>
+                            </Border>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -852,6 +789,7 @@
             </TablixBody>
             <TablixColumnHierarchy>
               <TablixMembers>
+                <TablixMember />
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
@@ -868,10 +806,10 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>SPYWorkerPositionPayrollTmpDS</DataSetName>
-            <Top>0.53471in</Top>
+            <Top>0.92221in</Top>
             <Left>0.00018in</Left>
-            <Height>0.33332in</Height>
-            <Width>6.92154in</Width>
+            <Height>0.36457in</Height>
+            <Width>6.91454in</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -909,8 +847,9 @@
                         </Style>
                       </TextRun>
                       <TextRun>
-                        <Value xml:space="preserve">                                                 </Value>
+                        <Value xml:space="preserve">                                          </Value>
                         <Style>
+                          <FontFamily>Segoe UI</FontFamily>
                           <FontWeight>Bold</FontWeight>
                         </Style>
                       </TextRun>
@@ -923,13 +862,29 @@
                         </Style>
                       </TextRun>
                       <TextRun>
-                        <Value xml:space="preserve">                                                       </Value>
+                        <Value xml:space="preserve">                                                          </Value>
                         <Style>
+                          <FontFamily>Segoe UI</FontFamily>
                           <FontWeight>Bold</FontWeight>
                         </Style>
                       </TextRun>
                       <TextRun>
-                        <Value>AED </Value>
+                        <Value>=First(Fields!CurrencyCode.Value, "SPYEOSRunTableDS")</Value>
+                        <Style>
+                          <FontFamily>Segoe UI</FontFamily>
+                          <FontSize>8pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                      <TextRun>
+                        <Value xml:space="preserve"> </Value>
+                        <Style>
+                          <FontFamily>Segoe UI</FontFamily>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                      <TextRun>
+                        <Value xml:space="preserve"> </Value>
                         <Style>
                           <FontFamily>Segoe UI</FontFamily>
                           <FontSize>8pt</FontSize>
@@ -937,22 +892,21 @@
                         </Style>
                       </TextRun>
                     </TextRuns>
-                    <Style />
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox2</rd:DefaultName>
+                <Top>0.01359in</Top>
                 <Left>0.00006in</Left>
-                <Height>0.1875in</Height>
-                <Width>6.94147in</Width>
+                <Height>0.16in</Height>
+                <Width>6.90397in</Width>
                 <Style>
                   <Border>
                     <Style>None</Style>
                   </Border>
                   <BackgroundColor>Silver</BackgroundColor>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
               <Textbox Name="Textbox18">
@@ -975,17 +929,13 @@
                 <rd:DefaultName>Textbox6</rd:DefaultName>
                 <Top>0.18748in</Top>
                 <Left>0.00006in</Left>
-                <Height>0.18403in</Height>
+                <Height>0.16in</Height>
                 <Width>2.66642in</Width>
                 <ZIndex>1</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
                   </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
               <Textbox Name="Textbox24">
@@ -1007,17 +957,13 @@
                 </Paragraphs>
                 <rd:DefaultName>Textbox6</rd:DefaultName>
                 <Top>0.70485in</Top>
-                <Height>0.18056in</Height>
+                <Height>0.16in</Height>
                 <Width>2.66687in</Width>
                 <ZIndex>2</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
                   </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
               <Textbox Name="Textbox28">
@@ -1040,17 +986,13 @@
                 <rd:DefaultName>Textbox6</rd:DefaultName>
                 <Top>1.08679in</Top>
                 <Left>0.00006in</Left>
-                <Height>0.1875in</Height>
+                <Height>0.16in</Height>
                 <Width>2.66687in</Width>
                 <ZIndex>3</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
                   </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
               <Textbox Name="Textbox26">
@@ -1073,17 +1015,13 @@
                 <rd:DefaultName>Textbox6</rd:DefaultName>
                 <Top>0.8993in</Top>
                 <Left>0.00006in</Left>
-                <Height>0.18749in</Height>
+                <Height>0.16in</Height>
                 <Width>2.66687in</Width>
                 <ZIndex>4</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
                   </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
               <Textbox Name="LeaveOpenBal">
@@ -1106,18 +1044,14 @@
                 </Paragraphs>
                 <rd:DefaultName>LeaveOpenBal</rd:DefaultName>
                 <Top>0.18748in</Top>
-                <Left>3.46315in</Left>
-                <Height>0.18403in</Height>
+                <Left>3.1in</Left>
+                <Height>0.16in</Height>
                 <Width>0.84296in</Width>
                 <ZIndex>5</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
                   </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
               <Textbox Name="LeaveEntitlement">
@@ -1127,7 +1061,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>=Sum(Fields!LeaveEntitlement.Value, "SPYEOSRunTableDS") * -1</Value>
+                        <Value>=Sum(Fields!LeaveEntitlement.Value, "SPYEOSRunTableDS")</Value>
                         <Style>
                           <FontFamily>Segoe UI</FontFamily>
                           <FontSize>8pt</FontSize>
@@ -1140,18 +1074,14 @@
                 </Paragraphs>
                 <rd:DefaultName>LeaveEntitlement</rd:DefaultName>
                 <Top>0.37151in</Top>
-                <Left>3.46496in</Left>
-                <Height>0.16667in</Height>
+                <Left>3.1in</Left>
+                <Height>0.16in</Height>
                 <Width>0.84296in</Width>
                 <ZIndex>6</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
                   </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
               <Textbox Name="LeaveAdjustment">
@@ -1174,18 +1104,14 @@
                 </Paragraphs>
                 <rd:DefaultName>LeaveAdjustment</rd:DefaultName>
                 <Top>0.53818in</Top>
-                <Left>3.46315in</Left>
-                <Height>0.18055in</Height>
+                <Left>3.1in</Left>
+                <Height>0.16in</Height>
                 <Width>0.84296in</Width>
                 <ZIndex>7</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
                   </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
               <Textbox Name="LeaveClosingBal">
@@ -1208,18 +1134,14 @@
                 </Paragraphs>
                 <rd:DefaultName>LeaveClosingBal</rd:DefaultName>
                 <Top>0.89929in</Top>
-                <Left>3.46315in</Left>
-                <Height>0.1875in</Height>
+                <Left>3.1in</Left>
+                <Height>0.16in</Height>
                 <Width>0.84296in</Width>
                 <ZIndex>8</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
                   </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
               <Textbox Name="LeaveDaysEncashed">
@@ -1242,18 +1164,14 @@
                 </Paragraphs>
                 <rd:DefaultName>LeaveDaysEncashed</rd:DefaultName>
                 <Top>1.08679in</Top>
-                <Left>3.46315in</Left>
-                <Height>0.1875in</Height>
+                <Left>3.1in</Left>
+                <Height>0.16in</Height>
                 <Width>0.84296in</Width>
                 <ZIndex>9</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
                   </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
               <Textbox Name="LeaveEncashment">
@@ -1263,7 +1181,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>=Sum(Fields!LeaveEncashment.Value, "SPYEOSRunTableDS")</Value>
+                        <Value>=First(Fields!LeaveEncashment.Value, "SPYEOSRunTableDS")</Value>
                         <Style>
                           <FontFamily>Segoe UI</FontFamily>
                           <FontSize>8pt</FontSize>
@@ -1271,23 +1189,21 @@
                         </Style>
                       </TextRun>
                     </TextRuns>
-                    <Style />
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>LeaveEncashment</rd:DefaultName>
                 <Top>1.08679in</Top>
-                <Left>6.17148in</Left>
-                <Height>0.1875in</Height>
+                <Left>6.05898in</Left>
+                <Height>0.16in</Height>
                 <Width>0.77005in</Width>
                 <ZIndex>10</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
                   </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
               <Textbox Name="LeaveTaken">
@@ -1310,18 +1226,14 @@
                 </Paragraphs>
                 <rd:DefaultName>LeaveTaken</rd:DefaultName>
                 <Top>0.71873in</Top>
-                <Left>3.46315in</Left>
-                <Height>0.18056in</Height>
+                <Left>3.1in</Left>
+                <Height>0.16in</Height>
                 <Width>0.84296in</Width>
                 <ZIndex>11</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
                   </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
               <Textbox Name="Textbox21">
@@ -1343,17 +1255,13 @@
                 </Paragraphs>
                 <rd:DefaultName>Textbox6</rd:DefaultName>
                 <Top>0.53818in</Top>
-                <Height>0.16667in</Height>
+                <Height>0.15in</Height>
                 <Width>2.66648in</Width>
                 <ZIndex>12</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
                   </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
               <Textbox Name="Textbox22">
@@ -1376,25 +1284,21 @@
                 <rd:DefaultName>Textbox6</rd:DefaultName>
                 <Top>0.37151in</Top>
                 <Left>0.00045in</Left>
-                <Height>0.16667in</Height>
+                <Height>0.15in</Height>
                 <Width>2.66648in</Width>
                 <ZIndex>13</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
                   </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>1.63195in</Top>
+            <Top>1.86945in</Top>
             <Left>0.00018in</Left>
             <Height>1.2847in</Height>
-            <Width>6.9528in</Width>
+            <Width>6.90403in</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
@@ -1405,65 +1309,254 @@
           </Rectangle>
           <Rectangle Name="Rectangle4">
             <ReportItems>
-              <Textbox Name="Textbox3">
-                <CanGrow>true</CanGrow>
+              <Rectangle Name="Rectangle8">
+                <ReportItems>
+                  <Rectangle Name="Rectangle11">
+                    <ReportItems>
+                      <Tablix Name="Tablix3">
+                        <TablixBody>
+                          <TablixColumns>
+                            <TablixColumn>
+                              <Width>1.62746in</Width>
+                            </TablixColumn>
+                            <TablixColumn>
+                              <Width>1.68996in</Width>
+                            </TablixColumn>
+                          </TablixColumns>
+                          <TablixRows>
+                            <TablixRow>
+                              <Height>0.16611in</Height>
+                              <TablixCells>
+                                <TablixCell>
+                                  <CellContents>
+                                    <Textbox Name="Textbox48">
+                                      <CanGrow>true</CanGrow>
+                                      <KeepTogether>true</KeepTogether>
+                                      <Paragraphs>
+                                        <Paragraph>
+                                          <TextRuns>
+                                            <TextRun>
+                                              <Value>Description</Value>
+                                              <Style>
+                                                <FontFamily>Segoe UI</FontFamily>
+                                                <FontSize>8pt</FontSize>
+                                                <FontWeight>Bold</FontWeight>
+                                              </Style>
+                                            </TextRun>
+                                          </TextRuns>
+                                          <Style />
+                                        </Paragraph>
+                                      </Paragraphs>
+                                      <rd:DefaultName>Textbox48</rd:DefaultName>
+                                      <Style>
+                                        <Border>
+                                          <Style>None</Style>
+                                        </Border>
+                                      </Style>
+                                    </Textbox>
+                                  </CellContents>
+                                </TablixCell>
+                                <TablixCell>
+                                  <CellContents>
+                                    <Textbox Name="Textbox50">
+                                      <CanGrow>true</CanGrow>
+                                      <KeepTogether>true</KeepTogether>
+                                      <Paragraphs>
+                                        <Paragraph>
+                                          <TextRuns>
+                                            <TextRun>
+                                              <Value>Amount</Value>
+                                              <Style>
+                                                <FontFamily>Segoe UI</FontFamily>
+                                                <FontSize>8pt</FontSize>
+                                                <FontWeight>Bold</FontWeight>
+                                              </Style>
+                                            </TextRun>
+                                          </TextRuns>
+                                          <Style>
+                                            <TextAlign>Right</TextAlign>
+                                          </Style>
+                                        </Paragraph>
+                                      </Paragraphs>
+                                      <rd:DefaultName>Textbox50</rd:DefaultName>
+                                      <Style>
+                                        <Border>
+                                          <Style>None</Style>
+                                        </Border>
+                                      </Style>
+                                    </Textbox>
+                                  </CellContents>
+                                </TablixCell>
+                              </TablixCells>
+                            </TablixRow>
+                            <TablixRow>
+                              <Height>0.15222in</Height>
+                              <TablixCells>
+                                <TablixCell>
+                                  <CellContents>
+                                    <Textbox Name="Description2">
+                                      <CanGrow>true</CanGrow>
+                                      <KeepTogether>true</KeepTogether>
+                                      <Paragraphs>
+                                        <Paragraph>
+                                          <TextRuns>
+                                            <TextRun>
+                                              <Value>=Fields!Description.Value</Value>
+                                              <Style>
+                                                <FontFamily>Segoe UI</FontFamily>
+                                                <FontSize>8pt</FontSize>
+                                              </Style>
+                                            </TextRun>
+                                          </TextRuns>
+                                          <Style />
+                                        </Paragraph>
+                                      </Paragraphs>
+                                      <rd:DefaultName>Description2</rd:DefaultName>
+                                      <CustomProperties>
+                                        <CustomProperty>
+                                          <Name>AXDataType</Name>
+                                          <Value><![CDATA[String]]></Value>
+                                        </CustomProperty>
+                                        <CustomProperty>
+                                          <Name>AXEDTFormat</Name>
+                                          <Value><![CDATA[SPYEOSRunPayrollTmp.Description]]></Value>
+                                        </CustomProperty>
+                                        <CustomProperty>
+                                          <Name>AXEDTTextAlign</Name>
+                                          <Value><![CDATA[SPYEOSRunPayrollTmp.Description]]></Value>
+                                        </CustomProperty>
+                                        <CustomProperty>
+                                          <Name>AXEDTDirection</Name>
+                                          <Value><![CDATA[SPYEOSRunPayrollTmp.Description]]></Value>
+                                        </CustomProperty>
+                                        <CustomProperty>
+                                          <Name>AXFieldName</Name>
+                                          <Value><![CDATA[Description]]></Value>
+                                        </CustomProperty>
+                                      </CustomProperties>
+                                      <Style>
+                                        <Border>
+                                          <Style>None</Style>
+                                        </Border>
+                                      </Style>
+                                    </Textbox>
+                                  </CellContents>
+                                </TablixCell>
+                                <TablixCell>
+                                  <CellContents>
+                                    <Textbox Name="AccountingCurrencyAmount1">
+                                      <CanGrow>true</CanGrow>
+                                      <KeepTogether>true</KeepTogether>
+                                      <Paragraphs>
+                                        <Paragraph>
+                                          <TextRuns>
+                                            <TextRun>
+                                              <Value>=-Fields!AccountingCurrencyAmount.Value</Value>
+                                              <Style>
+                                                <FontFamily>Segoe UI</FontFamily>
+                                                <FontSize>8pt</FontSize>
+                                                <Format>0.00;(0.00)</Format>
+                                              </Style>
+                                            </TextRun>
+                                          </TextRuns>
+                                          <Style>
+                                            <TextAlign>Right</TextAlign>
+                                          </Style>
+                                        </Paragraph>
+                                      </Paragraphs>
+                                      <rd:DefaultName>AccountingCurrencyAmount1</rd:DefaultName>
+                                      <CustomProperties>
+                                        <CustomProperty>
+                                          <Name>AXDataType</Name>
+                                          <Value>Float</Value>
+                                        </CustomProperty>
+                                      </CustomProperties>
+                                      <Style>
+                                        <Border>
+                                          <Style>None</Style>
+                                        </Border>
+                                      </Style>
+                                    </Textbox>
+                                  </CellContents>
+                                </TablixCell>
+                              </TablixCells>
+                            </TablixRow>
+                          </TablixRows>
+                        </TablixBody>
+                        <TablixColumnHierarchy>
+                          <TablixMembers>
+                            <TablixMember />
+                            <TablixMember />
+                          </TablixMembers>
+                        </TablixColumnHierarchy>
+                        <TablixRowHierarchy>
+                          <TablixMembers>
+                            <TablixMember>
+                              <KeepWithGroup>After</KeepWithGroup>
+                            </TablixMember>
+                            <TablixMember>
+                              <Group Name="Details3" />
+                            </TablixMember>
+                          </TablixMembers>
+                        </TablixRowHierarchy>
+                        <DataSetName>SPYEOSRunPayrollDS</DataSetName>
+                        <Filters>
+                          <Filter>
+                            <FilterExpression>=Fields!AccountingCurrencyAmount.Value</FilterExpression>
+                            <Operator>LessThan</Operator>
+                            <FilterValues>
+                              <FilterValue DataType="Float">0</FilterValue>
+                            </FilterValues>
+                          </Filter>
+                        </Filters>
+                        <SortExpressions>
+                          <SortExpression>
+                            <Value>=Fields!CalculationOrder.Value</Value>
+                          </SortExpression>
+                        </SortExpressions>
+                        <Left>0.02778in</Left>
+                        <Height>0.31833in</Height>
+                        <Width>3.31742in</Width>
+                        <Style>
+                          <Border>
+                            <Color>LightGrey</Color>
+                            <Style>None</Style>
+                          </Border>
+                        </Style>
+                      </Tablix>
+                    </ReportItems>
+                    <KeepTogether>true</KeepTogether>
+                    <Top>0.00583in</Top>
+                    <Height>0.31833in</Height>
+                    <Width>3.4077in</Width>
+                    <Style>
+                      <Border>
+                        <Color>White</Color>
+                        <Style>None</Style>
+                        <Width>2pt</Width>
+                      </Border>
+                      <LeftBorder>
+                        <Color>White</Color>
+                      </LeftBorder>
+                    </Style>
+                  </Rectangle>
+                </ReportItems>
                 <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value xml:space="preserve">                               </Value>
-                        <Style>
-                          <FontWeight>Bold</FontWeight>
-                        </Style>
-                      </TextRun>
-                      <TextRun>
-                        <Value>Earnings</Value>
-                        <Style>
-                          <FontFamily>Segoe UI</FontFamily>
-                          <FontSize>8pt</FontSize>
-                          <FontWeight>Bold</FontWeight>
-                        </Style>
-                      </TextRun>
-                      <TextRun>
-                        <Value xml:space="preserve">                                                                        </Value>
-                        <Style>
-                          <FontWeight>Bold</FontWeight>
-                        </Style>
-                      </TextRun>
-                      <TextRun>
-                        <Value>Deductions</Value>
-                        <Style>
-                          <FontFamily>Segoe UI</FontFamily>
-                          <FontSize>8pt</FontSize>
-                          <FontWeight>Bold</FontWeight>
-                        </Style>
-                      </TextRun>
-                      <TextRun>
-                        <Value xml:space="preserve">               </Value>
-                        <Style>
-                          <FontWeight>Bold</FontWeight>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox2</rd:DefaultName>
-                <Left>0.01054in</Left>
-                <Height>0.20027in</Height>
-                <Width>6.90841in</Width>
+                <Top>0.19861in</Top>
+                <Left>3.51125in</Left>
+                <Height>0.33in</Height>
+                <Width>3.4077in</Width>
                 <Style>
                   <Border>
+                    <Color>White</Color>
                     <Style>None</Style>
+                    <Width>2pt</Width>
                   </Border>
-                  <BackgroundColor>Silver</BackgroundColor>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
+                  <LeftBorder>
+                    <Color>White</Color>
+                  </LeftBorder>
                 </Style>
-              </Textbox>
+              </Rectangle>
               <Rectangle Name="Rectangle7">
                 <ReportItems>
                   <Tablix Name="Tablix1">
@@ -1503,13 +1596,8 @@
                                   <rd:DefaultName>Textbox46</rd:DefaultName>
                                   <Style>
                                     <Border>
-                                      <Color>White</Color>
-                                      <Style>Solid</Style>
+                                      <Style>None</Style>
                                     </Border>
-                                    <PaddingLeft>2pt</PaddingLeft>
-                                    <PaddingRight>2pt</PaddingRight>
-                                    <PaddingTop>2pt</PaddingTop>
-                                    <PaddingBottom>2pt</PaddingBottom>
                                   </Style>
                                 </Textbox>
                               </CellContents>
@@ -1539,13 +1627,8 @@
                                   <rd:DefaultName>Textbox42</rd:DefaultName>
                                   <Style>
                                     <Border>
-                                      <Color>White</Color>
-                                      <Style>Solid</Style>
+                                      <Style>None</Style>
                                     </Border>
-                                    <PaddingLeft>2pt</PaddingLeft>
-                                    <PaddingRight>2pt</PaddingRight>
-                                    <PaddingTop>2pt</PaddingTop>
-                                    <PaddingBottom>2pt</PaddingBottom>
                                   </Style>
                                 </Textbox>
                               </CellContents>
@@ -1599,27 +1682,22 @@
                                   </CustomProperties>
                                   <Style>
                                     <Border>
-                                      <Color>White</Color>
-                                      <Style>Solid</Style>
+                                      <Style>None</Style>
                                     </Border>
-                                    <PaddingLeft>2pt</PaddingLeft>
-                                    <PaddingRight>2pt</PaddingRight>
-                                    <PaddingTop>2pt</PaddingTop>
-                                    <PaddingBottom>2pt</PaddingBottom>
                                   </Style>
                                 </Textbox>
                               </CellContents>
                             </TablixCell>
                             <TablixCell>
                               <CellContents>
-                                <Textbox Name="TransactionCurrencyAmount">
+                                <Textbox Name="AccountingCurrencyAmount">
                                   <CanGrow>true</CanGrow>
                                   <KeepTogether>true</KeepTogether>
                                   <Paragraphs>
                                     <Paragraph>
                                       <TextRuns>
                                         <TextRun>
-                                          <Value>=Fields!TransactionCurrencyAmount.Value</Value>
+                                          <Value>=Fields!AccountingCurrencyAmount.Value</Value>
                                           <Style>
                                             <FontFamily>Segoe UI</FontFamily>
                                             <FontSize>8pt</FontSize>
@@ -1631,7 +1709,7 @@
                                       </Style>
                                     </Paragraph>
                                   </Paragraphs>
-                                  <rd:DefaultName>TransactionCurrencyAmount</rd:DefaultName>
+                                  <rd:DefaultName>AccountingCurrencyAmount</rd:DefaultName>
                                   <CustomProperties>
                                     <CustomProperty>
                                       <Name>AXDataType</Name>
@@ -1639,30 +1717,25 @@
                                     </CustomProperty>
                                     <CustomProperty>
                                       <Name>AXEDTFormat</Name>
-                                      <Value><![CDATA[SPYEOSRunPayrollTmp.TransactionCurrencyAmount]]></Value>
+                                      <Value><![CDATA[SPYEOSRunPayrollTmp.AccountingCurrencyAmount]]></Value>
                                     </CustomProperty>
                                     <CustomProperty>
                                       <Name>AXEDTTextAlign</Name>
-                                      <Value><![CDATA[SPYEOSRunPayrollTmp.TransactionCurrencyAmount]]></Value>
+                                      <Value><![CDATA[SPYEOSRunPayrollTmp.AccountingCurrencyAmount]]></Value>
                                     </CustomProperty>
                                     <CustomProperty>
                                       <Name>AXEDTDirection</Name>
-                                      <Value><![CDATA[SPYEOSRunPayrollTmp.TransactionCurrencyAmount]]></Value>
+                                      <Value><![CDATA[SPYEOSRunPayrollTmp.AccountingCurrencyAmount]]></Value>
                                     </CustomProperty>
                                     <CustomProperty>
                                       <Name>AXFieldName</Name>
-                                      <Value><![CDATA[TransactionCurrencyAmount]]></Value>
+                                      <Value><![CDATA[AccountingCurrencyAmount]]></Value>
                                     </CustomProperty>
                                   </CustomProperties>
                                   <Style>
                                     <Border>
-                                      <Color>White</Color>
-                                      <Style>Solid</Style>
+                                      <Style>None</Style>
                                     </Border>
-                                    <PaddingLeft>2pt</PaddingLeft>
-                                    <PaddingRight>2pt</PaddingRight>
-                                    <PaddingTop>2pt</PaddingTop>
-                                    <PaddingBottom>2pt</PaddingBottom>
                                   </Style>
                                 </Textbox>
                               </CellContents>
@@ -1690,16 +1763,21 @@
                     <DataSetName>SPYEOSRunPayrollDS</DataSetName>
                     <Filters>
                       <Filter>
-                        <FilterExpression>=Fields!PayrollType.Value</FilterExpression>
-                        <Operator>Equal</Operator>
+                        <FilterExpression>=Fields!AccountingCurrencyAmount.Value</FilterExpression>
+                        <Operator>GreaterThan</Operator>
                         <FilterValues>
-                          <FilterValue>Earning</FilterValue>
+                          <FilterValue DataType="Float">0</FilterValue>
                         </FilterValues>
                       </Filter>
                     </Filters>
+                    <SortExpressions>
+                      <SortExpression>
+                        <Value>=Fields!CalculationOrder.Value</Value>
+                      </SortExpression>
+                    </SortExpressions>
                     <Left>0.01563in</Left>
-                    <Height>0.31832in</Height>
-                    <Width>3.42097in</Width>
+                    <Height>0.31833in</Height>
+                    <Width>3.42098in</Width>
                     <Style>
                       <Border>
                         <Color>LightGrey</Color>
@@ -1709,9 +1787,9 @@
                   </Tablix>
                 </ReportItems>
                 <KeepTogether>true</KeepTogether>
-                <Top>0.23611in</Top>
-                <Left>0.01054in</Left>
-                <Height>0.31832in</Height>
+                <Top>0.17929in</Top>
+                <Left>0.0052in</Left>
+                <Height>0.31833in</Height>
                 <Width>3.50071in</Width>
                 <ZIndex>1</ZIndex>
                 <Style>
@@ -1725,274 +1803,12 @@
                   </RightBorder>
                 </Style>
               </Rectangle>
-              <Rectangle Name="Rectangle8">
-                <ReportItems>
-                  <Tablix Name="Tablix3">
-                    <TablixBody>
-                      <TablixColumns>
-                        <TablixColumn>
-                          <Width>1.68996in</Width>
-                        </TablixColumn>
-                        <TablixColumn>
-                          <Width>1.68996in</Width>
-                        </TablixColumn>
-                      </TablixColumns>
-                      <TablixRows>
-                        <TablixRow>
-                          <Height>0.16611in</Height>
-                          <TablixCells>
-                            <TablixCell>
-                              <CellContents>
-                                <Textbox Name="Textbox48">
-                                  <CanGrow>true</CanGrow>
-                                  <KeepTogether>true</KeepTogether>
-                                  <Paragraphs>
-                                    <Paragraph>
-                                      <TextRuns>
-                                        <TextRun>
-                                          <Value>Description</Value>
-                                          <Style>
-                                            <FontFamily>Segoe UI</FontFamily>
-                                            <FontSize>8pt</FontSize>
-                                            <FontWeight>Bold</FontWeight>
-                                          </Style>
-                                        </TextRun>
-                                      </TextRuns>
-                                      <Style />
-                                    </Paragraph>
-                                  </Paragraphs>
-                                  <rd:DefaultName>Textbox48</rd:DefaultName>
-                                  <Style>
-                                    <Border>
-                                      <Color>White</Color>
-                                      <Style>Solid</Style>
-                                    </Border>
-                                    <PaddingLeft>2pt</PaddingLeft>
-                                    <PaddingRight>2pt</PaddingRight>
-                                    <PaddingTop>2pt</PaddingTop>
-                                    <PaddingBottom>2pt</PaddingBottom>
-                                  </Style>
-                                </Textbox>
-                              </CellContents>
-                            </TablixCell>
-                            <TablixCell>
-                              <CellContents>
-                                <Textbox Name="Textbox50">
-                                  <CanGrow>true</CanGrow>
-                                  <KeepTogether>true</KeepTogether>
-                                  <Paragraphs>
-                                    <Paragraph>
-                                      <TextRuns>
-                                        <TextRun>
-                                          <Value>Amount</Value>
-                                          <Style>
-                                            <FontFamily>Segoe UI</FontFamily>
-                                            <FontSize>8pt</FontSize>
-                                            <FontWeight>Bold</FontWeight>
-                                          </Style>
-                                        </TextRun>
-                                      </TextRuns>
-                                      <Style>
-                                        <TextAlign>Right</TextAlign>
-                                      </Style>
-                                    </Paragraph>
-                                  </Paragraphs>
-                                  <rd:DefaultName>Textbox50</rd:DefaultName>
-                                  <Style>
-                                    <Border>
-                                      <Color>White</Color>
-                                      <Style>Solid</Style>
-                                    </Border>
-                                    <PaddingLeft>2pt</PaddingLeft>
-                                    <PaddingRight>2pt</PaddingRight>
-                                    <PaddingTop>2pt</PaddingTop>
-                                    <PaddingBottom>2pt</PaddingBottom>
-                                  </Style>
-                                </Textbox>
-                              </CellContents>
-                            </TablixCell>
-                          </TablixCells>
-                        </TablixRow>
-                        <TablixRow>
-                          <Height>0.15222in</Height>
-                          <TablixCells>
-                            <TablixCell>
-                              <CellContents>
-                                <Textbox Name="Description2">
-                                  <CanGrow>true</CanGrow>
-                                  <KeepTogether>true</KeepTogether>
-                                  <Paragraphs>
-                                    <Paragraph>
-                                      <TextRuns>
-                                        <TextRun>
-                                          <Value>=Fields!Description.Value</Value>
-                                          <Style>
-                                            <FontFamily>Segoe UI</FontFamily>
-                                            <FontSize>8pt</FontSize>
-                                          </Style>
-                                        </TextRun>
-                                      </TextRuns>
-                                      <Style />
-                                    </Paragraph>
-                                  </Paragraphs>
-                                  <rd:DefaultName>Description2</rd:DefaultName>
-                                  <CustomProperties>
-                                    <CustomProperty>
-                                      <Name>AXDataType</Name>
-                                      <Value><![CDATA[String]]></Value>
-                                    </CustomProperty>
-                                    <CustomProperty>
-                                      <Name>AXEDTFormat</Name>
-                                      <Value><![CDATA[SPYEOSRunPayrollTmp.Description]]></Value>
-                                    </CustomProperty>
-                                    <CustomProperty>
-                                      <Name>AXEDTTextAlign</Name>
-                                      <Value><![CDATA[SPYEOSRunPayrollTmp.Description]]></Value>
-                                    </CustomProperty>
-                                    <CustomProperty>
-                                      <Name>AXEDTDirection</Name>
-                                      <Value><![CDATA[SPYEOSRunPayrollTmp.Description]]></Value>
-                                    </CustomProperty>
-                                    <CustomProperty>
-                                      <Name>AXFieldName</Name>
-                                      <Value><![CDATA[Description]]></Value>
-                                    </CustomProperty>
-                                  </CustomProperties>
-                                  <Style>
-                                    <Border>
-                                      <Color>White</Color>
-                                      <Style>Solid</Style>
-                                    </Border>
-                                    <PaddingLeft>2pt</PaddingLeft>
-                                    <PaddingRight>2pt</PaddingRight>
-                                    <PaddingTop>2pt</PaddingTop>
-                                    <PaddingBottom>2pt</PaddingBottom>
-                                  </Style>
-                                </Textbox>
-                              </CellContents>
-                            </TablixCell>
-                            <TablixCell>
-                              <CellContents>
-                                <Textbox Name="TransactionCurrencyAmount1">
-                                  <CanGrow>true</CanGrow>
-                                  <KeepTogether>true</KeepTogether>
-                                  <Paragraphs>
-                                    <Paragraph>
-                                      <TextRuns>
-                                        <TextRun>
-                                          <Value>=Fields!TransactionCurrencyAmount.Value</Value>
-                                          <Style>
-                                            <FontFamily>Segoe UI</FontFamily>
-                                            <FontSize>8pt</FontSize>
-                                            <Format>0.00;(0.00)</Format>
-                                          </Style>
-                                        </TextRun>
-                                      </TextRuns>
-                                      <Style>
-                                        <TextAlign>Right</TextAlign>
-                                      </Style>
-                                    </Paragraph>
-                                  </Paragraphs>
-                                  <rd:DefaultName>TransactionCurrencyAmount1</rd:DefaultName>
-                                  <CustomProperties>
-                                    <CustomProperty>
-                                      <Name>AXDataType</Name>
-                                      <Value><![CDATA[Float]]></Value>
-                                    </CustomProperty>
-                                    <CustomProperty>
-                                      <Name>AXEDTFormat</Name>
-                                      <Value><![CDATA[SPYEOSRunPayrollTmp.TransactionCurrencyAmount]]></Value>
-                                    </CustomProperty>
-                                    <CustomProperty>
-                                      <Name>AXEDTTextAlign</Name>
-                                      <Value><![CDATA[SPYEOSRunPayrollTmp.TransactionCurrencyAmount]]></Value>
-                                    </CustomProperty>
-                                    <CustomProperty>
-                                      <Name>AXEDTDirection</Name>
-                                      <Value><![CDATA[SPYEOSRunPayrollTmp.TransactionCurrencyAmount]]></Value>
-                                    </CustomProperty>
-                                    <CustomProperty>
-                                      <Name>AXFieldName</Name>
-                                      <Value><![CDATA[TransactionCurrencyAmount]]></Value>
-                                    </CustomProperty>
-                                  </CustomProperties>
-                                  <Style>
-                                    <Border>
-                                      <Color>White</Color>
-                                      <Style>Solid</Style>
-                                    </Border>
-                                    <PaddingLeft>2pt</PaddingLeft>
-                                    <PaddingRight>2pt</PaddingRight>
-                                    <PaddingTop>2pt</PaddingTop>
-                                    <PaddingBottom>2pt</PaddingBottom>
-                                  </Style>
-                                </Textbox>
-                              </CellContents>
-                            </TablixCell>
-                          </TablixCells>
-                        </TablixRow>
-                      </TablixRows>
-                    </TablixBody>
-                    <TablixColumnHierarchy>
-                      <TablixMembers>
-                        <TablixMember />
-                        <TablixMember />
-                      </TablixMembers>
-                    </TablixColumnHierarchy>
-                    <TablixRowHierarchy>
-                      <TablixMembers>
-                        <TablixMember>
-                          <KeepWithGroup>After</KeepWithGroup>
-                        </TablixMember>
-                        <TablixMember>
-                          <Group Name="Details3" />
-                        </TablixMember>
-                      </TablixMembers>
-                    </TablixRowHierarchy>
-                    <DataSetName>SPYEOSRunPayrollDS</DataSetName>
-                    <Filters>
-                      <Filter>
-                        <FilterExpression>=Fields!PayrollType.Value</FilterExpression>
-                        <Operator>Equal</Operator>
-                        <FilterValues>
-                          <FilterValue>Deduction</FilterValue>
-                        </FilterValues>
-                      </Filter>
-                    </Filters>
-                    <Left>0.02778in</Left>
-                    <Height>0.31832in</Height>
-                    <Width>3.37992in</Width>
-                    <Style>
-                      <Border>
-                        <Color>LightGrey</Color>
-                        <Style>None</Style>
-                      </Border>
-                    </Style>
-                  </Tablix>
-                </ReportItems>
-                <KeepTogether>true</KeepTogether>
-                <Top>0.23611in</Top>
-                <Left>3.51125in</Left>
-                <Height>0.31832in</Height>
-                <Width>3.4077in</Width>
-                <ZIndex>2</ZIndex>
-                <Style>
-                  <Border>
-                    <Color>White</Color>
-                    <Style>None</Style>
-                    <Width>2pt</Width>
-                  </Border>
-                  <LeftBorder>
-                    <Color>White</Color>
-                  </LeftBorder>
-                </Style>
-              </Rectangle>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>2.92014in</Top>
+            <Top>3.19514in</Top>
             <Left>0.00018in</Left>
-            <Height>0.69775in</Height>
-            <Width>6.94543in</Width>
+            <Height>0.52861in</Height>
+            <Width>6.91895in</Width>
             <ZIndex>4</ZIndex>
             <Style>
               <Border>
@@ -2079,7 +1895,7 @@
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value>=Sum(IIf(Fields!PayrollType.Value = "Earning", CDec(Fields!TransactionCurrencyAmount.Value), CDec(0)), "SPYEOSRunPayrollDS") + Sum(Fields!GratuityAmount.Value, "SPYEOSRunTableDS")</Value>
+                            <Value>=Sum(IIf(Fields!AccountingCurrencyAmount.Value &gt; 0, CDec(Fields!AccountingCurrencyAmount.Value), CDec(0)), "SPYEOSRunPayrollDS") + Sum(Fields!GratuityAmount.Value, "SPYEOSRunTableDS")</Value>
                             <Style>
                               <FontFamily>Segoe UI</FontFamily>
                               <FontSize>8pt</FontSize>
@@ -2088,12 +1904,15 @@
                             </Style>
                           </TextRun>
                         </TextRuns>
-                        <Style />
+                        <Style>
+                          <TextAlign>Right</TextAlign>
+                        </Style>
                       </Paragraph>
                     </Paragraphs>
                     <rd:DefaultName>TotalEarnings</rd:DefaultName>
-                    <Left>1.864in</Left>
-                    <Height>0.22631in</Height>
+                    <Top>0.0375in</Top>
+                    <Left>2.1265in</Left>
+                    <Height>0.19in</Height>
                     <Width>1.30208in</Width>
                     <ZIndex>2</ZIndex>
                     <Style>
@@ -2113,7 +1932,7 @@
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value>=Sum(IIf(Fields!PayrollType.Value = "Deduction", CDec(Fields!TransactionCurrencyAmount.Value), CDec(0)), "SPYEOSRunPayrollDS")</Value>
+                            <Value>=Sum(IIf(Fields!AccountingCurrencyAmount.Value &lt; 0, CDec(Fields!AccountingCurrencyAmount.Value), CDec(0)), "SPYEOSRunPayrollDS")</Value>
                             <Style>
                               <FontFamily>Segoe UI</FontFamily>
                               <FontSize>8pt</FontSize>
@@ -2122,14 +1941,16 @@
                             </Style>
                           </TextRun>
                         </TextRuns>
-                        <Style />
+                        <Style>
+                          <TextAlign>Right</TextAlign>
+                        </Style>
                       </Paragraph>
                     </Paragraphs>
                     <rd:DefaultName>TotalEarnings</rd:DefaultName>
                     <Top>0.02206in</Top>
                     <Left>5.95416in</Left>
-                    <Height>0.24019in</Height>
-                    <Width>0.96738in</Width>
+                    <Height>0.2in</Height>
+                    <Width>0.88354in</Width>
                     <ZIndex>3</ZIndex>
                     <Style>
                       <Border>
@@ -2145,7 +1966,7 @@
                 <KeepTogether>true</KeepTogether>
                 <Top>0.00286in</Top>
                 <Height>0.26511in</Height>
-                <Width>6.9528in</Width>
+                <Width>6.904in</Width>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -2153,81 +1974,12 @@
                   <BackgroundColor>Silver</BackgroundColor>
                 </Style>
               </Rectangle>
-              <Textbox Name="Textbox14">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>Net Pay</Value>
-                        <Style>
-                          <FontFamily>Segoe UI</FontFamily>
-                          <FontSize>8pt</FontSize>
-                          <FontWeight>Bold</FontWeight>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>Textbox14</rd:DefaultName>
-                <Top>0.28186in</Top>
-                <Left>3.98881in</Left>
-                <Height>0.20139in</Height>
-                <Width>1.23553in</Width>
-                <ZIndex>1</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
-              <Textbox Name="NetPayAmount">
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>=(Sum(IIf(Fields!PayrollType.Value = "Earning", CDec(Fields!TransactionCurrencyAmount.Value), CDec(0)), "SPYEOSRunPayrollDS") + Sum(Fields!GratuityAmount.Value, "SPYEOSRunTableDS")) - (Sum(IIf(Fields!PayrollType.Value = "Deduction", CDec(Fields!TransactionCurrencyAmount.Value), CDec(0)), "SPYEOSRunPayrollDS") * -1)</Value>
-                        <Style>
-                          <FontFamily>Segoe UI</FontFamily>
-                          <FontSize>8pt</FontSize>
-                          <FontWeight>Bold</FontWeight>
-                          <Format>0.00</Format>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style />
-                  </Paragraph>
-                </Paragraphs>
-                <rd:DefaultName>NetPayAmount</rd:DefaultName>
-                <Top>0.26511in</Top>
-                <Left>5.95416in</Left>
-                <Height>0.20425in</Height>
-                <Width>0.96738in</Width>
-                <ZIndex>2</ZIndex>
-                <Style>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
-              </Textbox>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>3.49949in</Top>
+            <Top>3.77449in</Top>
             <Left>0.00018in</Left>
-            <Height>0.48325in</Height>
-            <Width>6.9528in</Width>
+            <Height>0.27492in</Height>
+            <Width>6.90403in</Width>
             <ZIndex>5</ZIndex>
             <Style>
               <Border>
@@ -2244,7 +1996,15 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>Net Amount Payable / (Receivable)</Value>
+                        <Value>Net Amount Payable / (Receivable)     </Value>
+                        <Style>
+                          <FontFamily>Segoe UI</FontFamily>
+                          <FontSize>8pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                      <TextRun>
+                        <Value>=First(Fields!AccCurCode.Value, "SPYEOSRunTableDS")</Value>
                         <Style>
                           <FontFamily>Segoe UI</FontFamily>
                           <FontSize>8pt</FontSize>
@@ -2256,9 +2016,10 @@
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>Textbox1</rd:DefaultName>
-                <Left>0.02629in</Left>
+                <Top>0.01431in</Top>
+                <Left>2.82721in</Left>
                 <Height>0.21528in</Height>
-                <Width>2.40152in</Width>
+                <Width>2.48486in</Width>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -2276,7 +2037,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>=(Sum(IIf(Fields!PayrollType.Value = "Earning", CDec(Fields!TransactionCurrencyAmount.Value), CDec(0)), "SPYEOSRunPayrollDS") + Sum(Fields!GratuityAmount.Value, "SPYEOSRunTableDS")) - (Sum(IIf(Fields!PayrollType.Value = "Deduction", CDec(Fields!TransactionCurrencyAmount.Value), CDec(0)), "SPYEOSRunPayrollDS") * -1)</Value>
+                        <Value>=(Sum(IIf(Fields!AccountingCurrencyAmount.Value &gt; 0, CDec(Fields!AccountingCurrencyAmount.Value), CDec(0)), "SPYEOSRunPayrollDS") + Sum(Fields!GratuityAmount.Value, "SPYEOSRunTableDS")) - (Sum(IIf(Fields!AccountingCurrencyAmount.Value &lt; 0, CDec(Fields!AccountingCurrencyAmount.Value), CDec(0)), "SPYEOSRunPayrollDS") * -1)</Value>
                         <Style>
                           <FontFamily>Segoe UI</FontFamily>
                           <FontSize>8pt</FontSize>
@@ -2285,31 +2046,29 @@
                         </Style>
                       </TextRun>
                     </TextRuns>
-                    <Style />
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
                   </Paragraph>
                 </Paragraphs>
                 <rd:DefaultName>NetPayAmount</rd:DefaultName>
                 <Top>0.02534in</Top>
                 <Left>5.98822in</Left>
-                <Height>0.20425in</Height>
-                <Width>0.93073in</Width>
+                <Height>0.2in</Height>
+                <Width>0.8in</Width>
                 <ZIndex>1</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
                   </Border>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>3.9574in</Top>
+            <Top>4.2324in</Top>
             <Left>0.00018in</Left>
-            <Height>0.23733in</Height>
-            <Width>6.91895in</Width>
+            <Height>0.22959in</Height>
+            <Width>6.904in</Width>
             <ZIndex>6</ZIndex>
             <Style>
               <Border>
@@ -2318,69 +2077,12 @@
               <BackgroundColor>Silver</BackgroundColor>
             </Style>
           </Rectangle>
-          <Textbox Name="Textbox29">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>* Payable at the discretion to CEO   </Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox29</rd:DefaultName>
-            <Top>4.21313in</Top>
-            <Left>0.00018in</Left>
-            <Height>0.17708in</Height>
-            <Width>2.42769in</Width>
-            <ZIndex>7</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
           <Line Name="Line5">
-            <Top>4.79289in</Top>
-            <Left>0.02647in</Left>
+            <Top>5.48039in</Top>
+            <Left>0.58897in</Left>
             <Height>0in</Height>
             <Width>1.69749in</Width>
-            <ZIndex>8</ZIndex>
-            <Style>
-              <Border>
-                <Style>Solid</Style>
-              </Border>
-            </Style>
-          </Line>
-          <Line Name="Line8">
-            <Top>4.79845in</Top>
-            <Left>1.9027in</Left>
-            <Height>0in</Height>
-            <Width>1.60873in</Width>
-            <ZIndex>9</ZIndex>
-            <Style>
-              <Border>
-                <Style>Solid</Style>
-              </Border>
-            </Style>
-          </Line>
-          <Line Name="Line9">
-            <Top>4.78039in</Top>
-            <Left>3.64228in</Left>
-            <Height>0in</Height>
-            <Width>1.43165in</Width>
-            <ZIndex>10</ZIndex>
+            <ZIndex>7</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -2388,100 +2090,30 @@
             </Style>
           </Line>
           <Textbox Name="Textbox32">
-            <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Employee Signature</Value>
+                    <Value>Agreed and signed by the Employee</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox32</rd:DefaultName>
-            <Top>4.86234in</Top>
-            <Left>0.12561in</Left>
+            <Top>5.24497in</Top>
+            <Left>0.30269in</Left>
             <Height>0.19792in</Height>
-            <Width>1.51084in</Width>
-            <ZIndex>11</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox33">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>M</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                  <TextRun>
-                    <Value>anager , Finance</Value>
-                    <Style>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox32</rd:DefaultName>
-            <Top>4.85539in</Top>
-            <Left>2.00059in</Left>
-            <Height>0.19792in</Height>
-            <Width>1.51084in</Width>
-            <ZIndex>12</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox34">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Head of HR</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>8pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox32</rd:DefaultName>
-            <Top>4.83594in</Top>
-            <Left>3.66712in</Left>
-            <Height>0.19792in</Height>
-            <Width>1.51084in</Width>
-            <ZIndex>13</ZIndex>
+            <Width>2.14626in</Width>
+            <ZIndex>8</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2493,11 +2125,11 @@
             </Style>
           </Textbox>
           <Line Name="Line6">
-            <Top>4.75539in</Top>
-            <Left>5.54998in</Left>
+            <Top>5.4803in</Top>
+            <Left>4.58748in</Left>
             <Height>0in</Height>
             <Width>1.36915in</Width>
-            <ZIndex>14</ZIndex>
+            <ZIndex>9</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -2505,16 +2137,16 @@
             </Style>
           </Line>
           <Textbox Name="Textbox35">
-            <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>General Manager</Value>
+                    <Value>Admn./ Finance Manager</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -2522,11 +2154,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox32</rd:DefaultName>
-            <Top>4.82437in</Top>
-            <Left>5.61439in</Left>
+            <Top>5.2445in</Top>
+            <Left>4.60814in</Left>
             <Height>0.19792in</Height>
-            <Width>1.30474in</Width>
-            <ZIndex>15</ZIndex>
+            <Width>1.58599in</Width>
+            <ZIndex>10</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2544,7 +2176,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>    Gratutity</Value>
+                    <Value>  Gratutity</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -2565,7 +2197,7 @@
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value xml:space="preserve">                                </Value>
+                    <Value xml:space="preserve">                            </Value>
                     <Style>
                       <FontWeight>Bold</FontWeight>
                     </Style>
@@ -2579,13 +2211,13 @@
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value xml:space="preserve">                                                        </Value>
+                    <Value xml:space="preserve">                                                      </Value>
                     <Style>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value>AED          </Value>
+                    <Value xml:space="preserve">          </Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>8pt</FontSize>
@@ -2593,28 +2225,179 @@
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>0.88192in</Top>
+            <Top>1.30692in</Top>
             <Left>0.00018in</Left>
-            <Height>0.18752in</Height>
-            <Width>6.9528in</Width>
-            <ZIndex>16</ZIndex>
+            <Height>0.13in</Height>
+            <Width>6.904in</Width>
+            <ZIndex>11</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
               <BackgroundColor>Silver</BackgroundColor>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox9">
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>SETTLEMENT OF ACCOUNTS:</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox9</rd:DefaultName>
+            <Top>0.01944in</Top>
+            <Left>0.0006in</Left>
+            <Height>0.16in</Height>
+            <Width>1.62573in</Width>
+            <ZIndex>12</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox10">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Resigned/Terminated : </Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox10</rd:DefaultName>
+            <Top>0.24889in</Top>
+            <Left>0.0006in</Left>
+            <Height>0.16in</Height>
+            <Width>1.32291in</Width>
+            <ZIndex>13</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox3">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value xml:space="preserve">                               </Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>Earnings</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value xml:space="preserve">                                                                        </Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>Deductions</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value xml:space="preserve">                          </Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!CurrencyCode.Value, "SPYEOSRunTableDS")</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>3.16665in</Top>
+            <Left>0.01072in</Left>
+            <Height>0.16in</Height>
+            <Width>6.904in</Width>
+            <ZIndex>14</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BackgroundColor>Silver</BackgroundColor>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox37">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!ReasonCode.Value, "SPYEOSRunTableDS")</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox37</rd:DefaultName>
+            <Top>0.24889in</Top>
+            <Left>1.37907in</Left>
+            <Height>0.16667in</Height>
+            <Width>1in</Width>
+            <ZIndex>15</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>5.82375in</Height>
+        <Height>5.73in</Height>
         <Style>
           <TopBorder>
             <Color>Black</Color>
@@ -2638,7 +2421,7 @@
           </RightBorder>
         </Style>
       </Body>
-      <Width>6.95298in</Width>
+      <Width>6.94171in</Width>
       <Page>
         <PageHeader>
           <Height>0.48503in</Height>
@@ -2870,6 +2653,8 @@
             </RightBorder>
           </Style>
         </PageHeader>
+        <PageHeight>11.69in</PageHeight>
+        <PageWidth>8.27in</PageWidth>
         <LeftMargin>0.5in</LeftMargin>
         <RightMargin>0.5in</RightMargin>
         <TopMargin>0.5in</TopMargin>
@@ -2910,23 +2695,27 @@
         <ConnectString />
         <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
-      <rd:DataSourceID>6c71555a-3faa-4113-8991-b256122a6289</rd:DataSourceID>
+      <rd:DataSourceID>51b72932-c75e-44e0-9285-6944ab2c7435</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="SPYEOSRunTableDS">
       <Fields>
-        <Field Name="AFZAbsence">
-          <DataField>SPYEOSRunTableTmp.1.AFZAbsence</DataField>
-          <rd:TypeName>System.Double</rd:TypeName>
-        </Field>
-        <Field Name="AFZOvertime">
-          <DataField>SPYEOSRunTableTmp.1.AFZOvertime</DataField>
+        <Field Name="Absence">
+          <DataField>SPYEOSRunTableTmp.1.Absence</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
         <Field Name="AbsenceDays">
           <DataField>SPYEOSRunTableTmp.1.AbsenceDays</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="AccCurCode">
+          <DataField>SPYEOSRunTableTmp.1.AccCurCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CurrencyCode">
+          <DataField>SPYEOSRunTableTmp.1.CurrencyCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="EOSDate">
           <DataField>SPYEOSRunTableTmp.1.EOSDate</DataField>
@@ -2984,16 +2773,24 @@
           <DataField>SPYEOSRunTableTmp.1.NoOfDays</DataField>
           <rd:TypeName>System.Int64</rd:TypeName>
         </Field>
+        <Field Name="Overtime">
+          <DataField>SPYEOSRunTableTmp.1.Overtime</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
         <Field Name="PersonnelNumber">
           <DataField>SPYEOSRunTableTmp.1.PersonnelNumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PostedToLedger1">
+          <DataField>SPYEOSRunTableTmp.1.PostedToLedger:LABEL(NoYes)</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="PostedToLedger">
           <DataField>SPYEOSRunTableTmp.1.PostedToLedger:NAME(NoYes)</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="PostedToLedger1">
-          <DataField>SPYEOSRunTableTmp.1.PostedToLedger:LABEL(NoYes)</DataField>
+        <Field Name="ReasonCode">
+          <DataField>SPYEOSRunTableTmp.1.ReasonCode</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Remarks">
@@ -3049,7 +2846,7 @@
           <QueryParameter Name="AX_RdpPreProcessedId">
             <Value>=Parameters!AX_RdpPreProcessedId.Value</Value>
           </QueryParameter>
-          <QueryParameter Name="SPYEOSRunDP_DynamicParameter">
+          <QueryParameter Name="SPYEOSRUNDP_DynamicParameter">
             <Value>=Parameters!SPYEOSRunDP_DynamicParameter.Value</Value>
           </QueryParameter>
         </QueryParameters>
@@ -3075,6 +2872,10 @@
         <Field Name="AccountingDistributionTemplate">
           <DataField>SPYEOSRunPayrollTmp.1.AccountingDistributionTemplate</DataField>
           <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="CalculationOrder">
+          <DataField>SPYEOSRunPayrollTmp.1.CalculationOrder</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="Currency">
           <DataField>SPYEOSRunPayrollTmp.1.Currency</DataField>
@@ -3169,7 +2970,7 @@
           <QueryParameter Name="AX_RdpPreProcessedId">
             <Value>=Parameters!AX_RdpPreProcessedId.Value</Value>
           </QueryParameter>
-          <QueryParameter Name="SPYEOSRunDP_DynamicParameter">
+          <QueryParameter Name="SPYEOSRUNDP_DynamicParameter">
             <Value>=Parameters!SPYEOSRunDP_DynamicParameter.Value</Value>
           </QueryParameter>
         </QueryParameters>
@@ -3320,6 +3121,10 @@
     </DataSet>
     <DataSet Name="SPYWorkerPositionPayrollTmpDS">
       <Fields>
+        <Field Name="CurrencyCode">
+          <DataField>SPYWorkerPositionPayrollTmp.1.CurrencyCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="Daily">
           <DataField>SPYWorkerPositionPayrollTmp.1.Daily</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
@@ -3357,7 +3162,7 @@
           <QueryParameter Name="AX_RdpPreProcessedId">
             <Value>=Parameters!AX_RdpPreProcessedId.Value</Value>
           </QueryParameter>
-          <QueryParameter Name="SPYEOSRunDP_DynamicParameter">
+          <QueryParameter Name="SPYEOSRUNDP_DynamicParameter">
             <Value>=Parameters!SPYEOSRunDP_DynamicParameter.Value</Value>
           </QueryParameter>
         </QueryParameters>

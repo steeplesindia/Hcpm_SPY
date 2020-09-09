@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>SPYClearPayrollLogUtilityContract</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[DataContractAttribute]
+class SPYClearPayrollLogUtilityContract
+{
+    SPYPayrollPeriodLineRecId       payrollPeriodLine;
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>parmPayrollPeriodLine</Name>
+				<Source><![CDATA[
+    [DataMemberAttribute]
+    public SPYPayrollPeriodLineRecId parmPayrollPeriodLine(SPYPayrollPeriodLineRecId _payrollPeriodLine = payrollPeriodLine)
+    {
+        payrollPeriodLine = _payrollPeriodLine;
+        return payrollPeriodLine;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

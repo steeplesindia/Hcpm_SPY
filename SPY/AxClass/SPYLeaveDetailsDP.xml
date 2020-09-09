@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>SPYLeaveDetailsDP</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[
+SRSReportParameterAttribute(classStr(SPYLeaveDetailsContract)),
+SRSReportQueryAttribute(queryStr(SPYHcmWorkerLookup))
+]
+public class SPYLeaveDetailsDP extends SrsReportDataProviderPreProcess
+{
+    HcmWorker                       hcmWorker;
+    SPYAbsenceLedger                absenceLedger;
+    SPYLeaveDetailTmp               leaveDetailTmp;
+    
+    //SPYWorkerPositionPayroll        workerPositionPayroll;
+    //SPYBenefitLedger                benefitLedger, benefitLedgerOp, benefitLedgerTk;
+    //SPYBenefitTable                 benefitTable;
+    //HRMAbsenceCode                  hrmAbsenceCode;
+
+    HcmWorkerRecId                  worker;
+    SPYPayrollPeriodLineRecId       payrollPeriodLineRecId;
+    SPYPayrollPeriodLine            payrollPeriodLine, payrollPeriodFrom, payrollPeriodTo;
+    SPYPayrollPeriodLineRecId       payrollPeriodLineFrom, payrollPeriodLineTo;
+    SPYPayrollPeriod                payrollPeriod;
+    date                            fromDate,toDate;
+    
+    String50                        payrollPeriodString;
+    CompanyInfo                     companyInfo;
+
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>getSPYLeaveDetailTmp</Name>
+				<Source><![CDATA[
+    [SRSReportDataSetAttribute(tableStr(SPYLeaveDetailTmp))]
+    public SPYLeaveDetailTmp getSPYLeaveDetailTmp()
+    {
+        select leaveDetailTmp;
+        return leaveDetailTmp;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>GetLeaveOpeningBal</Name>
+				<Source><![CDATA[
+    public static SPYAmount GetLeaveOpeningBal(HcmWorkerRecId hcmWorkerRecId,Date  asOnDate,HrmAbsenceCodeId   absenceCodeId)
+    {
+        SPYAbsenceLedger        absenceLedger,absenceLedgerDate;
+        SPYAmount               balance;
+        
+        select firstonly sum(AbsenceDays) from absenceLedger order by RecId desc
+        where absenceLedger.Worker == hcmWorkerRecId &&
+              absenceLedger.HRMAbsenceCodeId == absenceCodeId &&
+              absenceLedger.AbsenceDate <= asOnDate &&
+              absenceLedger.EntryType == SPYAbsenceLedgerEntryType::OpeningEntry;
+
+        balance = absenceLedger.AbsenceDays;
+
+        return balance;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>processReport</Name>
+				<Source><![CDATA[
+    public void processReport()
+    {
+        SPYLeaveDetailsContract  contract = this.parmDataContract() as SPYLeaveDetailsContract;
+        Query                       q;
+        QueryRun                    qr;
+        QueryBuildDataSource        qbdHcmWorker,qbdAbsenceLedger, qbdPayrollPeriodLine;
+        SPYAbsenceLedger            absenceLedgerLeave,absenceLedgerEntitle,absenceLedgerAdjustment;
+        real                        openBal, leaveTaken, entitlement,adjustment,closingBal;
+        int                         i;
+    
+        worker                      = contract.parmHcmWorkerRecId();
+
+        payrollPeriodLineFrom       = contract.parmPayrollPeriodLineFrom();
+        payrollPeriodLineTo         = contract.parmPayrollPeriodLineTo();
+    
+        payrollPeriodFrom           = SPYPayrollPeriodLine::find(payrollPeriodLineFrom);
+        payrollPeriodTo             = SPYPayrollPeriodLine::find(payrollPeriodLineTo);
+    
+        this.SetTableConnection();
+
+        q = this.parmQuery();
+
+
+        qbdHcmWorker = q.dataSourceTable(tableNum(HcmWorker));
+        if(worker > 0)
+            qbdHcmWorker.addRange(fieldNum(HcmWorker,RecId)).value(int642Str(worker));
+
+        qr = new QueryRun(q);
+    
+        while(qr.next())
+        {
+            hcmWorker                     = qr.get(tableNum(HcmWorker));
+            
+            worker                        = hcmWorker.RecId;
+            fromDate                      = payrollperiodFrom.PeriodStartDate;
+            toDate                        = payrollPeriodTo.PeriodEndDate;
+    
+            while select absenceLedger group by  absenceLedger.HRMAbsenceCodeId
+                where absenceLedger.Worker == worker &&
+                        absenceLedger.HRMAbsenceCodeId
+            {
+                i=0;
+                if(absenceLedger.HRMAbsenceCodeId != '')
+                {
+                    while select payrollPeriodLine order PeriodStartDate
+                        where payrollPeriodLine.PeriodStartDate >= fromDate && 
+                        payrollPeriodLine.PeriodEndDate <= todate &&
+                        payrollPeriodLine.PayrollPeriod == payrollPeriodFrom.PayrollPeriod
+                    {
+                        payrollPeriodLineRecId    = payrollPeriodLine.RecId;
+                        payrollPeriod             = SPYPayrollPeriod::find(payrollPeriodLine.PayrollPeriod);
+                        payrollPeriodString       = strFmt("%1 - %2 - %3", payrollPeriod.Description, payrollPeriodLine.PeriodStartDate, payrollPeriodLine.PeriodEndDate);
+
+                
+                        if(i==0)
+                            openBal                                 = SPYLeaveDetailsDP::GetLeaveOpeningBal(worker,fromDate,absenceLedger.HRMAbsenceCodeId);
+                        else
+                            openBal                                = closingBal;
+
+                        i                                          = i + 1;
+                        leaveDetailTmp.clear();
+                        leaveDetailTmp.Worker                       = worker;
+                        leaveDetailTmp.PeriodSequence               = strFmt("%1%2%3", year(payrollPeriodLine.PeriodStartDate), num2Str0(mthofyr(payrollPeriodLine.PeriodStartDate),2), num2Str0(dayofmth(payrollPeriodLine.PeriodStartDate),2));
+                        leaveDetailTmp.AbsenceCode                  = absenceLedger.hrmAbsenceCodeId;
+                        leaveDetailTmp.OpeningBalance               = openBal;
+
+                    
+                        entitlement                                 = 0;
+                        leaveTaken                                  = 0;
+                        adjustment                                  = 0; 
+
+                        select sum(AbsenceDays) from absenceLedgerEntitle
+                            where absenceLedgerEntitle.Worker == worker &&
+                                absenceLedgerEntitle.HRMAbsenceCodeId == absenceLedger.HRMAbsenceCodeId &&
+                                absenceLedgerEntitle.AbsenceDate >= payrollPeriodLine.PeriodStartDate &&
+                                absenceLedgerEntitle.AbsenceDate <= payrollPeriodLine.PeriodEndDate &&
+                                absenceLedgerEntitle.SourceDocument == tableNum(SPYAbsenceConfigTable);
+
+                        entitlement                                 =  absenceLedgerEntitle.AbsenceDays;
+                        leaveDetailTmp.Entitlement                  = entitlement;
+
+                        select sum(AbsenceDays) from absenceLedgerLeave
+                            where absenceLedgerLeave.Worker == worker &&
+                                absenceLedgerLeave.HRMAbsenceCodeId == absenceLedger.HRMAbsenceCodeId &&
+                                absenceLedgerLeave.AbsenceDate >= payrollPeriodLine.PeriodStartDate &&
+                                absenceLedgerLeave.AbsenceDate <= payrollPeriodLine.PeriodEndDate &&
+                                absenceLedgerLeave.SourceDocument == tableNum(SPYLeaveApplicationTable);
+
+                        leaveTaken                                  = absenceLedgerLeave.AbsenceDays;
+                        leaveDetailTmp.DaysTaken                    = leaveTaken;
+
+                        select sum(AbsenceDays) from absenceLedgerAdjustment
+                            where absenceLedgerAdjustment.Worker == worker &&
+                                absenceLedgerAdjustment.HRMAbsenceCodeId == absenceLedger.HRMAbsenceCodeId &&
+                                absenceLedgerAdjustment.AbsenceDate >= payrollPeriodLine.PeriodStartDate &&
+                                absenceLedgerAdjustment.AbsenceDate <= payrollPeriodLine.PeriodEndDate &&
+                                (absenceLedgerAdjustment.SourceDocument == tableNum(SPYAbsenceJournalTable) ||
+                                absenceLedgerAdjustment.SourceDocument == tableNum(SPYBenefitJournalTable));
+
+                        adjustment                                  = absenceLedgerAdjustment.AbsenceDays;
+                        leaveDetailTmp.Adjustment                   = adjustment;
+
+                        leaveDetailTmp.ClosingBalance               = openBal + entitlement + adjustment + leaveTaken ;
+                        closingBal                                  = leaveDetailTmp.ClosingBalance;
+                        leaveDetailTmp.PayrollPeriod                = payrollPeriodString;
+                        leaveDetailTmp.EmployeeName                 = hcmWorker.PersonnelNumber + " - " + hcmWorker.name();
+                        leaveDetailTmp.insert();
+                    }
+                }
+            }
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>SetTableConnection</Name>
+				<Source><![CDATA[
+    public void SetTableConnection()
+    {
+        leaveDetailTmp.setConnection(this.parmUserConnection());
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

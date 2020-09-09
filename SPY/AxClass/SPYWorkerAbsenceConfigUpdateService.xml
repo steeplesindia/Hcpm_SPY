@@ -144,7 +144,8 @@ class SPYWorkerAbsenceConfigUpdateService extends SysOperationServiceBase
                 hcmEmployment.LegalEntity == legalEntity;
             payStartDate = _transDate;
         }
-        payEndDate = DateTimeUtil::date(DateTimeUtil::applyTimeZoneOffset(hcmEmployment.ValidTo, DateTimeUtil::getClientMachineTimeZone()));
+        //payEndDate = DateTimeUtil::date(DateTimeUtil::applyTimeZoneOffset(hcmEmployment.ValidTo, DateTimeUtil::getClientMachineTimeZone()));
+        payEndDate = min(hcmEmployment.ValidTo, DateTimeUtil::maxValue());
     }
 
 ]]></Source>
@@ -154,7 +155,9 @@ class SPYWorkerAbsenceConfigUpdateService extends SysOperationServiceBase
 				<Source><![CDATA[
     private void setWorker(HcmWorkerRecId _worker)
     {
-        hcmWorker = HcmWorker::find(_worker);
+        hcmWorker = HcmWorker::find(_worker);        
+        select firstonly personPrivateDetails
+            where personPrivateDetails.Person == hcmWorker.person;
     }
 
 ]]></Source>
@@ -236,6 +239,7 @@ class SPYWorkerAbsenceConfigUpdateService extends SysOperationServiceBase
         SPYWorkerPositionAbsenceConfigLine      workerPositionAbsenceConfig;
         TransDate                          effectiveFromDate;
         
+        this.deleteAllWorkerAbsenceConfigLine();
         while select absenceConfigLine
             order by HRMAbsenceCodeId, Sequence
             where absenceConfigLine.AbsenceConfig == absenceConfig &&
@@ -245,7 +249,7 @@ class SPYWorkerAbsenceConfigUpdateService extends SysOperationServiceBase
                    (absenceConfigLine.EthnicOrigin == personPrivateDetails.EthnicOrigin ||
                     absenceConfigLine.EthnicOrigin == 0)        
         {
-            this.deleteWorkerAbsenceConfigLine(absenceConfigLine);
+            //this.deleteWorkerAbsenceConfigLine(absenceConfigLine);
             LedgerPeriodCode ledgerPeriodCode = LedgerPeriodCode::find(absenceConfigLine.EffectiveDate);
             workerPositionAbsenceConfig.validTimeStateUpdateMode(ValidTimeStateUpdate::EffectiveBased);
             workerPositionAbsenceConfig.initValue();
@@ -300,6 +304,23 @@ class SPYWorkerAbsenceConfigUpdateService extends SysOperationServiceBase
             where workerPositionAbsenceConfigLine.Worker == hcmWorker.RecId &&
             workerPositionAbsenceConfigLine.LegalEntity == legalEntity &&
             workerPositionAbsenceConfigLine.HRMAbsenceCodeId == _absenceConfigLine.HRMAbsenceCodeId &&
+            workerPositionAbsenceConfigLine.ValidFrom >= payStartDate;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>deleteAllWorkerAbsenceConfigLine</Name>
+				<Source><![CDATA[
+    //delete future transactions
+    private void deleteAllWorkerAbsenceConfigLine()
+    {
+        SPYWorkerPositionAbsenceConfigLine      workerPositionAbsenceConfigLine;
+        TransDate  startDate = dateNull(), endDate = dateMax();
+
+        delete_from workerPositionAbsenceConfigLine
+            where workerPositionAbsenceConfigLine.Worker == hcmWorker.RecId &&
+            workerPositionAbsenceConfigLine.LegalEntity == legalEntity &&
             workerPositionAbsenceConfigLine.ValidFrom >= payStartDate;
     }
 

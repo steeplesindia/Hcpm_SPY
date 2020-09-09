@@ -144,6 +144,11 @@ public class SPYEOSRunPayrollTmp extends common
 			<Name>Worker</Name>
 			<ExtendedDataType>HcmWorkerRecId</ExtendedDataType>
 		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldInt">
+			<Name>CalculationOrder</Name>
+			<ExtendedDataType>Integer</ExtendedDataType>
+		</AxTableField>
 	</Fields>
 	<FullTextIndexes />
 	<Indexes />

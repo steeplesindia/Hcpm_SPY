@@ -2645,7 +2645,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -2812,7 +2811,7 @@
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Normal</FontWeight>
-                                    <Format>=Microsoft.Dynamics.Framework.Reports.DataMethodUtility.PostDataMethodEvaluation(Microsoft.Dynamics.Framework.Reports.DataMethodUtility.UpdateAxContextPartition(Parameters!AX_CompanyName.Value, Parameters!AX_UserContext.Value, Parameters!AX_RenderingCulture.Value, Parameters!AX_PartitionKey.Value), Microsoft.Dynamics.Framework.Reports.BuiltInMethods.GetExtendedDataTypeFormat("SPYAmountSRS", Parameters!AX_RenderingCulture.Value))</Format>
+                                    <Format>=Microsoft.Dynamics.Framework.Reports.DataMethodUtility.PostDataMethodEvaluation(Microsoft.Dynamics.Framework.Reports.DataMethodUtility.UpdateAxContextPartition(Parameters!AX_CompanyName.Value, Parameters!AX_UserContext.Value, Parameters!AX_RenderingCulture.Value, Parameters!AX_PartitionKey.Value), Microsoft.Dynamics.Framework.Reports.BuiltInMethods.GetExtendedDataTypeFormat("TransDate", Parameters!AX_RenderingCulture.Value))</Format>
                                     <TextDecoration>None</TextDecoration>
                                   </Style>
                                 </TextRun>
@@ -2853,6 +2852,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -3232,7 +3232,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -3812,7 +3811,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -7595,7 +7593,7 @@
         <ConnectString />
         <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
-      <rd:DataSourceID>738b9a43-bf12-4efa-aa0c-2cbf94c92987</rd:DataSourceID>
+      <rd:DataSourceID>6d5886dc-bad3-4b83-9c74-37612fc537f5</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>

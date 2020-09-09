@@ -3,12 +3,9 @@
 	<Name>SPYPayrollFinalizeProcessService</Name>
 	<SourceCode>
 		<Declaration><![CDATA[
-class SPYPayrollFinalizeProcessService
+class SPYPayrollFinalizeProcessService extends SPYPayrollFinalize
 {
-    SPYPayrollFinalizeProcessContract    contract;
-    LegalEntityRecId                             legalEntity;
-    SPYPayrollPeriodLineRecId              payrollPeriodLine;
-    HcmWorker                                   hcmWorker;
+    SPYPayrollFinalizeProcessContract    contract;    
     date    timesheetStartDate, timesheetEndDate;
     
 }
@@ -32,7 +29,8 @@ class SPYPayrollFinalizeProcessService
         contract                        = _contract as SPYPayrollFinalizeProcessContract;
         legalEntity                     = contract.parmLegalEntity();
         payrollPeriodLine           = contract.parmPayrollPeriodLine();        
-    
+        this.initialize();
+
         if(contract.parmPayrollParameterState().parmWorkerContainer())
         {
             payrollParameterState = true;
@@ -81,6 +79,7 @@ class SPYPayrollFinalizeProcessService
                 progressCount++;
             }
             ttsCommit;
+            this.finalize();
             info("@SPY379");
         }
         catch(Exception::Error)
@@ -127,12 +126,7 @@ class SPYPayrollFinalizeProcessService
 				<Source><![CDATA[
     private void updateWebDocumentLog()
     {
-        SPYPayrollLedger                            payrollLedger;
-        select firstonly payrollLedger
-            where payrollLedger.Worker == hcmWorker.RecId &&
-            payrollLedger.PayrollPeriodLine == payrollPeriodLine &&
-            !payrollLedger.IsFinalised;
-        SPYWebDocumentLog::updateLog(payrollLedger.TableId, payrollLedger.RecId);
+        
     }
 
 ]]></Source>
@@ -210,6 +204,20 @@ class SPYPayrollFinalizeProcessService
             absenceLedger.SourceDocument  = tableNum(SPYBenefitLedger);
             absenceLedger.insert();
         }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>initialize</Name>
+				<Source><![CDATA[
+    public void initialize()
+    {
+        SPYPayrollLedger     payrollLedger;
+        ledgerTable = payrollLedger;
+        PayrollPeriodLineFieldId = fieldNum(SPYPayrollLedger, PayrollPeriodLine);
+        finalizedFieldId = fieldNum(SPYPayrollLedger, IsFinalised);
+        super();
     }
 
 ]]></Source>

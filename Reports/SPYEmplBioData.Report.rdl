@@ -1583,23 +1583,24 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="IdentificationType1">
+                        <Textbox Name="IdentificationTypeStr">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!IdentificationType.Value</Value>
+                                  <Value>=Fields!IdentificationTypeStr.Value</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>IdentificationType1</rd:DefaultName>
+                          <rd:DefaultName>IdentificationTypeStr</rd:DefaultName>
                           <CustomProperties>
                             <CustomProperty>
                               <Name>AXDataType</Name>
@@ -1607,19 +1608,19 @@
                             </CustomProperty>
                             <CustomProperty>
                               <Name>AXEDTFormat</Name>
-                              <Value><![CDATA[SPYEmployeeBioDataTmp.IdentificationType]]></Value>
+                              <Value><![CDATA[SPYEmployeeBioDataTmp.IdentificationTypeStr]]></Value>
                             </CustomProperty>
                             <CustomProperty>
                               <Name>AXEDTTextAlign</Name>
-                              <Value><![CDATA[SPYEmployeeBioDataTmp.IdentificationType]]></Value>
+                              <Value><![CDATA[SPYEmployeeBioDataTmp.IdentificationTypeStr]]></Value>
                             </CustomProperty>
                             <CustomProperty>
                               <Name>AXEDTDirection</Name>
-                              <Value><![CDATA[SPYEmployeeBioDataTmp.IdentificationType]]></Value>
+                              <Value><![CDATA[SPYEmployeeBioDataTmp.IdentificationTypeStr]]></Value>
                             </CustomProperty>
                             <CustomProperty>
                               <Name>AXFieldName</Name>
-                              <Value><![CDATA[IdentificationType]]></Value>
+                              <Value><![CDATA[IdentificationTypeStr]]></Value>
                             </CustomProperty>
                           </CustomProperties>
                           <Style>
@@ -1643,6 +1644,7 @@
                                   <Value>=Fields!IdentificationNumber.Value</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1693,6 +1695,7 @@
                                   <Value>=Fields!IdentificationDescription.Value</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1743,6 +1746,7 @@
                                   <Value>=Fields!IssuedDate.Value</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1783,23 +1787,24 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="IssuingAgency">
+                        <Textbox Name="IssuingAgencyStr">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!IssuingAgency.Value</Value>
+                                  <Value>=Fields!IssuingAgencyStr.Value</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>IssuingAgency</rd:DefaultName>
+                          <rd:DefaultName>IssuingAgencyStr</rd:DefaultName>
                           <CustomProperties>
                             <CustomProperty>
                               <Name>AXDataType</Name>
@@ -1807,19 +1812,19 @@
                             </CustomProperty>
                             <CustomProperty>
                               <Name>AXEDTFormat</Name>
-                              <Value><![CDATA[SPYEmployeeBioDataTmp.IssuingAgency]]></Value>
+                              <Value><![CDATA[SPYEmployeeBioDataTmp.IssuingAgencyStr]]></Value>
                             </CustomProperty>
                             <CustomProperty>
                               <Name>AXEDTTextAlign</Name>
-                              <Value><![CDATA[SPYEmployeeBioDataTmp.IssuingAgency]]></Value>
+                              <Value><![CDATA[SPYEmployeeBioDataTmp.IssuingAgencyStr]]></Value>
                             </CustomProperty>
                             <CustomProperty>
                               <Name>AXEDTDirection</Name>
-                              <Value><![CDATA[SPYEmployeeBioDataTmp.IssuingAgency]]></Value>
+                              <Value><![CDATA[SPYEmployeeBioDataTmp.IssuingAgencyStr]]></Value>
                             </CustomProperty>
                             <CustomProperty>
                               <Name>AXFieldName</Name>
-                              <Value><![CDATA[IssuingAgency]]></Value>
+                              <Value><![CDATA[IssuingAgencyStr]]></Value>
                             </CustomProperty>
                           </CustomProperties>
                           <Style>
@@ -1969,7 +1974,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox64</rd:DefaultName>
@@ -2058,7 +2065,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>MonthlyAmt</rd:DefaultName>
@@ -2110,7 +2119,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Total</Value>
+                                  <Value>Gross</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontWeight>Bold</FontWeight>
@@ -2150,7 +2159,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>MonthlyAmt1</rd:DefaultName>
@@ -2842,7 +2853,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox94</rd:DefaultName>
@@ -3075,7 +3088,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>LeaveDays</rd:DefaultName>
@@ -3193,6 +3208,9 @@
                 <TablixColumn>
                   <Width>0.98916in</Width>
                 </TablixColumn>
+                <TablixColumn>
+                  <Width>1in</Width>
+                </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
@@ -3214,10 +3232,43 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>PayElementAmt</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="PayElementAmt1">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!PayElementAmt.Value)</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <Format>0.00;(0.00)</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>PayElementAmt1</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
@@ -3260,7 +3311,9 @@
                                 </Style>
                               </TextRun>
                             </TextRuns>
-                            <Style />
+                            <Style>
+                              <TextAlign>Right</TextAlign>
+                            </Style>
                           </Paragraph>
                         </Paragraphs>
                         <rd:DefaultName>IncrementPayElementCode</rd:DefaultName>
@@ -3298,6 +3351,39 @@
                   <Visibility>
                     <Hidden>=IIf(Fields!BioDataCategoryLabel.Value = "5", false, true)</Hidden>
                   </Visibility>
+                </TablixMember>
+                <TablixMember>
+                  <TablixHeader>
+                    <Size>0.25in</Size>
+                    <CellContents>
+                      <Textbox Name="Textbox10">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>Total</Value>
+                                <Style>
+                                  <FontFamily>Segoe UI</FontFamily>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style>
+                              <TextAlign>Right</TextAlign>
+                            </Style>
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>Textbox10</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Style>Solid</Style>
+                          </Border>
+                          <PaddingLeft>2pt</PaddingLeft>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
                 </TablixMember>
               </TablixMembers>
             </TablixColumnHierarchy>
@@ -3374,7 +3460,7 @@
             <DataSetName>BioDataDS</DataSetName>
             <Top>5.79042in</Top>
             <Height>0.5in</Height>
-            <Width>1.69405in</Width>
+            <Width>2.69405in</Width>
             <ZIndex>5</ZIndex>
             <Visibility>
               <Hidden>=IIf(Parameters!BioDataDS_parmIncrement.Value = "Yes", false, true)</Hidden>
@@ -3860,7 +3946,7 @@
         <ConnectString />
         <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
-      <rd:DataSourceID>1792d1d0-cfce-4c92-9a95-8225201495bb</rd:DataSourceID>
+      <rd:DataSourceID>1ee56e89-baad-4b53-b45d-7cb0f9b63466</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
@@ -3910,6 +3996,10 @@
           <DataField>SPYEmployeeBioDataTmp.1.IdentificationType</DataField>
           <rd:TypeName>System.Int64</rd:TypeName>
         </Field>
+        <Field Name="IdentificationTypeStr">
+          <DataField>SPYEmployeeBioDataTmp.1.IdentificationTypeStr</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="IncrementDate">
           <DataField>SPYEmployeeBioDataTmp.1.IncrementDate</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
@@ -3925,6 +4015,10 @@
         <Field Name="IssuingAgency">
           <DataField>SPYEmployeeBioDataTmp.1.IssuingAgency</DataField>
           <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="IssuingAgencyStr">
+          <DataField>SPYEmployeeBioDataTmp.1.IssuingAgencyStr</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="JoinDate">
           <DataField>SPYEmployeeBioDataTmp.1.JoinDate</DataField>

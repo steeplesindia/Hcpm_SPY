@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>SPYLeaveBalanceController</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+class SPYLeaveBalanceController extends SrsReportRunController
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>main</Name>
+				<Source><![CDATA[
+    public static void main(Args _args)
+    {
+        SPYLeaveBalanceController controller = new spyLeaveBalanceController();
+    
+        controller.parmReportName(ssrsReportStr(SPYLeaveBalanceReport, Report));
+        
+        controller.parmArgs(_args);
+        controller.startOperation();
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

@@ -12,7 +12,7 @@ public class SPYLeaveDetailDP extends SrsReportDataProviderPreProcess
     HcmWorker                       hcmWorker;
     SPYLeaveDetailTmp               leaveDetailTmp;
     SPYWorkerPositionPayroll        workerPositionPayroll;
-    SPYBenefitLedger                benefitLedger, benefitLedgerOp, benefitLedgerTk;
+    SPYBenefitLedger                benefitLedger, benefitLedgerOp, benefitLedgerTk, benefitLedgerAccural, benefitLedgerEntitlement;
     SPYBenefitTable                 benefitTable;
     HRMAbsenceCode                  hrmAbsenceCode;
     SPYPayrollPeriodLineRecId       payrollPeriodLineRecId;
@@ -33,14 +33,16 @@ public class SPYLeaveDetailDP extends SrsReportDataProviderPreProcess
 				<Source><![CDATA[
     private int checkAccuralLines()
     {
+        SPYBenefitLedger    benefitLedgerLoc;
         int i = 0;
     
-        while select Quantity from benefitLedger join benefitTable join hrmAbsenceCode where
-            benefitLedger.Worker == hcmWorker.RecId && benefitLedger.Benefit == benefitTable.RecId
-            && benefitTable.RecId == hrmAbsenceCode.SPYBenefit && benefitLedger.PayrollPeriodLine == payrollPeriodLineRecId
-            && benefitLedger.JournalType == SPYBenefitJournalType::Accrual
+        while select Quantity from benefitLedgerLoc join benefitTable join hrmAbsenceCode 
+            where benefitLedgerLoc.Worker == hcmWorker.RecId && 
+                benefitLedgerLoc.Benefit == benefitTable.RecId  && 
+                benefitTable.RecId == hrmAbsenceCode.SPYBenefit && 
+                benefitLedgerLoc.PayrollPeriodLine == payrollPeriodLineRecId &&
+                benefitLedgerLoc.JournalType == SPYBenefitJournalType::Accrual
         {
-    
             i++;
         }
         return i;
@@ -126,7 +128,11 @@ public class SPYLeaveDetailDP extends SrsReportDataProviderPreProcess
                     leaveDetailTmp.Entitlement                  = entitlement;
     
                     select Quantity from benefitLedgerTk join benefitTable join hrmAbsenceCode where
-                    benefitLedgerTk.Worker == hcmWorker.RecId && benefitLedgerTk.Benefit == benefitTable.RecId && hrmAbsenceCode.SPYBenefit == benefitTable.RecID && benefitLedgerTk.PayrollPeriodLine == payrollPeriodLine.RecId && benefitLedgerTk.JournalType == SPYBenefitJournalType::Encashment;
+                        benefitLedgerTk.Worker == hcmWorker.RecId && 
+                        benefitLedgerTk.Benefit == benefitTable.RecId && 
+                        hrmAbsenceCode.SPYBenefit == benefitTable.RecID && 
+                        benefitLedgerTk.PayrollPeriodLine == payrollPeriodLine.RecId && 
+                        benefitLedgerTk.JournalType == SPYBenefitJournalType::Encashment;
     
                     leaveTaken                                  = benefitLedgerTk.Quantity;
                     leaveDetailTmp.DaysTaken                    = leaveTaken;
@@ -140,12 +146,15 @@ public class SPYLeaveDetailDP extends SrsReportDataProviderPreProcess
                     ins                                         = true;
                     if(this.checkAccuralLines() != 1)
                     {
-                        select Quantity from benefitLedger join benefitTable join hrmAbsenceCode where
-                        benefitLedger.Worker == hcmWorker.RecId && benefitLedger.Benefit == benefitTable.RecId
-                        && benefitTable.RecId == hrmAbsenceCode.SPYBenefit && benefitLedger.PayrollPeriodLine == payrollPeriodLineRecId
-                        && benefitLedger.JournalType == SPYBenefitJournalType::Accrual && benefitLedger.TransactionCurrencyAmount != 0;
+                        select Quantity from benefitLedgerAccural join benefitTable join hrmAbsenceCode 
+                            where   benefitLedgerAccural.Worker == hcmWorker.RecId && 
+                                    benefitLedgerAccural.Benefit == benefitTable.RecId &&
+                                    benefitTable.RecId == hrmAbsenceCode.SPYBenefit && 
+                                    benefitLedgerAccural.PayrollPeriodLine == payrollPeriodLineRecId &&
+                                    benefitLedgerAccural.JournalType == SPYBenefitJournalType::Accrual && 
+                                    benefitLedgerAccural.TransactionCurrencyAmount != 0;
    
-                        entitlement                             = benefitLedger.Quantity;
+                        entitlement = benefitLedgerAccural.Quantity;
                     }
                 }
                 recordInsertLeaveDetails.insertDatabase();
@@ -157,15 +166,15 @@ public class SPYLeaveDetailDP extends SrsReportDataProviderPreProcess
                     //the entitlement with that figure
                     if ( entitlement == 0 )
                     {
-                        select firstOnly Quantity from benefitLedger
+                        select firstOnly Quantity from benefitLedgerEntitlement
                         join benefitTable join hrmAbsenceCode
-                        order by benefitLedger.RECID desc
-                        where benefitLedger.Worker == hcmWorker.RecId
-                            && benefitLedger.Benefit == benefitTable.RecId
+                        order by benefitLedgerEntitlement.RECID desc
+                        where benefitLedgerEntitlement.Worker == hcmWorker.RecId
+                            && benefitLedgerEntitlement.Benefit == benefitTable.RecId
                             && benefitTable.RecId == hrmAbsenceCode.SPYBenefit
-                            && benefitLedger.JournalType == SPYBenefitJournalType::Accrual;
+                            && benefitLedgerEntitlement.JournalType == SPYBenefitJournalType::Accrual;
     
-                        entitlement = benefitLedger.Quantity;
+                        entitlement = benefitLedgerEntitlement.Quantity;
                     }
                     leaveDetailTmp.OpeningBalance               = openBal;
                     leaveDetailTmp.Entitlement                  = entitlement;

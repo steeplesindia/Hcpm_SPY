@@ -154,6 +154,20 @@ public class SPYPayrollEarningsJournalTable extends common
 
 ]]></Source>
 			</Method>
+			<Method>
+				<Name>initValue</Name>
+				<Source><![CDATA[
+    /// <summary>
+    ///
+    /// </summary>
+    public void initValue()
+    {
+        this.PostToLedger = NoYes::Yes;
+        super();
+    }
+
+]]></Source>
+			</Method>
 		</Methods>
 	</SourceCode>
 	<ConfigurationKey>SPYPayroll</ConfigurationKey>

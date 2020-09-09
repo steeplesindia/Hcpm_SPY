@@ -6,6 +6,7 @@
 [DataContractAttribute]
 class SPYReportConfigContract
 {
+    SPYReportTitle      reportTitle;            
     SPYReportConfigRecID    reportConfigRecId;
     SPYPayrollPeriodLineRecId   payrollPeriodlineFrom;
     SPYPayrollPeriodLineRecId   payrollPeriodlineTo;
@@ -43,14 +44,33 @@ class SPYReportConfigContract
 ]]></Source>
 			</Method>
 			<Method>
-				<Name>parmReportConfigRecId</Name>
+				<Name>parmReportTitle</Name>
 				<Source><![CDATA[
     //<<******set the query for selection
 
     [
+        DataMemberAttribute('ReportTitle'),
+        SysOperationLabelAttribute(literalStr('@SPY:ReportTitle')),
+        SysOperationDisplayOrderAttribute('2')
+    ]
+
+    public SPYReportTitle parmReportTitle(SPYReportTitle _reportTitle = reportTitle)
+    {
+        reportTitle = _reportTitle;
+    
+        return reportTitle;
+
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmReportConfigRecId</Name>
+				<Source><![CDATA[
+    [
         DataMemberAttribute('ReportId'),
         SysOperationLabelAttribute(literalStr('@SPY:ReportID')),
-        SysOperationDisplayOrderAttribute('2')
+        SysOperationDisplayOrderAttribute('3')
     ]
 
     public SPYReportConfigRecID parmReportConfigRecId(SPYReportConfigRecID _reportConfigRecId = reportConfigRecId)

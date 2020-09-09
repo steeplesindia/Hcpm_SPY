@@ -107,10 +107,12 @@ class SPYEmployeeBioDataDP extends SRSReportDataProviderBase
                     employeeBioDataTmp.PersonnelNumberId = hcmworker.PersonnelNumber;
                     employeeBioDataTmp.Name = hcmworker.name();
                     employeeBioDataTmp.IdentificationType = personIdentificationNumber.IdentificationType;
+                    employeeBioDataTmp.IdentificationTypeStr = HcmIdentificationType::find(personIdentificationNumber.IdentificationType).Description;
                     employeeBioDataTmp.IdentificationNumber = personIdentificationNumber.IdentificationNumber;
                     employeeBioDataTmp.IdentificationDescription = personIdentificationNumber.Description;
                     employeeBioDataTmp.IssuedDate = personIdentificationNumber.IssuedDate;
                     employeeBioDataTmp.IssuingAgency = personIdentificationNumber.IssuingAgency;
+                    employeeBioDataTmp.IssuingAgencyStr = HcmIssuingAgency::find(personIdentificationNumber.IssuingAgency).Name;
                     employeeBioDataTmp.ExpirationDate = personIdentificationNumber.ExpirationDate;
 
                     employeeBioDataTmp.insert();

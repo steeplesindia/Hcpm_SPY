@@ -66,6 +66,11 @@ public class SPYWorkerPositionPayrollTmp extends common
 			<HelpText>Payroll code</HelpText>
 			<Mandatory>Yes</Mandatory>
 		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>CurrencyCode</Name>
+			<ExtendedDataType>CurrencyCode</ExtendedDataType>
+		</AxTableField>
 	</Fields>
 	<FullTextIndexes />
 	<Indexes />

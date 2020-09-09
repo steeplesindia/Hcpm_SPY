@@ -1,0 +1,747 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:cl="http://schemas.microsoft.com/sqlserver/reporting/2010/01/componentdefinition" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/reportdefinition">
+  <AutoRefresh>0</AutoRefresh>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Tablix Name="Tablix3">
+            <TablixCorner>
+              <TablixCornerRows>
+                <TablixCornerRow>
+                  <TablixCornerCell>
+                    <CellContents>
+                      <Textbox Name="Textbox56">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>=First(Fields!CompanyName.Value)</Value>
+                                <Style>
+                                  <FontStyle>Normal</FontStyle>
+                                  <FontFamily>Segoe UI</FontFamily>
+                                  <FontSize>11pt</FontSize>
+                                  <FontWeight>Bold</FontWeight>
+                                  <TextDecoration>None</TextDecoration>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style />
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>Textbox56</rd:DefaultName>
+                        <CustomProperties>
+                          <CustomProperty>
+                            <Name>AXDataType</Name>
+                            <Value>String</Value>
+                          </CustomProperty>
+                        </CustomProperties>
+                        <Style>
+                          <Border>
+                            <Style>Solid</Style>
+                          </Border>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                      <ColSpan>2</ColSpan>
+                    </CellContents>
+                  </TablixCornerCell>
+                  <TablixCornerCell />
+                </TablixCornerRow>
+                <TablixCornerRow>
+                  <TablixCornerCell>
+                    <CellContents>
+                      <Textbox Name="Textbox48">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>Employee id</Value>
+                                <Style>
+                                  <FontStyle>Normal</FontStyle>
+                                  <FontFamily>Segoe UI</FontFamily>
+                                  <FontSize>8pt</FontSize>
+                                  <FontWeight>Bold</FontWeight>
+                                  <TextDecoration>None</TextDecoration>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style />
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>Textbox48</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Style>Solid</Style>
+                          </Border>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixCornerCell>
+                  <TablixCornerCell>
+                    <CellContents>
+                      <Textbox Name="Textbox1">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>Employee name</Value>
+                                <Style>
+                                  <FontStyle>Normal</FontStyle>
+                                  <FontFamily>Segoe UI</FontFamily>
+                                  <FontSize>8pt</FontSize>
+                                  <FontWeight>Bold</FontWeight>
+                                  <TextDecoration>None</TextDecoration>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style />
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>Textbox1</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Style>Solid</Style>
+                          </Border>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixCornerCell>
+                </TablixCornerRow>
+              </TablixCornerRows>
+            </TablixCorner>
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>0.73958in</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Balance">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!Balance.Value)</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <Format>0.000;(0.000)</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Balance</rd:DefaultName>
+                          <CustomProperties>
+                            <CustomProperty>
+                              <Name>AXDataType</Name>
+                              <Value>Float</Value>
+                            </CustomProperty>
+                          </CustomProperties>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="AbsenceCdoe">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!AbsenceCode.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!AbsenceCode.Value</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <TablixHeader>
+                    <Size>0.30208in</Size>
+                    <CellContents>
+                      <Textbox Name="Textbox58">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value />
+                                <Style>
+                                  <FontStyle>Normal</FontStyle>
+                                  <FontFamily>Segoe UI</FontFamily>
+                                  <FontSize>8pt</FontSize>
+                                  <FontWeight>Bold</FontWeight>
+                                  <TextDecoration>None</TextDecoration>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style>
+                              <TextAlign>Right</TextAlign>
+                            </Style>
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>Textbox58</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Style>Solid</Style>
+                          </Border>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
+                  <TablixMembers>
+                    <TablixMember>
+                      <TablixHeader>
+                        <Size>0.25in</Size>
+                        <CellContents>
+                          <Textbox Name="Group1">
+                            <CanGrow>true</CanGrow>
+                            <KeepTogether>true</KeepTogether>
+                            <Paragraphs>
+                              <Paragraph>
+                                <TextRuns>
+                                  <TextRun>
+                                    <Value>=Fields!AbsenceCode.Value</Value>
+                                    <Style>
+                                      <FontStyle>Normal</FontStyle>
+                                      <FontFamily>Segoe UI</FontFamily>
+                                      <FontSize>8pt</FontSize>
+                                      <FontWeight>Bold</FontWeight>
+                                      <TextDecoration>None</TextDecoration>
+                                    </Style>
+                                  </TextRun>
+                                </TextRuns>
+                                <Style>
+                                  <TextAlign>Right</TextAlign>
+                                </Style>
+                              </Paragraph>
+                            </Paragraphs>
+                            <rd:DefaultName>Group1</rd:DefaultName>
+                            <CustomProperties>
+                              <CustomProperty>
+                                <Name>AXDataType</Name>
+                                <Value><![CDATA[String]]></Value>
+                              </CustomProperty>
+                              <CustomProperty>
+                                <Name>AXEDTFormat</Name>
+                                <Value><![CDATA[SPYLeaveBalanceTMP.AbsenceCode]]></Value>
+                              </CustomProperty>
+                              <CustomProperty>
+                                <Name>AXEDTTextAlign</Name>
+                                <Value><![CDATA[SPYLeaveBalanceTMP.AbsenceCode]]></Value>
+                              </CustomProperty>
+                              <CustomProperty>
+                                <Name>AXEDTDirection</Name>
+                                <Value><![CDATA[SPYLeaveBalanceTMP.AbsenceCode]]></Value>
+                              </CustomProperty>
+                              <CustomProperty>
+                                <Name>AXFieldName</Name>
+                                <Value><![CDATA[AbsenceCode]]></Value>
+                              </CustomProperty>
+                            </CustomProperties>
+                            <Style>
+                              <Border>
+                                <Style>Solid</Style>
+                              </Border>
+                              <PaddingLeft>2pt</PaddingLeft>
+                              <PaddingRight>2pt</PaddingRight>
+                              <PaddingTop>2pt</PaddingTop>
+                              <PaddingBottom>2pt</PaddingBottom>
+                            </Style>
+                          </Textbox>
+                        </CellContents>
+                      </TablixHeader>
+                    </TablixMember>
+                  </TablixMembers>
+                </TablixMember>
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="Worker">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!Worker.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!Worker.Value</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <TablixMembers>
+                    <TablixMember>
+                      <TablixHeader>
+                        <Size>1.46875in</Size>
+                        <CellContents>
+                          <Textbox Name="EmpId1">
+                            <CanGrow>true</CanGrow>
+                            <KeepTogether>true</KeepTogether>
+                            <Paragraphs>
+                              <Paragraph>
+                                <TextRuns>
+                                  <TextRun>
+                                    <Value>=Fields!EmpId.Value</Value>
+                                    <Style>
+                                      <FontFamily>Segoe UI</FontFamily>
+                                      <FontSize>8pt</FontSize>
+                                    </Style>
+                                  </TextRun>
+                                </TextRuns>
+                                <Style />
+                              </Paragraph>
+                            </Paragraphs>
+                            <rd:DefaultName>EmpId1</rd:DefaultName>
+                            <CustomProperties>
+                              <CustomProperty>
+                                <Name>AXDataType</Name>
+                                <Value><![CDATA[String]]></Value>
+                              </CustomProperty>
+                              <CustomProperty>
+                                <Name>AXEDTFormat</Name>
+                                <Value><![CDATA[SPYLeaveBalanceTMP.EmpId]]></Value>
+                              </CustomProperty>
+                              <CustomProperty>
+                                <Name>AXEDTTextAlign</Name>
+                                <Value><![CDATA[SPYLeaveBalanceTMP.EmpId]]></Value>
+                              </CustomProperty>
+                              <CustomProperty>
+                                <Name>AXEDTDirection</Name>
+                                <Value><![CDATA[SPYLeaveBalanceTMP.EmpId]]></Value>
+                              </CustomProperty>
+                              <CustomProperty>
+                                <Name>AXFieldName</Name>
+                                <Value><![CDATA[EmpId]]></Value>
+                              </CustomProperty>
+                            </CustomProperties>
+                            <Style>
+                              <Border>
+                                <Style>Solid</Style>
+                              </Border>
+                              <PaddingLeft>2pt</PaddingLeft>
+                              <PaddingRight>2pt</PaddingRight>
+                              <PaddingTop>2pt</PaddingTop>
+                              <PaddingBottom>2pt</PaddingBottom>
+                            </Style>
+                          </Textbox>
+                        </CellContents>
+                      </TablixHeader>
+                      <TablixMembers>
+                        <TablixMember>
+                          <TablixHeader>
+                            <Size>1.875in</Size>
+                            <CellContents>
+                              <Textbox Name="EmpName1">
+                                <CanGrow>true</CanGrow>
+                                <KeepTogether>true</KeepTogether>
+                                <Paragraphs>
+                                  <Paragraph>
+                                    <TextRuns>
+                                      <TextRun>
+                                        <Value>=Fields!EmpName.Value</Value>
+                                        <Style>
+                                          <FontFamily>Segoe UI</FontFamily>
+                                          <FontSize>8pt</FontSize>
+                                        </Style>
+                                      </TextRun>
+                                    </TextRuns>
+                                    <Style />
+                                  </Paragraph>
+                                </Paragraphs>
+                                <rd:DefaultName>EmpName1</rd:DefaultName>
+                                <CustomProperties>
+                                  <CustomProperty>
+                                    <Name>AXDataType</Name>
+                                    <Value><![CDATA[String]]></Value>
+                                  </CustomProperty>
+                                  <CustomProperty>
+                                    <Name>AXEDTFormat</Name>
+                                    <Value><![CDATA[SPYLeaveBalanceTMP.EmpName]]></Value>
+                                  </CustomProperty>
+                                  <CustomProperty>
+                                    <Name>AXEDTTextAlign</Name>
+                                    <Value><![CDATA[SPYLeaveBalanceTMP.EmpName]]></Value>
+                                  </CustomProperty>
+                                  <CustomProperty>
+                                    <Name>AXEDTDirection</Name>
+                                    <Value><![CDATA[SPYLeaveBalanceTMP.EmpName]]></Value>
+                                  </CustomProperty>
+                                  <CustomProperty>
+                                    <Name>AXFieldName</Name>
+                                    <Value><![CDATA[EmpName]]></Value>
+                                  </CustomProperty>
+                                </CustomProperties>
+                                <Style>
+                                  <Border>
+                                    <Style>Solid</Style>
+                                  </Border>
+                                  <PaddingLeft>2pt</PaddingLeft>
+                                  <PaddingRight>2pt</PaddingRight>
+                                  <PaddingTop>2pt</PaddingTop>
+                                  <PaddingBottom>2pt</PaddingBottom>
+                                </Style>
+                              </Textbox>
+                            </CellContents>
+                          </TablixHeader>
+                          <TablixMembers>
+                            <TablixMember />
+                          </TablixMembers>
+                        </TablixMember>
+                      </TablixMembers>
+                    </TablixMember>
+                  </TablixMembers>
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <RepeatColumnHeaders>true</RepeatColumnHeaders>
+            <DataSetName>SPYLeaveBalanceTmp</DataSetName>
+            <SortExpressions>
+              <SortExpression>
+                <Value>=Fields!EmpId.Value</Value>
+              </SortExpression>
+            </SortExpressions>
+            <Top>0.125in</Top>
+            <Height>0.80208in</Height>
+            <Width>4.08333in</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Tablix>
+        </ReportItems>
+        <Height>3in</Height>
+        <Style />
+      </Body>
+      <Width>6.42583in</Width>
+      <Page>
+        <PageHeader>
+          <Height>0.70833in</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="Textbox2">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>="Employee Leave Balance"</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>14pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox2</rd:DefaultName>
+              <Top>0.19667in</Top>
+              <Height>0.37625in</Height>
+              <Width>4.09375in</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox3">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=System.String.Format("Labels!@SYS182566", "" &amp; Globals!PageNumber &amp; "", "" &amp; Globals!TotalPages &amp; "")</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox3</rd:DefaultName>
+              <Top>0.25917in</Top>
+              <Left>4.86333in</Left>
+              <Height>0.18875in</Height>
+              <Width>1.3125in</Width>
+              <ZIndex>1</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox4">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Format(Now(), "dd/MM/yyyy hh:mm tt")</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox3</rd:DefaultName>
+              <Top>0.50979in</Top>
+              <Left>4.565in</Left>
+              <Height>0.18875in</Height>
+              <Width>1.60417in</Width>
+              <ZIndex>2</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageHeader>
+        <InteractiveHeight>11in</InteractiveHeight>
+        <InteractiveWidth>8.5in</InteractiveWidth>
+        <LeftMargin>1in</LeftMargin>
+        <RightMargin>1in</RightMargin>
+        <TopMargin>1in</TopMargin>
+        <BottomMargin>1in</BottomMargin>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <Language>en-US</Language>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ExpressionDialog>Microsoft.Dynamics.Framework.Design.Reports.ExpressionEditor.ExpressionEditorDialog, Microsoft.Dynamics.Framework.Design.Reports</rd:ExpressionDialog>
+  <rd:ReportID>d348a6cd-c246-408a-8dd3-86754beebcff</rd:ReportID>
+  <DataSources>
+    <DataSource Name="AutoGen__ReportDataProvider">
+      <Transaction>true</Transaction>
+      <ConnectionProperties>
+        <DataProvider>AXREPORTDATAPROVIDER</DataProvider>
+        <ConnectString />
+        <IntegratedSecurity>true</IntegratedSecurity>
+      </ConnectionProperties>
+      <rd:DataSourceID>3ead6d87-e418-4f5d-bd5d-ca6995f8728b</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="SPYLeaveBalanceTmp">
+      <Fields>
+        <Field Name="AbsenceCode">
+          <DataField>SPYLeaveBalanceTMP.1.AbsenceCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Balance">
+          <DataField>SPYLeaveBalanceTMP.1.Balance</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="CompanyName">
+          <DataField>SPYLeaveBalanceTMP.1.CompanyName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CreatedTransactionId">
+          <DataField>SPYLeaveBalanceTMP.1.CreatedTransactionId</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="EmpId">
+          <DataField>SPYLeaveBalanceTMP.1.EmpId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="EmpName">
+          <DataField>SPYLeaveBalanceTMP.1.EmpName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Worker">
+          <DataField>SPYLeaveBalanceTMP.1.Worker</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <QueryParameters>
+          <QueryParameter Name="AX_PartitionKey">
+            <Value>=Parameters!AX_PartitionKey.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="AX_CompanyName">
+            <Value>=Parameters!AX_CompanyName.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="AX_UserContext">
+            <Value>=Parameters!AX_UserContext.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="AX_RenderingCulture">
+            <Value>=Parameters!AX_RenderingCulture.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="AX_ReportContext">
+            <Value>=Parameters!AX_ReportContext.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="AX_RdpPreProcessedId">
+            <Value>=Parameters!AX_RdpPreProcessedId.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="parmHcmWorkerRecId">
+            <Value>=Parameters!SPYLeaveBalanceTmp_parmHcmWorkerRecId.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="parmTillDate">
+            <Value>=Parameters!SPYLeaveBalanceTmp_parmTillDate.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <DataSourceName>AutoGen__ReportDataProvider</DataSourceName>
+        <CommandType>Text</CommandType>
+        <CommandText>SELECT * FROM SPYLeaveBalanceDP.SPYLeaveBalanceTMP</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <rd:DataSetInfo>
+        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
+        <rd:DataSetName>SPYLeaveBalanceTmp</rd:DataSetName>
+        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableAdapterName>FieldsTableAdapter</rd:TableAdapterName>
+        <rd:TableName>Fields</rd:TableName>
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
+  <ReportParameters>
+    <ReportParameter Name="AX_PartitionKey">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <Hidden>true</Hidden>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>AX_PartitionKey</Prompt>
+      <MultiValue>false</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="AX_CompanyName">
+      <DataType>String</DataType>
+      <Nullable>false</Nullable>
+      <Hidden>true</Hidden>
+      <AllowBlank>false</AllowBlank>
+      <Prompt>AX_CompanyName</Prompt>
+      <MultiValue>false</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="AX_UserContext">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <Hidden>true</Hidden>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>AX_UserContext</Prompt>
+      <MultiValue>false</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="AX_RenderingCulture">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <Hidden>true</Hidden>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>AX_RenderingCulture</Prompt>
+      <MultiValue>false</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="AX_ReportContext">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <Hidden>true</Hidden>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>AX_ReportContext</Prompt>
+      <MultiValue>false</MultiValue>
+      <UsedInQuery>True</UsedInQuery>
+    </ReportParameter>
+    <ReportParameter Name="AX_RdpPreProcessedId">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <Hidden>true</Hidden>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>AX_RdpPreProcessedId</Prompt>
+      <MultiValue>false</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="SPYLeaveBalanceTmp_parmHcmWorkerRecId">
+      <DataType>String</DataType>
+      <Nullable>false</Nullable>
+      <Hidden>false</Hidden>
+      <AllowBlank>false</AllowBlank>
+      <Prompt>Worker</Prompt>
+      <MultiValue>false</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="SPYLeaveBalanceTmp_parmTillDate">
+      <DataType>DateTime</DataType>
+      <Nullable>false</Nullable>
+      <Hidden>false</Hidden>
+      <AllowBlank>false</AllowBlank>
+      <Prompt>Till date</Prompt>
+      <MultiValue>false</MultiValue>
+    </ReportParameter>
+  </ReportParameters>
+  <CodeModules>
+    <CodeModule>Microsoft.Dynamics.Framework.Reports, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</CodeModule>
+    <CodeModule>Microsoft.Dynamics.ApplicationSuite.Reporting.BusinessLogic, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</CodeModule>
+  </CodeModules>
+</Report>

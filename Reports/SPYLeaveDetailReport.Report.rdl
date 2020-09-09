@@ -1098,7 +1098,7 @@
         <ConnectString />
         <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
-      <rd:DataSourceID>783a2924-33d2-4dd7-913e-99d5b3f68877</rd:DataSourceID>
+      <rd:DataSourceID>8b506b73-2c0a-4a98-a66f-26a6ff9d718f</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>

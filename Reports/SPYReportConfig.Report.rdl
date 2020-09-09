@@ -63,7 +63,7 @@
         <ConnectString />
         <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
-      <rd:DataSourceID>12ab288a-8b56-466d-a080-fdeef8061562</rd:DataSourceID>
+      <rd:DataSourceID>319cea69-5a26-4ce6-bf72-694c0c5daa0a</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>

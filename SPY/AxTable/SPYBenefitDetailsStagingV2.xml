@@ -6,7 +6,7 @@
 	</SourceCode>
 	<ConfigurationKey>SPYPayroll</ConfigurationKey>
 	<DeveloperDocumentation>@DMF:StagingDeveloperDocumentation</DeveloperDocumentation>
-	<Label>@Benefits:PayrollDetails</Label>
+	<Label>Benifit details V2</Label>
 	<TableGroup>Staging</TableGroup>
 	<PrimaryIndex>StagingIdx</PrimaryIndex>
 	<ReplacementKey>StagingIdx</ReplacementKey>
@@ -98,33 +98,23 @@
 			<IsSystemGenerated>Yes</IsSystemGenerated>
 		</AxTableField>
 		<AxTableField xmlns=""
-			i:type="AxTableFieldInt64">
-			<Name>InstanceRelationType</Name>
-			<AllowEdit>No</AllowEdit>
-			<AllowEditOnCreate>No</AllowEditOnCreate>
-			<ExtendedDataType>RelationType</ExtendedDataType>
-			<IsSystemGenerated>Yes</IsSystemGenerated>
-			<Label>@SYS330576</Label>
-		</AxTableField>
-		<AxTableField xmlns=""
 			i:type="AxTableFieldString">
 			<Name>PayElementCode</Name>
-			<AllowEdit>No</AllowEdit>
 			<ExtendedDataType>SPYPayElementCode</ExtendedDataType>
+			<IsManuallyUpdated>Yes</IsManuallyUpdated>
 			<IsSystemGenerated>Yes</IsSystemGenerated>
-			<Mandatory>Yes</Mandatory>
 		</AxTableField>
 		<AxTableField xmlns=""
 			i:type="AxTableFieldEnum">
 			<Name>PayElementType</Name>
-			<AllowEdit>No</AllowEdit>
+			<IsManuallyUpdated>Yes</IsManuallyUpdated>
 			<IsSystemGenerated>Yes</IsSystemGenerated>
 			<EnumType>SPYPayElementType</EnumType>
 		</AxTableField>
 		<AxTableField xmlns=""
 			i:type="AxTableFieldEnum">
 			<Name>ReferencePayElement</Name>
-			<AllowEdit>No</AllowEdit>
+			<IsManuallyUpdated>Yes</IsManuallyUpdated>
 			<IsSystemGenerated>Yes</IsSystemGenerated>
 			<Label>@SPY:ReferencePayElement</Label>
 			<EnumType>NoYes</EnumType>
@@ -199,38 +189,37 @@
 		<AxTableField xmlns=""
 			i:type="AxTableFieldString">
 			<Name>ParentPayElementCode</Name>
-			<AllowEdit>No</AllowEdit>
 			<ExtendedDataType>SPYPayElementCode</ExtendedDataType>
+			<IsManuallyUpdated>Yes</IsManuallyUpdated>
 			<IsSystemGenerated>Yes</IsSystemGenerated>
-			<Mandatory>Yes</Mandatory>
 		</AxTableField>
 		<AxTableField xmlns=""
 			i:type="AxTableFieldString">
 			<Name>AmountExp</Name>
 			<ExtendedDataType>SPYExpressionCode</ExtendedDataType>
+			<IsManuallyUpdated>Yes</IsManuallyUpdated>
 			<IsSystemGenerated>Yes</IsSystemGenerated>
-			<Mandatory>Yes</Mandatory>
 		</AxTableField>
 		<AxTableField xmlns=""
 			i:type="AxTableFieldString">
 			<Name>QuantityExp</Name>
 			<ExtendedDataType>SPYExpressionCode</ExtendedDataType>
+			<IsManuallyUpdated>Yes</IsManuallyUpdated>
 			<IsSystemGenerated>Yes</IsSystemGenerated>
-			<Mandatory>Yes</Mandatory>
 		</AxTableField>
 		<AxTableField xmlns=""
 			i:type="AxTableFieldString">
 			<Name>EncahmentQuantityExp</Name>
 			<ExtendedDataType>SPYExpressionCode</ExtendedDataType>
+			<IsManuallyUpdated>Yes</IsManuallyUpdated>
 			<IsSystemGenerated>Yes</IsSystemGenerated>
-			<Mandatory>Yes</Mandatory>
 		</AxTableField>
 		<AxTableField xmlns=""
 			i:type="AxTableFieldString">
 			<Name>EncashmentAmountExp</Name>
 			<ExtendedDataType>SPYExpressionCode</ExtendedDataType>
+			<IsManuallyUpdated>Yes</IsManuallyUpdated>
 			<IsSystemGenerated>Yes</IsSystemGenerated>
-			<Mandatory>Yes</Mandatory>
 		</AxTableField>
 	</Fields>
 	<FullTextIndexes />

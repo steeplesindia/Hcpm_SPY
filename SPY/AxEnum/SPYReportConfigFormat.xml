@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxEnum xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>SPYReportConfigFormat</Name>
+	<ConfigurationKey>SPYHCPM</ConfigurationKey>
+	<Label>@SPY:Format</Label>
+	<EnumValues>
+		<AxEnumValue>
+			<Name>Pdf</Name>
+			<Label>@SPY:Pdf</Label>
+		</AxEnumValue>
+		<AxEnumValue>
+			<Name>Html</Name>
+			<Label>@SPY:Html</Label>
+			<Value>1</Value>
+		</AxEnumValue>
+		<AxEnumValue>
+			<Name>Excel</Name>
+			<Label>@SPY:Excel</Label>
+			<Value>2</Value>
+		</AxEnumValue>
+	</EnumValues>
+</AxEnum>

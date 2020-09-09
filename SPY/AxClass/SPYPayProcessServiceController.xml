@@ -167,7 +167,11 @@ class SPYPayProcessServiceController extends SysOperationServiceController
             /*
             if(payProcessServiceController.isInBatch())
                 info("Batch");
-            */            
+            */       
+            
+            // Insert the first record information for the Payroll process starting.
+            payProcessServiceController.createLogStartRecord(payProcessContract.parmPayrollPeriodLine());
+
             if(payProcessContract.parmCallFromBatchTask())
                 SPYPayProcessBatch::addTask(payProcessContract);
             else
@@ -207,6 +211,31 @@ class SPYPayProcessServiceController extends SysOperationServiceController
         ret = "@SPY1143";
     
         return ret;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>createLogStartRecord</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// Method introduced for logging mechanism.
+    /// </summary>
+    public void createLogStartRecord(SPYPayrollPeriodLineRecId  _payrollPeriodLineRecId)
+    {
+        SPYPayrollProcessLogHeader      payrollProcessLogHeader;
+
+        // Used for inserting the first header record information when a payroll process starts.
+        ttsbegin;
+
+        payrollProcessLogHeader.PayProcessRunDate   = DateTimeUtil::getToday(DateTimeUtil::getUserPreferredTimeZone());
+        payrollProcessLogHeader.PayProcessStartTime = DateTimeUtil::getTimeNow(DateTimeUtil::getUserPreferredTimeZone());
+        payrollProcessLogHeader.Description         = "@SPY1143";
+        payrollProcessLogHeader.PayrollPeriodLine   = _payrollPeriodLineRecId;
+
+        payrollProcessLogHeader.insert();
+
+        ttscommit;
     }
 
 ]]></Source>

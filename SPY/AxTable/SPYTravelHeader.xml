@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxTable xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>SPYTravelHeader</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+public class SPYTravelHeader extends common
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>find</Name>
+				<Source><![CDATA[
+    public static SPYTravelHeader find(RefRecId   _recId,
+                                        boolean     _forUpdate = false,
+                                        ConcurrencyModel    _concurrencyModel = ConcurrencyModel::Auto)
+    {
+        SPYTravelHeader    travelHeader;
+    
+        travelHeader.selectForUpdate(_forUpdate );
+        if (_forUpdate && _concurrencyModel != ConcurrencyModel::Auto)
+        {
+            travelHeader.concurrencyModel(_concurrencyModel);
+        }
+    
+        select firstonly travelHeader
+             where travelHeader.RecId == _recId;
+    
+        return travelHeader;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+	<DeveloperDocumentation>Leave applicant travel details header table.</DeveloperDocumentation>
+	<Label>@AFZHCPM:TravelDetails</Label>
+	<SubscriberAccessLevel>
+		<Read>Allow</Read>
+	</SubscriberAccessLevel>
+	<TableGroup>WorksheetHeader</TableGroup>
+	<CacheLookup>NotInTTS</CacheLookup>
+	<DeleteActions />
+	<FieldGroups>
+		<AxTableFieldGroup>
+			<Name>AutoReport</Name>
+			<Fields />
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>AutoLookup</Name>
+			<Fields />
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>AutoIdentification</Name>
+			<AutoPopulate>Yes</AutoPopulate>
+			<Fields />
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>AutoSummary</Name>
+			<Fields />
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>AutoBrowse</Name>
+			<Fields />
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>TravelDetails</Name>
+			<Label>@AFZHCPM:Travel</Label>
+			<Fields>
+				<AxTableFieldGroupField>
+					<DataField>TicketingRequired</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>PaidBy</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>FromAirport</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>ToAirport</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>AdditionalSectorRequest</DataField>
+				</AxTableFieldGroupField>
+			</Fields>
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>ContactDetails</Name>
+			<Label>@AFZHCPM:ContactDetailsWhileOnLeave</Label>
+			<Fields>
+				<AxTableFieldGroupField>
+					<DataField>ContactDetails</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>PhoneNumber</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>ReplacementRequired</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>SuggestedReplacement</DataField>
+				</AxTableFieldGroupField>
+			</Fields>
+		</AxTableFieldGroup>
+	</FieldGroups>
+	<Fields>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldEnum">
+			<Name>TicketingRequired</Name>
+			<ExtendedDataType>NoYesId</ExtendedDataType>
+			<Label>@AFZHCPM:TicketingRequired</Label>
+			<EnumType>NoYes</EnumType>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldEnum">
+			<Name>PaidBy</Name>
+			<EnumType>SPYPaidBy</EnumType>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>FromAirport</Name>
+			<ExtendedDataType>LoadedAddressName</ExtendedDataType>
+			<Label>@AFZHCPM:FromAirport</Label>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>ToAirport</Name>
+			<ExtendedDataType>LoadedAddressName</ExtendedDataType>
+			<Label>@AFZHCPM:ToAirport</Label>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>AdditionalSectorRequest</Name>
+			<ExtendedDataType>Name</ExtendedDataType>
+			<Label>@AFZHCPM:AdditionalSectorRequest</Label>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldInt64">
+			<Name>LeaveApplicationTable</Name>
+			<ExtendedDataType>SPYLeaveApplicationRecId</ExtendedDataType>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>ContactDetails</Name>
+			<ExtendedDataType>AddressStreet</ExtendedDataType>
+			<Label>@SYS118817</Label>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>PhoneNumber</Name>
+			<ExtendedDataType>Phone</ExtendedDataType>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldEnum">
+			<Name>ReplacementRequired</Name>
+			<ExtendedDataType>NoYesId</ExtendedDataType>
+			<Label>@AFZHCPM:ReplacementRequired</Label>
+			<EnumType>NoYes</EnumType>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>SuggestedReplacement</Name>
+			<ExtendedDataType>Name</ExtendedDataType>
+			<Label>@AFZHCPM:SuggestedReplacement</Label>
+		</AxTableField>
+	</Fields>
+	<FullTextIndexes />
+	<Indexes />
+	<Mappings />
+	<Relations>
+		<AxTableRelation>
+			<Name>SPYLeaveApplicationTable</Name>
+			<RelatedTable>SPYLeaveApplicationTable</RelatedTable>
+			<RelatedTableCardinality>ZeroOne</RelatedTableCardinality>
+			<RelationshipType>Association</RelationshipType>
+			<Constraints>
+				<AxTableRelationConstraint xmlns=""
+					i:type="AxTableRelationConstraintField">
+					<Name>LeaveApplicationTable</Name>
+					<Field>LeaveApplicationTable</Field>
+					<RelatedField>RecId</RelatedField>
+				</AxTableRelationConstraint>
+			</Constraints>
+		</AxTableRelation>
+	</Relations>
+	<StateMachines />
+</AxTable>

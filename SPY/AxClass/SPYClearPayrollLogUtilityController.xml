@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>SPYClearPayrollLogUtilityController</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+class SPYClearPayrollLogUtilityController extends SysOperationServiceController
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>new</Name>
+				<Source><![CDATA[
+    protected void new()
+    {
+        // This tells the controller what method it should execute as the service. In this case, we'll run SysOperationDemoService.performDemo()
+        super(classStr(SPYClearPayrollLogUtilityService), methodStr(SPYClearPayrollLogUtilityService, deletePayrollLog), SysOperationExecutionMode::Synchronous);
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>construct</Name>
+				<Source><![CDATA[
+    public static SPYClearPayrollLogUtilityController construct()
+    {
+        SPYClearPayrollLogUtilityController      controller;
+
+        controller = new SPYClearPayrollLogUtilityController();
+        controller.parmShowDialog(true); // Actually the default value
+        controller.parmShowProgressForm(false);
+        
+        return controller;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>main</Name>
+				<Source><![CDATA[
+    public static void main(Args _args)
+    {
+        SPYClearPayrollLogUtilityController controller;
+
+        controller = SPYClearPayrollLogUtilityController::construct();
+        controller.startOperation();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>run</Name>
+				<Source><![CDATA[
+    public void run()
+    {
+        //info('Run method has been called');
+        super();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>defaultCaption</Name>
+				<Source><![CDATA[
+    protected ClassDescription defaultCaption()
+    {
+        // This will be the dialog's caption
+        return "@SPYLabel:LblClearPayrollLogUtility";
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>
