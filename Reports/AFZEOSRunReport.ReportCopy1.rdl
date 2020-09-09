@@ -2909,7 +2909,7 @@
         <ConnectString />
         <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
-      <rd:DataSourceID>754a5a49-3c32-4344-87d4-97c9a66a88ec</rd:DataSourceID>
+      <rd:DataSourceID>430696c6-f127-4474-a65b-7fa93059f48d</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>

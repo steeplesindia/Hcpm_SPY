@@ -1,13 +1,553 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Diagnostics
-  GenerationTime="2020-09-09T06:32:27.8764447+00:00">
+  GenerationTime="2020-09-09T10:19:58.4938332+00:00">
   <Items>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Class/SPYDisbursementJournalTemplateEventHandler/Method/started</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>10</Line>
+      <Column>3</Column>
+      <EndLine>10</EndLine>
+      <EndColumn>64</EndColumn>
+      <Message>TODO:  Write code to execute once the workflow is started.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Class/SPYBankFileGenerationService/Method/generateText</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>139</Line>
+      <Column>1</Column>
+      <EndLine>139</EndLine>
+      <EndColumn>103</EndColumn>
+      <Message>TODO: Use the following code when the writing is complete and file is ready to be sent to the user:</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Class/SPYDisbursementJournalApprovalEventHandler/Method/started</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>14</Line>
+      <Column>3</Column>
+      <EndLine>14</EndLine>
+      <EndColumn>64</EndColumn>
+      <Message>TODO:  Write code to execute once the workflow is started.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Class/SPYDisbursementJournalApprovalEventHandler/Method/canceled</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>19</Line>
+      <Column>3</Column>
+      <EndLine>19</EndLine>
+      <EndColumn>65</EndColumn>
+      <Message>TODO:  Write code to execute once the workflow is canceled.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Class/SPYDisbursementJournalApprovalEventHandler/Method/completed</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>24</Line>
+      <Column>3</Column>
+      <EndLine>24</EndLine>
+      <EndColumn>66</EndColumn>
+      <Message>TODO:  Write code to execute once the workflow is completed.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Class/SPYDisbursementJournalApprovalEventHandler/Method/denied</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>29</Line>
+      <Column>3</Column>
+      <EndLine>29</EndLine>
+      <EndColumn>63</EndColumn>
+      <Message>TODO:  Write code to execute once the workflow is denied.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Class/SPYDisbursementJournalApprovalEventHandler/Method/changeRequested</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>34</Line>
+      <Column>3</Column>
+      <EndLine>34</EndLine>
+      <EndColumn>77</EndColumn>
+      <Message>TODO:  Write code to execute once change is requested for the workflow.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Class/SPYDisbursementJournalApprovalEventHandler/Method/created</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>44</Line>
+      <Column>3</Column>
+      <EndLine>44</EndLine>
+      <EndColumn>63</EndColumn>
+      <Message>TODO:  Write code to execute once work items are created.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Class/SPYEmployeeBioDataDP/Method/processReport</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>183</Line>
+      <Column>21</Column>
+      <EndLine>183</EndLine>
+      <EndColumn>49</EndColumn>
+      <Message>TODO:Implement bonus logic</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Class/SPYBenefitJournalSubmitManager/Method/main</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>8</Line>
+      <Column>3</Column>
+      <EndLine>8</EndLine>
+      <EndColumn>66</EndColumn>
+      <Message>TODO:  Write code to execute once a work item is submitted.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>TaskListItem</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://Class/SPYDisbursementJournalApprovalResubmitActionMgr/Method/main</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TaskListItem</Moniker>
+      <Line>8</Line>
+      <Column>3</Column>
+      <EndLine>8</EndLine>
+      <EndColumn>68</EndColumn>
+      <Message>TODO:  Write code to execute once work items are resubmitted.</Message>
+    </Diagnostic>
     <Diagnostic>
       <DiagnosticType>ExternalReference</DiagnosticType>
       <Severity>Warning</Severity>
       <Path>dynamics://Reference/Microsoft.OData.Edm</Path>
       <Moniker>AssemblyFileNotFound</Moniker>
       <Message>Assembly 'System.Xml, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e' failed to load because it was not found.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYBenefitLiabilityMonthlyContract/Method/parmBenefitCodeList</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>AifCollectionTypeFirstParam</Moniker>
+      <Line>17</Line>
+      <Column>36</Column>
+      <EndLine>17</EndLine>
+      <EndColumn>49</EndColumn>
+      <Message>The first parameter of AifCollectionTypeAttribute must match either a parameter of the method it is defined on or "return".</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Table/SPYAbsenceLedger/Method/aosValidateDelete</Path>
+      <ElementType>Table Method</ElementType>
+      <Moniker>InternalUseOnlyMethodInaccessible</Moniker>
+      <Line>7</Line>
+      <Column>15</Column>
+      <EndLine>7</EndLine>
+      <EndColumn>22</EndColumn>
+      <Message>Method 'aosValidateDelete' or type 'Common' in which it is declared is marked InternalUseOnly and is not accessible from the current module 'SPY'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Table/SPYAbsenceLedger/Method/aosValidateInsert</Path>
+      <ElementType>Table Method</ElementType>
+      <Moniker>InternalUseOnlyMethodInaccessible</Moniker>
+      <Line>17</Line>
+      <Column>15</Column>
+      <EndLine>17</EndLine>
+      <EndColumn>22</EndColumn>
+      <Message>Method 'aosValidateInsert' or type 'Common' in which it is declared is marked InternalUseOnly and is not accessible from the current module 'SPY'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Table/SPYBenefitLedger/Method/aosValidateDelete</Path>
+      <ElementType>Table Method</ElementType>
+      <Moniker>InternalUseOnlyMethodInaccessible</Moniker>
+      <Line>15</Line>
+      <Column>19</Column>
+      <EndLine>15</EndLine>
+      <EndColumn>26</EndColumn>
+      <Message>Method 'aosValidateDelete' or type 'Common' in which it is declared is marked InternalUseOnly and is not accessible from the current module 'SPY'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Table/SPYBenefitLedger/Method/aosValidateInsert</Path>
+      <ElementType>Table Method</ElementType>
+      <Moniker>InternalUseOnlyMethodInaccessible</Moniker>
+      <Line>25</Line>
+      <Column>15</Column>
+      <EndLine>25</EndLine>
+      <EndColumn>22</EndColumn>
+      <Message>Method 'aosValidateInsert' or type 'Common' in which it is declared is marked InternalUseOnly and is not accessible from the current module 'SPY'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYAbsenceAccrualUpdateService/Method/process</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ObsoleteEntityUsageWithReason</Moniker>
+      <Line>113</Line>
+      <Column>13</Column>
+      <EndLine>113</EndLine>
+      <EndColumn>46</EndColumn>
+      <Message>'setAnimation' is obsolete: ''This method is obsolete as the progress indicator form no longer displays an animation. Please remove the call.''.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYBenefitDecoratorCalculation/Method/new</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ConstructorMustCallSuper</Moniker>
+      <Line>61</Line>
+      <Column>5</Column>
+      <EndLine>61</EndLine>
+      <EndColumn>20</EndColumn>
+      <Message>Not all paths in the constructor call 'super()'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYBankFileGenerationService/Method/generateText</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeConversionLosesRangeAndPrecision</Moniker>
+      <Line>86</Line>
+      <Column>9</Column>
+      <EndLine>86</EndLine>
+      <EndColumn>124</EndColumn>
+      <Message>The type conversion from 'real' to 'int' loses range and precision.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYBankFileGenerationService/Method/generateText</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeConversionLosesRangeAndPrecision</Moniker>
+      <Line>87</Line>
+      <Column>9</Column>
+      <EndLine>87</EndLine>
+      <EndColumn>133</EndColumn>
+      <Message>The type conversion from 'real' to 'int' loses range and precision.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYBankFileGenerationService/Method/generateText</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ObsoleteEntityUsageWithReason</Moniker>
+      <Line>118</Line>
+      <Column>29</Column>
+      <EndLine>118</EndLine>
+      <EndColumn>50</EndColumn>
+      <Message>'getTempPath' is obsolete: ''WinAPI has been deprecated and should not be used.''.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYBankFileGenerationService/Method/generateText</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ObsoleteEntityUsageWithReason</Moniker>
+      <Line>133</Line>
+      <Column>13</Column>
+      <EndLine>133</EndLine>
+      <EndColumn>41</EndColumn>
+      <Message>'fileExists' is obsolete: ''WinAPI has been deprecated and should not be used.''.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYBankFileGenerationService/Method/generateText</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ObsoleteEntityUsageWithReason</Moniker>
+      <Line>135</Line>
+      <Column>13</Column>
+      <EndLine>135</EndLine>
+      <EndColumn>41</EndColumn>
+      <Message>'deleteFile' is obsolete: ''WinAPI has been deprecated and should not be used.''.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYExpressionSystemFunctionMethod_Extension/Method/EMP_DOT</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ImplicitConversionFromUtcDateTimeToDate</Moniker>
+      <Line>388</Line>
+      <Column>9</Column>
+      <EndLine>388</EndLine>
+      <EndColumn>96</EndColumn>
+      <Message>The implicit conversion from utcDateTime to date is not supported.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYExpressionSystemFunctionMethod_Extension/Method/EMP_DOT</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ImplicitConversionFromDateToUtcDateTime</Moniker>
+      <Line>390</Line>
+      <Column>98</Column>
+      <EndLine>390</EndLine>
+      <EndColumn>107</EndColumn>
+      <Message>The implicit conversion from date to utcDateTime is not supported.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYExpressionSystemFunctionMethod_Extension/Method/EMP_DOT</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ImplicitConversionFromDateToUtcDateTime</Moniker>
+      <Line>390</Line>
+      <Column>108</Column>
+      <EndLine>390</EndLine>
+      <EndColumn>117</EndColumn>
+      <Message>The implicit conversion from date to utcDateTime is not supported.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYExpressionSystemFunctionMethod_Extension/Method/EMP_NATIONALITY</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ObsoleteEntityUsage</Moniker>
+      <Line>651</Line>
+      <Column>12</Column>
+      <EndLine>651</EndLine>
+      <EndColumn>25</EndColumn>
+      <Message>'CitizenshipCountryRegion' is obsolete.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYExpressionSystemFunctionMethod_Extension/Method/EMP_NATIONALITY</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ObsoleteEntityUsage</Moniker>
+      <Line>652</Line>
+      <Column>20</Column>
+      <EndLine>652</EndLine>
+      <EndColumn>33</EndColumn>
+      <Message>'CitizenshipCountryRegion' is obsolete.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYExpressionSystemFunctionMethod_Extension/Method/EMP_MARITAL_STATUS</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ExtensibleEnumInNumericalAssignment</Moniker>
+      <Line>1013</Line>
+      <Column>18</Column>
+      <EndLine>1013</EndLine>
+      <EndColumn>19</EndColumn>
+      <Message>Assigning a numerical value to extensible enum 'Extensible Enumeration(HcmPersonMaritalStatus)' will yield unexpected results. Extensible enum values are not deterministically assigned to a numerical value.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYExpressionSystemFunctionMethod_Extension/Method/EMP_MARITAL_STATUS</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ExtensibleEnumInNumericalAssignment</Moniker>
+      <Line>1015</Line>
+      <Column>18</Column>
+      <EndLine>1015</EndLine>
+      <EndColumn>19</EndColumn>
+      <Message>Assigning a numerical value to extensible enum 'Extensible Enumeration(HcmPersonMaritalStatus)' will yield unexpected results. Extensible enum values are not deterministically assigned to a numerical value.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYExpressionSystemFunctionMethod_Extension/Method/EOS_REASON</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
+      <Line>1778</Line>
+      <Column>17</Column>
+      <EndLine>1778</EndLine>
+      <EndColumn>49</EndColumn>
+      <Message>The variable 'dateFrom' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmEmploymentDetail'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYExpressionSystemFunctionMethod_Extension/Method/EOS_REASON</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
+      <Line>1778</Line>
+      <Column>17</Column>
+      <EndLine>1778</EndLine>
+      <EndColumn>49</EndColumn>
+      <Message>The variable 'dateFrom' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmEmployment'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYExpressionSystemFunctionMethod_Extension/Method/EMP_JOB</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
+      <Line>2194</Line>
+      <Column>26</Column>
+      <EndLine>2194</EndLine>
+      <EndColumn>62</EndColumn>
+      <Message>The variable 'periodFrom' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmPositionWorkerAssignment'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYExpressionSystemFunctionMethod_Extension/Method/EMP_JOB</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
+      <Line>2194</Line>
+      <Column>26</Column>
+      <EndLine>2194</EndLine>
+      <EndColumn>62</EndColumn>
+      <Message>The variable 'periodFrom' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmPositionDetail'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYEOSRunDP/Method/insertIntoSPYEOSRunTableTmp</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeConversionLosesPrecision</Moniker>
+      <Line>121</Line>
+      <Column>9</Column>
+      <EndLine>121</EndLine>
+      <EndColumn>98</EndColumn>
+      <Message>The type conversion from 'real' to 'int64' loses precision.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYBenefitRegisterDP/Method/insertIntoBenefitRegisterTmp</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>DuplicateSelectField</Moniker>
+      <Line>225</Line>
+      <Column>26</Column>
+      <EndLine>226</EndLine>
+      <EndColumn>52</EndColumn>
+      <Message>The selection field 'Sum(AccountingCurPnLAmount)' cannot be given more than one time.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYBenefitRegisterDP/Method/insertIntoBenefitRegisterTmp</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>DuplicateSelectField</Moniker>
+      <Line>225</Line>
+      <Column>26</Column>
+      <EndLine>226</EndLine>
+      <EndColumn>52</EndColumn>
+      <Message>The selection field 'Sum(TransactionCurPnLAmount)' cannot be given more than one time.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYEOSService/Method/postToRunProcess</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ObsoleteEntityUsageWithReason</Moniker>
+      <Line>581</Line>
+      <Column>9</Column>
+      <EndLine>581</EndLine>
+      <EndColumn>42</EndColumn>
+      <Message>'setAnimation' is obsolete: ''This method is obsolete as the progress indicator form no longer displays an animation. Please remove the call.''.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYExpressionFunctionMethod_Extension/Method/Exp_AnniversaryDateLast</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>IntegerDivAndModLosePrecision</Moniker>
+      <Line>166</Line>
+      <Column>25</Column>
+      <EndLine>166</EndLine>
+      <EndColumn>64</EndColumn>
+      <Message>The integer division and modulo operators lose precision with operands other than integers.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYExpressionFunctionMethod_Extension/Method/Exp_EmpLastAnnivDate</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeConversionLosesPrecision</Moniker>
+      <Line>403</Line>
+      <Column>37</Column>
+      <EndLine>403</EndLine>
+      <EndColumn>55</EndColumn>
+      <Message>The type conversion from 'real' to 'int64' loses precision.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYExpressionFunctionMethod_Extension/Method/Exp_EmpLastAnnivDate</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeConversionLosesRangeAndPrecision</Moniker>
+      <Line>404</Line>
+      <Column>13</Column>
+      <EndLine>404</EndLine>
+      <EndColumn>41</EndColumn>
+      <Message>The type conversion from 'real' to 'int' loses range and precision.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYExpressionFunctionMethod_Extension/Method/Exp_LoanRecovery</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeShouldMatchValidTimeStateFieldType</Moniker>
+      <Line>1354</Line>
+      <Column>20</Column>
+      <EndLine>1354</EndLine>
+      <EndColumn>55</EndColumn>
+      <Message>The variable '_validfrom' should be of the type that is specified for the ValidTimeStateFieldType property on table 'HcmEmployment'.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYExpressionFunctionMethod_Extension/Method/Exp_EMP_SERVICEMONTHS</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeConversionLosesRangeAndPrecision</Moniker>
+      <Line>2426</Line>
+      <Column>9</Column>
+      <EndLine>2426</EndLine>
+      <EndColumn>89</EndColumn>
+      <Message>The type conversion from 'real' to 'int' loses range and precision.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYBenefitEncashmentService/Method/process</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ObsoleteEntityUsageWithReason</Moniker>
+      <Line>523</Line>
+      <Column>13</Column>
+      <EndLine>523</EndLine>
+      <EndColumn>46</EndColumn>
+      <Message>'setAnimation' is obsolete: ''This method is obsolete as the progress indicator form no longer displays an animation. Please remove the call.''.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/SPYExpressionTable_Extension/Method/SPYExpressionTable_Post_callSystemFunction</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>UnreachableStatement</Moniker>
+      <Line>326</Line>
+      <Column>17</Column>
+      <EndLine>326</EndLine>
+      <EndColumn>23</EndColumn>
+      <Message>The statement is unreachable.</Message>
     </Diagnostic>
   </Items>
   <Aliases />

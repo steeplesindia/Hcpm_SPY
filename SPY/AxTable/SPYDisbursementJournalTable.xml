@@ -293,11 +293,7 @@ public class SPYDisbursementJournalTable extends common
 		<AxTableFieldGroup>
 			<Name>SourceDocument</Name>
 			<Label>@SYS127863</Label>
-			<Fields>
-				<AxTableFieldGroupField>
-					<DataField>Source</DataField>
-				</AxTableFieldGroupField>
-			</Fields>
+			<Fields />
 		</AxTableFieldGroup>
 		<AxTableFieldGroup>
 			<Name>SourceDocumentRef</Name>
