@@ -91,18 +91,15 @@ public class SPYPayrollJournalTable extends FormRun
     void setEnable()
     {
         boolean     isWorkflowEnabled = WorkflowTable::findActiveTemplate(workflowtypestr(SPYPayrollJour)) ? true : false;
-        boolean     checkEditable = ((SPYPayrollJournalTable.WorkflowStatus == SPYWorkflowStatus::Created ||
+        boolean     checkEditable = (SPYPayrollJournalTable.WorkflowStatus == SPYWorkflowStatus::Created ||
                                     SPYPayrollJournalTable.WorkflowStatus == SPYWorkflowStatus::Submitted ||
                                     SPYPayrollJournalTable.WorkflowStatus == SPYWorkflowStatus::Started ||
-                                    SPYPayrollJournalTable.WorkflowStatus == SPYWorkflowStatus::RequestChange) && !isWorkflowEnabled) &&
+                                    SPYPayrollJournalTable.WorkflowStatus == SPYWorkflowStatus::RequestChange) &&
                                     !SPYPayrollJournalTable.Posted ?
-                                    true : false;
-    
+                                    true : false;    
         SPYPayrollJournalTable_ds.allowEdit(checkEditable);
-        SPYPayrollJournalTable_ds.allowDelete(SPYPayrollJournalTable.WorkflowStatus == SPYWorkflowStatus::Created && !SPYPayrollJournalTable.Posted);
-    
+        SPYPayrollJournalTable_ds.allowDelete(SPYPayrollJournalTable.WorkflowStatus == SPYWorkflowStatus::Created && !SPYPayrollJournalTable.Posted);    
         DimensionEntryControl.allowEdit(checkEditable);
-
         SPYPayrollJournal.enabled(SPYPayrollJournalTable.RecId);
     }
 

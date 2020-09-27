@@ -212,6 +212,20 @@ class SPYModuleInitialize
             expressionConfigurationTable.Notes = "Configuration key for leave provision payelement code";
             expressionConfigurationTable.insert();
         }
+        if(!SPYExpressionConfigurationTable::findByKey("BasicPayElement"))
+        {
+            expressionConfigurationTable.ConfigurationKey = "BasicPayElement";
+            expressionConfigurationTable.Value = '';
+            expressionConfigurationTable.Notes = "Configuration key for Basic pay element";
+            expressionConfigurationTable.insert();
+        }
+        if(!SPYExpressionConfigurationTable::findByKey("VisaIdentificationType"))
+        {
+            expressionConfigurationTable.ConfigurationKey = "VisaIdentificationType";
+            expressionConfigurationTable.Value = '';
+            expressionConfigurationTable.Notes = "Configuration key for Visa identification type";
+            expressionConfigurationTable.insert();
+        }
     }
 
 ]]></Source>

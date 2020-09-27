@@ -762,6 +762,7 @@ class SPYPayService extends SysOperationServiceBase implements SPYIObservable
         EOSRunBenefit.setAccount(periodStart,legalEntity,payrollPeriodLine,_eos);
         if(expressionContext.expressionReturnObject().parmLedgerUpdateSourceReturn() != conNull())
             EOSRunBenefit.PayLedgerSource = this.updateLedgerSource(expressionContext.expressionReturnObject().parmLedgerUpdateSourceReturn());
+        EOSRunBenefit.ExpressionTrace = this.getExpressionTrace();
     
         return EOSRunBenefit;
     }
@@ -794,6 +795,7 @@ class SPYPayService extends SysOperationServiceBase implements SPYIObservable
         EOSRunPayroll.setAccount(periodStart,legalEntity,payrollPeriodLine);
         if(expressionContext.expressionReturnObject().parmLedgerUpdateSourceReturn() != conNull())
             EOSRunPayroll.PayLedgerSource = this.updateLedgerSource(expressionContext.expressionReturnObject().parmLedgerUpdateSourceReturn());
+        EOSRunPayroll.ExpressionTrace = this.getExpressionTrace();
         
         return EOSRunPayroll;
     }

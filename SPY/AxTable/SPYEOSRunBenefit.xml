@@ -130,8 +130,8 @@ public class SPYEOSRunBenefit extends common
         {
             case fieldNum(SPYEOSRunBenefit,TransactionCurrencyAmount) :
                 this.AccountingCurrencyAmount = this.TransactionCurrencyAmount * this.ExchRate;
-                this.TransactionCurPnLAmount = this.TransactionCurOutstandingAmount - this.TransactionCurrencyAmount;
-                this.AccountingCurPnLAmount = this.AccountingCurOutstandingAmount - this.AccountingCurrencyAmount;
+                this.TransactionCurPnLAmount = this.TransactionCurOutstandingAmount + this.TransactionCurrencyAmount;
+                this.AccountingCurPnLAmount = this.AccountingCurOutstandingAmount + this.AccountingCurrencyAmount;
                 break;
         }
     }
@@ -495,6 +495,11 @@ public class SPYEOSRunBenefit extends common
 			<Label>@SPY:DistributeCost</Label>
 			<EnumType>NoYes</EnumType>
 		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldInt64">
+			<Name>ExpressionTrace</Name>
+			<ExtendedDataType>SPYExpressionTraceRecId</ExtendedDataType>
+		</AxTableField>
 	</Fields>
 	<FullTextIndexes />
 	<Indexes />
@@ -704,6 +709,23 @@ public class SPYEOSRunBenefit extends common
 					i:type="AxTableRelationConstraintField">
 					<Name>PayrollPeriodLine</Name>
 					<Field>PayrollPeriodLine</Field>
+					<RelatedField>RecId</RelatedField>
+				</AxTableRelationConstraint>
+			</Constraints>
+			<Index>RecId</Index>
+		</AxTableRelation>
+		<AxTableRelation xmlns=""
+			i:type="AxTableRelationForeignKey">
+			<Name>SPYExpressionTraceTable</Name>
+			<Cardinality>ExactlyOne</Cardinality>
+			<RelatedTable>SPYExpressionTraceTable</RelatedTable>
+			<RelatedTableCardinality>ExactlyOne</RelatedTableCardinality>
+			<RelationshipType>Association</RelationshipType>
+			<Constraints>
+				<AxTableRelationConstraint xmlns=""
+					i:type="AxTableRelationConstraintField">
+					<Name>ExpressionTrace</Name>
+					<Field>ExpressionTrace</Field>
 					<RelatedField>RecId</RelatedField>
 				</AxTableRelationConstraint>
 			</Constraints>

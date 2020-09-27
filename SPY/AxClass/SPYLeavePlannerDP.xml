@@ -38,7 +38,7 @@ public class SPYLeavePlannerDP extends SRSReportDataProviderBase
         str                                 workerRange;
         Query                               q;
         QueryBuildDataSource                qbd;
-        QueryBuildRange                     qbr;
+        QueryBuildRange                     qbr,qbrSource;
         QueryRun                            qr;
         Set                                 dates = new Set(Types::Date);
         TransDate                           dateVal;
@@ -62,7 +62,9 @@ public class SPYLeavePlannerDP extends SRSReportDataProviderBase
         qbd.joinMode(JoinMode::InnerJoin);
         qbd.fetchMode(QueryFetchMode::One2One);
         qbr = qbd.addRange(fieldNum(SPYAbsenceLedger, absenceDate));
+        qbrSource = qbd.addRange(fieldNum(SPYAbsenceLedger, SourceDocument));
         qbr.value(SysQuery::value(contract.parmFromDate()) + '..' + SysQuery::value(contract.parmToDate()));
+        qbrSource.value(any2Str(tableNum(SPYLeaveApplicationTable)));
     
         qr = new QueryRun(q);
     

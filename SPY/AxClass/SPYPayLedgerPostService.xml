@@ -1061,12 +1061,10 @@ class   SPYPayLedgerPostService extends SPYPayService
         DimensionAttribute                  costDistDimensionAttribute2 = DimensionAttribute::find(SPYPayrollParameters::find().CostDistributionDimension2);
         DimensionAttribute                  costDistDimensionAttribute3 = DimensionAttribute::find(SPYPayrollParameters::find().CostDistributionDimension3);
         DimensionAttribute                  costDistDimensionAttribute4 = DimensionAttribute::find(SPYPayrollParameters::find().CostDistributionDimension4);
-        // New code added start by Lakshya on 19/09/2017 for ProjectName "Cost Split" for calculating the values of extra newly Dimension values
         DimensionAttribute                  costDistDimensionAttribute5 = DimensionAttribute::find(SPYPayrollParameters::find().CostDistributionDimension5);
         DimensionAttribute                  costDistDimensionAttribute6 = DimensionAttribute::find(SPYPayrollParameters::find().CostDistributionDimension6);
         DimensionAttribute                  costDistDimensionAttribute7 = DimensionAttribute::find(SPYPayrollParameters::find().CostDistributionDimension7);
         DimensionAttribute                  costDistDimensionAttribute8 = DimensionAttribute::find(SPYPayrollParameters::find().CostDistributionDimension8);
-        // New code added ended by Lakshya on 19/09/2017 for ProjectName "Cost Split" for calculating the values of extra newly Dimension values
 
         DimensionAttributeValue             costDistDimValue;
         int                                 countLine;
@@ -1083,9 +1081,9 @@ class   SPYPayLedgerPostService extends SPYPayService
                                           _benefitLedger.TransactionCurPnLAmount,
                                           _benefitLedger.AccountingCurPnLAmount,
                                           _benefitLedger.Currency,
-                                          _benefitLedger.DefaultDimension,
-                                          _benefitLedger.LedgerDimensionPnL,
+                                          _benefitLedger.DefaultDimension,                                          
                                           _benefitLedger.LedgerDimensionCredit,
+                                          _benefitLedger.LedgerDimensionPnL,
                                           _benefitLedger.AccountingDistributionTemplate,
                                           _benefitLedger.DistributeCost);
                 this.updateJournalLogTmp(_payrollJournal,_benefitLedger.RecId,SPYPayElementType::Benefit,true);
@@ -1113,16 +1111,16 @@ class   SPYPayLedgerPostService extends SPYPayService
                                                           _benefitLedger.TransactionCurPnLAmount,
                                                           _benefitLedger.AccountingCurPnLAmount,
                                                           _benefitLedger.Currency,
-                                                          dimension,
-                                                          _benefitLedger.LedgerDimensionPnL,
+                                                          dimension,                                                          
                                                           _benefitLedger.LedgerDimensionCredit,
+                                                          _benefitLedger.LedgerDimensionPnL,
                                                           _benefitLedger.AccountingDistributionTemplate,
                                                           _benefitLedger.DistributeCost);
                                 this.updateJournalLogTmp(_payrollJournal,_benefitLedger.RecId,SPYPayElementType::Benefit,true);
                                 this.nextLineNum();
                             }
                             this.setAccountDistributionTmp(LedgerDimensionFacade::serviceCreateLedgerDimension
-                                                            (_benefitLedger.LedgerDimensionDebit, dimension),
+                                                            (_benefitLedger.LedgerDimensionCredit, dimension),
                                                             _benefitLedger.TransactionCurPnLAmount * encashmentCostDistributionTmp.Percent / 100);
                             countLine++;
                         }
@@ -1145,16 +1143,16 @@ class   SPYPayLedgerPostService extends SPYPayService
                                                           _benefitLedger.TransactionCurPnLAmount,
                                                           _benefitLedger.AccountingCurPnLAmount,
                                                           _benefitLedger.Currency,
-                                                          dimension,
-                                                          _benefitLedger.LedgerDimensionPnL,
+                                                          dimension,                                                          
                                                           _benefitLedger.LedgerDimensionCredit,
+                                                          _benefitLedger.LedgerDimensionPnL,
                                                           _benefitLedger.AccountingDistributionTemplate,
                                                           _benefitLedger.DistributeCost);
                                 this.updateJournalLogTmp(_payrollJournal,_benefitLedger.RecId,SPYPayElementType::Benefit,true);
                                 this.nextLineNum();
                             }
                             this.setAccountDistributionTmp(LedgerDimensionFacade::serviceCreateLedgerDimension
-                                                            (_benefitLedger.LedgerDimensionDebit, dimension),
+                                                            (_benefitLedger.LedgerDimensionCredit, dimension),
                                                             _benefitLedger.TransactionCurPnLAmount * costDistributionTmp.Percent / 100);
                             countLine++;
                         }
@@ -1171,15 +1169,15 @@ class   SPYPayLedgerPostService extends SPYPayService
                                           _benefitLedger.TransactionCurPnLAmount,
                                           _benefitLedger.AccountingCurPnLAmount,
                                           _benefitLedger.Currency,
-                                          _benefitLedger.DefaultDimension,
-                                          _benefitLedger.LedgerDimensionPnL,
+                                          _benefitLedger.DefaultDimension,                                          
                                           _benefitLedger.LedgerDimensionCredit,
+                                          _benefitLedger.LedgerDimensionPnL,
                                           _benefitLedger.AccountingDistributionTemplate,
                                           _benefitLedger.DistributeCost);
                     this.updateJournalLogTmp(_payrollJournal,_benefitLedger.RecId,SPYPayElementType::Benefit,true);
                     this.nextLineNum();
                     this.setAccountDistributionTmp(LedgerDimensionFacade::serviceCreateLedgerDimension
-                                                            (_benefitLedger.LedgerDimensionDebit, _benefitLedger.DefaultDimension),
+                                                            (_benefitLedger.LedgerDimensionCredit, _benefitLedger.DefaultDimension),
                                                             _benefitLedger.TransactionCurPnLAmount);
                 }
                 break;

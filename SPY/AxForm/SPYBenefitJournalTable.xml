@@ -89,8 +89,7 @@ public class SPYBenefitJournalTable extends FormRun
 				<Name>setEnable</Name>
 				<Source><![CDATA[
     public void setEnable()
-    {
-    
+    {    
         boolean     checkEditable = (SPYBenefitJournalTable.WorkflowStatus == SPYWorkflowStatus::Created ||
                                     SPYBenefitJournalTable.WorkflowStatus == SPYWorkflowStatus::Submitted ||
                                     SPYBenefitJournalTable.WorkflowStatus == SPYWorkflowStatus::Started ||
@@ -98,8 +97,7 @@ public class SPYBenefitJournalTable extends FormRun
                                     !SPYBenefitJournalTable.Posted ?
                                     true : false;
         SPYBenefitJournalTable_ds.allowEdit(checkEditable);
-        SPYBenefitJournalTable_ds.allowDelete(SPYBenefitJournalTable.WorkflowStatus == SPYWorkflowStatus::Created && !SPYBenefitJournalTable.Posted);
-        
+        SPYBenefitJournalTable_ds.allowDelete(SPYBenefitJournalTable.WorkflowStatus == SPYWorkflowStatus::Created && !SPYBenefitJournalTable.Posted);        
         SPYBenefitJournal.enabled(SPYBenefitJournalTable.RecId);
     }
 

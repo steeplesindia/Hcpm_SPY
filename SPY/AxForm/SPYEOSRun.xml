@@ -230,6 +230,33 @@ public class SPYEOSRun extends FormRun
 				</Methods>
 			</Control>
 			<Control>
+				<Name>SPYExpressionTracePayroll</Name>
+				<Type>MenuFunctionButton</Type>
+				<Methods>
+					<Method>
+						<Name>clicked</Name>
+						<Source><![CDATA[
+        /// <summary>
+        ///
+        /// </summary>
+        public void clicked()
+        {
+            Args args = new Args(formstr(SPYExpressionTrace));
+            FormRun formRun;
+            args.caller(this);
+            args.record(SPYExpressionTraceTable::find(SPYEOSRunPayroll.ExpressionTrace));
+    
+            formRun = classFactory.formRunClass(args);
+            formRun.init();
+            formRun.run();
+            formRun.wait();
+        }
+
+]]></Source>
+					</Method>
+				</Methods>
+			</Control>
+			<Control>
 				<Name>TabFinancialDimensionsPayroll</Name>
 				<Type>TabPage</Type>
 				<Methods>
@@ -242,6 +269,33 @@ public class SPYEOSRun extends FormRun
             // dimensionDefaultingControllerPayroll.pageActivated();
             DimensionEntryControlPayroll.allowEdit(false);
             super();
+        }
+
+]]></Source>
+					</Method>
+				</Methods>
+			</Control>
+			<Control>
+				<Name>SPYExpressionTraceBenefit</Name>
+				<Type>MenuFunctionButton</Type>
+				<Methods>
+					<Method>
+						<Name>clicked</Name>
+						<Source><![CDATA[
+        /// <summary>
+        ///
+        /// </summary>
+        public void clicked()
+        {
+            Args args = new Args(formstr(SPYExpressionTrace));
+            FormRun formRun;
+            args.caller(this);
+            args.record(SPYExpressionTraceTable::find(SPYEOSRunBenefit.ExpressionTrace));
+    
+            formRun = classFactory.formRunClass(args);
+            formRun.init();
+            formRun.run();
+            formRun.wait();
         }
 
 ]]></Source>
@@ -1266,14 +1320,14 @@ public class SPYEOSRun extends FormRun
 													</AxFormControl>
 													<AxFormControl xmlns=""
 														i:type="AxFormTabPageControl">
-														<Name>LineViewLineDetailsPayelement</Name>
+														<Name>LineViewLineDetailsPayElement</Name>
 														<Type>TabPage</Type>
 														<FormControlExtension
 															i:nil="true" />
 														<Controls>
 															<AxFormControl xmlns=""
 																i:type="AxFormTabControl">
-																<Name>FormTabControl1</Name>
+																<Name>PayElementTab</Name>
 																<Type>Tab</Type>
 																<FormControlExtension
 																	i:nil="true" />
@@ -1388,6 +1442,24 @@ public class SPYEOSRun extends FormRun
 																													</AxFormControl>
 																												</Controls>
 																												<ArrangeMethod>Vertical</ArrangeMethod>
+																											</AxFormControl>
+																											<AxFormControl xmlns=""
+																												i:type="AxFormButtonGroupControl">
+																												<Name>PayrollTraceGroup</Name>
+																												<Type>ButtonGroup</Type>
+																												<FormControlExtension
+																													i:nil="true" />
+																												<Controls>
+																													<AxFormControl xmlns=""
+																														i:type="AxFormMenuFunctionButtonControl">
+																														<Name>SPYExpressionTracePayroll</Name>
+																														<Type>MenuFunctionButton</Type>
+																														<FormControlExtension
+																															i:nil="true" />
+																														<MenuItemName>SPYExpressionTrace</MenuItemName>
+																													</AxFormControl>
+																												</Controls>
+																												<Caption>@SPYExpression:ExpressionTrace</Caption>
 																											</AxFormControl>
 																										</Controls>
 																										<AlignChild>No</AlignChild>
@@ -2155,6 +2227,24 @@ public class SPYEOSRun extends FormRun
 																												</Controls>
 																												<ArrangeMethod>Vertical</ArrangeMethod>
 																											</AxFormControl>
+																											<AxFormControl xmlns=""
+																												i:type="AxFormButtonGroupControl">
+																												<Name>BenefitTraceGroup</Name>
+																												<Type>ButtonGroup</Type>
+																												<FormControlExtension
+																													i:nil="true" />
+																												<Controls>
+																													<AxFormControl xmlns=""
+																														i:type="AxFormMenuFunctionButtonControl">
+																														<Name>SPYExpressionTraceBenefit</Name>
+																														<Type>MenuFunctionButton</Type>
+																														<FormControlExtension
+																															i:nil="true" />
+																														<MenuItemName>SPYExpressionTrace</MenuItemName>
+																													</AxFormControl>
+																												</Controls>
+																												<Caption>@SPYExpression:ExpressionTrace</Caption>
+																											</AxFormControl>
 																										</Controls>
 																										<AlignChild>No</AlignChild>
 																										<AlignChildren>No</AlignChildren>
@@ -2242,6 +2332,20 @@ public class SPYEOSRun extends FormRun
 																										<NoOfDecimals>-1</NoOfDecimals>
 																									</AxFormControl>
 																									<AxFormControl xmlns=""
+																										i:type="AxFormStringControl">
+																										<Name>SPYEOSRunBenefit_Currency</Name>
+																										<ElementPosition>1610612730</ElementPosition>
+																										<FilterExpression>%1</FilterExpression>
+																										<HeightMode>Auto</HeightMode>
+																										<Type>String</Type>
+																										<VerticalSpacing>-1</VerticalSpacing>
+																										<WidthMode>Auto</WidthMode>
+																										<FormControlExtension
+																											i:nil="true" />
+																										<DataField>Currency</DataField>
+																										<DataSource>SPYEOSRunBenefit</DataSource>
+																									</AxFormControl>
+																									<AxFormControl xmlns=""
 																										i:type="AxFormRealControl">
 																										<Name>SPYEOSRunBenefit_TransactionCurrencyAmount</Name>
 																										<ElementPosition>1073741820</ElementPosition>
@@ -2258,6 +2362,15 @@ public class SPYEOSRun extends FormRun
 																									</AxFormControl>
 																									<AxFormControl xmlns=""
 																										i:type="AxFormRealControl">
+																										<Name>SPYEOSRunBenefit_TransactionCurPnLAmount</Name>
+																										<Type>Real</Type>
+																										<FormControlExtension
+																											i:nil="true" />
+																										<DataField>TransactionCurPnLAmount</DataField>
+																										<DataSource>SPYEOSRunBenefit</DataSource>
+																									</AxFormControl>
+																									<AxFormControl xmlns=""
+																										i:type="AxFormRealControl">
 																										<Name>SPYEOSRunBenefit_Quantity</Name>
 																										<ElementPosition>1342177275</ElementPosition>
 																										<FilterExpression>%1</FilterExpression>
@@ -2268,35 +2381,6 @@ public class SPYEOSRun extends FormRun
 																										<FormControlExtension
 																											i:nil="true" />
 																										<DataField>Quantity</DataField>
-																										<DataSource>SPYEOSRunBenefit</DataSource>
-																										<NoOfDecimals>-1</NoOfDecimals>
-																									</AxFormControl>
-																									<AxFormControl xmlns=""
-																										i:type="AxFormStringControl">
-																										<Name>SPYEOSRunBenefit_Currency</Name>
-																										<ElementPosition>1610612730</ElementPosition>
-																										<FilterExpression>%1</FilterExpression>
-																										<HeightMode>Auto</HeightMode>
-																										<Type>String</Type>
-																										<VerticalSpacing>-1</VerticalSpacing>
-																										<WidthMode>Auto</WidthMode>
-																										<FormControlExtension
-																											i:nil="true" />
-																										<DataField>Currency</DataField>
-																										<DataSource>SPYEOSRunBenefit</DataSource>
-																									</AxFormControl>
-																									<AxFormControl xmlns=""
-																										i:type="AxFormRealControl">
-																										<Name>SPYEOSRunBenefit_AccountingCurrencyAmount</Name>
-																										<ElementPosition>1879048185</ElementPosition>
-																										<FilterExpression>%1</FilterExpression>
-																										<HeightMode>Auto</HeightMode>
-																										<Type>Real</Type>
-																										<VerticalSpacing>-1</VerticalSpacing>
-																										<WidthMode>Auto</WidthMode>
-																										<FormControlExtension
-																											i:nil="true" />
-																										<DataField>AccountingCurrencyAmount</DataField>
 																										<DataSource>SPYEOSRunBenefit</DataSource>
 																										<NoOfDecimals>-1</NoOfDecimals>
 																									</AxFormControl>

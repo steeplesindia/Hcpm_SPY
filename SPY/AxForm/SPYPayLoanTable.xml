@@ -93,8 +93,7 @@ public class SPYPayLoanTable extends FormRun
                                     SPYPayLoanTable.WorkflowStatus == SPYWorkflowStatus::Started ||
                                     SPYPayLoanTable.WorkflowStatus == SPYWorkflowStatus::RequestChange) &&
                                     !SPYPayLoanTable.Posted ?
-                                    true : false;
-    
+                                    true : false;    
         SPYPayLoanTable_ds.allowEdit(checkEditable);
         SPYPayLoanTable_ds.allowDelete(SPYPayLoanTable.WorkflowStatus == SPYWorkflowStatus::Created && !SPYPayLoanTable.Posted);
         SPYPayLoanLine.enabled(SPYPayLoanTable.RecId);

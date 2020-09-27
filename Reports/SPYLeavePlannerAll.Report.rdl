@@ -452,7 +452,7 @@
         <ConnectString />
         <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
-      <rd:DataSourceID>815ad967-dadf-4b13-9cbd-a01f4ee6e1fb</rd:DataSourceID>
+      <rd:DataSourceID>7ccb0bc7-76d1-4405-9de2-e2d942b93ca5</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
