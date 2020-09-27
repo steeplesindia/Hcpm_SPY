@@ -47,29 +47,26 @@ class SPYWpsGenerationService
         payrollPeriodLineTab = SPYPayrollPeriodLine::find(payrollPeriodLine);
         transStartDateTime = DateTimeUtil::newDateTime(payrollPeriodLineTab.PeriodStartDate,00-00);
         transEndDateTime = DateTimeUtil::newDateTime(payrollPeriodLineTab.PeriodEndDate,00-00);
-
         SPYWorkerSponsorCode    workerSponsorCode = SPYWorkerSponsorTable::find(workerSponsor).SponsorCode;
-
-
         setPrefix("@SPY878");
         try
         {
-
             if(contract.parmWorkerQuery())
                 workerQuery = new Query(contract.parmWorkerQuery());
             else
                 workerQuery =new Query(queryStr(HcmWorkerLookup));
  
-
-            qbds = workerQuery.dataSourceTable(tableNum(HcmEmployment)).addDataSource(tableNum(HcmEmploymentDetail));
-            qbds.joinMode(JoinMode::InnerJoin);
-            qbds.addLink(fieldNum(HcmEmployment,RecId),fieldNum(HcmEmploymentDetail, Employment));
-            qbds.addRange(fieldNum(HcmEmploymentDetail,SPYPayrollDisbursementMode)).value(enum2Str(SPYPayrollDisbursementMode::Bank));
-            qbds.addRange(fieldNum(HcmEmploymentDetail,SPYWorkerSponsor)).value(queryValue(workerSponsorCode));
+            QueryBuildDataSource    workerDs = workerQuery.dataSourceTable(tableNum(HcmWorker));
+            QueryBuildDataSource    employmentDs = workerDs.addDataSource(tableNum(HcmEmployment));
+            employmentDs.joinMode(JoinMode::InnerJoin);
+            QueryBuildDataSource    employmentDetailDs = workerDs.addDataSource(tableNum(HcmEmploymentDetail));
+            employmentDetailDs.joinMode(JoinMode::InnerJoin);
+            employmentDetailDs.addLink(fieldNum(HcmEmployment,RecId),fieldNum(HcmEmploymentDetail, Employment));
+            employmentDetailDs.addRange(fieldNum(HcmEmploymentDetail,SPYPayrollDisbursementMode)).value(enum2Str(SPYPayrollDisbursementMode::Bank));
+            employmentDetailDs.addRange(fieldNum(HcmEmploymentDetail,SPYWorkerSponsor)).value(queryValue(workerSponsorCode));
 
             workerQueryRun = new QueryRun(workerQuery);
-            workerQueryRun.allowCrossCompany(true);
-            
+            workerQueryRun.allowCrossCompany(true);            
 
             //SPYWpsGenerationService::generateText_ae(legalEntity,payrollPeriodLine,workerQueryRun,bankAccountId,workerSponsorCode);
             if(SysCountryRegionCode::isLegalEntityInCountryRegion([#isoAE])) //UAE
@@ -194,50 +191,50 @@ class SPYWpsGenerationService
                         seqNo++;
                         select  firstOnly IdentificationNumber from personIdentificationNumber order by IssuedDate desc
                             join RecId from identificationType
-                                where personIdentificationNumber.Person == hcmWorker.Person &&
-                                    personIdentificationNumber.IdentificationType == identificationType.RecId &&
-                                        identificationType.IdentificationTypeId == "Visa";
+                            where personIdentificationNumber.Person == hcmWorker.Person &&
+                            personIdentificationNumber.IdentificationType == identificationType.RecId &&
+                            identificationType.IdentificationTypeId == SPYExpressionConfigurationTable::findByKey("VisaIdentificationType").Value;
 
                         select  RecId,AccountingCurrencyAmount from payrollBankAccountDisbursement order by payrollBankAccountDisbursement.Priority
                             join name,AccountNum from hcmWorkerBankAccount
                             where payrollBankAccountDisbursement.WorkerBankAccount == hcmWorkerBankAccount.RecId &&
-                                hcmWorkerBankAccount.Worker == hcmWorker.RecId &&
-                                    payrollBankAccountDisbursement.IsRemainder &&
-                                     payrollBankAccountDisbursement.LegalEntity == _legalEntity ;
+                            hcmWorkerBankAccount.Worker == hcmWorker.RecId &&
+                            payrollBankAccountDisbursement.IsRemainder &&
+                            payrollBankAccountDisbursement.LegalEntity == _legalEntity ;
                         
                         select sum(AbsenceDays) from absenceLedger
-                                where absenceLedger.Worker == hcmWorker.RecId &&
-                                    absenceLedger.AbsenceDate >= payrollPeriodLineTab.PeriodStartDate &&
-                                        absenceLedger.AbsenceDate <= payrollPeriodLineTab.PeriodEndDate;
-
+                            where absenceLedger.Worker == hcmWorker.RecId &&
+                            absenceLedger.AbsenceDate >= payrollPeriodLineTab.PeriodStartDate &&
+                            absenceLedger.AbsenceDate <= payrollPeriodLineTab.PeriodEndDate;
                         periodDays = min(DateTimeUtil::date(DateTimeUtil::applyTimeZoneOffset(hcmEmployment.ValidTo,DateTimeUtil::getCompanyTimeZone()))
                                 ,payrollPeriodLineTab.PeriodEndDate) -
                                     max(DateTimeUtil::date(DateTimeUtil::applyTimeZoneOffset(hcmEmployment.ValidFrom,DateTimeUtil::getCompanyTimeZone()))
                                         ,payrollPeriodLineTab.PeriodStartDate) +1;
                         workingDays = periodDays - real2int(absenceLedger.AbsenceDays);
 
-                        select sum(AccountingCurrencyAmount),sum(TransactionCurrencyAmount) from payrollLedger join payElementTable
-                                where payrollLedger.Worker == hcmWorker.RecId &&
-                                    payrollLedger.PayrollPeriodLine == _payrollPeriodLine &&
-                                        payElementTable.RecId == payrollLedger.Payroll &&
-                                            payElementTable.PayElementCode == SPYExpressionFunctionMethod::Exp_BasicPayelement();
-                            
+                        select sum(AccountingCurrencyAmount),sum(TransactionCurrencyAmount) 
+                            from payrollLedger join payElementTable
+                            where payrollLedger.Worker == hcmWorker.RecId &&
+                            payrollLedger.PayrollPeriodLine == _payrollPeriodLine &&
+                            payrollLedger.IsFinalised &&
+                            payElementTable.RecId == payrollLedger.Payroll &&
+                            payElementTable.PayElementCode == SPYExpressionConfigurationTable::findByKey("BasicPayElement").Value;                            
                         basicAmount = payrollLedger.AccountingCurrencyAmount;
 
                         select  sum(OvertimeHours) from overtimeLedger
-                                where overtimeLedger.Worker == hcmWorker.RecId &&
-                                    overtimeLedger.OvertimeDate >= payrollPeriodLineTab.PeriodStartDate &&
-                                        overtimeLedger.OvertimeDate <= payrollPeriodLineTab.PeriodEndDate;
-
+                            where overtimeLedger.Worker == hcmWorker.RecId &&
+                            overtimeLedger.OvertimeDate >= payrollPeriodLineTab.PeriodStartDate &&
+                            overtimeLedger.OvertimeDate <= payrollPeriodLineTab.PeriodEndDate;
                         overtimeHours = overtimeLedger.OvertimeHours;
 
                         select  sum(AccountingCurrencyAmount),sum(TransactionCurrencyAmount) from payrollLedger join payrollTable
-                                where payrollLedger.Worker == hcmWorker.RecId &&
-                                    payrollLedger.PayrollPeriodLine == _payrollPeriodLine &&
-                                        payrollTable.RecId == payrollLedger.Payroll &&
-                                            payrollTable.PayrollType == SPYPayrollType::Deduction;
-
+                            where payrollLedger.Worker == hcmWorker.RecId &&
+                            payrollLedger.PayrollPeriodLine == _payrollPeriodLine &&
+                            payrollLedger.IsFinalised &&
+                            payrollTable.RecId == payrollLedger.Payroll &&
+                            payrollTable.PayrollType == SPYPayrollType::Deduction;
                         deductionAmount = payrollLedger.AccountingCurrencyAmount;
+
                         paymentType = "Normal Payment";
                         if(mthOfYr(payrollPeriodLineTab.PeriodStartDate) < 10)
                                 comments = strFmt("0%1-%2",mthOfYr(payrollPeriodLineTab.PeriodStartDate),year(payrollPeriodLineTab.PeriodStartDate));
@@ -460,8 +457,7 @@ class SPYWpsGenerationService
         writer.WriteLine(_text.getText());
         writer.Close();
         stream = System.IO.File::OpenRead(_filePath);
-        File::SendFileToUser(stream, _filePath);
-        
+        File::SendFileToUser(stream, _filePath);        
     }
 
 ]]></Source>

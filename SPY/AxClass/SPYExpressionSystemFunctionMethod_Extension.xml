@@ -455,10 +455,15 @@ final class SPYExpressionSystemFunctionMethod_Extension
     {
         HcmWorkerRecId worker = expressionContext.worker();
         LegalEntityRecId legalEntity = expressionContext.legalEntity();
-        HcmEmployment   hcmEmpoyment = HcmEmployment::findByWorkerLegalEntity(worker,legalEntity);
-        date      dateDOJ = DateTimeUtil::date(hcmEmpoyment.ValidFrom);
+        HcmEmployment   hcmEmpoyment;
+        date    validStartDate = dateNull(), validEndDate = dateMax();
+        select firstonly validtimestate(validStartDate, validEndDate) hcmEmpoyment
+            where hcmEmpoyment.Worker == worker &&
+            hcmEmpoyment.LegalEntity == legalEntity;
+        TransDateTime employmentStartDateTime = hcmEmpoyment.ValidFrom;//DateTimeUtil::applyTimeZoneOffset(hcmEmpoyment.ValidFrom, DateTimeUtil::getClientMachineTimeZone());
+        date    employmentStartDate = DateTimeUtil::date(employmentStartDateTime);
         
-        return( dateDOJ);
+        return employmentStartDate;
     }
 
 ]]></Source>
@@ -471,12 +476,15 @@ final class SPYExpressionSystemFunctionMethod_Extension
     {
         HcmWorkerRecId worker = expressionContext.worker();
         LegalEntityRecId legalEntity = expressionContext.legalEntity();
-        date    TransDate = DateTimeUtil::newDateTime( expressionContext.periodFromDate(), 0 );
-
-        HcmEmployment   hcmEmpoyment = HcmEmployment::findByWorkerLegalEntity(worker,legalEntity,TransDate,TransDate);
-        date      dateDOT = DateTimeUtil::date(hcmEmpoyment.ValidTo);
+        HcmEmployment   hcmEmpoyment;
+        date    validStartDate = dateNull(), validEndDate = dateMax();
+        select firstonly validtimestate(validStartDate, validEndDate) hcmEmpoyment
+            where hcmEmpoyment.Worker == worker &&
+            hcmEmpoyment.LegalEntity == legalEntity;
+        TransDateTime employmentEndDateTime = hcmEmpoyment.ValidTo;//DateTimeUtil::applyTimeZoneOffset(hcmEmpoyment.ValidFrom, DateTimeUtil::getClientMachineTimeZone());
+        date    employmentEndDate = DateTimeUtil::date(employmentEndDateTime);
         
-        return( dateDOT);
+        return employmentEndDate;
     }
 
 ]]></Source>
@@ -493,11 +501,17 @@ final class SPYExpressionSystemFunctionMethod_Extension
         ToDate periodToDate = expressionContext.PeriodToDate();
         SPYAbsenceLedger    absenceLedger;
         HRMAbsenceCode  hrmAbsenceCode;
-        TransDate   monthStartDate, monthEndDate;
+        TransDate   monthStartDate, monthEndDate, monthEndEffectiveDate;
         SPYAmount absenceDays;
-        HcmEmployment   hcmEmpoyment = HcmEmployment::findByWorkerLegalEntity(worker,legalEntity);
-        TransDateTime employmentStartDateTime = DateTimeUtil::applyTimeZoneOffset(hcmEmpoyment.ValidFrom, DateTimeUtil::getClientMachineTimeZone());
+        HcmEmployment   hcmEmpoyment;
+        date    validStartDate = dateNull(), validEndDate = dateMax();
+        select firstonly validtimestate(validStartDate, validEndDate) hcmEmpoyment
+            where hcmEmpoyment.Worker == worker &&
+            hcmEmpoyment.LegalEntity == legalEntity;
+        TransDateTime employmentStartDateTime = hcmEmpoyment.ValidFrom;//DateTimeUtil::applyTimeZoneOffset(hcmEmpoyment.ValidFrom, DateTimeUtil::getClientMachineTimeZone());
+        TransDateTime employmentEndDateTime = hcmEmpoyment.ValidTo;//DateTimeUtil::applyTimeZoneOffset(hcmEmpoyment.ValidTo, DateTimeUtil::getClientMachineTimeZone());
         date    employmentStartDate = DateTimeUtil::date(employmentStartDateTime);
+        date    employmentEndDate = DateTimeUtil::date(employmentEndDateTime);
         date      startDate = max(mkDate(1,1,year(periodToDate)), employmentStartDate);
         int mthCount = mthOfYr(startDate);
         SPYAmount   months;
@@ -505,10 +519,19 @@ final class SPYExpressionSystemFunctionMethod_Extension
         //---check first employment month
         monthStartDate = startDate;
         monthEndDate = endMth(startDate);
-        if(startDate == mkDate(1, mthOfYr(startDate), year(startDate))) //if startdate is1st of month
+        int daysInMonth = str2Int(SPYExpressionConfigurationTable::findByKey("DaysInMonth").Value);
+        if(daysInMonth != 0)
+            monthEndEffectiveDate = mkDate(daysInMonth, mthOfYr(monthEndDate), year(monthEndDate));
+        else
+            monthEndEffectiveDate = monthEndDate;
+        if(startDate == mkDate(1, mthOfYr(startDate), year(startDate))) //if startdate is 1st of month
             months = 1;
         else
-            months = (monthEndDate - monthStartDate) / 30;        
+        {
+            int workingDays = monthEndEffectiveDate - monthStartDate + 1;
+            workingDays = workingDays > 0 ? workingDays : 0;
+            months = workingDays / daysInMonth;
+        }
         select sum(AbsenceDays)
             from absenceLedger
             join hrmAbsenceCode
@@ -517,25 +540,34 @@ final class SPYExpressionSystemFunctionMethod_Extension
                 absenceLedger.Worker == worker &&
                 absenceLedger.AbsenceDate >= monthStartDate &&
                 absenceLedger.AbsenceDate <= monthEndDate;
-        absenceDays = absenceLedger.AbsenceDays;
-        if(absenceDays)
-            months = months + max(-30,absenceDays)/30;
+        absenceDays = -absenceLedger.AbsenceDays;
+        absenceDays = absenceDays > 30 ? 30 : absenceDays;
+        months = months - absenceDays/30;
         mthCount += 1;
-        while(mthCount <= mthOfYr(periodToDate)) //check next months
+        date endDate = min(employmentEndDate, periodToDate);
+        while(mthCount <= mthOfYr(endDate)) //check next months
         {
-            monthStartDate = mkDate(1, mthCount, year(periodToDate));
-            monthEndDate = endMth(monthStartDate);
+            monthStartDate = mkDate(1, mthCount, year(endDate));
+            if(mthOfYr(endDate) == mthOfYr(periodToDate)) //check for last epmloyment month
+            {
+                if(dayOfMth(endDate) > daysInMonth) //if termination date is later than DaysInMonth then consider full month
+                    months += 1;
+                else
+                    months += (endDate - monthStartDate + 1) / daysInMonth;
+            }
+            else
+                months += 1;
             select sum(AbsenceDays)
             from absenceLedger
             join hrmAbsenceCode
                 where hrmAbsenceCode.hrmAbsenceCodeId == absenceLedger.HRMAbsenceCodeId  &&
-                 hrmAbsenceCode.SPYIsUnpaid == NoYes::Yes && 
-                absenceLedger.Worker == worker && 
-                absenceLedger.AbsenceDate >= monthStartDate && 
-                absenceLedger.AbsenceDate <= monthEndDate;
-            absenceDays = absenceLedger.AbsenceDays;
+                 hrmAbsenceCode.SPYIsUnpaid == NoYes::Yes &&
+                absenceLedger.Worker == worker &&
+                absenceLedger.AbsenceDate >= monthStartDate &&
+                absenceLedger.AbsenceDate <= endDate;
+            absenceDays = -absenceLedger.AbsenceDays;
             absenceDays = absenceDays > 30 ? 30 : absenceDays;
-            months += (30+absenceDays)/30;
+            months = months - absenceDays/30;
             mthCount++;
         }
         /*
@@ -546,7 +578,7 @@ final class SPYExpressionSystemFunctionMethod_Extension
         else if(year(employmentStartDate) == year(periodToDate))
             cnt = mthOfYr(employmentStartDate);
         else
-            return 0;        
+            return 0;
 
         monthStartDate = startDate;
         monthEndDate = endMth(startDate);

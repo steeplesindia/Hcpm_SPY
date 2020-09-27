@@ -90,14 +90,15 @@ public class SPYDisbursementJournalTable extends FormRun
 				<Source><![CDATA[
     void setEnable()
     {
-        SPYWorkflowStatus status = SPYDisbursementJournalTable.WorkflowStatus;
-        boolean     checkEditable = SPYDisbursementJournalTable.Posted || (status == SPYWorkflowStatus::Submitted) || (status == SPYWorkflowStatus::Approved);
-    
-        SPYDisbursementJournalTable_ds.allowEdit(!checkEditable);
-        SPYDisbursementJournalTable_ds.allowDelete(!checkEditable);
-    
-        DimensionEntryControl.allowEdit(!checkEditable);
-
+        boolean     checkEditable = (SPYDisbursementJournalTable.WorkflowStatus == SPYWorkflowStatus::Created ||
+                                    SPYDisbursementJournalTable.WorkflowStatus == SPYWorkflowStatus::Submitted ||
+                                    SPYDisbursementJournalTable.WorkflowStatus == SPYWorkflowStatus::Started ||
+                                    SPYDisbursementJournalTable.WorkflowStatus == SPYWorkflowStatus::RequestChange) &&
+                                    !SPYDisbursementJournalTable.Posted ?
+                                    true : false;
+        SPYDisbursementJournalTable_ds.allowEdit(checkEditable);
+        SPYDisbursementJournalTable_ds.allowDelete(SPYDisbursementJournalTable.WorkflowStatus == SPYWorkflowStatus::Created && !SPYDisbursementJournalTable.Posted);    
+        DimensionEntryControl.allowEdit(checkEditable);
         SPYDisbursementJournal.enabled(SPYDisbursementJournalTable.RecId);
     }
 

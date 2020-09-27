@@ -969,6 +969,28 @@
 				<Parameters>SPYEOSUnpostService.unPost</Parameters>
 			</MenuElement>
 		</AxMenuExtensionElement>
+		<AxMenuExtensionElement xmlns="">
+			<Parent>Expression</Parent>
+			<PositionType>AfterItem</PositionType>
+			<PreviousSibling>SPYExpressionConfigurationTable</PreviousSibling>
+			<MenuElement xmlns=""
+				i:type="AxMenuElementMenuItem">
+				<Name>SPYImportExpressions</Name>
+				<MenuItemName>SPYImportExpressions</MenuItemName>
+				<MenuItemType>Action</MenuItemType>
+			</MenuElement>
+		</AxMenuExtensionElement>
+		<AxMenuExtensionElement xmlns="">
+			<Parent>Expression</Parent>
+			<PositionType>AfterItem</PositionType>
+			<PreviousSibling>SPYExpressionConfigurationTable</PreviousSibling>
+			<MenuElement xmlns=""
+				i:type="AxMenuElementMenuItem">
+				<Name>SPYExportExpressions</Name>
+				<MenuItemName>SPYExportExpressions</MenuItemName>
+				<MenuItemType>Action</MenuItemType>
+			</MenuElement>
+		</AxMenuExtensionElement>
 	</Elements>
 	<MenuElementModifications />
 	<PropertyModifications />

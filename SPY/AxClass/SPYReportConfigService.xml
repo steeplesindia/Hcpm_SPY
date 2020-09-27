@@ -67,7 +67,7 @@ class SPYReportConfigService extends SysOperationServiceBase
                 DictField df  = new DictField(spyRReportsTmp.TableId, dt.fieldCnt2Id(i));
                 if (!df.isSystem())
                 {
-                    mappings.insert(df.name(), num2Str(spyRReportsTmp.(df.id()),1,2,1,1));
+                    mappings.insert(df.name(), num2Str(spyRReportsTmp.(df.id()),0,2, DecimalSeparator::Auto,ThousandSeparator::Comma));
                 }
             }
 

@@ -513,6 +513,15 @@ public class SPYCompensationPlanBenefit extends FormRun
 										<DataSource>SPYCompensationPlanBenefit</DataSource>
 										<NoOfDecimals>-1</NoOfDecimals>
 									</AxFormControl>
+									<AxFormControl xmlns=""
+										i:type="AxFormRealControl">
+										<Name>Group_AmountAnnualMin</Name>
+										<Type>Real</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataField>AmountAnnualMin</DataField>
+										<DataSource>SPYCompensationPlanBenefit</DataSource>
+									</AxFormControl>
 								</Controls>
 								<DataGroup>AmountMin</DataGroup>
 								<DataSource>SPYCompensationPlanBenefit</DataSource>
@@ -540,6 +549,15 @@ public class SPYCompensationPlanBenefit extends FormRun
 										<DataSource>SPYCompensationPlanBenefit</DataSource>
 										<NoOfDecimals>-1</NoOfDecimals>
 									</AxFormControl>
+									<AxFormControl xmlns=""
+										i:type="AxFormRealControl">
+										<Name>Group_AmountAnnualMax</Name>
+										<Type>Real</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataField>AmountAnnualMax</DataField>
+										<DataSource>SPYCompensationPlanBenefit</DataSource>
+									</AxFormControl>
 								</Controls>
 								<DataGroup>AmountMax</DataGroup>
 								<DataSource>SPYCompensationPlanBenefit</DataSource>
@@ -566,6 +584,15 @@ public class SPYCompensationPlanBenefit extends FormRun
 										<DataField>AmountMonthlyMid</DataField>
 										<DataSource>SPYCompensationPlanBenefit</DataSource>
 										<NoOfDecimals>-1</NoOfDecimals>
+									</AxFormControl>
+									<AxFormControl xmlns=""
+										i:type="AxFormRealControl">
+										<Name>Group_AmountAnnualMid</Name>
+										<Type>Real</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataField>AmountAnnualMid</DataField>
+										<DataSource>SPYCompensationPlanBenefit</DataSource>
 									</AxFormControl>
 								</Controls>
 								<DataGroup>AmountMid</DataGroup>
@@ -613,6 +640,15 @@ public class SPYCompensationPlanBenefit extends FormRun
 										<DataSource>SPYCompensationPlanBenefit</DataSource>
 										<NoOfDecimals>-1</NoOfDecimals>
 									</AxFormControl>
+									<AxFormControl xmlns=""
+										i:type="AxFormRealControl">
+										<Name>Group_QtyAnnualMin</Name>
+										<Type>Real</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataField>QtyAnnualMin</DataField>
+										<DataSource>SPYCompensationPlanBenefit</DataSource>
+									</AxFormControl>
 								</Controls>
 								<DataGroup>QtyMin</DataGroup>
 								<DataSource>SPYCompensationPlanBenefit</DataSource>
@@ -640,6 +676,15 @@ public class SPYCompensationPlanBenefit extends FormRun
 										<DataSource>SPYCompensationPlanBenefit</DataSource>
 										<NoOfDecimals>-1</NoOfDecimals>
 									</AxFormControl>
+									<AxFormControl xmlns=""
+										i:type="AxFormRealControl">
+										<Name>Group_QtyAnnualMax</Name>
+										<Type>Real</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataField>QtyAnnualMax</DataField>
+										<DataSource>SPYCompensationPlanBenefit</DataSource>
+									</AxFormControl>
 								</Controls>
 								<DataGroup>QtyMax</DataGroup>
 								<DataSource>SPYCompensationPlanBenefit</DataSource>
@@ -666,6 +711,15 @@ public class SPYCompensationPlanBenefit extends FormRun
 										<DataField>QtyMonthlyMid</DataField>
 										<DataSource>SPYCompensationPlanBenefit</DataSource>
 										<NoOfDecimals>-1</NoOfDecimals>
+									</AxFormControl>
+									<AxFormControl xmlns=""
+										i:type="AxFormRealControl">
+										<Name>Group_QtyAnnualMid</Name>
+										<Type>Real</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataField>QtyAnnualMid</DataField>
+										<DataSource>SPYCompensationPlanBenefit</DataSource>
 									</AxFormControl>
 								</Controls>
 								<DataGroup>QtyMid</DataGroup>

@@ -118,6 +118,9 @@ class SPYEOSService extends SPYPayService
             where benefitLedger.Worker == worker.RecId &&
                   benefitLedger.Benefit == _benefit &&
                   benefitLedger.PayrollPeriodLine == payrollPeriodLineTable.RecId &&
+                  benefitLedger.IsFinalised &&
+                  (benefitLedger.PayrollJournalLine ||
+                  benefitLedger.PnLPayrollJournalLine) &&
                   payrollPeriodLineTable.PayrollPeriod == payrollPeriod;
     
         if(accumulatedBenefitRunMap.exists(_benefit))
@@ -907,8 +910,8 @@ class SPYEOSService extends SPYPayService
             EOSRunBenefit.TransactionCurPnLAmount = transCurrencyPnLAmt;
         EOSRunBenefit.Quantity                  = -_qty;
         EOSRunBenefit.TransDate                 = transDate;
-        EOSRunBenefit.AccountingCurOutstandingAmount    = EOSRunBenefit.AccountingCurrencyAmount + EOSRunBenefit.AccountingCurPnLAmount;
-        EOSRunBenefit.TransactionCurOutstandingAmount   = EOSRunBenefit.TransactionCurrencyAmount + EOSRunBenefit.TransactionCurPnLAmount;
+        EOSRunBenefit.AccountingCurOutstandingAmount    = -(EOSRunBenefit.AccountingCurrencyAmount - EOSRunBenefit.AccountingCurPnLAmount);
+        EOSRunBenefit.TransactionCurOutstandingAmount   = -(EOSRunBenefit.TransactionCurrencyAmount - EOSRunBenefit.TransactionCurPnLAmount);
         EOSRunBenefit.Txt                       = strFmt("@SPY1109",SPYPayElementTable::find(_benefit).PayElementCode,
                                                   worker.name(),periodStart,periodEnd);
         EOSRunBenefit.setAccount(payrollPeriodLineTable.PeriodStartDate,legalEntity,payrollPeriodLineTable.RecId,true);
@@ -1035,7 +1038,9 @@ class SPYEOSService extends SPYPayService
         while select benefitLedgerTab
             where benefitLedgerTab.Worker == worker.RecId &&
                   benefitLedgerTab.PayrollPeriodLine == payrollPeriodLine &&
-                  !benefitLedgerTab.PayrollJournalLine
+                  benefitLedgerTab.IsFinalised &&
+                  !benefitLedgerTab.PayrollJournalLine && 
+                  !benefitLedgerTab.PnLPayrollJournalLine
         {
             EOSRunBenefitTab = this.initializeEOSRunFromBenefit(benefitLedgerTab.Benefit,
                                                                 benefitLedgerTab.TransactionCurrencyAmount,
