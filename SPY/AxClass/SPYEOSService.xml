@@ -119,8 +119,8 @@ class SPYEOSService extends SPYPayService
                   benefitLedger.Benefit == _benefit &&
                   benefitLedger.PayrollPeriodLine == payrollPeriodLineTable.RecId &&
                   benefitLedger.IsFinalised &&
-                  (benefitLedger.PayrollJournalLine ||
-                  benefitLedger.PnLPayrollJournalLine) &&
+                  /*(benefitLedger.PayrollJournalLine ||
+                  benefitLedger.PnLPayrollJournalLine) &&*/
                   payrollPeriodLineTable.PayrollPeriod == payrollPeriod;
     
         if(accumulatedBenefitRunMap.exists(_benefit))
@@ -407,6 +407,7 @@ class SPYEOSService extends SPYPayService
             benefitLedger.PayLedgerSource                   = EOSRunbenefit.PayLedgerSource;
             benefitLedger.SourceDocument                    = tableNum(SPYEOSRunTable);
             benefitLedger.DistributeCost = EOSRunbenefit.DistributeCost;
+            benefitLedger.ExpressionTrace = EOSRunbenefit.ExpressionTrace;
             benefitLedger.insert();
     
             EOSRunbenefit.BenefitLedger = benefitLedger.RecId;
@@ -488,6 +489,7 @@ class SPYEOSService extends SPYPayService
             payrollLedger.PayLedgerSource                   = EOSRunPayroll.PayLedgerSource;
             payrollLedger.SourceDocument                    = tableNum(SPYEOSRunTable);
             payrollLedger.DistributeCost        = EOSRunPayroll.DistributeCost;
+            payrollLedger.ExpressionTrace = EOSRunPayroll.ExpressionTrace;
             payrollLedger.insert();
     
             EOSRunPayroll.PayrollLedger = payrollLedger.RecId;
@@ -1038,9 +1040,7 @@ class SPYEOSService extends SPYPayService
         while select benefitLedgerTab
             where benefitLedgerTab.Worker == worker.RecId &&
                   benefitLedgerTab.PayrollPeriodLine == payrollPeriodLine &&
-                  benefitLedgerTab.IsFinalised &&
-                  !benefitLedgerTab.PayrollJournalLine && 
-                  !benefitLedgerTab.PnLPayrollJournalLine
+                  !benefitLedgerTab.IsFinalised
         {
             EOSRunBenefitTab = this.initializeEOSRunFromBenefit(benefitLedgerTab.Benefit,
                                                                 benefitLedgerTab.TransactionCurrencyAmount,
@@ -1049,6 +1049,8 @@ class SPYEOSService extends SPYPayService
                                                                 benefitLedgerTab.Currency,
                                                                 benefitLedgerTab.ExchRate);
             EOSRunBenefitTab.UpdateFromBenefitLedger = true;
+            EOSRunBenefitTab.BenefitLedger = benefitLedgerTab.RecId;
+            EOSRunBenefitTab.ExpressionTrace = benefitLedgerTab.ExpressionTrace;
             EOSRunUpdate.updateBenefit(EOSRunBenefitTab);
         }
     }
@@ -1177,7 +1179,7 @@ class SPYEOSService extends SPYPayService
         while select payrollLedgerTab
             where payrollLedgerTab.Worker == worker.RecId &&
                   payrollLedgerTab.PayrollPeriodLine == payrollPeriodLine &&
-                  !payrollLedgerTab.PayrollJournalLine
+                  !payrollLedgerTab.IsFinalised
         {
             EOSRunPayrollTab = this.initializeEOSRunFromPayroll(payrollLedgerTab.Payroll,
                                                                 payrollLedgerTab.TransactionCurrencyAmount,
@@ -1185,6 +1187,8 @@ class SPYEOSService extends SPYPayService
                                                                 payrollLedgerTab.Currency,
                                                                 payrollLedgerTab.ExchRate);
             EOSRunPayrollTab.UpdateFromPayrollLedger = true;
+            EOSRunPayrollTab.PayrollLedger = payrollLedgerTab.RecId;
+            EOSRunPayrollTab.ExpressionTrace = payrollLedgerTab.ExpressionTrace;
             EOSRunUpdate.updatePayroll(EOSRunPayrollTab);
         }
     }

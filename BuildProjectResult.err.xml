@@ -1,30 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Diagnostics
-  GenerationTime="2020-07-29T09:59:31.5801767+00:00">
+  GenerationTime="2020-10-01T14:09:09.3993076+00:00">
   <Items>
     <Diagnostic>
       <DiagnosticType>Compile</DiagnosticType>
       <Severity>Error</Severity>
-      <Path>dynamics://Class/SPYLeaveDetailsDP/Method/processReport</Path>
+      <Path>dynamics://Class/SPYImportExpressions/Method/construct</Path>
       <ElementType>Class Method</ElementType>
-      <Moniker>TableDoesNotContainField</Moniker>
-      <Line>109</Line>
-      <Column>21</Column>
-      <EndLine>109</EndLine>
-      <EndColumn>50</EndColumn>
-      <Message>Table 'SPYLeaveDetailTmp' does not contain a field named 'PeriodSequence'.</Message>
+      <Moniker>TypeNotFound</Moniker>
+      <Line>184</Line>
+      <Column>5</Column>
+      <EndLine>184</EndLine>
+      <EndColumn>54</EndColumn>
+      <Message>The name 'SPYImportExpressionsFinal' does not denote a class, a table, or an extended data type.</Message>
     </Diagnostic>
     <Diagnostic>
       <DiagnosticType>Compile</DiagnosticType>
       <Severity>Error</Severity>
-      <Path>dynamics://Class/SPYLeaveDetailsDP/Method/processReport</Path>
+      <Path>dynamics://Class/SPYImportExpressions/Method/run</Path>
       <ElementType>Class Method</ElementType>
-      <Moniker>TableDoesNotContainField</Moniker>
-      <Line>110</Line>
-      <Column>21</Column>
-      <EndLine>110</EndLine>
+      <Moniker>TypeNotFound</Moniker>
+      <Line>117</Line>
+      <Column>9</Column>
+      <EndLine>117</EndLine>
+      <EndColumn>34</EndColumn>
+      <Message>The name 'SPYImportExpressionsFinal' does not denote a class, a table, or an extended data type.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Error</Severity>
+      <Path>dynamics://Class/SPYImportExpressions/Method/construct</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ClassNotFound</Moniker>
+      <Line>186</Line>
+      <Column>16</Column>
+      <EndLine>186</EndLine>
       <EndColumn>47</EndColumn>
-      <Message>Table 'SPYLeaveDetailTmp' does not contain a field named 'AbsenceCode'.</Message>
+      <Message>Class 'SPYImportExpressionsFinal' was not found. Are you missing a module reference?</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Error</Severity>
+      <Path>dynamics://Class/SPYImportExpressions/Method/main</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>TypeNotFound</Moniker>
+      <Line>197</Line>
+      <Column>9</Column>
+      <EndLine>197</EndLine>
+      <EndColumn>34</EndColumn>
+      <Message>The name 'SPYImportExpressionsFinal' does not denote a class, a table, or an extended data type.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Error</Severity>
+      <Path>dynamics://Class/SPYImportExpressions/Method/main</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>ClassOrTableNotFound</Moniker>
+      <Line>199</Line>
+      <Column>29</Column>
+      <EndLine>199</EndLine>
+      <EndColumn>67</EndColumn>
+      <Message>The name 'SPYImportExpressionsFinal' does not designate a class or table.</Message>
     </Diagnostic>
   </Items>
   <Aliases />

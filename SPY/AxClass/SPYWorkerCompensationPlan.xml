@@ -54,14 +54,14 @@ class SPYWorkerCompensationPlan
                 workerPositionBenefit.update();
             }
     
-            while select forUpdate validTimeState(minimumDate,maximumDate) workerPositionBenefit
+            /*while select forUpdate validTimeState(minimumDate,maximumDate) workerPositionBenefit
                 where workerPositionBenefit.Worker == worker &&
                       workerPositionBenefit.LegalEntity == legalEntity &&
                       workerPositionBenefit.ValidFrom > employmentEndDate
             {
                 workerPositionBenefit.validTimeStateUpdateMode(ValidTimeStateUpdate::Correction);
                 workerPositionBenefit.delete();
-            }
+            }*///Commented by RKD NOV 1 2020 as records being deleted, case failed on POM
         }
     
     }
@@ -130,14 +130,14 @@ class SPYWorkerCompensationPlan
                 }
 
             //delete the lines that are for future
-            while select forUpdate validTimeState(minimumDate,maximumDate) absenceConfigLines
+            /*while select forUpdate validTimeState(minimumDate,maximumDate) absenceConfigLines
                     where absenceConfigLines.Worker == worker &&
                           absenceConfigLines.LegalEntity == legalEntity &&
                           absenceConfigLines.ValidFrom > employmentEndDate
                 {
                     absenceConfigLines.validTimeStateUpdateMode(ValidTimeStateUpdate::Correction);
                     absenceConfigLines.delete();
-                }
+                }*/ //Commented by RKD NOV 1 2020 as records being deleted, case failed on POM
         }
     }
 
@@ -176,14 +176,14 @@ class SPYWorkerCompensationPlan
                 workerPositionPayroll.update();
             }
     
-            while select forUpdate validTimeState(minimumDate,maximumDate) workerPositionPayroll
+            /*while select forUpdate validTimeState(minimumDate,maximumDate) workerPositionPayroll
                 where workerPositionPayroll.Worker == worker &&
                       workerPositionPayroll.LegalEntity == legalEntity &&
                       workerPositionPayroll.ValidFrom > employmentEndDate
             {
                 workerPositionPayroll.validTimeStateUpdateMode(ValidTimeStateUpdate::Correction);
                 workerPositionPayroll.delete();
-            }
+            }*/  //Commented by RKD NOV 1 2020 as records being deleted, case failed on POM
         }
     
     }

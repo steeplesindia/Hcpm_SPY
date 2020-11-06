@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxQuery xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns=""
+	i:type="AxQuerySimple">
+	<Name>SPYWorkerTransferRequest_AllTransferInRequest</Name>
+	<SourceCode>
+		<Methods>
+			<Method>
+				<Name>classDeclaration</Name>
+				<Source><![CDATA[
+[Query]
+public class SPYWorkerTransferRequest_AllTransferInRequest extends QueryRun
+{
+}
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+	<Description>@SPY:WorkerTransferRequest</Description>
+	<Title>@SPY:WorkerTransferRequest</Title>
+	<DataSources>
+		<AxQuerySimpleRootDataSource>
+			<Name>SPYWorkerTransferRequest</Name>
+			<DynamicFields>Yes</DynamicFields>
+			<Table>SPYWorkerTransferRequest</Table>
+			<DataSources />
+			<DerivedDataSources />
+			<Fields />
+			<Ranges>
+				<AxQuerySimpleDataSourceRange>
+					<Name>ToLegalEntity</Name>
+					<Field>ToLegalEntity</Field>
+					<Status>Locked</Status>
+					<Value>((ToLegalEntity = HcmCompanyInfoHelper::currentLegalEntity()) &amp;&amp; (ToLegalEntity != 0))</Value>
+				</AxQuerySimpleDataSourceRange>
+			</Ranges>
+			<GroupBy />
+			<Having />
+			<OrderBy />
+		</AxQuerySimpleRootDataSource>
+	</DataSources>
+</AxQuery>

@@ -73,8 +73,8 @@ class SPYPayrollFinalizeProcessService extends SPYPayrollFinalize
                 changeCompany(CompanyInfo::findRecId(legalEntity).DataArea)
                 {
                     this.updateWebDocumentLog();
-                    this.updateAbsenceLedgerFromBenefitLegder();
-                    this.finalizePayroll();                    
+                    this.updateALFromBLForPeriod(payrollPeriodLine);
+                    this.finalizePayrollForPeriod(payrollPeriodLine);
                 }
                 progressCount++;
             }
@@ -92,9 +92,109 @@ class SPYPayrollFinalizeProcessService extends SPYPayrollFinalize
 ]]></Source>
 			</Method>
 			<Method>
-				<Name>finalizePayroll</Name>
+				<Name>processFromEOS</Name>
 				<Source><![CDATA[
-    private void finalizePayroll()
+    public void processFromEOS(SPYPayrollFinalizeProcessContract   _contract)
+    {
+        contract                        = _contract as SPYPayrollFinalizeProcessContract;
+        SPYEOSRunTable      eosRunTable = _contract.parmEOSRunTable();
+        #AviFiles
+        SysOperationProgress    progress = new SysOperationProgress();
+        int                                 progressCount;
+        //Info('EOS Finalize');
+        
+        this.initialize();                
+        setPrefix("@SPY:FinalizingPayroll");
+        progress.setCaption("@SPY:PayrollFinalizing");
+        progress.setAnimation(#AviUpdate);
+        progress.setTotal(1);
+        progressCount = 1;
+        
+        try
+        {
+            ttsBegin;           
+            hcmWorker = HcmWorker::find(eosRunTable.Worker);
+            progress.setText(strfmt("@SPY882", hcmWorker.name()));
+            progress.setCount(progressCount, 1);
+            
+            this.updateWebDocumentLog();
+            this.updateALFromBLForEOS(eosRunTable);
+            this.finalizePayrollForEOS(eosRunTable);
+            this.updateEOSRun(eosRunTable);
+            progressCount++;
+            
+            ttsCommit;
+            this.finalize();
+            info("@SPY379");
+        }
+        catch(Exception::Error)
+        {
+            checkFailed("@SPY252");
+            ttsAbort;
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>finalizePayrollForEOS</Name>
+				<Source><![CDATA[
+    private void finalizePayrollForEOS(SPYEOSRunTable  _eosRunTable)
+    {
+        SPYPayrollLedger        payrollLedger;
+        SPYEOSRunPayroll        eosRunPayroll;
+        SPYBenefitLedger    benefitLedger;
+        SPYEOSRunBenefit        eosRunBenefit;
+        Map    payrollPeriodLineMap = new Map(Types::Int64, Types::Int64);
+
+        while select payrollLedger group by payrollPeriodLine
+            join eosRunPayroll 
+            where eosRunPayroll.PayrollLedger == payrollLedger.RecId &&
+            eosRunPayroll.EOSRun == _eosRunTable.RecId
+        {
+            payrollPeriodLineMap.insert(payrollLedger.PayrollPeriodLine, 0);
+        }
+
+        while select benefitLedger group by payrollPeriodLine
+            join eosRunBenefit 
+            where eosRunBenefit.BenefitLedger == benefitLedger.RecId &&
+            eosRunBenefit.EOSRun == _eosRunTable.RecId
+        {
+            if(!payrollPeriodLineMap.exists(benefitLedger.PayrollPeriodLine))
+                payrollPeriodLineMap.insert(benefitLedger.PayrollPeriodLine, 0);
+            this.updateALFromBLForPeriod(benefitLedger.PayrollPeriodLine);
+        }
+
+        MapEnumerator   payrollPeriodLineMapEnum = payrollPeriodLineMap.getEnumerator();
+        while(payrollPeriodLineMapEnum.moveNext())
+        {
+            this.finalizePayrollForPeriod(payrollPeriodLineMapEnum.currentKey());
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>updateEOSRun</Name>
+				<Source><![CDATA[
+    private void updateEOSRun(SPYEOSRunTable  _eosRunTable)
+    {
+        SPYEOSRunTable      eosRunTable;
+
+        while select forupdate eosRunTable
+            where eosRunTable.RecId == _eosRunTable.RecId
+        {
+            eosRunTable.IsFinalised = true;
+            eosRunTable.update();
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>finalizePayrollForPeriod</Name>
+				<Source><![CDATA[
+    private void finalizePayrollForPeriod(SPYPayrollPeriodLineRecId _payrollPeriodLine)
     {
         SPYPayrollLedger                            payrollLedger;
         SPYBenefitLedger                            benefitLedger;
@@ -103,19 +203,19 @@ class SPYPayrollFinalizeProcessService extends SPYPayrollFinalize
         update_recordset payrollLedger
             setting IsFinalised = true
             where payrollLedger.Worker == hcmWorker.RecId &&
-            payrollLedger.PayrollPeriodLine == payrollPeriodLine &&
+            payrollLedger.PayrollPeriodLine == _payrollPeriodLine &&
             !payrollLedger.IsFinalised;
 
         update_recordset benefitLedger
             setting IsFinalised = true
             where benefitLedger.Worker == hcmWorker.RecId &&
-            benefitLedger.PayrollPeriodLine == payrollPeriodLine &&
+            benefitLedger.PayrollPeriodLine == _payrollPeriodLine &&
             !benefitLedger.IsFinalised;
 
         update_recordset referencePayElementLedger
             setting IsFinalised = true
             where referencePayElementLedger.Worker == hcmWorker.RecId &&
-            referencePayElementLedger.PayrollPeriodLine == payrollPeriodLine &&
+            referencePayElementLedger.PayrollPeriodLine == _payrollPeriodLine &&
             !referencePayElementLedger.IsFinalised;
     }
 
@@ -132,21 +232,37 @@ class SPYPayrollFinalizeProcessService extends SPYPayrollFinalize
 ]]></Source>
 			</Method>
 			<Method>
-				<Name>updateAbsenceLedgerFromBenefitLegder</Name>
+				<Name>updateALFromBLForEOS</Name>
 				<Source><![CDATA[
-    private void updateAbsenceLedgerFromBenefitLegder()
+    private void updateALFromBLForEOS(SPYEOSRunTable  _eosRunTable)
+    {
+        SPYEOSRunBenefit        eosRunBenefit;
+
+        while select eosRunBenefit group by payrollPeriodLine
+            where eosRunBenefit.EOSRun == _eosRunTable.RecId
+        {
+            this.updateALFromBLForPeriod(eosRunBenefit.PayrollPeriodLine);
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>updateALFromBLForPeriod</Name>
+				<Source><![CDATA[
+    private void updateALFromBLForPeriod(SPYPayrollPeriodLineRecId _payrollPeriodLine)
     {
         SPYBenefitLedger        benefitLedger;
         HRMAbsenceCode          absenceCode;
         SPYAbsenceLedger        absenceLedger;
 
-        timesheetStartDate = SPYPayrollPeriodLine::findPrevPeriodLine(payrollPeriodLine).PayrollDate+1;
-        timesheetEndDate = SPYPayrollPeriodLine::find(payrollPeriodLine).PayrollDate;
+        timesheetStartDate = SPYPayrollPeriodLine::findPrevPeriodLine(_payrollPeriodLine).PayrollDate+1;
+        timesheetEndDate = SPYPayrollPeriodLine::find(_payrollPeriodLine).PayrollDate;
 
         while select Benefit, sum(Quantity) 
             from benefitLedger group by Benefit
             where benefitLedger.Worker == hcmWorker.RecId 
-                && benefitLedger.PayrollPeriodLine == payrollPeriodLine    
+                && benefitLedger.PayrollPeriodLine == _payrollPeriodLine
          join absenceCode group by hrmAbsenceCodeId
              where absenceCode.SPYBenefit == benefitLedger.Benefit
         {

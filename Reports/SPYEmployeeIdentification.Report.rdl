@@ -1083,7 +1083,7 @@
         <ConnectString />
         <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
-      <rd:DataSourceID>aa2dfe81-c4cb-4f79-a019-7697f3906dce</rd:DataSourceID>
+      <rd:DataSourceID>31d03ef7-0e36-4dbb-9079-438ee7657077</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>

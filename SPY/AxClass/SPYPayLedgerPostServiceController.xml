@@ -9,6 +9,8 @@ class SPYPayLedgerPostServiceController extends SysOperationServiceController
     SPYPayLedgerContract                payLedgerContract;
     SPYPayrollParameterState            payrollParameterState;
     SPYLeaveSettlementParameterState    leaveSettlementParameterState;
+    boolean     calledFromEOS;
+    SPYEOSRunTable                 eosRunTable;
 
 }
 ]]></Declaration>
@@ -134,6 +136,29 @@ class SPYPayLedgerPostServiceController extends SysOperationServiceController
 ]]></Source>
 			</Method>
 			<Method>
+				<Name>parmCalledFromEOS</Name>
+				<Source><![CDATA[
+    public boolean parmCalledFromEOS(boolean _calledFromEOS = calledFromEOS)
+    {
+        calledFromEOS = _calledFromEOS;
+    
+        return calledFromEOS;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmEOSRunTable</Name>
+				<Source><![CDATA[
+    public SPYEOSRunTable parmEOSRunTable(SPYEOSRunTable _eosRunTable = eosRunTable)
+    {
+        eosRunTable = _eosRunTable;
+        return eosRunTable;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
 				<Name>construct</Name>
 				<Source><![CDATA[
     static SPYPayLedgerPostServiceController construct(IdentifierName _className  = '',
@@ -172,6 +197,11 @@ class SPYPayLedgerPostServiceController extends SysOperationServiceController
         {
             if(args.caller() && args.caller().payrollParameterState())
                 payLedgerPostServiceController.parmPayrollParameterState(args.caller().payrollParameterState());
+        }
+        else if(args.menuItemName() == menuitemActionStr(SPYPayLedgerPostEOSServiceController))
+        {
+            payLedgerPostServiceController.parmCalledFromEOS(true);
+            payLedgerPostServiceController.parmEOSRunTable(args.record());
         }
         if(payLedgerPostServiceController.prompt())
             payLedgerPostServiceController.run();

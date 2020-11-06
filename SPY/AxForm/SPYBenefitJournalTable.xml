@@ -312,6 +312,9 @@ public class SPYBenefitJournalTable extends FormRun
 					<DataField>JournalType</DataField>
 				</AxFormDataSourceField>
 				<AxFormDataSourceField>
+					<DataField>Partition</DataField>
+				</AxFormDataSourceField>
+				<AxFormDataSourceField>
 					<DataField>PayrollJournal</DataField>
 				</AxFormDataSourceField>
 				<AxFormDataSourceField>
@@ -322,6 +325,10 @@ public class SPYBenefitJournalTable extends FormRun
 				</AxFormDataSourceField>
 				<AxFormDataSourceField>
 					<DataField>TableId</DataField>
+				</AxFormDataSourceField>
+				<AxFormDataSourceField>
+					<AllowEdit>No</AllowEdit>
+					<DataField>WorkerTransferRequest</DataField>
 				</AxFormDataSourceField>
 				<AxFormDataSourceField>
 					<DataField>WorkflowStatus</DataField>
@@ -558,6 +565,16 @@ public class SPYBenefitJournalTable extends FormRun
 										<DataField>Posted</DataField>
 										<DataSource>SPYBenefitJournalTable</DataSource>
 									</AxFormControl>
+									<AxFormControl xmlns=""
+										i:type="AxFormReferenceGroupControl">
+										<Name>SPYBenefitJournalTable_WorkerTransferRequest</Name>
+										<Type>ReferenceGroup</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<Controls />
+										<DataSource>SPYBenefitJournalTable</DataSource>
+										<ReferenceField>WorkerTransferRequest</ReferenceField>
+									</AxFormControl>
 								</Controls>
 								<AlternateRowShading>No</AlternateRowShading>
 								<DataSource>SPYBenefitJournalTable</DataSource>
@@ -693,6 +710,30 @@ public class SPYBenefitJournalTable extends FormRun
 									</AxFormControl>
 								</Controls>
 								<DataGroup>BenefitEncashment</DataGroup>
+								<DataSource>SPYBenefitJournalTable</DataSource>
+							</AxFormControl>
+							<AxFormControl xmlns=""
+								i:type="AxFormGroupControl">
+								<Name>GroupWorkerTransfer</Name>
+								<ElementPosition>1789569705</ElementPosition>
+								<FilterExpression>%1</FilterExpression>
+								<Type>Group</Type>
+								<VerticalSpacing>-1</VerticalSpacing>
+								<FormControlExtension
+									i:nil="true" />
+								<Controls>
+									<AxFormControl xmlns=""
+										i:type="AxFormReferenceGroupControl">
+										<Name>GroupWorkerTransfer_WorkerTransferRequest</Name>
+										<Type>ReferenceGroup</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<Controls />
+										<DataSource>SPYBenefitJournalTable</DataSource>
+										<ReferenceField>WorkerTransferRequest</ReferenceField>
+									</AxFormControl>
+								</Controls>
+								<DataGroup>WorkerTransfer</DataGroup>
 								<DataSource>SPYBenefitJournalTable</DataSource>
 							</AxFormControl>
 							<AxFormControl xmlns=""

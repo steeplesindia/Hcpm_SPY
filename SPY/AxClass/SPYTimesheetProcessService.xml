@@ -207,7 +207,8 @@ class SPYTimesheetProcessService
                 benefitLedger.TransDate                 = transDate;
                 benefitLedger.Txt                       = strFmt("@SPY374",SPYPayElementTable::find(benefit).PayElementCode,
                                                              hcmWorker.name(),fromDate,toDate);
-                benefitLedger.setAccount(DateTimeUtil::getSystemDate(DateTimeUtil::getUserPreferredTimeZone()),CompanyInfo::current(),payrollPeriodLine,true);
+                benefitLedger.setAccount(DateTimeUtil::getSystemDate(DateTimeUtil::getUserPreferredTimeZone()), CompanyInfo::current() ,payrollPeriodLine, 
+                    hcmEmployment, hcmEmploymentDetail, true);
                 benefitLedger.ExpressionTrace           = expressionTrace;
                 benefitLedger.insert();
 
@@ -285,7 +286,8 @@ class SPYTimesheetProcessService
                 benefitLedger.TransDate                 = transDate;
                 benefitLedger.Txt                       = strFmt("@SPY:PeriodClose",SPYPayElementTable::find(benefit).PayElementCode,
                                                              hcmWorker.name(),fromDate,toDate);
-                benefitLedger.setAccount(DateTimeUtil::getSystemDate(DateTimeUtil::getUserPreferredTimeZone()),CompanyInfo::current(),payrollPeriodLine,true);
+                benefitLedger.setAccount(DateTimeUtil::getSystemDate(DateTimeUtil::getUserPreferredTimeZone()), CompanyInfo::current(), payrollPeriodLine,
+                    hcmEmployment, hcmEmploymentDetail, true);
                 benefitLedger.ExpressionTrace           = expressionTrace;
                 benefitLedger.insert();
 
@@ -321,8 +323,8 @@ class SPYTimesheetProcessService
               absenceLedger.TransDate <= fromDate &&
               absenceLedger.SourceDocument == tableNum(SPYLeaveApplicationTable)
         join payrollPeriodLineTab
-        where payrollPeriodLineTab.PeriodStartDate <= absenceLedger.AbsenceDate &&
-              payrollPeriodLineTab.PeriodEndDate >= absenceLedger.AbsenceDate &&
+        where payrollPeriodLineTab.PeriodStartDate <= absenceLedger.TransDate &&
+              payrollPeriodLineTab.PeriodEndDate >= absenceLedger.TransDate &&
               payrollPeriodLineTab.PayrollPeriod == payrollPeriod &&
               payrollPeriodLineTab.PeriodStatus == SPYPayrollPeriodStatus::Closed
         Notexists join benefitLedgerJoin
@@ -369,7 +371,8 @@ class SPYTimesheetProcessService
                 benefitLedger.TransDate                 = SPYPayrollPeriodLine::find(payrollPeriodLine).PeriodEndDate;
                 benefitLedger.Txt                       = strFmt("@SPY1318",SPYPayElementTable::find(benefit).PayElementCode,
                                                              hcmWorker.name(),fromDate,toDate);
-                benefitLedger.setAccount(DateTimeUtil::getSystemDate(DateTimeUtil::getUserPreferredTimeZone()),CompanyInfo::current(),payrollPeriodLine,true);
+                benefitLedger.setAccount(DateTimeUtil::getSystemDate(DateTimeUtil::getUserPreferredTimeZone()), CompanyInfo::current(), payrollPeriodLine, 
+                    hcmEmployment, hcmEmploymentDetail, true);
                 benefitLedger.ExpressionTrace           = expressionTrace;
                 benefitLedger.insert();
 
@@ -381,8 +384,8 @@ class SPYTimesheetProcessService
                       absenceLedgeUpd.HRMAbsenceCodeId == absenceLedger.HRMAbsenceCodeId &&
                       absenceLedgeUpd.SourceDocument == tableNum(SPYLeaveApplicationTable)
                 join payrollPeriodLineTab
-                where payrollPeriodLineTab.PeriodStartDate <= absenceLedgeUpd.AbsenceDate &&
-                      payrollPeriodLineTab.PeriodEndDate >= absenceLedgeUpd.AbsenceDate &&
+                where payrollPeriodLineTab.PeriodStartDate <= absenceLedgeUpd.TransDate &&
+                      payrollPeriodLineTab.PeriodEndDate >= absenceLedgeUpd.TransDate &&
                       payrollPeriodLineTab.PayrollPeriod == payrollPeriod &&
                       payrollPeriodLineTab.PeriodStatus == SPYPayrollPeriodStatus::Closed
                 Notexists join benefitLedgerJoin
@@ -1050,7 +1053,6 @@ class SPYTimesheetProcessService
                 if(plannedWorkingHourSource == SPYPlannedWorkingHourSource::Roster)
                 {
                     this.setProfileIdFromProfileCalendar(workDate);
-                    //AFZ Pavan
                     if(isHoliday == true)
                     {
                         workingHours = 0;
@@ -1059,7 +1061,6 @@ class SPYTimesheetProcessService
                     {
                         workingHours = this.workingHoursFromProfileCalendar(workDate);
                     }
-                    //AFZ Pavan
                 }
                 timesheetFound = this.hoursWorkedFromTimesheet(workDate,workingHours);
             }
@@ -1077,7 +1078,6 @@ class SPYTimesheetProcessService
                 if(plannedWorkingHourSource == SPYPlannedWorkingHourSource::Roster)
                 {
                     this.setProfileIdFromProfileCalendar(workDate);
-                    //AFZ Pavan
                     if(isHoliday == true)
                     {
                         workingHours = 0;
@@ -1086,7 +1086,6 @@ class SPYTimesheetProcessService
                     {
                         workingHours = this.workingHoursFromProfileCalendar(workDate);
                     }
-                    //AFZ Pavan
                 }
                 
                 timesheetFound = this.calcHoursWorkedFromAttendance(workDate, this.hoursWorkedFromAttendance(workDate,workingHours), workingHours);
@@ -1362,7 +1361,7 @@ class SPYTimesheetProcessService
                                                                   SPYPayrollPeriodLine::find(benefitLedger.PayrollPeriodLine).PeriodEndDate,
                                                                   SPYBenefitJournalType::Encashment);
                 payrollLedger.SourceDocument            = tableNum(SPYAbsenceLedger);
-                payrollLedger.setAccount(benefitLedger.TransDate,CompanyInfo::current(),benefitLedger.PayrollPeriodLine);
+                payrollLedger.setAccount(benefitLedger.TransDate, CompanyInfo::current() ,benefitLedger.PayrollPeriodLine, hcmEmployment, hcmEmploymentDetail);
                 if(benefitLedger.DefaultDimension)
                                 payrollLedger.DefaultDimension      = benefitLedger.DefaultDimension;
                 payrollLedger.ImmediateDisbursement     = benefitLedger.ImmediateDisbursement;

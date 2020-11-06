@@ -234,6 +234,15 @@ public class SPYBenefitJournalTable extends common
 				</AxTableFieldGroupField>
 			</Fields>
 		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>WorkerTransfer</Name>
+			<Label>@SPY:WorkerTransfer</Label>
+			<Fields>
+				<AxTableFieldGroupField>
+					<DataField>WorkerTransferRequest</DataField>
+				</AxTableFieldGroupField>
+			</Fields>
+		</AxTableFieldGroup>
 	</FieldGroups>
 	<Fields>
 		<AxTableField xmlns=""
@@ -299,6 +308,11 @@ public class SPYBenefitJournalTable extends common
 			<Name>WorkflowStatus</Name>
 			<EnumType>SPYWorkflowStatus</EnumType>
 		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldInt64">
+			<Name>WorkerTransferRequest</Name>
+			<ExtendedDataType>SPYWorkerTransferRequestRecId</ExtendedDataType>
+		</AxTableField>
 	</Fields>
 	<FullTextIndexes />
 	<Indexes>
@@ -352,13 +366,34 @@ public class SPYBenefitJournalTable extends common
 		<AxTableRelation xmlns=""
 			i:type="AxTableRelationForeignKey">
 			<Name>SPYPayrollPeriodLine</Name>
+			<Cardinality>ZeroMore</Cardinality>
 			<OnDelete>Restricted</OnDelete>
 			<RelatedTable>SPYPayrollPeriodLine</RelatedTable>
+			<RelatedTableCardinality>ExactlyOne</RelatedTableCardinality>
+			<RelationshipType>Association</RelationshipType>
 			<Constraints>
 				<AxTableRelationConstraint xmlns=""
 					i:type="AxTableRelationConstraintField">
 					<Name>BenefitEncashmentPeriod</Name>
 					<Field>BenefitEncashmentPeriod</Field>
+					<RelatedField>RecId</RelatedField>
+				</AxTableRelationConstraint>
+			</Constraints>
+			<Index>RecId</Index>
+		</AxTableRelation>
+		<AxTableRelation xmlns=""
+			i:type="AxTableRelationForeignKey">
+			<Name>SPYWorkerTransferRequest</Name>
+			<Cardinality>ZeroMore</Cardinality>
+			<OnDelete>Restricted</OnDelete>
+			<RelatedTable>SPYWorkerTransferRequest</RelatedTable>
+			<RelatedTableCardinality>ExactlyOne</RelatedTableCardinality>
+			<RelationshipType>Association</RelationshipType>
+			<Constraints>
+				<AxTableRelationConstraint xmlns=""
+					i:type="AxTableRelationConstraintField">
+					<Name>WorkerTransferRequest</Name>
+					<Field>WorkerTransferRequest</Field>
 					<RelatedField>RecId</RelatedField>
 				</AxTableRelationConstraint>
 			</Constraints>

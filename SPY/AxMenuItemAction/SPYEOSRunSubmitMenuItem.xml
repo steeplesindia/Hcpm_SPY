@@ -7,7 +7,7 @@
 	<Label>@SYS68352</Label>
 	<MaintainUserLicense>Enterprise</MaintainUserLicense>
 	<NormalResource>0</NormalResource>
-	<Object>SPYPayLoanJourSubmitManager</Object>
+	<Object>SPYEOSRunSubmitManager</Object>
 	<ObjectType>Class</ObjectType>
 	<ViewUserLicense>Enterprise</ViewUserLicense>
 </AxMenuItemAction>

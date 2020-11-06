@@ -39,7 +39,7 @@ public class SPYReportConfigFilter extends FormRun
             }
             else
             {
-                queryRun = new QueryRun( queryStr('SPYHcmWorkerLookup') );
+                queryRun = new QueryRun( queryStr('SPYReportConfigWorker') );
             }
 
             if ( queryRun.prompt() )

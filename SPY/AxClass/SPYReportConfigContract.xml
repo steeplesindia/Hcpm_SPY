@@ -22,7 +22,7 @@ class SPYReportConfigContract
     //>>******set the query for selection
     [
         DataMemberAttribute,
-        AifQueryTypeAttribute('_packedQuery', queryStr('SPYHcmWorkerLookup'))
+        AifQueryTypeAttribute('_packedQuery', queryStr('SPYReportConfigWorker'))
     ]
     public str parmPackedQuery(str _packedQuery = packedQuery)
     {

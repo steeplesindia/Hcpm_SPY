@@ -10,6 +10,7 @@ class SPYPayrollFinalizeProcessContract
     LegalEntityRecId                    legalEntity;
     SPYPayrollPeriodLineRecId     payrollPeriodLine;
     SPYPayrollParameterState      payrollParameterState;
+    SPYEOSRunTable                 eosRunTable;
 
 }
 ]]></Declaration>
@@ -58,6 +59,18 @@ class SPYPayrollFinalizeProcessContract
     {
         workerQuery = _workerQuery;
         return workerQuery;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmEOSRunTable</Name>
+				<Source><![CDATA[
+    [DataMemberAttribute]
+    public SPYEOSRunTable parmEOSRunTable(SPYEOSRunTable _eosRunTable = eosRunTable)
+    {
+        eosRunTable = _eosRunTable;
+        return eosRunTable;
     }
 
 ]]></Source>

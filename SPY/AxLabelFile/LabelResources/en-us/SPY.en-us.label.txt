@@ -3596,8 +3596,6 @@ WorkerTimesheetPeriodWorkerPeriodSyncedPortal=Worker timesheet period of worker 
  ;New Comment
 ErrorForWorkerPeriod=Error for worker %1, period %2. %3. \n
  ;New Comment
-NewLabel2=Worker project sync is done successfully.
- ;New Comment
 ErrorOccurredWhileSyncingWorkerProject=Error occurred while syncing worker project.
  ;New Comment
 WorkerProjectActivitySyncedPortal=Worker %1, project %2, activity %3 is synced to portal. \n
@@ -3930,3 +3928,163 @@ ReportTitle=Report title
  ;New Comment
 CompensationPlanDetails=Compensation plan details
  ;Compensation plan details
+ImportExpressions=Import expressions
+ ;Import expressions
+ExportExpressions=Export expressions
+ ;Export expressions
+ImportExpressionsHelpText=Import expressions with condition values.
+ ;Help text
+ExportExpressionsHelpText=Export the expressions with conditions and condition values.
+ ;ExportExpressionsHelpText
+WorkerTransferRequest=Worker transfer request
+ ;New Comment
+WorkerTransferRequestCode=Worker transfer request code
+ ;New Comment
+Purpose=Purpose
+ ;New Comment
+TransferDate=Transfer date
+ ;New Comment
+FromLegalEntity=From legal entity
+ ;New Comment
+ToLegalEntity=To legal entity
+ ;New Comment
+WorkerTransferRequestPayrollFrom=Worker transfer request payroll from
+ ;New Comment
+WorkerTransferRequestBenefitFrom=Worker transfer request benefit from
+ ;New Comment
+UpdationCompletedWorker=Updation completed for worker %1, %2.
+ ;New Comment
+WorkerTransferRequestEmploymentFrom=Worker transfer request employment from
+ ;New Comment
+WorkerTransferRequestEmploymentTo=Worker transfer request employment to
+ ;New Comment
+WorkerTransferRequestAbsenceFrom=Worker transfer request absence from
+ ;New Comment
+Status=Status
+ ;New Comment
+LegalEntity=Legal entity
+ ;New Comment
+Notes=Notes
+ ;New Comment
+AllWorkerTransferRequest=All transfer request
+ ;New Comment
+MyWorkerTransferRequest=My transfer request
+ ;New Comment
+WorkerTransferRequestApproval=Worker transfer request approval
+ ;New Comment
+EmploymentDetails=Employment details
+ ;New Comment
+TransferFrom=Transfer from
+ ;New Comment
+TransferTo=Transfer to
+ ;New Comment
+WorkerTransferReqNumSeqHelp=Unique key for worker transfer request. You use the key when creating a new transfer request.
+ ;New Comment
+WorkerTransferRequestAbsenceTo=Worker transfer request absence to
+ ;New Comment
+Currency=Currency
+ ;New Comment
+WorkerFilledIn=Worker should be filled in.
+ ;New Comment
+TransferFilledIn=Transfer date should be filled in.
+ ;New Comment
+FromLegalEntityFilledIn=From legal entity should be filled in.
+ ;New Comment
+General=General
+ ;New Comment
+RefreshTransferFrom=Refresh details
+ ;New Comment
+TransferFromRefreshed=Transfer details are refreshed.
+ ;New Comment
+ErrorOccurredRefreshing=Error occurred while refreshing.
+ ;New Comment
+WantToRefreshTansferFrom=Do you want to refresh transfer details?
+ ;New Comment
+AllTransferIn=All transfer in request in current entity
+ ;New Comment
+AllTransferOut=All transfer out request in current entity
+ ;New Comment
+TransferDetails=Transfer details
+ ;New Comment
+DefaultCurrency=Default currency
+ ;New Comment
+TransferToEntity=Transfer to entity
+ ;New Comment
+WorkerTransferRequestBenefitFromBal=Worker transfer request benefit from balance
+ ;New Comment
+BenefitBalance=Benefit balance
+ ;New Comment
+TransferFromEntity=Transfer from entity
+ ;New Comment
+LACantRecalled=Leave application can't be cancelled as related benefit ledger is found.
+ ;New Comment
+DoYouWantCancelLA=Do you want to cancel the leave application?
+ ;New Comment
+Transfer=Transfer
+ ;New Comment
+WorkerTransferred=Worker %1 has been transferred from %2 to %3 successfully.
+ ;New Comment
+ValidationFailedTransferRequest=Validation failed for transfer request %1.
+ ;New Comment
+ErrorOccurredTransferringWorker=Error occurred while transferring worker %1.
+ ;New Comment
+TransferRequestNotSaved=Transfer request %1 is not saved yet.
+ ;New Comment
+TransferRequestNotApproved=Transfer request %1 is not approved yet.
+ ;New Comment
+TransferRequestPosted=Transfer request %1 is already posted.
+ ;New Comment
+Post=Post
+ ;New Comment
+WorkerTransfer=Worker transfer
+ ;New Comment
+Position=Position
+ ;New Comment
+WorkerTransferRequestPositionAssignmentFrom=Worker transfer request position assignment from
+ ;New Comment
+PositionAssignment=Position assignment
+ ;New Comment
+WantToPostTransferRequest=Do you want to post transfer request?
+ ;New Comment
+TransferRequestNoToLegalEntity=Transfer request %1 doesnt have 'To legal entity'.
+ ;New Comment
+WorkerAlreadyHasTransferRequest=Worker %1 already has transfer request %2.
+ ;New Comment
+WorkerTransferRequestAbsenceFromBal=Worker transfer request absence from balance
+ ;New Comment
+AbsenceBalance=Absence balance
+ ;New Comment
+Calendar=Calendar
+ ;New Comment
+Department=Department
+ ;New Comment
+Project=Project
+ ;New Comment
+ApprovedForTransferOut=Approved for transfer out
+ ;New Comment
+ApprovedForTransferIn=Approved for transfer in
+ ;New Comment
+Approval=Approval
+ ;New Comment
+WorkerTransferRequestEmploymentDimFrom=Worker transfer request employment dimension from
+ ;New Comment
+WorkerTransferRequestEmploymentDimTo=Worker transfer request employment dimension to
+ ;New Comment
+FinancialDimension=Financial dimensions
+ ;New Comment
+FinancialDimensionCanBeViewedFrom=Financial dimension can be viewed from %1 legal entity.
+ ;New Comment
+WorkerTransferRequestWFType=Worker transfer request workflow type
+ ;New Comment
+TransferOutApproval=Transfer out approval
+ ;New Comment
+TransferInApproval=Transfer in approval
+ ;New Comment
+WantToRefreshTansferOut=Do you want to refresh transfer out details?
+ ;New Comment
+WantToRefreshTansferIn=Do you want to refresh transfer in details?
+ ;New Comment
+TransferInDetails=Transfer in details
+ ;New Comment
+TransferOutDetails=Transfer out details
+ ;New Comment

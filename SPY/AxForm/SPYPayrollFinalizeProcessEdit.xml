@@ -14,7 +14,7 @@ public class SPYPayrollFinalizeProcessEdit extends FormRun implements IDialogabl
     QueryRun                                                        workerQueryRun;
     container                                                         queryPack;
     SPYPayrollFinalizeProcessContract                      payrollFinalizeProcessContract;
-    boolean                                                           calledFromMasterProcess;
+    boolean                                                           calledFromMasterProcess, calledFromEOS;
 
 }
 ]]></Source>
@@ -45,6 +45,7 @@ public class SPYPayrollFinalizeProcessEdit extends FormRun implements IDialogabl
             payrollFinalizeProcessContract.parmPayrollPeriodLine(PayrollPeriod_ReferenceGroup.value());
             payrollFinalizeProcessContract.parmWorkerQuery(queryPack);            
             payrollFinalizeProcessContract.parmPayrollParameterState(payrollFinalizeProcessServiceController.parmPayrollParameterState());
+            payrollFinalizeProcessContract.parmEOSRunTable(payrollFinalizeProcessServiceController.parmEOSRunTable());
         }
     
         return ret;
@@ -73,15 +74,22 @@ public class SPYPayrollFinalizeProcessEdit extends FormRun implements IDialogabl
         if(element.args().caller() && element.args().caller() is SPYPayrollFinalizeProcessServiceController)
         {
             payrollFinalizeProcessServiceController = element.args().caller() as SPYPayrollFinalizeProcessServiceController;
-            payrollParameterState = payrollFinalizeProcessServiceController.parmPayrollParameterState();
-            if(payrollParameterState && payrollParameterState.parmCalledFromMasterProcess())
+            if(payrollFinalizeProcessServiceController.parmCalledFromEOS())
             {
-                calledFromMasterProcess = true;
+                calledFromEOS = true;
             }
             else
             {
-                workerQuery = this.initApplQuery();
-                workerQueryRun = new QueryRun(workerQuery);
+                payrollParameterState = payrollFinalizeProcessServiceController.parmPayrollParameterState();
+                if(payrollParameterState && payrollParameterState.parmCalledFromMasterProcess())
+                {
+                    calledFromMasterProcess = true;
+                }
+                else
+                {
+                    workerQuery = this.initApplQuery();
+                    workerQueryRun = new QueryRun(workerQuery);
+                }
             }
         }
     
@@ -144,7 +152,15 @@ public class SPYPayrollFinalizeProcessEdit extends FormRun implements IDialogabl
 				<Source><![CDATA[
     public void setEnable()
     {
-        Choose.visible(!calledFromMasterProcess);
+        if(calledFromEOS)
+        {
+            Choose.visible(false);
+            GroupParameter.visible(false);
+        }
+        else if(calledFromMasterProcess)
+        {
+            Choose.visible(false);
+        }
     }
 
 ]]></Source>
@@ -201,7 +217,7 @@ public class SPYPayrollFinalizeProcessEdit extends FormRun implements IDialogabl
         {
             boolean     ret = true;
         
-            if(!LegalEntity_ReferenceGroup.value())
+            if(!calledFromEOS && !LegalEntity_ReferenceGroup.value())
                 ret = checkFailed("@SPY375");
         
             if(ret)
@@ -280,6 +296,7 @@ public class SPYPayrollFinalizeProcessEdit extends FormRun implements IDialogabl
 					<AxFormControl xmlns=""
 						i:type="AxFormGroupControl">
 						<Name>GroupParameter</Name>
+						<AutoDeclaration>Yes</AutoDeclaration>
 						<ElementPosition>1073741822</ElementPosition>
 						<FilterExpression>%1</FilterExpression>
 						<Type>Group</Type>

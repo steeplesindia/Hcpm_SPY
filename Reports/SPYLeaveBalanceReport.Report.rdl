@@ -597,7 +597,7 @@
         <ConnectString />
         <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
-      <rd:DataSourceID>a22e6d77-359e-4956-b6dd-330888de696b</rd:DataSourceID>
+      <rd:DataSourceID>b097fc24-8169-488b-9a89-bd3d25b6380a</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>

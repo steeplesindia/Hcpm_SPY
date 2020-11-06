@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>SPYPayLedgerEOSContract</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[DataContractAttribute]
+class SPYPayLedgerEOSContract extends SPYPayLedgerContract
+{
+    SPYEOSRunTable                 eosRunTable;
+    
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>parmEOSRunTable</Name>
+				<Source><![CDATA[
+    [DataMemberAttribute]
+    public SPYEOSRunTable parmEOSRunTable(SPYEOSRunTable _eosRunTable = eosRunTable)
+    {
+        eosRunTable = _eosRunTable;
+        return eosRunTable;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

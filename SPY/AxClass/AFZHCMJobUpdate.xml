@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>AFZHCMJobUpdate</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+class AFZHCMJobUpdate extends RunBaseBatch
+{
+    /*AFZHCMJobUpdateTmp              JobUpdateTmp,JobUpdateTmp1,JobUpdateTmp2;
+    private str                     availableTypes = ".xlsx";
+    private const str               OkButtonName = 'OkButton';
+    private const str               FileUploadName = 'FileUpload';
+    str                             textFile;
+    DialogRunbase                   dialog;
+    
+   
+
+    
+    // Packed variables
+    TransDate                       transDate;
+    #define.CurrentVersion(1)
+    #define.Version1(1)
+    #localmacro.CurrentList
+        transDate
+    #endmacro
+
+        /// <summary>
+        ///    Indicates whether the class is shown in the list of <c>Journal</c> types.
+        /// </summary>
+        /// <returns>
+        ///    true if the class is shown in the list of <c>Journal</c> types; otherwise, false.
+        /// </returns>
+        /// <remarks>
+        ///    A class that can be used in a batch journal is a class where the same parameters can be used
+        ///    repeatedly. The dialog box can be shown and the parameters can be changed, but parameters of some
+        ///    classes might build on data that is only valid for a short time. Running a class two times with the
+        ///    same parameters is not always possible. If the <c>RunBaseBatch.canGoBatch</c> method is false, this
+        ///    method will not have any effect.
+        /// </remarks>
+        public boolean canGoBatchJournal()
+        {
+            return true;
+        }
+
+        public Object dialog()
+        {
+            DialogGroup      dialogGroup;
+            FormBuildControl formBuildControl;
+            FileUploadBuild  dialogFileUpload;
+            Set              enumSet = new Set(Types::Enum);
+            #resAppl
+            ;
+        
+            dialog = super();
+            dialog.addImage(#ImageExcel_Dyn01);
+            dialog.addInfoImage();
+            dialogGroup = dialog.addGroup("File path");
+            formBuildControl = dialog.formBuildDesign().control(dialogGroup.name());
+        
+            dialogFileUpload = formBuildControl.addControlEx(classstr(FileUpload), FileUploadName);
+            dialogFileUpload.style(FileUploadStyle::MinimalWithFilename);
+            dialogFileUpload.baseFileUploadStrategyClassName(classstr(FileUploadTemporaryStorageStrategy));
+            dialogFileUpload.fileTypesAccepted(availableTypes);
+            dialogFileUpload.fileNameLabel("@SYS308842");
+    
+            return dialog;
+        }
+
+        public void dialogPostRun(DialogRunbase _dialog)
+        {
+            super(_dialog);
+            FileUpload fileUpload = this.getFormControl(_dialog, FileUploadName);
+            fileUpload.notifyUploadCompleted += eventhandler(this.uploadCompleted);
+            this.setDialogOkButtonEnabled(_dialog, false);
+        }
+
+        protected void uploadCompleted()
+        {
+            FileUpload fileUpload = this.getFormControl(dialog, FileUploadName);
+            fileUpload.notifyUploadCompleted -= eventhandler(this.UploadCompleted);
+                
+            textFile = fileUpload.fileName();
+
+            this.setDialogOkButtonEnabled(dialog, true);
+        }
+
+        protected void setDialogOkButtonEnabled(DialogRunbase _dialog, boolean _isEnabled)
+        {
+            FormControl okButtonControl = this.getFormControl(_dialog, OkButtonName);
+
+            if (okButtonControl)
+            {
+                okButtonControl.enabled(_isEnabled);
+            }
+        }
+
+        protected FormControl getFormControl(DialogRunbase _dialog, str _controlName)
+        {
+            return _dialog.formRun().control(_dialog.formRun().controlId( _controlName));
+        }
+
+        public boolean init()
+        {
+            return true;
+        }
+
+        protected void new()
+        {
+            super();
+        }
+
+        public container pack()
+        {
+            return [#CurrentVersion,#CurrentList];
+        }
+
+        /// <summary>
+        ///    Contains the code that does the actual job of the class.
+        /// </summary>
+        public void run()
+        {
+            AFZHCMJobUpdateTmp   hcmJobUpdateTmp;
+            #OCCRetryCount
+            if (! this.validate())
+        throw error("");
+
+            try
+            {
+                
+                ttsbegin;
+                delete_from hcmJobUpdateTmp;
+                this.processCSVFile();
+                ttscommit;
+                info("Completed");
+            }
+            catch (Exception::Deadlock)
+            {
+                retry;
+            }
+            catch (Exception::UpdateConflict)
+            {
+                if (appl.ttsLevel() == 0)
+                {
+                    if (xSession::currentRetryCount() >= #RetryNum)
+                    {
+                        throw Exception::UpdateConflictNotRecovered;
+                    }
+                    else
+                    {
+                        retry;
+                    }
+                }
+                else
+                {
+                    throw Exception::UpdateConflict;
+                }
+            }
+
+        }
+
+        public boolean runsImpersonated()
+        {
+            return true;
+        }
+
+        public boolean unpack(container packedClass)
+        {
+            Version version = RunBase::getVersion(packedClass);
+            ;
+            switch (version)
+            {
+                case #CurrentVersion:
+                    [version,#CurrentList] = packedClass;
+                    break;
+                default:
+                    return false;
+            }
+
+            return true;
+        }
+
+        public boolean validate(Object _calledFrom = null)
+        {
+            if (false)
+                return checkFailed("");
+
+            return true;
+        }
+
+        server static AFZHCMJobUpdate construct()
+        {
+            return new AFZHCMJobUpdate();
+        }
+
+        // Here goes a description of the class
+        static ClassDescription description()
+        {
+            return "HCMJob notes update";
+        }
+
+        static void main(Args args)
+        {
+            AFZHCMJobUpdate    uploadDets;
+
+        uploadDets = AFZHCMJobUpdate::construct();
+
+        if (uploadDets.prompt())
+                uploadDets.run();
+        }
+
+        void processCSVFile()
+        {
+            #File
+            
+            HcmJob                          hcmJob;
+            HcmJobDetail                    hcmJobDetail,hcmJobDetail1;
+            str                             title;
+            
+
+            container                       currentLine;
+            int                             totalOfLines;
+            CommaTextStreamIo               localStream;
+            int                             currentLineNo;
+            str                             lineContent;
+                        
+            delete_from JobUpdateTmp;
+       
+            FileUpload fileUploadControl = this.getFormControl(dialog, FileUploadName);
+        
+            FileUploadTemporaryStorageResult fileUploadResult = fileUploadControl.getFileUploadResult();
+        
+            if (fileUploadResult != null && fileUploadResult.getUploadStatus())
+            {
+                textFile = fileUploadResult.getDownloadUrl();
+            }
+            System.IO.Stream stream  = fileUploadResult.openResult();
+            this.importFromExcelfiles(stream);
+        
+            while select JobUpdateTmp group by HcmJobId
+            {      
+                HrmDescription  description;   
+                str notes;
+                while select JobUpdateTmp1 
+                    where JobUpdateTmp1.HcmJobId == JobUpdateTmp.HcmJobId
+                {
+                    hcmJob       =  HcmJob::findByJob(JobUpdateTmp.HcmJobId);
+                    if(!hcmJob)                
+                    {
+                        hcmJob.clear();
+                        hcmJob.JobId = JobUpdateTmp.HcmJobId;
+                        hcmJob.insert();
+                    }
+                    Notes += JobUpdateTmp1.Note;
+                }
+                hcmJob       =  HcmJob::findByJob(JobUpdateTmp.HcmJobId);
+                if(hcmJob)
+                {
+                    select firstonly  JobUpdateTmp2
+                        where JobUpdateTmp2.HcmJobId == hcmJob.JobId
+                            && JobUpdateTmp2.Description !='';
+
+                select firstonly hcmJobDetail1
+                    where hcmJobDetail1.Job == hcmJob.RecId; 
+
+                delete_from hcmJobDetail
+                    where hcmJobDetail.Job ==hcmJob.RecId;
+
+                        hcmJobDetail.clear();
+                        hcmJobDetail.Job = hcmJob.RecId;
+                        hcmJobDetail.Description = JobUpdateTmp2.Description;
+                        hcmJobDetail.Title  = hcmJobDetail1.Title;
+                        hcmJobDetail.Note = notes;
+                        hcmJobDetail.ValidTo = dateMax();
+                        hcmJobDetail.validTimeStateUpdateMode(ValidTimeStateUpdate::CreateNewTimePeriod);
+                        hcmJobDetail.insert();
+                }
+            }
+            
+        }
+
+    public boolean importFromExcelfiles(System.IO.Stream _stream)
+    {
+        OfficeOpenXml.ExcelWorksheet        worksheet;
+        OfficeOpenXml.ExcelRange            cells;
+        OfficeOpenXml.ExcelPackage          package = new OfficeOpenXml.ExcelPackage(_stream);
+
+        HcmJobId                            jobId;
+        HrmDescription                      jobDescription;
+        Notes                               jobNotes;
+        System.ArgumentException            ex;
+
+
+        int totalRows,totalCells,rowCounter,cellCounter;
+
+        if(package)
+        {
+            try
+            {
+       
+                worksheet       = package.get_Workbook().get_Worksheets().get_Item(1);
+                cells           = worksheet.Cells;
+                totalRows       = worksheet.Dimension.End.Row ;
+                totalCells      = worksheet.Dimension.End.Column;
+
+                for (rowCounter = 2; rowCounter<= totalRows; rowCounter++)
+                {
+                    jobId           = cells.get_Item(rowCounter, 1).value;
+                    jobDescription  = cells.get_Item(rowCounter, 2).value;
+                    jobNotes        = cells.get_Item(rowCounter, 3).value;
+
+                    if (jobNotes)
+                    {
+                        JobUpdateTmp.clear();
+                        JobUpdateTmp.HcmJobId = jobId;
+                        JobUpdateTmp.Description = jobDescription;
+                        JobUpdateTmp.Note= jobNotes;
+                        JobUpdateTmp.insert();
+                    }
+                }
+            }
+            catch (ex)
+            {
+                error(ex.Message);
+            }
+        }
+        return true;
+    }*/
+
+}
+]]></Declaration>
+		<Methods />
+	</SourceCode>
+</AxClass>

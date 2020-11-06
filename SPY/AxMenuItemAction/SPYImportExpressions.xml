@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <AxMenuItemAction xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="Microsoft.Dynamics.AX.Metadata.V1">
 	<Name>SPYImportExpressions</Name>
-	<HelpText>Import expressions with condition values.</HelpText>
-	<Label>Import expressions</Label>
+	<ConfigurationKey>SPYPayroll</ConfigurationKey>
+	<HelpText>@SPY:ImportExpressionsHelpText</HelpText>
+	<Label>@SPY:ImportExpressions</Label>
 	<Object>SPYImportExpressions</Object>
 	<ObjectType>Class</ObjectType>
 	<SubscriberAccessLevel>

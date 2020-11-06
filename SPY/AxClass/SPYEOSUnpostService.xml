@@ -31,6 +31,7 @@ class SPYEOSUnpostService  extends SysOperationServiceBase
             join spyEOSRunPayroll
                 where spyEOSRunPayroll.PayrollLedger == spyPayrollLedger.RecId
                 && SPYPayrollLedger.IsFinalised == NoYes::Yes
+                && SPYPayrollLedger.Worker == spyEOSRunTable.Worker //N Line
             join spyEOSRunTable 
                 where spyEOSRunTable.RecId == SPYEOSRunPayroll.EOSRun;
 
@@ -41,6 +42,7 @@ class SPYEOSUnpostService  extends SysOperationServiceBase
             join spyEOSRunBenefit
                 where spyEOSRunBenefit.BenefitLedger == spyBenefitLedger.RecId
                 && spyBenefitLedger.IsFinalised == NoYes::Yes
+                && spyBenefitLedger.Worker == spyEOSRunTable.Worker //N Line
             join spyEOSRunTable
                 where spyEOSRunTable.RecId == spyEOSRunBenefit.EOSRun;
 
@@ -52,31 +54,51 @@ class SPYEOSUnpostService  extends SysOperationServiceBase
             }
             else
             {
+                ttsbegin;
                 delete_from spyPayrollLedger
                     exists join spyEOSRunPayroll
                     where spyEOSRunPayroll.PayrollLedger == SPYPayrollLedger.RecId
                         && spyEOSRunPayroll.EOSRun == spyEOSRunRecId
-                    && spyPayrollLedger.IsFinalised == NoYes::No;
+                    && spyPayrollLedger.IsFinalised == NoYes::No
+                    && spyPayrollLedger.SourceDocument == tableNum(SPYEOSRunTable);
 
                 delete_from spyBenefitLedger
                     exists join spyEOSRunBenefit                    
                     where spyEOSRunBenefit.BenefitLedger == spyBenefitLedger.RecId
                         && spyEOSRunBenefit.EOSRun == spyEOSRunRecId
-                    && spyBenefitLedger.IsFinalised == NoYes::No;
+                    && spyBenefitLedger.IsFinalised == NoYes::No
+                    && spyBenefitLedger.SourceDocument == tableNum(SPYEOSRunTable);
 
                 update_recordset spyEOSRunTable
                     setting PostedToLedger = NoYes::No
-                    , WorkflowStatus = SPYWorkflowStatus::Created
+                    , WorkflowStatus = SPYWorkflowStatus::Created,
+                    IsFinalised = NoYes::No
                     where spyEOSRunTable.RecId == spyEOSRunRecId;
 
-                update_recordset spyEOSRunBenefit
-                    setting BenefitLedger = 0
-                    where spyEOSRunBenefit.EOSRun == spyEOSRunRecId;
+                while select forupdate spyEOSRunBenefit
+                    where spyEOSRunBenefit.EOSRun == spyEOSRunRecId
+                {
+                    select firstonly spyBenefitLedger
+                        where spyBenefitLedger.RecId == spyEOSRunBenefit.BenefitLedger;
+                    if(!spyBenefitLedger)
+                    {
+                        spyEOSRunBenefit.BenefitLedger = 0;
+                        spyEOSRunBenefit.update();
+                    }
+                }
 
-                update_recordset spyEOSRunPayroll
-                setting PayrollLedger = 0
-                where spyEOSRunPayroll.EOSRun  == spyEOSRunRecId;
-
+                while select forupdate spyEOSRunPayroll
+                    where spyEOSRunPayroll.EOSRun == spyEOSRunRecId
+                {
+                    select firstonly spyPayrollLedger
+                        where spyPayrollLedger.RecId == spyEOSRunPayroll.PayrollLedger;
+                    if(!spyPayrollLedger)
+                    {
+                        spyEOSRunPayroll.PayrollLedger = 0;
+                        spyEOSRunPayroll.update();
+                    }
+                }
+                ttscommit;
                 Info( "EOS unposted");
             }
         }

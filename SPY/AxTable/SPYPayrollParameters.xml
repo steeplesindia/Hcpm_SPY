@@ -290,6 +290,16 @@ public class SPYPayrollParameters extends common
 
 ]]></Source>
 			</Method>
+			<Method>
+				<Name>numRefWorkerTransferRequestCode</Name>
+				<Source><![CDATA[
+    client server static NumberSequenceReference numRefWorkerTransferRequestCode()
+    {
+        return NumberSeqReference::findReference(extendedTypeNum(SPYWorkerTransferRequestCode));
+    }
+
+]]></Source>
+			</Method>
 		</Methods>
 	</SourceCode>
 	<ConfigurationKey>SPYPayroll</ConfigurationKey>

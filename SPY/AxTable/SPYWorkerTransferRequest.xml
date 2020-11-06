@@ -1,0 +1,937 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxTable xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>SPYWorkerTransferRequest</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+public class SPYWorkerTransferRequest extends common
+{
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>canSubmitToWorkflow</Name>
+				<Source><![CDATA[
+    public boolean canSubmitToWorkflow(str _workflowType = '')
+    {
+        boolean                 ret;
+    
+        ret = super(_workflowType);
+    
+        if(this.WorkflowStatus == SPYWorkflowStatus::Created && !this.Posted)
+        {
+            ret = true;
+        }
+    
+        return ret;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>submitToWorkflow</Name>
+				<Source><![CDATA[
+    public void  submitToWorkflow(WorkflowTypeName      _workflowTemplateName,
+                                  WorkflowComment       _workflowComment,
+                                  boolean               _activatingFromWeb = false)
+    {
+        Workflow::activateFromWorkflowType(_workflowTemplateName,
+                                           this.RecId,
+                                           _workflowComment,
+                                           _activatingFromWeb,
+                                           curUserId());
+    
+        SPYWorkerTransferRequest::updateWorkflowStatus(this.RecId, SPYWorkflowStatus::Submitted);
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>find</Name>
+				<Source><![CDATA[
+    public static SPYWorkerTransferRequest find(
+        SPYWorkerTransferRequestRecId               _recId,
+        boolean                              _forUpdate = false,
+        ConcurrencyModel                     _concurrencyModel = ConcurrencyModel::Auto)
+    {
+        SPYWorkerTransferRequest   workerTransferRequest;
+    
+        workerTransferRequest.selectForUpdate(_forUpdate );
+        if (_forUpdate && _concurrencyModel != ConcurrencyModel::Auto)
+        {
+            workerTransferRequest.concurrencyModel(_concurrencyModel);
+        }
+    
+        select firstonly workerTransferRequest
+             where workerTransferRequest.RecId == _recId;
+    
+        return workerTransferRequest;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>updateWorkflowStatus</Name>
+				<Source><![CDATA[
+    static void updateWorkflowStatus(SPYWorkerTransferRequestRecId _recId, SPYWorkflowStatus _status)
+    {
+        SPYWorkerTransferRequest   workerTransferRequest;
+    
+        ttsBegin;
+        workerTransferRequest = SPYWorkerTransferRequest::find(_recId, true);
+        if(workerTransferRequest)
+        {
+            workerTransferRequest.WorkflowStatus = _status;
+            workerTransferRequest.update();
+        }
+        ttsCommit;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>updateTranferOutApproval</Name>
+				<Source><![CDATA[
+    static void updateTranferOutApproval(SPYWorkerTransferRequestRecId _recId)
+    {
+        SPYWorkerTransferRequest   workerTransferRequest;
+    
+        ttsBegin;
+        workerTransferRequest = SPYWorkerTransferRequest::find(_recId, true);
+        if(workerTransferRequest)
+        {
+            workerTransferRequest.ApprovedForTransferOut = true;
+            workerTransferRequest.update();
+        }
+        ttsCommit;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>updateTranferInApproval</Name>
+				<Source><![CDATA[
+    static void updateTranferInApproval(SPYWorkerTransferRequestRecId _recId)
+    {
+        SPYWorkerTransferRequest   workerTransferRequest;
+    
+        ttsBegin;
+        workerTransferRequest = SPYWorkerTransferRequest::find(_recId, true);
+        if(workerTransferRequest)
+        {
+            workerTransferRequest.ApprovedForTransferIn = true;
+            workerTransferRequest.update();
+        }
+        ttsCommit;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>refreshFromLEData</Name>
+				<Source><![CDATA[
+    public boolean refreshFromLEData()
+    {
+        boolean ret = true;;
+        TransDate   effectiveDate = this.TransferDate;
+        HcmEmployment       employment = HcmEmployment::findByWorkerLegalEntity(this.Worker, this.FromLegalEntity, effectiveDate);
+        HcmEmploymentDetail employmentDetail = HcmEmploymentDetail::findByWorkerLegalEntity(this.Worker, this.FromLegalEntity, effectiveDate);
+        SPYWorkerTransferRequestEmploymentDetailsFrom  employmentDetailsFrom;
+        SPYWorkerTransferRequestEmploymentDimensionFrom     employmentDimensionFrom;
+        SPYWorkerPositionPayroll    workerPositionPayroll;
+        SPYWorkerTransferRequestPayrollFrom     workerTransferRequestPayrollFrom;
+        SPYWorkerPositionBenefit    workerPositionBenefit;
+        SPYWorkerTransferRequestBenefitFrom     workerTransferRequestBenefitFrom;
+        SPYWorkerPositionAbsenceConfigLine  workerPositionAbsenceConfigLine;
+        SPYWorkerTransferRequestAbsenceConfigFrom   absenceConfigFrom;
+        SPYBenefitLedger    benefitLedger;
+        SPYWorkerTransferRequestBenefitFromBalance  workerTransferRequestBenefitFromBalance;
+        HcmPositionWorkerAssignment     positionWorkerAssignment;
+        SPYWorkerTransferRequestPositionAssignmentFrom  positionAssignmentFrom;
+        SPYWorkerTransferRequestAbsenceFromBalance  workerTransferRequestAbsenceFromBalance;
+        SPYAbsenceLedger    absenceLedger;
+        WorkCalendarEmployment  workCalendarEmployment;
+
+        select firstonly workCalendarEmployment
+            where workCalendarEmployment.Employment == employment.RecId;
+        delete_from employmentDetailsFrom
+            where employmentDetailsFrom.WorkerTransferRequest == this.RecId;        
+        employmentDetailsFrom.WorkerTransferRequest = this.RecId;
+        employmentDetailsFrom.AirClass = employmentDetail.SPYAirClass;
+        employmentDetailsFrom.AirTicketCount = employmentDetail.SPYAirTicketCount;
+        employmentDetailsFrom.AirTicketToCity = employmentDetail.SPYAirTicketToCity;
+        employmentDetailsFrom.AirTicketFromCity = employmentDetail.SPYAirTicketFromCity;
+        employmentDetailsFrom.CostDistributionBasis = employmentDetail.SPYCostDistributionBasis;
+        employmentDetailsFrom.DefaultPayrollCurrency = employmentDetail.SPYDefaultPayrollCurrency;
+        employmentDetailsFrom.DefaultPayrollPeriod = employmentDetail.SPYDefaultPayrollPeriod;
+        employmentDetailsFrom.OvertimeEnabled = employmentDetail.SPYOvertimeEnabled;
+        employmentDetailsFrom.PayrollDisbursementMode = employmentDetail.SPYPayrollDisbursementMode;
+        employmentDetailsFrom.SocialSecurity = employmentDetail.SPYSocialSecurity;
+        employmentDetailsFrom.WorkerGroupCode = employmentDetail.SPYWorkerGroupCode;
+        employmentDetailsFrom.WorkerSponsor = employmentDetail.SPYWorkerSponsor;
+        employmentDetailsFrom.PlannedWorkingHourSource = employmentDetail.SPYPlannedWorkingHourSource;
+        employmentDetailsFrom.TimesheetProcessSource = employmentDetail.SPYTimesheetProcessSource;
+        employmentDetailsFrom.BenefitPolicy = employmentDetail.SPYBenefitPolicy;
+        employmentDetailsFrom.CalendarId = workCalendarEmployment.CalendarId;
+        employmentDetailsFrom.insert();
+        
+        changecompany(CompanyInfo::findRecId(this.FromLegalEntity).DataArea)
+        {
+            delete_from employmentDimensionFrom
+                where employmentDimensionFrom.WorkerTransferRequest == this.RecId;
+            employmentDimensionFrom.WorkerTransferRequest = this.RecId;
+            employmentDimensionFrom.DimensionDefault = employment.DefaultDimension;
+            employmentDimensionFrom.insert();
+        }
+        delete_from workerTransferRequestPayrollFrom
+            where workerTransferRequestPayrollFrom.WorkerTransferRequest == this.RecId;
+        while select validtimestate(effectiveDate) workerPositionPayroll
+            where workerPositionPayroll.Worker == this.Worker &&
+            workerPositionPayroll.LegalEntity == this.FromLegalEntity
+        {
+            workerTransferRequestPayrollFrom.WorkerTransferRequest = this.RecId;
+            workerTransferRequestPayrollFrom.Position = workerPositionPayroll.Position;
+            workerTransferRequestPayrollFrom.Payroll = workerPositionPayroll.Payroll;
+            workerTransferRequestPayrollFrom.PayrollPeriod = workerPositionPayroll.PayrollPeriod;
+            workerTransferRequestPayrollFrom.Currency = workerPositionPayroll.Currency;
+            workerTransferRequestPayrollFrom.Annual = workerPositionPayroll.Annual;
+            workerTransferRequestPayrollFrom.SemiAnnual = workerPositionPayroll.SemiAnnual;
+            workerTransferRequestPayrollFrom.Quarterly = workerPositionPayroll.Quarterly;
+            workerTransferRequestPayrollFrom.Monthly = workerPositionPayroll.Monthly;
+            workerTransferRequestPayrollFrom.BiWeekly = workerPositionPayroll.BiWeekly;
+            workerTransferRequestPayrollFrom.Weekly = workerPositionPayroll.Weekly;
+            workerTransferRequestPayrollFrom.Daily = workerPositionPayroll.Daily;
+            workerTransferRequestPayrollFrom.Hourly = workerPositionPayroll.Hourly;
+            workerTransferRequestPayrollFrom.insert();
+        }
+
+        delete_from workerTransferRequestBenefitFrom
+            where workerTransferRequestBenefitFrom.WorkerTransferRequest == this.RecId;
+        while select validtimestate(effectiveDate) workerPositionBenefit
+            where workerPositionBenefit.Worker == this.Worker &&
+            workerPositionBenefit.LegalEntity == this.FromLegalEntity
+        {
+            workerTransferRequestBenefitFrom.WorkerTransferRequest = this.RecId;
+            workerTransferRequestBenefitFrom.Position = workerPositionBenefit.Position;
+            workerTransferRequestBenefitFrom.Benefit = workerPositionBenefit.Benefit;
+            workerTransferRequestBenefitFrom.PayrollPeriod = workerPositionBenefit.PayrollPeriod;
+            workerTransferRequestBenefitFrom.Currency = workerPositionBenefit.Currency;
+            workerTransferRequestBenefitFrom.AmountAnnual = workerPositionBenefit.AmountAnnual;
+            workerTransferRequestBenefitFrom.AmountBiWeekly = workerPositionBenefit.AmountBiWeekly;
+            workerTransferRequestBenefitFrom.AmountDaily = workerPositionBenefit.AmountDaily;
+            workerTransferRequestBenefitFrom.AmountHourly = workerPositionBenefit.AmountHourly;
+            workerTransferRequestBenefitFrom.AmountMonthly = workerPositionBenefit.AmountMonthly;
+            workerTransferRequestBenefitFrom.AmountQuarterly = workerPositionBenefit.AmountQuarterly;
+            workerTransferRequestBenefitFrom.AmountSemiAnnual = workerPositionBenefit.AmountSemiAnnual;
+            workerTransferRequestBenefitFrom.AmountWeekly = workerPositionBenefit.AmountWeekly;            
+            workerTransferRequestBenefitFrom.QtyAnnual = workerPositionBenefit.QtyAnnual;
+            workerTransferRequestBenefitFrom.QtyBiWeekly = workerPositionBenefit.QtyBiWeekly;
+            workerTransferRequestBenefitFrom.QtyDaily = workerPositionBenefit.QtyDaily;
+            workerTransferRequestBenefitFrom.QtyHourly = workerPositionBenefit.QtyHourly;
+            workerTransferRequestBenefitFrom.QtyMonthly = workerPositionBenefit.QtyMonthly;
+            workerTransferRequestBenefitFrom.QtyQuarterly = workerPositionBenefit.QtyQuarterly;
+            workerTransferRequestBenefitFrom.QtySemiAnnual = workerPositionBenefit.QtySemiAnnual;
+            workerTransferRequestBenefitFrom.QtyWeekly = workerPositionBenefit.QtyWeekly;
+            workerTransferRequestBenefitFrom.insert();
+        }
+
+        delete_from absenceConfigFrom
+            where absenceConfigFrom.WorkerTransferRequest == this.RecId;
+        while select validtimestate(effectiveDate) workerPositionAbsenceConfigLine
+            where workerPositionAbsenceConfigLine.Worker == this.Worker &&
+            workerPositionAbsenceConfigLine.LegalEntity == this.FromLegalEntity
+        {
+            absenceConfigFrom.WorkerTransferRequest = this.RecId;
+            absenceConfigFrom.Position = workerPositionAbsenceConfigLine.Position;
+            absenceConfigFrom.AbsenceConfig = workerPositionAbsenceConfigLine.AbsenceConfig;
+            absenceConfigFrom.AbsenceCycle = workerPositionAbsenceConfigLine.AbsenceCycle;
+            absenceConfigFrom.AccruedDate = workerPositionAbsenceConfigLine.AccruedDate;
+            absenceConfigFrom.AccruedQty = workerPositionAbsenceConfigLine.AccruedQty;
+            absenceConfigFrom.CarryBackward = workerPositionAbsenceConfigLine.CarryBackward;
+            absenceConfigFrom.CarryForward = workerPositionAbsenceConfigLine.CarryForward;
+            absenceConfigFrom.EntitlementPayrollPeriod = workerPositionAbsenceConfigLine.EntitlementPayrollPeriod;
+            absenceConfigFrom.FetchBenefitQty = workerPositionAbsenceConfigLine.FetchBenefitQty;
+            absenceConfigFrom.HRMAbsenceCodeId = workerPositionAbsenceConfigLine.HRMAbsenceCodeId;
+            absenceConfigFrom.Qty = workerPositionAbsenceConfigLine.Qty;
+            absenceConfigFrom.RestrictInNotice = workerPositionAbsenceConfigLine.RestrictInNotice;
+            absenceConfigFrom.RestrictInProbation = workerPositionAbsenceConfigLine.RestrictInProbation;
+            absenceConfigFrom.AllowNegativeInCarryFwd = workerPositionAbsenceConfigLine.AllowNegativeInCarryFwd;
+            absenceConfigFrom.PeriodCloseNotApplicable = workerPositionAbsenceConfigLine.PeriodCloseNotApplicable;
+            absenceConfigFrom.AllowFullBalanceCarryFwdInFirstYr = workerPositionAbsenceConfigLine.AllowFullBalanceCarryFwdInFirstYr;
+            absenceConfigFrom.LedgerTransDateCalcFromLeave = workerPositionAbsenceConfigLine.LedgerTransDateCalcFromLeave;
+            absenceConfigFrom.LedgerTransDateCalcFromPeriodClose = workerPositionAbsenceConfigLine.LedgerTransDateCalcFromPeriodClose;
+            absenceConfigFrom.insert();
+        }
+        
+        delete_from workerTransferRequestBenefitFromBalance
+            where workerTransferRequestBenefitFromBalance.WorkerTransferRequest == this.RecId;
+        changeCompany(CompanyInfo::findRecId(this.FromLegalEntity).DataArea)
+        {
+            while select sum(AccountingCurrencyAmount), sum(AccountingCurPnLAmount), sum(Quantity) from benefitLedger
+                group by Benefit
+                where benefitLedger.Worker == this.Worker &&
+                benefitLedger.IsFinalised
+            {
+                workerTransferRequestBenefitFromBalance.WorkerTransferRequest = this.RecId;
+                workerTransferRequestBenefitFromBalance.Benefit = benefitLedger.Benefit;
+                workerTransferRequestBenefitFromBalance.Currency = Ledger::accountingCurrency();
+                workerTransferRequestBenefitFromBalance.AccountingCurrencyAmount = benefitLedger.AccountingCurrencyAmount + benefitLedger.AccountingCurPnLAmount;
+                workerTransferRequestBenefitFromBalance.Quantity = benefitLedger.Quantity;
+                workerTransferRequestBenefitFromBalance.insert();
+            }
+
+            delete_from workerTransferRequestAbsenceFromBalance
+                where workerTransferRequestAbsenceFromBalance.WorkerTransferRequest == this.RecId;
+            while select sum(AbsenceDays) from absenceLedger
+                group by HRMAbsenceCodeId
+                where absenceLedger.Worker == this.Worker
+            {
+                SPYAmount   balance = absenceLedger.AbsenceDays;
+                SPYAmount futureAccrued;
+                SPYAbsenceLedger    absenceLedger1;
+                select sum(AbsenceDays) from absenceLedger1
+                    where absenceLedger1.Worker == this.Worker &&
+                    absenceLedger1.HRMAbsenceCodeId == absenceLedger.HRMAbsenceCodeId &&
+                    absenceLedger1.AbsenceDate > this.TransferDate &&
+                    absenceLedger1.SourceDocument == tableNum(SPYAbsenceConfigTable);
+                futureAccrued = absenceLedger1.AbsenceDays;
+
+                workerTransferRequestAbsenceFromBalance.WorkerTransferRequest = this.RecId;
+                workerTransferRequestAbsenceFromBalance.HrmAbsenceCodeId = absenceLedger.HRMAbsenceCodeId;
+                workerTransferRequestAbsenceFromBalance.Quantity = balance - futureAccrued;
+                workerTransferRequestAbsenceFromBalance.insert();
+            }
+        }
+
+        delete_from positionAssignmentFrom
+            where positionAssignmentFrom.WorkerTransferRequest == this.RecId;
+        while select validtimestate(effectiveDate) positionWorkerAssignment
+            where positionWorkerAssignment.Worker == this.Worker
+        {
+            positionAssignmentFrom.WorkerTransferRequest = this.RecId;
+            positionAssignmentFrom.Position = positionWorkerAssignment.Position;
+            positionAssignmentFrom.insert();
+        }
+
+        return ret;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>refreshToLEData</Name>
+				<Source><![CDATA[
+    public boolean refreshToLEData()
+    {
+        boolean ret = true;;
+        TransDate   effectiveDate = this.TransferDate;        
+        SPYWorkerTransferRequestEmploymentDetailsFrom  employmentDetailsFrom;
+        SPYWorkerTransferRequestEmploymentDetailsTo  employmentDetailsTo;
+        SPYWorkerTransferRequestPayrollFrom     workerTransferRequestPayrollFrom;
+        SPYWorkerTransferRequestPayrollTo     workerTransferRequestPayrollTo;
+        SPYWorkerTransferRequestBenefitFrom     workerTransferRequestBenefitFrom;
+        SPYWorkerTransferRequestBenefitTo     workerTransferRequestBenefitTo;
+        SPYWorkerTransferRequestAbsenceConfigFrom   absenceConfigFrom;
+        SPYWorkerTransferRequestAbsenceConfigTo   absenceConfigTo;
+        
+        delete_from employmentDetailsTo
+            where employmentDetailsTo.WorkerTransferRequest == this.RecId;
+        while select employmentDetailsFrom
+            where employmentDetailsFrom.WorkerTransferRequest == this.RecId
+        {
+            employmentDetailsTo.WorkerTransferRequest = this.RecId;
+            employmentDetailsTo.AirClass = employmentDetailsFrom.AirClass;
+            employmentDetailsTo.AirTicketCount = employmentDetailsFrom.AirTicketCount;
+            employmentDetailsTo.AirTicketToCity = employmentDetailsFrom.AirTicketToCity;
+            employmentDetailsTo.AirTicketFromCity = employmentDetailsFrom.AirTicketFromCity;
+            employmentDetailsTo.CostDistributionBasis = employmentDetailsFrom.CostDistributionBasis;
+            employmentDetailsTo.DefaultPayrollCurrency = this.DefaultCurrencyInTransferToEntity ? this.DefaultCurrencyInTransferToEntity : employmentDetailsFrom.DefaultPayrollCurrency;
+            employmentDetailsTo.DefaultPayrollPeriod = employmentDetailsFrom.DefaultPayrollPeriod;
+            employmentDetailsTo.OvertimeEnabled = employmentDetailsFrom.OvertimeEnabled;
+            employmentDetailsTo.PayrollDisbursementMode = employmentDetailsFrom.PayrollDisbursementMode;
+            employmentDetailsTo.SocialSecurity = employmentDetailsFrom.SocialSecurity;
+            employmentDetailsTo.WorkerGroupCode = employmentDetailsFrom.WorkerGroupCode;
+            employmentDetailsTo.WorkerSponsor = employmentDetailsFrom.WorkerSponsor;
+            employmentDetailsTo.PlannedWorkingHourSource = employmentDetailsFrom.PlannedWorkingHourSource;
+            employmentDetailsTo.TimesheetProcessSource = employmentDetailsFrom.TimesheetProcessSource;
+            employmentDetailsTo.BenefitPolicy = employmentDetailsFrom.BenefitPolicy;
+            employmentDetailsTo.insert();
+        }
+
+        delete_from workerTransferRequestPayrollTo
+            where workerTransferRequestPayrollTo.WorkerTransferRequest == this.RecId;
+        while select workerTransferRequestPayrollFrom
+            where workerTransferRequestPayrollFrom.WorkerTransferRequest == this.RecId
+        {
+            workerTransferRequestPayrollTo.WorkerTransferRequest = this.RecId;
+            workerTransferRequestPayrollTo.Payroll = workerTransferRequestPayrollFrom.Payroll;
+            workerTransferRequestPayrollTo.PayrollPeriod = workerTransferRequestPayrollFrom.PayrollPeriod;
+            workerTransferRequestPayrollTo.Currency = this.DefaultCurrencyInTransferToEntity? this.DefaultCurrencyInTransferToEntity : workerTransferRequestPayrollFrom.Currency;
+            SPYAmount   exchRate = this.DefaultCurrencyInTransferToEntity ? this.ExchRateTransferToEntity : 1;
+            workerTransferRequestPayrollTo.Annual = workerTransferRequestPayrollFrom.Annual * exchRate;
+            workerTransferRequestPayrollTo.SemiAnnual = workerTransferRequestPayrollFrom.SemiAnnual * exchRate;
+            workerTransferRequestPayrollTo.Quarterly = workerTransferRequestPayrollFrom.Quarterly * exchRate;
+            workerTransferRequestPayrollTo.Monthly = workerTransferRequestPayrollFrom.Monthly * exchRate;
+            workerTransferRequestPayrollTo.BiWeekly = workerTransferRequestPayrollFrom.BiWeekly * exchRate;
+            workerTransferRequestPayrollTo.Weekly = workerTransferRequestPayrollFrom.Weekly * exchRate;
+            workerTransferRequestPayrollTo.Daily = workerTransferRequestPayrollFrom.Daily * exchRate;
+            workerTransferRequestPayrollTo.Hourly = workerTransferRequestPayrollFrom.Hourly * exchRate;
+            workerTransferRequestPayrollTo.insert();
+        }
+
+        delete_from workerTransferRequestBenefitTo
+            where workerTransferRequestBenefitTo.WorkerTransferRequest == this.RecId;
+        while select workerTransferRequestBenefitFrom
+            where workerTransferRequestBenefitFrom.WorkerTransferRequest == this.RecId
+        {
+            workerTransferRequestBenefitTo.WorkerTransferRequest = this.RecId;
+            workerTransferRequestBenefitTo.Benefit = workerTransferRequestBenefitFrom.Benefit;
+            workerTransferRequestBenefitTo.PayrollPeriod = workerTransferRequestBenefitFrom.PayrollPeriod;
+            workerTransferRequestBenefitTo.Currency = workerTransferRequestBenefitFrom.Currency;
+            workerTransferRequestBenefitTo.AmountAnnual = workerTransferRequestBenefitFrom.AmountAnnual;
+            workerTransferRequestBenefitTo.AmountBiWeekly = workerTransferRequestBenefitFrom.AmountBiWeekly;
+            workerTransferRequestBenefitTo.AmountDaily = workerTransferRequestBenefitFrom.AmountDaily;
+            workerTransferRequestBenefitTo.AmountHourly = workerTransferRequestBenefitFrom.AmountHourly;
+            workerTransferRequestBenefitTo.AmountMonthly = workerTransferRequestBenefitFrom.AmountMonthly;
+            workerTransferRequestBenefitTo.AmountQuarterly = workerTransferRequestBenefitFrom.AmountQuarterly;
+            workerTransferRequestBenefitTo.AmountSemiAnnual = workerTransferRequestBenefitFrom.AmountSemiAnnual;
+            workerTransferRequestBenefitTo.AmountWeekly = workerTransferRequestBenefitFrom.AmountWeekly;
+            workerTransferRequestBenefitTo.QtyAnnual = workerTransferRequestBenefitFrom.QtyAnnual;
+            workerTransferRequestBenefitTo.QtyBiWeekly = workerTransferRequestBenefitFrom.QtyBiWeekly;
+            workerTransferRequestBenefitTo.QtyDaily = workerTransferRequestBenefitFrom.QtyDaily;
+            workerTransferRequestBenefitTo.QtyHourly = workerTransferRequestBenefitFrom.QtyHourly;
+            workerTransferRequestBenefitTo.QtyMonthly = workerTransferRequestBenefitFrom.QtyMonthly;
+            workerTransferRequestBenefitTo.QtyQuarterly = workerTransferRequestBenefitFrom.QtyQuarterly;
+            workerTransferRequestBenefitTo.QtySemiAnnual = workerTransferRequestBenefitFrom.QtySemiAnnual;
+            workerTransferRequestBenefitTo.QtyWeekly = workerTransferRequestBenefitFrom.QtyWeekly;
+            workerTransferRequestBenefitTo.insert();
+        }
+
+        delete_from absenceConfigTo
+            where absenceConfigTo.WorkerTransferRequest == this.RecId;
+        while select absenceConfigFrom
+            where absenceConfigFrom.WorkerTransferRequest == this.RecId
+        {
+            absenceConfigTo.WorkerTransferRequest = this.RecId;
+            absenceConfigTo.AbsenceConfig = absenceConfigFrom.AbsenceConfig;
+            absenceConfigTo.AbsenceCycle = absenceConfigFrom.AbsenceCycle;
+            absenceConfigTo.AccruedDate = absenceConfigFrom.AccruedDate;
+            absenceConfigTo.AccruedQty = absenceConfigFrom.AccruedQty;
+            absenceConfigTo.CarryBackward = absenceConfigFrom.CarryBackward;
+            absenceConfigTo.CarryForward = absenceConfigFrom.CarryForward;
+            absenceConfigTo.EntitlementPayrollPeriod = absenceConfigFrom.EntitlementPayrollPeriod;
+            absenceConfigTo.FetchBenefitQty = absenceConfigFrom.FetchBenefitQty;
+            absenceConfigTo.HRMAbsenceCodeId = absenceConfigFrom.HRMAbsenceCodeId;
+            absenceConfigTo.Qty = absenceConfigFrom.Qty;
+            absenceConfigTo.RestrictInNotice = absenceConfigFrom.RestrictInNotice;
+            absenceConfigTo.RestrictInProbation = absenceConfigFrom.RestrictInProbation;
+            absenceConfigTo.AllowNegativeInCarryFwd = absenceConfigFrom.AllowNegativeInCarryFwd;
+            absenceConfigTo.PeriodCloseNotApplicable = absenceConfigFrom.PeriodCloseNotApplicable;
+            absenceConfigTo.AllowFullBalanceCarryFwdInFirstYr = absenceConfigFrom.AllowFullBalanceCarryFwdInFirstYr;
+            absenceConfigTo.LedgerTransDateCalcFromLeave = absenceConfigFrom.LedgerTransDateCalcFromLeave;
+            absenceConfigTo.LedgerTransDateCalcFromPeriodClose = absenceConfigFrom.LedgerTransDateCalcFromPeriodClose;
+            absenceConfigTo.insert();
+        }
+
+        return ret;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>initValue</Name>
+				<Source><![CDATA[
+    public void initValue()
+    {
+        super();
+        this.Worker = HcmWorkerLookup::currentWorker();
+        this.setTransferDate();
+        this.setFromLegalEntity();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>setTransferDate</Name>
+				<Source><![CDATA[
+    public void setTransferDate()
+    {
+        this.TransferDate = systemDateGet();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>setFromLegalEntity</Name>
+				<Source><![CDATA[
+    public void setFromLegalEntity()
+    {
+        HcmEmployment   hcmEmployment;
+        TransDate   effectiveDate = this.TransferDate;
+
+        select firstonly validtimestate(effectiveDate) hcmEmployment
+            where hcmEmployment.Worker == this.Worker;
+        this.FromLegalEntity = hcmEmployment.LegalEntity;
+        changeCompany(CompanyInfo::findRecId(this.FromLegalEntity).DataArea)
+        {
+            this.DefaultCurrencyInTransferFromEntity = Ledger::accountingCurrency();
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>modifiedField</Name>
+				<Source><![CDATA[
+    public void modifiedField(FieldId _fieldId)
+    {
+        super(_fieldId);
+
+        switch(_fieldId)
+        {
+            case fieldNum(SPYWorkerTransferRequest, Worker) :
+                this.setTransferDate();
+                this.setFromLegalEntity();
+                if(this.RecId)
+                {
+                    if(Box::confirm("@SPY:WantToRefreshTansferOut") == true)
+                    {
+                        SPYWorkerTransferRequestService  workerTransferRequestService = new SPYWorkerTransferRequestService(this);
+                        if(Box::confirm("@SPY:WantToRefreshTansferIn") == true)
+                        {
+                            workerTransferRequestService.refreshRequestData(true);
+                        }
+                        else
+                        {
+                            workerTransferRequestService.refreshRequestData(false);
+                        }
+                    }
+                }
+                break;
+
+            case fieldNum(SPYWorkerTransferRequest, TransferDate) :
+                this.setFromLegalEntity();
+                if(this.RecId)
+                {
+                    if(Box::confirm("@SPY:WantToRefreshTansferOut") == true)
+                    {
+                        SPYWorkerTransferRequestService  workerTransferRequestService = new SPYWorkerTransferRequestService(this);
+                        if(Box::confirm("@SPY:WantToRefreshTansferIn") == true)
+                        {
+                            workerTransferRequestService.refreshRequestData(true);
+                        }
+                        else
+                        {
+                            workerTransferRequestService.refreshRequestData(false);
+                        }
+                    }
+                }
+                break;
+
+            case fieldNum(SPYWorkerTransferRequest, FromLegalEntity) :
+                changeCompany(CompanyInfo::findRecId(this.FromLegalEntity).DataArea)
+                {
+                    this.DefaultCurrencyInTransferFromEntity = Ledger::accountingCurrency();
+                }
+                if(this.RecId)
+                {
+                    if(Box::confirm("@SPY:WantToRefreshTansferOut") == true)
+                    {
+                        SPYWorkerTransferRequestService  workerTransferRequestService = new SPYWorkerTransferRequestService(this);
+                        if(Box::confirm("@SPY:WantToRefreshTansferIn") == true)
+                        {
+                            workerTransferRequestService.refreshRequestData(true);
+                        }
+                        else
+                        {
+                            workerTransferRequestService.refreshRequestData(false);
+                        }
+                    }
+                }
+                break;
+
+            case fieldNum(SPYWorkerTransferRequest, DefaultCurrencyInTransferToEntity) :
+                changeCompany(CompanyInfo::findRecId(this.FromLegalEntity).DataArea)
+                {
+                    CurrencyExchangeHelper  currencyExchangeHelper = CurrencyExchangeHelper::construct();
+                    this.ExchRateTransferToEntity = currencyExchangeHelper.calculateCurrencyToCurrency(this.DefaultCurrencyInTransferFromEntity,
+                        this.DefaultCurrencyInTransferToEntity, 1, false);
+                }
+                break;
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>insert</Name>
+				<Source><![CDATA[
+    public void insert()
+    {
+        super();
+        if(Box::confirm("@SPY:WantToRefreshTansferFrom") == true)
+        {
+            SPYWorkerTransferRequestService  workerTransferRequestService = new SPYWorkerTransferRequestService(this);
+            workerTransferRequestService.refreshRequestData(true);
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>validateWrite</Name>
+				<Source><![CDATA[
+    public boolean validateWrite()
+    {
+        boolean ret;
+    
+        ret = super();
+
+        SPYWorkerTransferRequest    workerTransferRequest;
+
+        select firstonly workerTransferRequest
+            where workerTransferRequest.Worker == this.Worker &&
+            workerTransferRequest.WorkflowStatus != SPYWorkflowStatus::Approved &&
+            workerTransferRequest.WorkflowStatus != SPYWorkflowStatus::Rejected &&
+            workerTransferRequest.WorkflowStatus != SPYWorkflowStatus::Cancelled;
+        if(workerTransferRequest)
+            ret = checkFailed(strFmt("@SPY:WorkerAlreadyHasTransferRequest", this.Worker().name(), workerTransferRequest.WorkerTransferRequestCode));
+        return ret;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>worker</Name>
+				<Source><![CDATA[
+    public HcmWorker worker()
+    {
+        return HcmWorker::find(this.Worker);
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+	<ConfigurationKey>SPYPayroll</ConfigurationKey>
+	<Label>@SPY:WorkerTransferRequest</Label>
+	<SubscriberAccessLevel>
+		<Read>Allow</Read>
+	</SubscriberAccessLevel>
+	<TableGroup>Transaction</TableGroup>
+	<TitleField1>Worker</TitleField1>
+	<TitleField2>WorkflowStatus</TitleField2>
+	<CacheLookup>FoundAndEmpty</CacheLookup>
+	<ClusteredIndex>Code_AK</ClusteredIndex>
+	<CreatedBy>Yes</CreatedBy>
+	<CreatedDateTime>Yes</CreatedDateTime>
+	<ReplacementKey>Code_AK</ReplacementKey>
+	<SaveDataPerCompany>No</SaveDataPerCompany>
+	<DeleteActions />
+	<FieldGroups>
+		<AxTableFieldGroup>
+			<Name>AutoReport</Name>
+			<Fields />
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>AutoLookup</Name>
+			<Fields />
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>AutoIdentification</Name>
+			<AutoPopulate>Yes</AutoPopulate>
+			<Fields>
+				<AxTableFieldGroupField>
+					<DataField>WorkerTransferRequestCode</DataField>
+				</AxTableFieldGroupField>
+			</Fields>
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>AutoSummary</Name>
+			<Fields />
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>AutoBrowse</Name>
+			<Fields />
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>Log</Name>
+			<Fields>
+				<AxTableFieldGroupField>
+					<DataField>CreatedBy</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>CreatedDateTime</DataField>
+				</AxTableFieldGroupField>
+			</Fields>
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>Status</Name>
+			<Label>@SPY:Status</Label>
+			<Fields>
+				<AxTableFieldGroupField>
+					<DataField>WorkflowStatus</DataField>
+				</AxTableFieldGroupField>
+			</Fields>
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>LegalEntity</Name>
+			<Label>@SPY:LegalEntity</Label>
+			<Fields>
+				<AxTableFieldGroupField>
+					<DataField>FromLegalEntity</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>ToLegalEntity</DataField>
+				</AxTableFieldGroupField>
+			</Fields>
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>Details</Name>
+			<Label>@SPY1656</Label>
+			<Fields>
+				<AxTableFieldGroupField>
+					<DataField>WorkerTransferRequestCode</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>Worker</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>TransferDate</DataField>
+				</AxTableFieldGroupField>
+			</Fields>
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>Notes</Name>
+			<Label>@SPY:Notes</Label>
+			<Fields>
+				<AxTableFieldGroupField>
+					<DataField>Purpose</DataField>
+				</AxTableFieldGroupField>
+			</Fields>
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>Posted</Name>
+			<Label>@SPY:Posted</Label>
+			<Fields>
+				<AxTableFieldGroupField>
+					<DataField>Posted</DataField>
+				</AxTableFieldGroupField>
+			</Fields>
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>TransferToEntityDetails</Name>
+			<Label>@SPY:TransferToEntity</Label>
+			<Fields>
+				<AxTableFieldGroupField>
+					<DataField>DefaultCurrencyInTransferToEntity</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>ExchRateTransferToEntity</DataField>
+				</AxTableFieldGroupField>
+			</Fields>
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>TransferFromEntityDetails</Name>
+			<Label>@SPY:TransferFromEntity</Label>
+			<Fields>
+				<AxTableFieldGroupField>
+					<DataField>DefaultCurrencyInTransferFromEntity</DataField>
+				</AxTableFieldGroupField>
+			</Fields>
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>Approval</Name>
+			<Label>@SPY:Approval</Label>
+			<Fields>
+				<AxTableFieldGroupField>
+					<DataField>ApprovedForTransferOut</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>ApprovedForTransferIn</DataField>
+				</AxTableFieldGroupField>
+			</Fields>
+		</AxTableFieldGroup>
+	</FieldGroups>
+	<Fields>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldInt64">
+			<Name>Worker</Name>
+			<ExtendedDataType>HcmWorkerRecId</ExtendedDataType>
+			<Mandatory>Yes</Mandatory>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldDate">
+			<Name>TransferDate</Name>
+			<ExtendedDataType>TransDate</ExtendedDataType>
+			<Label>@SPY:TransferDate</Label>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldInt64">
+			<Name>FromLegalEntity</Name>
+			<ExtendedDataType>LegalEntityRecId</ExtendedDataType>
+			<Label>@SPY:FromLegalEntity</Label>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldInt64">
+			<Name>ToLegalEntity</Name>
+			<ExtendedDataType>LegalEntityRecId</ExtendedDataType>
+			<Label>@SPY:ToLegalEntity</Label>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>WorkerTransferRequestCode</Name>
+			<ExtendedDataType>SPYWorkerTransferRequestCode</ExtendedDataType>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>Purpose</Name>
+			<ExtendedDataType>NotesLine</ExtendedDataType>
+			<Label>@SPY:Purpose</Label>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldEnum">
+			<Name>WorkflowStatus</Name>
+			<EnumType>SPYWorkflowStatus</EnumType>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldEnum">
+			<Name>Posted</Name>
+			<AllowEditOnCreate>No</AllowEditOnCreate>
+			<HelpText>@SPY271</HelpText>
+			<Label>@SYS1711</Label>
+			<EnumType>NoYes</EnumType>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>DefaultCurrencyInTransferToEntity</Name>
+			<ExtendedDataType>CurrencyCode</ExtendedDataType>
+			<Label>@SPY:DefaultCurrency</Label>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldReal">
+			<Name>ExchRateTransferToEntity</Name>
+			<ExtendedDataType>ExchRate</ExtendedDataType>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>DefaultCurrencyInTransferFromEntity</Name>
+			<ExtendedDataType>CurrencyCode</ExtendedDataType>
+			<Label>@SPY:DefaultCurrency</Label>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldEnum">
+			<Name>ApprovedForTransferIn</Name>
+			<Label>@SPY:ApprovedForTransferIn</Label>
+			<EnumType>NoYes</EnumType>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldEnum">
+			<Name>ApprovedForTransferOut</Name>
+			<Label>@SPY:ApprovedForTransferOut</Label>
+			<EnumType>NoYes</EnumType>
+		</AxTableField>
+	</Fields>
+	<FullTextIndexes />
+	<Indexes>
+		<AxTableIndex>
+			<Name>Code_AK</Name>
+			<AlternateKey>Yes</AlternateKey>
+			<Fields>
+				<AxTableIndexField>
+					<DataField>WorkerTransferRequestCode</DataField>
+				</AxTableIndexField>
+			</Fields>
+		</AxTableIndex>
+	</Indexes>
+	<Mappings />
+	<Relations>
+		<AxTableRelation xmlns=""
+			i:type="AxTableRelationForeignKey">
+			<Name>HcmWorker</Name>
+			<Cardinality>ZeroMore</Cardinality>
+			<OnDelete>Restricted</OnDelete>
+			<RelatedTable>HcmWorker</RelatedTable>
+			<RelatedTableCardinality>ExactlyOne</RelatedTableCardinality>
+			<RelationshipType>Association</RelationshipType>
+			<Constraints>
+				<AxTableRelationConstraint xmlns=""
+					i:type="AxTableRelationConstraintField">
+					<Name>Worker</Name>
+					<Field>Worker</Field>
+					<RelatedField>RecId</RelatedField>
+				</AxTableRelationConstraint>
+			</Constraints>
+			<Index>RecId</Index>
+		</AxTableRelation>
+		<AxTableRelation>
+			<Name>CompanyInfo_To</Name>
+			<Cardinality>ZeroMore</Cardinality>
+			<OnDelete>Restricted</OnDelete>
+			<RelatedTable>CompanyInfo</RelatedTable>
+			<RelatedTableCardinality>ExactlyOne</RelatedTableCardinality>
+			<RelatedTableRole>ToCompany</RelatedTableRole>
+			<RelationshipType>Association</RelationshipType>
+			<Constraints>
+				<AxTableRelationConstraint xmlns=""
+					i:type="AxTableRelationConstraintField">
+					<Name>ToLegalEntity</Name>
+					<Field>ToLegalEntity</Field>
+					<RelatedField>RecId</RelatedField>
+				</AxTableRelationConstraint>
+			</Constraints>
+		</AxTableRelation>
+		<AxTableRelation>
+			<Name>CompanyInfo_From</Name>
+			<Cardinality>ZeroMore</Cardinality>
+			<OnDelete>Restricted</OnDelete>
+			<RelatedTable>CompanyInfo</RelatedTable>
+			<RelatedTableCardinality>ExactlyOne</RelatedTableCardinality>
+			<RelatedTableRole>FromCompany</RelatedTableRole>
+			<RelationshipType>Association</RelationshipType>
+			<Constraints>
+				<AxTableRelationConstraint xmlns=""
+					i:type="AxTableRelationConstraintField">
+					<Name>FromLegalEntity</Name>
+					<Field>FromLegalEntity</Field>
+					<RelatedField>RecId</RelatedField>
+				</AxTableRelationConstraint>
+			</Constraints>
+		</AxTableRelation>
+		<AxTableRelation>
+			<Name>Currency_FromEntity</Name>
+			<Cardinality>ZeroMore</Cardinality>
+			<OnDelete>Restricted</OnDelete>
+			<RelatedTable>Currency</RelatedTable>
+			<RelatedTableCardinality>ExactlyOne</RelatedTableCardinality>
+			<RelatedTableRole>Currency_FromEntity</RelatedTableRole>
+			<RelationshipType>Association</RelationshipType>
+			<Constraints>
+				<AxTableRelationConstraint xmlns=""
+					i:type="AxTableRelationConstraintField">
+					<Name>DefaultCurrencyInTransferFromEntity</Name>
+					<Field>DefaultCurrencyInTransferFromEntity</Field>
+					<RelatedField>CurrencyCode</RelatedField>
+				</AxTableRelationConstraint>
+			</Constraints>
+		</AxTableRelation>
+		<AxTableRelation>
+			<Name>Currency_ToEntity</Name>
+			<Cardinality>ZeroMore</Cardinality>
+			<OnDelete>Restricted</OnDelete>
+			<RelatedTable>Currency</RelatedTable>
+			<RelatedTableCardinality>ExactlyOne</RelatedTableCardinality>
+			<RelatedTableRole>Currency_ToEntity</RelatedTableRole>
+			<RelationshipType>Association</RelationshipType>
+			<Constraints>
+				<AxTableRelationConstraint xmlns=""
+					i:type="AxTableRelationConstraintField">
+					<Name>DefaultCurrencyInTransferToEntity</Name>
+					<Field>DefaultCurrencyInTransferToEntity</Field>
+					<RelatedField>CurrencyCode</RelatedField>
+				</AxTableRelationConstraint>
+			</Constraints>
+		</AxTableRelation>
+	</Relations>
+	<StateMachines />
+</AxTable>

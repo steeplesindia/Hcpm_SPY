@@ -145,7 +145,7 @@ public class SPYPayrollEarningsJournalTable extends common
         if(payrollEarningsJournalTable)
         {
             payrollEarningsJournalTable.WorkflowStatus = _status;
-            if(payrollEarningsJournalTable.PostToLedger && _status == SPYWorkflowStatus::Approved)
+            if(!payrollEarningsJournalTable.PostToLedger && _status == SPYWorkflowStatus::Approved)
                 payrollEarningsJournalTable.Posted = true;
             payrollEarningsJournalTable.update();
         }

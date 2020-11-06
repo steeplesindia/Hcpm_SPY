@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxWorkflowTemplate xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="Microsoft.Dynamics.AX.Metadata.V2">
+	<Name>SPYWorkerTransferRequest</Name>
+	<AssociationType>Global</AssociationType>
+	<CancelMenuItem>SPYWorkerTransferRequestCancel</CancelMenuItem>
+	<CanceledEventHandler>SPYWorkerTransferRequestEventHandler</CanceledEventHandler>
+	<Category>SPYPayrollCategory</Category>
+	<CompletedEventHandler>SPYWorkerTransferRequestEventHandler</CompletedEventHandler>
+	<ConfigurationKey>SPYPayroll</ConfigurationKey>
+	<Document>SPYWorkerTransferRequestDocument</Document>
+	<DocumentMenuItem>SPYWorkerTransferRequest</DocumentMenuItem>
+	<HelpText>@SPY:WorkerTransferRequestWFType</HelpText>
+	<Label>@SPY:WorkerTransferRequest</Label>
+	<StartedEventHandler>SPYWorkerTransferRequestEventHandler</StartedEventHandler>
+	<SubmitToWorkflowMenuItem>SPYWorkerTransferRequestSubmit</SubmitToWorkflowMenuItem>
+	<LineItemWorkflows />
+	<SupportedElements>
+		<AxWorkflowElementReference xmlns="">
+			<Name>SPYWorkerTransferRequestFromLE</Name>
+			<ElementName>SPYWorkerTransferRequestFromLE</ElementName>
+		</AxWorkflowElementReference>
+		<AxWorkflowElementReference xmlns="">
+			<Name>SPYWorkerTransferRequestToLE</Name>
+			<ElementName>SPYWorkerTransferRequestToLE</ElementName>
+		</AxWorkflowElementReference>
+	</SupportedElements>
+</AxWorkflowTemplate>

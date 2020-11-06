@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxWorkflowApproval xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="Microsoft.Dynamics.AX.Metadata.V2">
+	<Name>SPYWorkerTransferRequestToLE</Name>
+	<CanceledEventHandler>SPYWorkerTransferRequestEventHandlerToLE</CanceledEventHandler>
+	<ConfigurationKey>SPYPayroll</ConfigurationKey>
+	<DelegateMenuItem>SPYWorkerTransferRequestDelegate</DelegateMenuItem>
+	<Document>SPYWorkerTransferRequestDocument</Document>
+	<DocumentMenuItem>SPYWorkerTransferRequest</DocumentMenuItem>
+	<DocumentPreviewFieldGroup>Details</DocumentPreviewFieldGroup>
+	<Label>@SPY:TransferInApproval</Label>
+	<ResubmitMenuItem>SPYWorkerTransferRequestResubmit</ResubmitMenuItem>
+	<StartedEventHandler>SPYWorkerTransferRequestEventHandlerToLE</StartedEventHandler>
+	<WorkItemsCreatedEventHandler>SPYWorkerTransferRequestEventHandlerToLE</WorkItemsCreatedEventHandler>
+	<Approve>
+		<Name xmlns="">Approve</Name>
+		<ActionMenuItem xmlns="">SPYWorkerTransferRequestApprove</ActionMenuItem>
+		<EventHandler xmlns="">SPYWorkerTransferRequestEventHandlerToLE</EventHandler>
+	</Approve>
+	<Deny>
+		<Name xmlns="">Deny</Name>
+		<Enabled xmlns="">No</Enabled>
+		<Type xmlns="">Deny</Type>
+	</Deny>
+	<Reject>
+		<Name xmlns="">Reject</Name>
+		<ActionMenuItem xmlns="">SPYWorkerTransferRequestReject</ActionMenuItem>
+		<EventHandler xmlns="">SPYWorkerTransferRequestEventHandlerToLE</EventHandler>
+		<Type xmlns="">Return</Type>
+	</Reject>
+	<RequestChange>
+		<Name xmlns="">RequestChange</Name>
+		<ActionMenuItem xmlns="">SPYWorkerTransferRequestRequestChange</ActionMenuItem>
+		<EventHandler xmlns="">SPYWorkerTransferRequestEventHandlerToLE</EventHandler>
+		<Type xmlns="">RequestChange</Type>
+	</RequestChange>
+</AxWorkflowApproval>

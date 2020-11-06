@@ -17,7 +17,7 @@ public class SPYPayrollEarningsJournalTrans extends common
     
         this.TransDate      = DateTimeUtil::getSystemDate(DateTimeUtil::getUserPreferredTimeZone());
         this.Currency       = Ledger::accountingCurrency();
-        this.DistributeCost = true;
+        this.DistributeCost = true;        
     }
 
 ]]></Source>

@@ -56,11 +56,11 @@ extends         WorkflowCancelManager
                         join RecId from benefitLedger
                         where leaveApplicationLine.RecId == absenceLedger.LeaveApplicationLine &&
                               absenceLedger.BenefitLedger == benefitLedger.RecId &&
-                              benefitLedger.PayrollJournalLine &&
+                              //benefitLedger.IsFinalised &&
                               leaveApplicationLine.LeaveApplication == _args.record().RecId;
                 if(absenceLedger)
-                    throw error("@SPY1232");
-                SPYLeaveApplicationTable::updateWorkflowStatus(_args.record().RecId, SPYWorkflowStatus::Created);
+                    throw error("@SPY:LACantRecalled");
+                SPYLeaveApplicationTable::updateWorkflowStatus(_args.record().RecId, SPYWorkflowStatus::Cancelled);
                 ttsCommit;
             }
             catch(Exception::Error)
@@ -100,7 +100,8 @@ extends         WorkflowCancelManager
                 break;
     
             case menuitemActionStr(SPYLeaveApplicationCancel) :
-                leaveApplicationCancelManager.updateDocument(_args);
+                if(Box::confirm("@SPY:DoYouWantCancelLA"))
+                    leaveApplicationCancelManager.updateDocument(_args);
                 break;
         }
     }

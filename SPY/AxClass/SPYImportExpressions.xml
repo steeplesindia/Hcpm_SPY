@@ -5,15 +5,24 @@
 		<Declaration><![CDATA[
 class SPYImportExpressions extends RunBaseBatch
 {
-    FileName                 fileNameOpen;
-    AsciiStreamIo           fileIO;
-    DialogField             dlgLeave;
-    Description             uploadDesc;
+    SPYExpressionCondition              expressionCondition;
+    SPYExpressionConditionValue         expressionConditionValue;
+    SPYExpressionTable                  expressionTable, expressionTableExists;
+    SPYExpression                       conditionValue;
 
+    private str                     availableTypes = ".xlsx";
+    private const str               OkButtonName = 'OkButton';
+    private const str               FileUploadName = 'FileUpload';
+    str                             textFile;
+    DialogRunbase                   dialog;
+    
+    
+    // Packed variables
+    TransDate                       transDate;
     #define.CurrentVersion(1)
     #define.Version1(1)
     #localmacro.CurrentList
-    uploadDesc
+        transDate
     #endmacro
 
 }
@@ -43,71 +52,30 @@ class SPYImportExpressions extends RunBaseBatch
 ]]></Source>
 			</Method>
 			<Method>
-				<Name>canRunInNewSession</Name>
-				<Source><![CDATA[
-    // Specifies whether the functionality can run in a new session window
-    public boolean canRunInNewSession()
-    {
-        return true;
-    }
-
-]]></Source>
-			</Method>
-			<Method>
 				<Name>dialog</Name>
 				<Source><![CDATA[
-    /// <summary>
-    ///    Returns a class that contains the methods that are described by the <c>RunBaseDialogable</c>
-    ///    interface.
-    /// </summary>
-    /// <returns>
-    ///    A class that contains the methods that are described by the <c>RunBaseDialogable</c> interface.
-    /// </returns>
-    /// <remarks>
-    ///    A dialog box can be either built by using the <c>Dialog</c> class or by using a class that is
-    ///    created in the Application Object Tree (AOT).
-    /// </remarks>
     public Object dialog()
     {
-        DialogRunbase           dialog;
-        FormBuildButtonControl  buttonControlUpload;
-        DialogGroup             dlgGroup;
-        FormBuildGroupControl   buttonGroup;
-
-        dialog = super();
-
-        dlgGroup            = dialog.addGroup('');
-        buttonGroup         = dialog.formBuildDesign().control(dlgGroup.formBuildGroup().id());
-        buttonControlUpload = buttonGroup.addControl(FormControlType::Button, 'Upload file');
-        buttonControlUpload.text('Choose CSV file');
-        buttonControlUpload.registerOverrideMethod(methodStr(FormButtonControl, clicked),
-                                                    methodStr(SPYLeaveApplicationUpload, uploadClickedEvent),
-                                                this);
+        DialogGroup      dialogGroup;
+        FormBuildControl formBuildControl;
+        FileUploadBuild  dialogFileUpload;
+        Set              enumSet = new Set(Types::Enum);
+        #resAppl
+        ;
         
+        dialog = super();
+        dialog.addImage(#ImageExcel_Dyn01);
+        dialog.addInfoImage();
+        dialogGroup = dialog.addGroup("File path");
+        formBuildControl = dialog.formBuildDesign().control(dialogGroup.name());
+        
+        dialogFileUpload = formBuildControl.addControlEx(classstr(FileUpload), FileUploadName);
+        dialogFileUpload.style(FileUploadStyle::MinimalWithFilename);
+        dialogFileUpload.baseFileUploadStrategyClassName(classstr(FileUploadTemporaryStorageStrategy));
+        dialogFileUpload.fileTypesAccepted(availableTypes);
+        dialogFileUpload.fileNameLabel("@SYS308842");
+    
         return dialog;
-    }
-
-]]></Source>
-			</Method>
-			<Method>
-				<Name>uploadClickedEvent</Name>
-				<Source><![CDATA[
-    private void uploadClickedEvent(FormButtonControl _formButtonControl)
-    {
-        FileUploadTemporaryStorageResult result = File::GetFileFromUser() as FileUploadTemporaryStorageResult;
-        If (result && result.getUploadStatus())
-        {
-            fileIO = AsciiStreamIo::constructForRead(result.openResult());
-            if (fileIO)
-            {
-                if (fileIO.status())
-                {
-                    throw error("@SPY:ImportingProblem");
-                }
-                fileIO.inFieldDelimiter(',');
-                fileIO.inRecordDelimiter('\r\n');
-            }
-        }
     }
 
 ]]></Source>
@@ -115,20 +83,52 @@ class SPYImportExpressions extends RunBaseBatch
 			<Method>
 				<Name>dialogPostRun</Name>
 				<Source><![CDATA[
-    public void dialogPostRun(DialogRunbase dialog)
+    public void dialogPostRun(DialogRunbase _dialog)
     {
-        ;
-        super(dialog);
+        super(_dialog);
+        FileUpload fileUpload = this.getFormControl(_dialog, FileUploadName);
+        fileUpload.notifyUploadCompleted += eventhandler(this.uploadCompleted);
+        this.setDialogOkButtonEnabled(_dialog, false);
     }
 
 ]]></Source>
 			</Method>
 			<Method>
-				<Name>getFromDialog</Name>
+				<Name>uploadCompleted</Name>
 				<Source><![CDATA[
-    public boolean getFromDialog()
+    protected void uploadCompleted()
     {
-        return super();
+        FileUpload fileUpload = this.getFormControl(dialog, FileUploadName);
+        fileUpload.notifyUploadCompleted -= eventhandler(this.UploadCompleted);
+                
+        textFile = fileUpload.fileName();
+
+        this.setDialogOkButtonEnabled(dialog, true);
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>setDialogOkButtonEnabled</Name>
+				<Source><![CDATA[
+    protected void setDialogOkButtonEnabled(DialogRunbase _dialog, boolean _isEnabled)
+    {
+        FormControl okButtonControl = this.getFormControl(_dialog, OkButtonName);
+
+        if (okButtonControl)
+        {
+            okButtonControl.enabled(_isEnabled);
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>getFormControl</Name>
+				<Source><![CDATA[
+    protected FormControl getFormControl(DialogRunbase _dialog, str _controlName)
+    {
+        return _dialog.formRun().control(_dialog.formRun().controlId( _controlName));
     }
 
 ]]></Source>
@@ -171,56 +171,187 @@ class SPYImportExpressions extends RunBaseBatch
     /// </summary>
     public void run()
     {
+        SPYImportExpressions   importExpressions;
         #OCCRetryCount
-    
+        if (! this.validate())
+            throw error("");
+
         try
         {
-            this.readCSV(fileIO);
+                
+            ttsbegin;
+            this.processCSVFile();
+            ttscommit;
+            info("Completed");
         }
-        catch(Exception::Error)
+        catch (Exception::Deadlock)
         {
-            ttsabort;
-            throw error("@SPY:ImportingException");
+            retry;
         }
+        catch (Exception::UpdateConflict)
+        {
+            if (appl.ttsLevel() == 0)
+            {
+                if (xSession::currentRetryCount() >= #RetryNum)
+                {
+                    throw Exception::UpdateConflictNotRecovered;
+                }
+                else
+                {
+                    retry;
+                }
+            }
+            else
+            {
+                throw Exception::UpdateConflict;
+            }
+        }
+
     }
 
 ]]></Source>
 			</Method>
 			<Method>
-				<Name>readCSV</Name>
+				<Name>runsImpersonated</Name>
 				<Source><![CDATA[
-    public void readCSV(AsciiStreamIo  file)
+    public boolean runsImpersonated()
     {
-        COMVariantType                      type;
-        HcmWorkerRecId                      worker;
-        boolean                             errorCompensation, errorPayelement, errorPayroll, errorCurrency;
-        container                           record;
-        int                                 cnt = 0, numberofUploadedRecords, cntUpdate = 0;
-        str                                 expressionCode, description;
-        SPYExpression                       conditionValue;
-        SPYExpressionTable                  expressionTable, expressionTableExists;
-        SPYExpressionCondition              expressionCondition;
-        SPYExpressionConditionValue         expressionConditionValue;
-        
-        ttsbegin;
-        while (!file.status())
-        {
-            cnt++;
-            record = file.read();
-            
-            if( cnt > 1)
-            {
-                expressionCode      = conpeek(record,1);
-                description         = conpeek(record,2);;
-                conditionValue      = conpeek(record,3);
-                
-                select firstonly expressionTableExists
-                    where expressionTableExists.ExpressionCode == expressionCode;
+        return true;
+    }
 
-                if(!expressionTableExists)
+]]></Source>
+			</Method>
+			<Method>
+				<Name>unpack</Name>
+				<Source><![CDATA[
+    public boolean unpack(container packedClass)
+    {
+        Version version = RunBase::getVersion(packedClass);
+        ;
+        switch (version)
+        {
+            case #CurrentVersion:
+                [version,#CurrentList] = packedClass;
+                break;
+            default:
+                return false;
+        }
+
+        return true;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>validate</Name>
+				<Source><![CDATA[
+    public boolean validate(Object _calledFrom = null)
+    {
+        if (false)
+            return checkFailed("");
+
+        return true;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>construct</Name>
+				<Source><![CDATA[
+    server static SPYImportExpressions construct()
+    {
+        return new SPYImportExpressions();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>description</Name>
+				<Source><![CDATA[
+    // Here goes a description of the class
+    static ClassDescription description()
+    {
+        return 'Import expressions';
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>main</Name>
+				<Source><![CDATA[
+    static void main(Args args)
+    {
+        SPYImportExpressions    importExpressions;
+
+        importExpressions = SPYImportExpressions::construct();
+
+        if (importExpressions.prompt())
+            importExpressions.run();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>processCSVFile</Name>
+				<Source><![CDATA[
+    void processCSVFile()
+    {
+        #File
+            
+        //str                             title;
+        //container                       currentLine;
+        //int                             totalOfLines;
+        //CommaTextStreamIo               localStream;
+        //int                             currentLineNo;
+        //str                             lineContent;
+                        
+        FileUpload fileUploadControl = this.getFormControl(dialog, FileUploadName);
+        
+        FileUploadTemporaryStorageResult fileUploadResult = fileUploadControl.getFileUploadResult();
+        
+        if (fileUploadResult != null && fileUploadResult.getUploadStatus())
+        {
+            textFile = fileUploadResult.getDownloadUrl();
+        }
+        System.IO.Stream stream  = fileUploadResult.openResult();
+        this.importFromExcelfiles(stream);
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>importFromExcelfiles</Name>
+				<Source><![CDATA[
+    public boolean importFromExcelfiles(System.IO.Stream _stream)
+    {
+        OfficeOpenXml.ExcelWorksheet        worksheet;
+        OfficeOpenXml.ExcelRange            cells;
+        OfficeOpenXml.ExcelPackage          package = new OfficeOpenXml.ExcelPackage(_stream);
+
+        str                                 expressionCode, description;
+        System.ArgumentException            ex;
+
+        int totalRows,totalCells,rowCounter,cellCounter;
+
+        if(package)
+        {
+            try
+            {
+                worksheet       = package.get_Workbook().get_Worksheets().get_Item(1);
+                cells           = worksheet.Cells;
+                totalRows       = worksheet.Dimension.End.Row ;
+                totalCells      = worksheet.Dimension.End.Column;
+
+                for (rowCounter = 2; rowCounter<= totalRows; rowCounter++)
                 {
-                    int i = conLen(record);
-                    if (conLen(record))
+                    expressionCode  = cells.get_Item(rowCounter, 1).value;
+                    description     = cells.get_Item(rowCounter, 2).value;
+                    conditionValue = cells.get_Item(rowCounter, 3).value;
+
+                    select firstonly expressionTableExists
+                        where expressionTableExists.ExpressionCode == expressionCode;
+
+                    if(!expressionTableExists)
                     {
                         expressionTable.initValue();
                         expressionTable.ExpressionCode  = expressionCode;
@@ -242,96 +373,16 @@ class SPYImportExpressions extends RunBaseBatch
                             expressionConditionValue.ExpressionCondition = expressionCondition.RecId;
                             expressionConditionValue.Expression = conditionValue;
                             expressionConditionValue.insert();
-                            cntUpdate++;
                         }
                     }
                 }
             }
+            catch (ex)
+            {
+                error(ex.Message);
+            }
         }
-        ttscommit;
-        info(strfmt("@SPY:UploadedRecords",cntUpdate));
-     
-    }
-
-]]></Source>
-			</Method>
-			<Method>
-				<Name>runsImpersonated</Name>
-				<Source><![CDATA[
-    public boolean runsImpersonated()
-    {
         return true;
-    }
-
-]]></Source>
-			</Method>
-			<Method>
-				<Name>unpack</Name>
-				<Source><![CDATA[
-    // Unpacking of parameters
-    public boolean unpack(container packedClass)
-    {
-        Version version = RunBase::getVersion(packedClass);
-        ;
-        switch (version)
-        {
-            case #CurrentVersion:
-                [version,#CurrentList] = packedClass;
-                break;
-            default:
-                return false;
-        }
-    
-        return true;
-    }
-
-]]></Source>
-			</Method>
-			<Method>
-				<Name>validate</Name>
-				<Source><![CDATA[
-    // Validation
-    public boolean validate(Object _calledFrom = null)
-    {
-        if (false)
-            return checkFailed("");
-    
-        return true;
-    }
-
-]]></Source>
-			</Method>
-			<Method>
-				<Name>construct</Name>
-				<Source><![CDATA[
-    server static SPYImportExpressions construct()
-    {
-        return new SPYImportExpressions();
-    }
-
-]]></Source>
-			</Method>
-			<Method>
-				<Name>description</Name>
-				<Source><![CDATA[
-    static ClassDescription description()
-    {
-        return 'Upload expressions';
-    }
-
-]]></Source>
-			</Method>
-			<Method>
-				<Name>main</Name>
-				<Source><![CDATA[
-    static void main(Args args)
-    {
-        SPYImportExpressions    importExpressions;
-    
-        importExpressions = SPYImportExpressions::construct();
-    
-        if (importExpressions.prompt())
-            importExpressions.runOperationNow();
     }
 
 ]]></Source>

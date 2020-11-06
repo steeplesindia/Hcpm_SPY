@@ -82,6 +82,7 @@ class SPYPayPeriodCloseService extends SysOperationServiceBase
                     else
                     {
                         this.updateAbsence();
+                        info(strFmt("@SPY:UpdationCompletedWorker",hcmWorker.name(),hcmWorker.PersonnelNumber));
                     }
                     progressCount++;
                 }

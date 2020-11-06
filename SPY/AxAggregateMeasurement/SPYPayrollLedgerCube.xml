@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxAggregateMeasurement xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="Microsoft.Dynamics.AX.Metadata.V2">
+	<Name>SPYPayrollLedgerCube</Name>
+	<MeasureGroups>
+		<AxMeasureGroup xmlns="">
+			<Name>SPYPayrollLedger</Name>
+			<Table>SPYPayrollLedger</Table>
+			<Attributes>
+				<AxDimensionAttribute>
+					<Name>Worker</Name>
+					<NameField>Worker</NameField>
+					<KeyFields>
+						<AxDimensionFieldReference>
+							<DimensionField>Worker</DimensionField>
+						</AxDimensionFieldReference>
+					</KeyFields>
+				</AxDimensionAttribute>
+			</Attributes>
+			<CalculatedMeasures />
+			<Dimensions>
+				<AxDimension>
+					<Name>Company</Name>
+					<DimensionName>Company</DimensionName>
+					<UseTableRelations>No</UseTableRelations>
+					<DimensionRelations>
+						<AxDimensionRelation>
+							<Name>Company</Name>
+							<DimensionAttribute>Company</DimensionAttribute>
+							<Constraints>
+								<AxDimensionRelationConstraint>
+									<Name>DataAreaId</Name>
+									<Field>id</Field>
+									<RelatedField>DataAreaId</RelatedField>
+								</AxDimensionRelationConstraint>
+							</Constraints>
+						</AxDimensionRelation>
+					</DimensionRelations>
+				</AxDimension>
+				<AxDimension>
+					<Name>SPYPayrollPeriodLine</Name>
+					<DimensionName>SPYPayrollPeriodLine</DimensionName>
+					<UseTableRelations>No</UseTableRelations>
+					<DimensionRelations>
+						<AxDimensionRelation>
+							<Name>RecId</Name>
+							<DimensionAttribute>RecId</DimensionAttribute>
+							<Constraints>
+								<AxDimensionRelationConstraint>
+									<Name>PayrollPeriodLine</Name>
+									<Field>RecId</Field>
+									<RelatedField>PayrollPeriodLine</RelatedField>
+								</AxDimensionRelationConstraint>
+							</Constraints>
+						</AxDimensionRelation>
+					</DimensionRelations>
+				</AxDimension>
+			</Dimensions>
+			<Measures>
+				<AxMeasure>
+					<Name>AccountingCurrencyAmount</Name>
+					<DefaultAggregate>Sum</DefaultAggregate>
+					<Field>AccountingCurrencyAmount</Field>
+				</AxMeasure>
+			</Measures>
+		</AxMeasureGroup>
+	</MeasureGroups>
+</AxAggregateMeasurement>

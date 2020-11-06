@@ -29,6 +29,8 @@ class SPYPayrollEarnJourPostService extends SysOperationServiceBase
         SPYPayrollEarningsJournalTrans      payrollEarningsJournalTrans;
         SPYPayrollLedger                    payrollLedger;
         ExchangeRateHelper                  exchangeRateHelper;
+        HcmEmployment       hcmEmployment;
+        HcmEmploymentDetail     hcmEmploymentDetails;
     
         while select payrollEarningsJournalTrans
             where payrollEarningsJournalTrans.PayrollEarningsJournal == _payrollEarningsJournalTable.RecId
@@ -55,7 +57,7 @@ class SPYPayrollEarnJourPostService extends SysOperationServiceBase
             payrollLedger.ExchRate                    = exchangeRateHelper.getExchangeRate1();
             payrollLedger.AccountingCurrencyAmount    = payrollEarningsJournalTrans.Amount * payrollLedger.ExchRate / 100;
             payrollLedger.ImmediateDisbursement       = _payrollEarningsJournalTable.ImmediateDisbursement;
-            payrollLedger.setAccount(payrollLedger.TransDate,CompanyInfo::current(),payrollEarningsJournalTrans.PayrollPeriodlLine);
+            payrollLedger.setAccount(payrollLedger.TransDate, CompanyInfo::current(), payrollEarningsJournalTrans.PayrollPeriodlLine, hcmEmployment, hcmEmploymentDetails);
             payrollLedger.SourceDocument              = tableNum(SPYPayrollEarningsJournalTable);
             payrollLedger.DistributeCost                = payrollEarningsJournalTrans.DistributeCost;
             payrollLedger.IsFinalised = _payrollEarningsJournalTable.ImmediateDisbursement;

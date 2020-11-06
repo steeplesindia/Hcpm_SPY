@@ -74,7 +74,7 @@ class SPYAbsenceWorkerService
     {
         SPYAbsenceLedger        absenceLedger;
     
-        select maxof(AbsenceDate) from absenceLedger
+        select maxof(TransDate) from absenceLedger
             where absenceLedger.Worker == hcmWorker.RecId &&
                   absenceLedger.HRMAbsenceCodeId == _absenceCode &&
                   absenceLedger.TransDate <= _asOnDate &&
@@ -194,7 +194,8 @@ class SPYAbsenceWorkerService
               (leaveApplicationTable.WorkflowStatus == SPYWorkflowStatus::Created ||
               leaveApplicationTable.WorkflowStatus == SPYWorkflowStatus::RequestChange ||
               leaveApplicationTable.WorkflowStatus == SPYWorkflowStatus::Started ||
-              leaveApplicationTable.WorkflowStatus == SPYWorkflowStatus::Submitted);
+              leaveApplicationTable.WorkflowStatus == SPYWorkflowStatus::Submitted) &&
+              !leaveApplicationTable.ResumptionInitiated;
 
         balance = leaveApplicationLine.LeaveApplied;
         return balance;

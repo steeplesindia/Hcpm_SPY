@@ -89,6 +89,7 @@ public class SPYPromotion extends FormRun
         SPYPromotionWorkerTable_ds.allowEdit(checkEditable);
         SPYPromotionWorkerProposedBenefit_ds.allowEdit(checkEditable);
         SPYPromotionWorkerProposedPayroll_ds.allowEdit(checkEditable);
+        WritePayElements.enabled(SPYPromotionTable.WorkflowStatus == SPYWorkflowStatus::Approved && !SPYPromotionTable.IsPayElementsUpdated);
 
     }
 
@@ -1185,6 +1186,7 @@ public class SPYPromotion extends FormRun
 																						i:type="AxFormTabPageControl">
 																						<Name>CurrLineAbsenceConfig</Name>
 																						<Type>TabPage</Type>
+																						<Visible>No</Visible>
 																						<FormControlExtension
 																							i:nil="true" />
 																						<Controls>
@@ -1594,6 +1596,7 @@ public class SPYPromotion extends FormRun
 																						<Pattern>ToolbarList</Pattern>
 																						<PatternVersion>1.2</PatternVersion>
 																						<Type>TabPage</Type>
+																						<Visible>No</Visible>
 																						<FormControlExtension
 																							i:nil="true" />
 																						<Controls>

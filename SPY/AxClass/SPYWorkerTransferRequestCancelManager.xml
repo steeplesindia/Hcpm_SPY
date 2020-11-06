@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>SPYWorkerTransferRequestCancelManager</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+public class    SPYWorkerTransferRequestCancelManager extends WorkflowCancelManager
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>new</Name>
+				<Source><![CDATA[
+    private void  new()
+    {
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>updateDocument</Name>
+				<Source><![CDATA[
+    public void updateDocument(Args _args)
+    {
+        if (_args.record()  &&  _args.record().TableId == tablenum(SPYWorkerTransferRequest))
+            SPYWorkerTransferRequest::updateWorkflowStatus(_args.record().RecId, SPYWorkflowStatus::Cancelled);
+    
+        super(_args);
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>construct</Name>
+				<Source><![CDATA[
+    public static SPYWorkerTransferRequestCancelManager  construct()
+    {
+        return new SPYWorkerTransferRequestCancelManager();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>main</Name>
+				<Source><![CDATA[
+    public static void  main(Args _args)
+    {
+        SPYWorkerTransferRequestCancelManager   workerTransferRequestCancelManager = SPYWorkerTransferRequestCancelManager::construct();    
+    
+        workerTransferRequestCancelManager.run(_args);
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

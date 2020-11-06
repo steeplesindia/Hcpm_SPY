@@ -19,7 +19,7 @@ public class SPYPayLedgerPostEdit extends FormRun implements IDialogable
     QueryRun                                leaveApplQueryRun;
     container                               workerQueryPack,payElementQueryPack,leaveApplQueryPack;
     SPYPayLedgerContract                    contract;
-    boolean                                 calledFromMasterProcess,calledFromArrearProcess,calledFromSettlementProcess,
+    boolean                                 calledFromMasterProcess,calledFromArrearProcess,calledFromSettlementProcess, calledFromEOS,
                                             calledFromJournal;
 }
 ]]></Source>
@@ -42,7 +42,8 @@ public class SPYPayLedgerPostEdit extends FormRun implements IDialogable
     {
         boolean                                 ret;
         SPYPayLedgerLeaveSettlementContract     settlementContract;
-    
+        SPYPayLedgerEOSContract     payLedgerEOSContract;
+
         ret = super();
     
         if(contract)
@@ -57,8 +58,13 @@ public class SPYPayLedgerPostEdit extends FormRun implements IDialogable
                 settlementContract = contract;
                 settlementContract.parmParameterState(payLedgerPostServiceController.parmLeaveSettlementParameterState());
             }
-            if(calledFromJournal)
+           else  if(calledFromJournal)
                 contract.parmPayrollPeriodLine(payLedgerPostServiceController.parmPayrollParameterState().parmPayrollPeriodLine());
+            else if(calledFromEOS)
+            {
+                payLedgerEOSContract = contract;
+                payLedgerEOSContract.parmEOSRunTable(payLedgerPostServiceController.parmEOSRunTable());
+            }
         }
     
         return ret;
@@ -98,6 +104,12 @@ public class SPYPayLedgerPostEdit extends FormRun implements IDialogable
                    payLedgerPostServiceController.parmPayrollParameterState().parmCalledFromArrearProcess())
                 {
                     calledFromArrearProcess = true;
+                    payElementQuery = this.initPayelementApplQuery();
+                    payElementQueryRun = new QueryRun(payElementQuery);
+                }
+                else if(payLedgerPostServiceController.parmCalledFromEOS())
+                {
+                    calledFromEOS = true;
                     payElementQuery = this.initPayelementApplQuery();
                     payElementQueryRun = new QueryRun(payElementQuery);
                 }
@@ -210,13 +222,31 @@ public class SPYPayLedgerPostEdit extends FormRun implements IDialogable
     public void setEnable()
     {
         ChooseLaveAppl.visible(false);
-        if(calledFromMasterProcess || calledFromArrearProcess || calledFromSettlementProcess || calledFromJournal)
+        if(calledFromMasterProcess)
         {
             ChooseWorker.visible(false);
             ChoosePayElement.visible(false);
         }
-        if(calledFromJournal)
+        else if(calledFromArrearProcess)
         {
+            ChooseWorker.visible(false);
+            ChoosePayElement.visible(false);
+        }
+        else if(calledFromSettlementProcess)
+        {
+            ChooseWorker.visible(false);
+            ChoosePayElement.visible(false);
+        }
+        else if(calledFromJournal)
+        {
+            ChooseWorker.visible(false);
+            ChoosePayElement.visible(false);
+            PayrollPeriod_ReferenceGroup.visible(false);
+        }
+        else if(calledFromEOS)
+        {
+            ChooseWorker.visible(false);
+            ChoosePayElement.visible(false);
             PayrollPeriod_ReferenceGroup.visible(false);
         }
     }

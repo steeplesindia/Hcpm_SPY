@@ -188,6 +188,8 @@ class SPYPayLoanPostService extends SysOperationServiceBase
         ExchangeRateHelper                  exchangeRateHelper;
         SPYPayLoanLine                      payLoanLine;
         SPYPayrollRecId                     disbursementPayroll;
+        HcmEmployment       hcmEmployment;
+        HcmEmploymentDetail     hcmEmploymentDetails;
     
         while select payLoanLine
             where payLoanLine.PayLoan == _payLoanTable.RecId
@@ -215,7 +217,7 @@ class SPYPayLoanPostService extends SysOperationServiceBase
             payrollLedger.ExchRate                    = exchangeRateHelper.getExchangeRate1();
             payrollLedger.AccountingCurrencyAmount    = payLoanLine.Amount * payrollLedger.ExchRate / 100;
             payrollLedger.ImmediateDisbursement       = _payLoanTable.ImmediateDisbursement;
-            payrollLedger.setAccount(payrollLedger.TransDate,CompanyInfo::current(),payLoanLine.PayrollPeriodlLine);
+            payrollLedger.setAccount(payrollLedger.TransDate, CompanyInfo::current(), payLoanLine.PayrollPeriodlLine, hcmEmployment, hcmEmploymentDetails);
             payrollLedger.SourceDocument              = tableNum(SPYPayLoanTable);
             payrollLedgerList.add(payrollLedger);
         }

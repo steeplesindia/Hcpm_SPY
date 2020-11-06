@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>SPYWorkerTransferRequestResubmitManager</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+public class SPYWorkerTransferRequestResubmitManager
+{
+    SPYWorkerTransferRequest          workerTransferRequest;
+    
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>actionDialog</Name>
+				<Source><![CDATA[
+    protected boolean actionDialog(WorkflowWorkItemActionDialog _workflowWorkItemActionDialog)
+    {
+        _workflowWorkItemActionDialog.run();
+        return _workflowWorkItemActionDialog.parmIsClosedOK();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmWorkerTransferRequest</Name>
+				<Source><![CDATA[
+    private SPYWorkerTransferRequest parmWorkerTransferRequest(SPYWorkerTransferRequest _workerTransferRequest = workerTransferRequest)
+    {
+        workerTransferRequest = _workerTransferRequest;
+    
+        return workerTransferRequest;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>resubmit</Name>
+				<Source><![CDATA[
+    private void resubmit(Args _args)
+    {
+        WorkflowWorkItemActionDialog    workflowWorkItemActionDialog;
+        WorkflowWorkItemTable           workItem = _args.caller().getActiveWorkflowWorkItem();
+        Object                          formRun;    
+        
+        workflowWorkItemActionDialog = WorkflowWorkItemActionDialog::construct( workItem,
+                                                                                WorkflowWorkItemActionType::Resubmit,
+                                                                                new MenuFunction(_args.menuItemName(), _args.menuItemType()));
+        if (this.actionDialog(workflowWorkItemActionDialog))
+        {
+            WorkflowWorkItemActionManager::dispatchWorkItemAction(workItem,
+                                                                    workflowWorkItemActionDialog.parmWorkflowComment(),
+                                                                    workflowWorkItemActionDialog.parmTargetUser(),
+                                                                    WorkflowWorkItemActionType::Resubmit,
+                                                                    _args.menuItemName());
+            SPYWorkerTransferRequest::updateWorkflowStatus(workerTransferRequest.RecId, SPYWorkflowStatus::Submitted);
+        }
+    
+        formRun = _args.caller();
+        formRun.refreshDataSource();        
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>main</Name>
+				<Source><![CDATA[
+    public static void main(Args args)
+    {
+        SPYWorkerTransferRequestResubmitManager       workerTransferRequestResubmitManager = new SPYWorkerTransferRequestResubmitManager();
+        SPYWorkerTransferRequest    workerTransferRequest = args.record();
+    
+        workerTransferRequestResubmitManager.parmWorkerTransferRequest(workerTransferRequest);
+    
+        if(args.menuItemName() == menuitemActionStr(SPYWorkerTransferRequestResubmit))
+            workerTransferRequestResubmitManager.resubmit(args);
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

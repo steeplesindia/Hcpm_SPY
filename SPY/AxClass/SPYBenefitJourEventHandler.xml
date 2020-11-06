@@ -24,7 +24,7 @@ class SPYBenefitJourEventHandler implements    WorkflowCanceledEventHandler,  Wo
 				<Source><![CDATA[
     public void completed(WorkflowEventArgs _workflowEventArgs)
     {
-    
+        SPYBenefitJournalTable::updateWorkflowStatus(_workflowEventArgs.parmWorkflowContext().parmRecId(),SPYWorkflowStatus::Approved);
     }
 
 ]]></Source>

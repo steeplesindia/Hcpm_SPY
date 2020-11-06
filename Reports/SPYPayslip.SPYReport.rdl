@@ -2159,15 +2159,6 @@
                                                         </Paragraph>
                                                       </Paragraphs>
                                                       <rd:DefaultName>OpeningBalance</rd:DefaultName>
-                                                      <Style>
-                                                        <Border>
-                                                          <Style>None</Style>
-                                                        </Border>
-                                                        <PaddingLeft>2pt</PaddingLeft>
-                                                        <PaddingRight>2pt</PaddingRight>
-                                                        <PaddingTop>2pt</PaddingTop>
-                                                        <PaddingBottom>2pt</PaddingBottom>
-                                                      </Style>
                                                       <CustomProperties>
                                                         <CustomProperty>
                                                           <Name>AXDataType</Name>
@@ -2190,6 +2181,15 @@
                                                           <Value><![CDATA[OpeningBalance]]></Value>
                                                         </CustomProperty>
                                                       </CustomProperties>
+                                                      <Style>
+                                                        <Border>
+                                                          <Style>None</Style>
+                                                        </Border>
+                                                        <PaddingLeft>2pt</PaddingLeft>
+                                                        <PaddingRight>2pt</PaddingRight>
+                                                        <PaddingTop>2pt</PaddingTop>
+                                                        <PaddingBottom>2pt</PaddingBottom>
+                                                      </Style>
                                                     </Textbox>
                                                   </CellContents>
                                                 </TablixCell>
@@ -2296,15 +2296,6 @@
                                                         </Paragraph>
                                                       </Paragraphs>
                                                       <rd:DefaultName>AnualEntitlement</rd:DefaultName>
-                                                      <Style>
-                                                        <Border>
-                                                          <Style>None</Style>
-                                                        </Border>
-                                                        <PaddingLeft>2pt</PaddingLeft>
-                                                        <PaddingRight>2pt</PaddingRight>
-                                                        <PaddingTop>2pt</PaddingTop>
-                                                        <PaddingBottom>2pt</PaddingBottom>
-                                                      </Style>
                                                       <CustomProperties>
                                                         <CustomProperty>
                                                           <Name>AXDataType</Name>
@@ -2327,6 +2318,15 @@
                                                           <Value><![CDATA[LeavesEarned]]></Value>
                                                         </CustomProperty>
                                                       </CustomProperties>
+                                                      <Style>
+                                                        <Border>
+                                                          <Style>None</Style>
+                                                        </Border>
+                                                        <PaddingLeft>2pt</PaddingLeft>
+                                                        <PaddingRight>2pt</PaddingRight>
+                                                        <PaddingTop>2pt</PaddingTop>
+                                                        <PaddingBottom>2pt</PaddingBottom>
+                                                      </Style>
                                                     </Textbox>
                                                   </CellContents>
                                                 </TablixCell>
@@ -2433,15 +2433,6 @@
                                                         </Paragraph>
                                                       </Paragraphs>
                                                       <rd:DefaultName>Booked</rd:DefaultName>
-                                                      <Style>
-                                                        <Border>
-                                                          <Style>None</Style>
-                                                        </Border>
-                                                        <PaddingLeft>2pt</PaddingLeft>
-                                                        <PaddingRight>2pt</PaddingRight>
-                                                        <PaddingTop>2pt</PaddingTop>
-                                                        <PaddingBottom>2pt</PaddingBottom>
-                                                      </Style>
                                                       <CustomProperties>
                                                         <CustomProperty>
                                                           <Name>AXDataType</Name>
@@ -2464,6 +2455,15 @@
                                                           <Value><![CDATA[LeavesTaken]]></Value>
                                                         </CustomProperty>
                                                       </CustomProperties>
+                                                      <Style>
+                                                        <Border>
+                                                          <Style>None</Style>
+                                                        </Border>
+                                                        <PaddingLeft>2pt</PaddingLeft>
+                                                        <PaddingRight>2pt</PaddingRight>
+                                                        <PaddingTop>2pt</PaddingTop>
+                                                        <PaddingBottom>2pt</PaddingBottom>
+                                                      </Style>
                                                     </Textbox>
                                                   </CellContents>
                                                 </TablixCell>
@@ -2573,18 +2573,6 @@
                                                         </Paragraph>
                                                       </Paragraphs>
                                                       <rd:DefaultName>OpeningBalance1</rd:DefaultName>
-                                                      <Style>
-                                                        <Border>
-                                                          <Style>None</Style>
-                                                        </Border>
-                                                        <BottomBorder>
-                                                          <Style>Solid</Style>
-                                                        </BottomBorder>
-                                                        <PaddingLeft>2pt</PaddingLeft>
-                                                        <PaddingRight>2pt</PaddingRight>
-                                                        <PaddingTop>2pt</PaddingTop>
-                                                        <PaddingBottom>2pt</PaddingBottom>
-                                                      </Style>
                                                       <CustomProperties>
                                                         <CustomProperty>
                                                           <Name>AXDataType</Name>
@@ -2607,6 +2595,18 @@
                                                           <Value><![CDATA[ClosingBalance]]></Value>
                                                         </CustomProperty>
                                                       </CustomProperties>
+                                                      <Style>
+                                                        <Border>
+                                                          <Style>None</Style>
+                                                        </Border>
+                                                        <BottomBorder>
+                                                          <Style>Solid</Style>
+                                                        </BottomBorder>
+                                                        <PaddingLeft>2pt</PaddingLeft>
+                                                        <PaddingRight>2pt</PaddingRight>
+                                                        <PaddingTop>2pt</PaddingTop>
+                                                        <PaddingBottom>2pt</PaddingBottom>
+                                                      </Style>
                                                     </Textbox>
                                                   </CellContents>
                                                 </TablixCell>
@@ -3148,7 +3148,7 @@
         <ConnectString />
         <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
-      <rd:DataSourceID>f08ad780-f151-4d9c-a886-a339f3791fd8</rd:DataSourceID>
+      <rd:DataSourceID>9bb00ec7-c59f-455d-8c63-a21bf42f3802</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>

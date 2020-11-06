@@ -89,7 +89,9 @@ class SPYBenefitJournalPostService extends SysOperationServiceBase
         ExchangeRateHelper          exchangeRateHelper;
         SPYBenefitTable             benefitTable;
         SPYPayrollRecId             payroll;
-    
+        HcmEmployment       hcmEmployment;
+        HcmEmploymentDetail     hcmEmploymentDetails;
+
         while select benefitJournalTrans
             where benefitJournalTrans.BenefitJournal == _benefitJournalTable.RecId
         {
@@ -118,7 +120,7 @@ class SPYBenefitJournalPostService extends SysOperationServiceBase
                     benefitLedger.Quantity                    = benefitJournalTrans.Quantity;
                     benefitLedger.TransactionCurrencyAmount   = benefitJournalTrans.TransactionCurrencyAmount;
                     benefitLedger.AccountingCurrencyAmount    = benefitJournalTrans.TransactionCurrencyAmount * benefitLedger.ExchRate / 100;
-                    benefitLedger.setAccount(benefitJournalTrans.TransDate,CompanyInfo::current(),benefitJournalTrans.PayrollPeriodlLine);
+                    benefitLedger.setAccount(benefitJournalTrans.TransDate, CompanyInfo::current(), benefitJournalTrans.PayrollPeriodlLine, hcmEmployment, hcmEmploymentDetails);
                     break;
     
                 case SPYBenefitJournalType::Encashment :
@@ -146,7 +148,7 @@ class SPYBenefitJournalPostService extends SysOperationServiceBase
     
                     }
                     */
-                    benefitLedger.setAccount(benefitJournalTrans.TransDate,CompanyInfo::current(),benefitJournalTrans.PayrollPeriodlLine,true);
+                    benefitLedger.setAccount(benefitJournalTrans.TransDate, CompanyInfo::current(), benefitJournalTrans.PayrollPeriodlLine, hcmEmployment, hcmEmploymentDetails, true);
                     break;
             }
             if(benefitJournalTrans.DefaultDimension)
@@ -180,7 +182,7 @@ class SPYBenefitJournalPostService extends SysOperationServiceBase
                                                               SPYPayrollPeriodLine::find(benefitJournalTrans.PayrollPeriodlLine).PeriodEndDate,
                                                               _benefitJournalTable.JournalType);
                     payrollLedger.SourceDocument            = tableNum(SPYBenefitJournalTable);
-                    payrollLedger.setAccount(benefitJournalTrans.TransDate,CompanyInfo::current(),benefitJournalTrans.PayrollPeriodlLine);
+                    payrollLedger.setAccount(benefitJournalTrans.TransDate, CompanyInfo::current(), benefitJournalTrans.PayrollPeriodlLine, hcmEmployment, hcmEmploymentDetails);
                     if(benefitJournalTrans.DefaultDimension)
                         payrollLedger.DefaultDimension      = benefitJournalTrans.DefaultDimension;
                     payrollLedger.BenefitJournalTrans       = benefitJournalTrans.RecId;
@@ -310,7 +312,7 @@ class SPYBenefitJournalPostService extends SysOperationServiceBase
         HcmEmploymentDetail         employmentDetail;
         boolean                     isWorkflowEnabled = WorkflowTable::findActiveTemplate(workflowtypestr(SPYBenefitJournal)) ? true : false;
         
-        if(isWorkflowEnabled || _benefitJournalTable.WorkflowStatus != SPYWorkFlowStatus::Approved)
+        if(isWorkflowEnabled && _benefitJournalTable.WorkflowStatus != SPYWorkFlowStatus::Approved)
             ret = checkFailed(strFmt("@SPY416",_benefitJournalTable.BenefitJournalCode));
     
         while select Worker,PayrollPeriodlLine,TransDate,Benefit,Currency,LineNum,Payout from benefitJournalTrans

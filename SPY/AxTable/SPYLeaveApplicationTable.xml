@@ -109,6 +109,8 @@ public class SPYLeaveApplicationTable extends common
     private void checkExtraDateInAbsenceLedger(HRMAbsenceCodeId _absenceCode,Map _DateMap,SPYLeaveApplicationLineRecId _leaveApplicationLine)
     {
         SPYAbsenceLedger    absenceLedger,absenceLedgerInsert;
+        SPYLeaveApplicationLine     leaveApplicationLineTab = SPYLeaveApplicationLine::find(_leaveApplicationLine);
+        SPYLeaveApplicationValidation   leaveApplicationValidation = new SPYLeaveApplicationValidation(this, leaveApplicationLineTab);
 
         while select sum(AbsenceDays),sum(AbsenceHours) from absenceLedger group by AbsenceDate
         where absenceLedger.Worker == this.Worker &&
@@ -124,12 +126,15 @@ public class SPYLeaveApplicationTable extends common
                 absenceLedgerInsert.EntryType             = SPYAbsenceLedgerEntryType::Transaction;
                 absenceLedgerInsert.HRMAbsenceCodeId      = _absenceCode;
                 absenceLedgerInsert.AbsenceDate           = absenceLedger.AbsenceDate;
-                absenceLedgerInsert.TransDate               = absenceLedger.AbsenceDate;
+                if(leaveApplicationValidation.ledgerTransDateCalcFromLeave() == SPYAbsenceLedgerTransDateCalcFromLeave::AbsenceDate)
+                    absenceLedgerInsert.TransDate               = absenceLedger.AbsenceDate;
+                else
+                    absenceLedgerInsert.TransDate           = leaveApplicationLineTab.ActualStartDate;
                 absenceLedgerInsert.AbsenceDays           = -absenceLedger.AbsenceDays;
                 absenceLedgerInsert.AbsenceHours          = -absenceLedger.AbsenceHours;
                 absenceLedgerInsert.SourceDocument        = tableNum(SPYLeaveApplicationTable);
                 absenceLedgerInsert.LeaveApplicationLine  = _leaveApplicationLine;
-                absenceLedgerInsert.Txt                   = strFmt("(Reverse Entry)",absenceLedger.Txt);
+                absenceLedgerInsert.Txt                   = strFmt("%1 (Reverse Entry)",absenceLedger.Txt);
                 absenceLedgerInsert.insert();
             }
         }
@@ -448,6 +453,8 @@ public class SPYLeaveApplicationTable extends common
         SPYWorkerPositionBenefit    workerPositionBenefit;
         SPYPayrollPeriodLine        payrollPeriodLine;
         HcmEmployment               hcmEmployment;
+        HcmEmploymentDetail     hcmEmploymentDetails;
+
         WorkCalendarEmployment      workCalendarEmployment = WorkCalendarEmployment::findByEmploymentRecId(hcmEmployment.RecId);
         date                        fromDate = dateNull();
         date                        todate = dateMax();
@@ -485,7 +492,8 @@ public class SPYLeaveApplicationTable extends common
                 benefitLedger.TransDate                 = DateTimeUtil::getSystemDate(DateTimeUtil::getUserPreferredTimeZone());
                 benefitLedger.Txt                       = strFmt("@SPY374",SPYPayElementTable::find(benefit).PayElementCode,
                                                                  HcmWorker::find(this.Worker).name(),payrollPeriodLine.PeriodStartDate,payrollPeriodLine.PeriodEndDate);
-                benefitLedger.setAccount(DateTimeUtil::getSystemDate(DateTimeUtil::getUserPreferredTimeZone()),CompanyInfo::current(),payrollPeriodLine.RecId);
+                benefitLedger.setAccount(DateTimeUtil::getSystemDate(DateTimeUtil::getUserPreferredTimeZone()), CompanyInfo::current(), payrollPeriodLine.RecId,
+                    hcmEmployment, hcmEmploymentDetails);
                 benefitLedger.insert();
             }
         }

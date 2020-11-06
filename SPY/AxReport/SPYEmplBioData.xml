@@ -552,7 +552,7 @@
         &lt;ConnectString /&gt;
         &lt;IntegratedSecurity&gt;true&lt;/IntegratedSecurity&gt;
       &lt;/ConnectionProperties&gt;
-      &lt;rd:DataSourceID&gt;b2ee9e8c-241c-40ce-9e48-e03c59f5af9d&lt;/rd:DataSourceID&gt;
+      &lt;rd:DataSourceID&gt;145b771c-d765-41e2-a837-9b3e9c0e7395&lt;/rd:DataSourceID&gt;
     &lt;/DataSource&gt;
   &lt;/DataSources&gt;
   &lt;DataSets&gt;
@@ -4020,14 +4020,14 @@
                   &lt;TablixHeader&gt;
                     &lt;Size&gt;0.25in&lt;/Size&gt;
                     &lt;CellContents&gt;
-                      &lt;Textbox Name="Textbox10"&gt;
+                      &lt;Textbox Name="Textbox2"&gt;
                         &lt;CanGrow&gt;true&lt;/CanGrow&gt;
                         &lt;KeepTogether&gt;true&lt;/KeepTogether&gt;
                         &lt;Paragraphs&gt;
                           &lt;Paragraph&gt;
                             &lt;TextRuns&gt;
                               &lt;TextRun&gt;
-                                &lt;Value&gt;Total&lt;/Value&gt;
+                                &lt;Value&gt;Gross&lt;/Value&gt;
                                 &lt;Style&gt;
                                   &lt;FontFamily&gt;Segoe UI&lt;/FontFamily&gt;
                                 &lt;/Style&gt;
@@ -4038,7 +4038,7 @@
                             &lt;/Style&gt;
                           &lt;/Paragraph&gt;
                         &lt;/Paragraphs&gt;
-                        &lt;rd:DefaultName&gt;Textbox10&lt;/rd:DefaultName&gt;
+                        &lt;rd:DefaultName&gt;Textbox2&lt;/rd:DefaultName&gt;
                         &lt;Style&gt;
                           &lt;Border&gt;
                             &lt;Style&gt;Solid&lt;/Style&gt;

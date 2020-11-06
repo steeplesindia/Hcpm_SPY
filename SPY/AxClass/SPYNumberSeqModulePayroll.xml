@@ -208,6 +208,20 @@ public class SPYNumberSeqModulePayroll extends NumberSeqApplicationModule
     
         datatype.addParameterType(NumberSeqParameterType::DataArea, true, false);
         this.create(datatype);
+
+        /* Setup worker transfer request code */
+        datatype.parmDatatypeId(extendedTypeNum(SPYWorkerTransferRequestCode));
+        datatype.parmReferenceHelp(literalStr("@SPY:WorkerTransferReqNumSeqHelp"));
+        datatype.parmReferenceLabel(literalStr("@SPY:WorkerTransferRequest"));
+        datatype.parmWizardIsContinuous(true);
+        datatype.parmWizardIsManual(NoYes::No);
+        datatype.parmWizardIsChangeDownAllowed(NoYes::No);
+        datatype.parmWizardIsChangeUpAllowed(NoYes::No);
+        datatype.parmWizardHighest(#MAXSEQRANGE);
+        datatype.parmSortField(14);
+    
+        datatype.addParameterType(NumberSeqParameterType::DataArea, true, false);
+        this.create(datatype);
     }
 
 ]]></Source>

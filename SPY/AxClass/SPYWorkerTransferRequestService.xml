@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>SPYWorkerTransferRequestService</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+class SPYWorkerTransferRequestService
+{
+    SPYWorkerTransferRequest    workerTransferRequest;
+    TransDate   transferDate;
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>new</Name>
+				<Source><![CDATA[
+    public void new(SPYWorkerTransferRequest _workerTransferRequest)
+    {
+        workerTransferRequest = _workerTransferRequest;
+        transferDate = workerTransferRequest.TransferDate;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>refreshRequestData</Name>
+				<Source><![CDATA[
+    public boolean refreshRequestData(boolean _refreshToLE)
+    {
+        boolean ret;
+        if(!workerTransferRequest.RecId)
+            return false;
+        if(!workerTransferRequest.Worker)
+            return checkFailed("@SPY:WorkerFilledIn");
+        if(!workerTransferRequest.TransferDate)
+            return checkFailed("@SPY:TransferFilledIn");
+        if(!workerTransferRequest.FromLegalEntity)
+            return checkFailed("@SPY:FromLegalEntityFilledIn");
+
+        try
+        {
+            ttsbegin;
+            ret = workerTransferRequest.refreshFromLEData();
+            if(_refreshToLE)
+                ret = ret && workerTransferRequest.refreshToLEData();
+            ttscommit;
+            Info("@SPY:TransferFromRefreshed");
+        }
+        catch(Exception::Error)
+        {
+            ttsabort;
+            error("@SPY:ErrorOccurredRefreshing");
+            ret = false;
+        }
+        return ret;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>updateWorkerDetails</Name>
+				<Source><![CDATA[
+    public boolean updateWorkerDetails(boolean _updateStatus = false)
+    {
+        boolean ret;
+        
+        try
+        {
+            if(this.validateTransferRequest())
+            {
+                ttsbegin;
+                this.endFromEntityDetails();
+                this.startToEntityDetails();
+                this.updateTransferRequest();
+                ttscommit;
+                Info(strFmt("@SPY:WorkerTransferred", HcmWorker::find(workerTransferRequest.Worker).name(),
+                CompanyInfo::findRecId(workerTransferRequest.FromLegalEntity).DataArea,
+                CompanyInfo::findRecId(workerTransferRequest.ToLegalEntity).DataArea));
+            }
+            else
+                warning(strFmt("@SPY:ValidationFailedTransferRequest", workerTransferRequest.WorkerTransferRequestCode));
+        }
+        catch(Exception::Error)
+        {
+            ttsabort;
+            error(strFmt("@SPY:ErrorOccurredTransferringWorker", HcmWorker::find(workerTransferRequest.Worker).name()));
+            ret = false;
+        }
+        return ret;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>endFromEntityDetails</Name>
+				<Source><![CDATA[
+    public boolean endFromEntityDetails()
+    {
+        boolean ret = true;
+        HcmEmployment       hcmEmployment;
+        HcmEmploymentDetail     hcmEmploymentDetail;
+        SPYWorkerPositionPayroll    workerPositionPayroll;
+        SPYWorkerPositionBenefit    workerPositionBenefit;
+        SPYWorkerPositionAbsenceConfigLine      workerPositionAbsenceConfigLine;
+        SPYWorkerTransferRequestBenefitFromBalance  benefitFromBalance;
+        SPYPayrollPeriodRecId        payrollPeriod;
+        HcmPositionWorkerAssignment     positionWorkerAssignment;
+
+        while select forupdate validtimestate(transferDate) hcmEmployment
+            where hcmEmployment.Worker == workerTransferRequest.Worker &&
+            hcmEmployment.LegalEntity == workerTransferRequest.FromLegalEntity
+        {
+            hcmEmployment.validTimeStateUpdateMode(ValidTimeStateUpdate::Correction);
+            hcmEmployment.ValidTo = DateTimeUtil::newDateTime(transferDate, 00-00);
+            hcmEmployment.update();
+
+            while select forupdate validtimestate(transferDate) hcmEmploymentDetail
+            where hcmEmploymentDetail.Employment == hcmEmployment.RecId
+            {
+                hcmEmploymentDetail.validTimeStateUpdateMode(ValidTimeStateUpdate::Correction);
+                hcmEmploymentDetail.ValidTo = DateTimeUtil::newDateTime(transferDate, 00-00);
+                hcmEmploymentDetail.update();
+
+                payrollPeriod = hcmEmploymentDetail.SPYDefaultPayrollPeriod;
+            }
+        }
+
+        while select forupdate validtimestate(transferDate) workerPositionPayroll
+            where workerPositionPayroll.Worker == workerTransferRequest.Worker &&
+            workerPositionPayroll.LegalEntity == workerTransferRequest.FromLegalEntity
+        {
+            workerPositionPayroll.validTimeStateUpdateMode(ValidTimeStateUpdate::Correction);
+            workerPositionPayroll.ValidTo = transferDate;
+            workerPositionPayroll.update();
+        }
+
+        while select forupdate validtimestate(transferDate) workerPositionBenefit
+            where workerPositionBenefit.Worker == workerTransferRequest.Worker &&
+            workerPositionBenefit.LegalEntity == workerTransferRequest.FromLegalEntity
+        {
+            workerPositionBenefit.validTimeStateUpdateMode(ValidTimeStateUpdate::Correction);
+            workerPositionBenefit.ValidTo = transferDate;
+            workerPositionBenefit.update();
+        }
+
+        while select forupdate validtimestate(transferDate) workerPositionAbsenceConfigLine
+            where workerPositionAbsenceConfigLine.Worker == workerTransferRequest.Worker &&
+            workerPositionAbsenceConfigLine.LegalEntity == workerTransferRequest.FromLegalEntity
+        {
+            workerPositionAbsenceConfigLine.validTimeStateUpdateMode(ValidTimeStateUpdate::Correction);
+            workerPositionAbsenceConfigLine.ValidTo = transferDate;
+            workerPositionAbsenceConfigLine.update();
+        }
+        
+        SPYBenefitJournalTable  benefitJournalTable;
+        SPYBenefitJournalTrans  benefitJournalTrans;
+        SPYLineNum lineNum = 1;
+        select count(RecId) from benefitFromBalance
+            where benefitFromBalance.WorkerTransferRequest == workerTransferRequest.RecId;
+        if(benefitFromBalance)
+        {
+            changeCompany(CompanyInfo::findRecId(workerTransferRequest.FromLegalEntity).DataArea)
+            {
+                SPYPayrollPeriodLine    payrollPeriodLine;
+
+                select firstonly payrollPeriodLine
+                    where payrollPeriodLine.PayrollPeriod == payrollPeriod &&
+                    payrollPeriodLine.PeriodStartDate <= transferDate &&
+                    payrollPeriodLine.PeriodEndDate >= transferDate;
+
+                benefitJournalTable.initValue();
+                benefitJournalTable.BenefitJournalCode = NumberSeq::newGetNum(SPYPayrollParameters::numRefBenefitJournalCode()).num();
+                benefitJournalTable.Description = strFmt("Closing balance from worker transfer request %1.", workerTransferRequest.WorkerTransferRequestCode);
+                benefitJournalTable.WorkerTransferRequest = workerTransferRequest.RecId;
+                benefitJournalTable.JournalType = SPYBenefitJournalType::Encashment;
+                benefitJournalTable.insert();
+                while select benefitFromBalance
+                    where benefitFromBalance.WorkerTransferRequest == workerTransferRequest.RecId
+                {
+                    benefitJournalTrans.initValue();
+                    benefitJournalTrans.BenefitJournal = benefitJournalTable.RecId;
+                    benefitJournalTrans.LineNum = lineNum;
+                    benefitJournalTrans.Worker = workerTransferRequest.Worker;
+                    benefitJournalTrans.Benefit = benefitFromBalance.Benefit;
+                    benefitJournalTrans.TransactionCurrencyAmount = -benefitFromBalance.AccountingCurrencyAmount;
+                    benefitJournalTrans.AccountingCurrencyAmount = -benefitFromBalance.AccountingCurrencyAmount;
+                    benefitJournalTrans.Currency = benefitFromBalance.Currency;
+                    benefitJournalTrans.Quantity = -benefitFromBalance.Quantity;
+                    benefitJournalTrans.ExchRate = 1;
+                    benefitJournalTrans.TransDate = transferDate;
+                    benefitJournalTrans.PayrollPeriodlLine = payrollPeriodLine.RecId;
+                    benefitJournalTrans.insert();
+                    lineNum++;
+                }
+                Info(strFmt("Benefit journal %1 is created for closing balance in %2 legal entity.", benefitJournalTable.BenefitJournalCode,
+                    CompanyInfo::findRecId(workerTransferRequest.FromLegalEntity).DataArea));
+            }
+        }
+
+        while select forupdate validtimestate(transferDate) positionWorkerAssignment
+            where positionWorkerAssignment.Worker == workerTransferRequest.Worker
+        {
+            positionWorkerAssignment.validTimeStateUpdateMode(ValidTimeStateUpdate::Correction);
+            positionWorkerAssignment.ValidTo = DateTimeUtil::newDateTime(transferDate, 00-00);
+            positionWorkerAssignment.update();
+        }
+
+        return ret;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>startToEntityDetails</Name>
+				<Source><![CDATA[
+    public boolean startToEntityDetails()
+    {
+        boolean ret = true;;
+        HcmEmployment       hcmEmployment;
+        HcmEmploymentDetail     hcmEmploymentDetail;
+        SPYWorkerPositionPayroll    workerPositionPayroll;
+        SPYWorkerPositionBenefit    workerPositionBenefit;
+        SPYWorkerPositionAbsenceConfigLine      workerPositionAbsenceConfigLine;
+        SPYWorkerTransferRequestEmploymentDetailsTo employmentDetailsTo;
+        SPYWorkerTransferRequestPayrollTo   payrollTo;
+        SPYWorkerTransferRequestBenefitTo   benefitTo;
+        SPYWorkerTransferRequestAbsenceConfigTo   absenceConfigTo;
+        HcmPositionRecId        position;
+        HcmPositionWorkerAssignment     positionWorkerAssignment;
+
+        select firstonly employmentDetailsTo
+            where employmentDetailsTo.WorkerTransferRequest == workerTransferRequest.RecId;
+        hcmEmployment.validTimeStateUpdateMode(ValidTimeStateUpdate::CreateNewTimePeriod);
+        hcmEmployment.Worker = workerTransferRequest.Worker;
+        hcmEmployment.LegalEntity = workerTransferRequest.ToLegalEntity;
+        hcmEmployment.ValidFrom = DateTimeUtil::newDateTime(transferDate, 00-00);
+        hcmEmployment.ValidTo = DateTimeUtil::maxValue();
+        hcmEmployment.DefaultDimension = employmentDetailsTo.DefaultDimension;
+        hcmEmployment.insert();        
+        
+        position = employmentDetailsTo.Position;
+        hcmEmploymentDetail.validTimeStateUpdateMode(ValidTimeStateUpdate::CreateNewTimePeriod);
+        hcmEmploymentDetail.Employment = hcmEmployment.RecId;         
+        hcmEmploymentDetail.ValidFrom = DateTimeUtil::newDateTime(transferDate, 00-00);
+        hcmEmploymentDetail.ValidTo = DateTimeUtil::maxValue();
+        hcmEmploymentDetail.SPYAirClass = employmentDetailsTo.AirClass;
+        hcmEmploymentDetail.SPYAirTicketCount = employmentDetailsTo.AirTicketCount;
+        hcmEmploymentDetail.SPYAirTicketToCity = employmentDetailsTo.AirTicketToCity;
+        hcmEmploymentDetail.SPYAirTicketFromCity = employmentDetailsTo.AirTicketFromCity;
+        hcmEmploymentDetail.SPYCostDistributionBasis = employmentDetailsTo.CostDistributionBasis;
+        hcmEmploymentDetail.SPYDefaultPayrollCurrency = employmentDetailsTo.DefaultPayrollCurrency;
+        hcmEmploymentDetail.SPYDefaultPayrollPeriod = employmentDetailsTo.DefaultPayrollPeriod;
+        hcmEmploymentDetail.SPYOvertimeEnabled = employmentDetailsTo.OvertimeEnabled;
+        hcmEmploymentDetail.SPYPayrollDisbursementMode = employmentDetailsTo.PayrollDisbursementMode;
+        hcmEmploymentDetail.SPYSocialSecurity = employmentDetailsTo.SocialSecurity;
+        hcmEmploymentDetail.SPYWorkerGroupCode = employmentDetailsTo.WorkerGroupCode;
+        hcmEmploymentDetail.SPYWorkerSponsor = employmentDetailsTo.WorkerSponsor;
+        hcmEmploymentDetail.SPYPlannedWorkingHourSource = employmentDetailsTo.PlannedWorkingHourSource;
+        hcmEmploymentDetail.SPYTimesheetProcessSource = employmentDetailsTo.TimesheetProcessSource;
+        hcmEmploymentDetail.SPYBenefitPolicy = employmentDetailsTo.BenefitPolicy;
+        hcmEmploymentDetail.insert();
+
+        while select payrollTo
+            where payrollTo.WorkerTransferRequest == workerTransferRequest.RecId
+        {
+            workerPositionPayroll.validTimeStateUpdateMode(ValidTimeStateUpdate::CreateNewTimePeriod);
+            workerPositionPayroll.Worker = workerTransferRequest.Worker;
+            workerPositionPayroll.LegalEntity = workerTransferRequest.ToLegalEntity;
+            workerPositionPayroll.Position = position;
+            workerPositionPayroll.ValidFrom = transferDate;
+            workerPositionPayroll.ValidTo = dateMax();
+            workerPositionPayroll.Payroll = payrollTo.Payroll;
+            workerPositionPayroll.PayrollPeriod = payrollTo.PayrollPeriod;
+            workerPositionPayroll.Currency = payrollTo.Currency;
+            workerPositionPayroll.Annual = payrollTo.Annual;
+            workerPositionPayroll.SemiAnnual = payrollTo.SemiAnnual;
+            workerPositionPayroll.Quarterly = payrollTo.Quarterly;
+            workerPositionPayroll.Monthly = payrollTo.Monthly;
+            workerPositionPayroll.BiWeekly = payrollTo.BiWeekly;
+            workerPositionPayroll.Weekly = payrollTo.Weekly;
+            workerPositionPayroll.Daily = payrollTo.Daily;
+            workerPositionPayroll.Hourly = payrollTo.Hourly;
+            workerPositionPayroll.insert();
+        }
+
+        while select benefitTo
+            where benefitTo.WorkerTransferRequest == workerTransferRequest.RecId
+        {
+            workerPositionBenefit.validTimeStateUpdateMode(ValidTimeStateUpdate::CreateNewTimePeriod);
+            workerPositionBenefit.Worker = workerTransferRequest.Worker;
+            workerPositionBenefit.LegalEntity = workerTransferRequest.ToLegalEntity;
+            workerPositionBenefit.Position = position;
+            workerPositionBenefit.ValidFrom = transferDate;
+            workerPositionBenefit.ValidTo = dateMax();
+            workerPositionBenefit.Benefit = benefitTo.Benefit;
+            workerPositionBenefit.PayrollPeriod = benefitTo.PayrollPeriod;
+            workerPositionBenefit.Currency = benefitTo.Currency;
+            workerPositionBenefit.AmountAnnual = benefitTo.AmountAnnual;
+            workerPositionBenefit.AmountBiWeekly = benefitTo.AmountBiWeekly;
+            workerPositionBenefit.AmountDaily = benefitTo.AmountDaily;
+            workerPositionBenefit.AmountHourly = benefitTo.AmountHourly;
+            workerPositionBenefit.AmountMonthly = benefitTo.AmountMonthly;
+            workerPositionBenefit.AmountQuarterly = benefitTo.AmountQuarterly;
+            workerPositionBenefit.AmountSemiAnnual = benefitTo.AmountSemiAnnual;
+            workerPositionBenefit.AmountWeekly = benefitTo.AmountWeekly;
+            workerPositionBenefit.QtyAnnual = benefitTo.QtyAnnual;
+            workerPositionBenefit.QtyBiWeekly = benefitTo.QtyBiWeekly;
+            workerPositionBenefit.QtyDaily = benefitTo.QtyDaily;
+            workerPositionBenefit.QtyHourly = benefitTo.QtyHourly;
+            workerPositionBenefit.QtyMonthly = benefitTo.QtyMonthly;
+            workerPositionBenefit.QtyQuarterly = benefitTo.QtyQuarterly;
+            workerPositionBenefit.QtySemiAnnual = benefitTo.QtySemiAnnual;
+            workerPositionBenefit.QtyWeekly = benefitTo.QtyWeekly;
+            workerPositionBenefit.insert();
+        }
+
+        while select absenceConfigTo
+            where absenceConfigTo.WorkerTransferRequest == workerTransferRequest.RecId
+        {
+            workerPositionAbsenceConfigLine.validTimeStateUpdateMode(ValidTimeStateUpdate::CreateNewTimePeriod);
+            workerPositionAbsenceConfigLine.Worker = workerTransferRequest.Worker;
+            workerPositionAbsenceConfigLine.LegalEntity = workerTransferRequest.ToLegalEntity;
+            workerPositionAbsenceConfigLine.Position = position;
+            workerPositionAbsenceConfigLine.ValidFrom = transferDate;
+            workerPositionAbsenceConfigLine.ValidTo = dateMax();
+            workerPositionAbsenceConfigLine.AbsenceConfig = absenceConfigTo.AbsenceConfig;
+            workerPositionAbsenceConfigLine.AbsenceCycle = absenceConfigTo.AbsenceCycle;
+            workerPositionAbsenceConfigLine.AccruedDate = absenceConfigTo.AccruedDate;
+            workerPositionAbsenceConfigLine.AccruedQty = absenceConfigTo.AccruedQty;
+            workerPositionAbsenceConfigLine.CarryBackward = absenceConfigTo.CarryBackward;
+            workerPositionAbsenceConfigLine.CarryForward = absenceConfigTo.CarryForward;
+            workerPositionAbsenceConfigLine.EntitlementPayrollPeriod = absenceConfigTo.EntitlementPayrollPeriod;
+            workerPositionAbsenceConfigLine.FetchBenefitQty = absenceConfigTo.FetchBenefitQty;
+            workerPositionAbsenceConfigLine.HRMAbsenceCodeId = absenceConfigTo.HRMAbsenceCodeId;
+            workerPositionAbsenceConfigLine.Qty = absenceConfigTo.Qty;
+            workerPositionAbsenceConfigLine.RestrictInNotice = absenceConfigTo.RestrictInNotice;
+            workerPositionAbsenceConfigLine.RestrictInProbation = absenceConfigTo.RestrictInProbation;
+            workerPositionAbsenceConfigLine.AllowNegativeInCarryFwd = absenceConfigTo.AllowNegativeInCarryFwd;
+            workerPositionAbsenceConfigLine.PeriodCloseNotApplicable = absenceConfigTo.PeriodCloseNotApplicable;
+            workerPositionAbsenceConfigLine.AllowFullBalanceCarryFwdInFirstYr = absenceConfigTo.AllowFullBalanceCarryFwdInFirstYr;
+            workerPositionAbsenceConfigLine.LedgerTransDateCalcFromLeave = absenceConfigTo.LedgerTransDateCalcFromLeave;
+            workerPositionAbsenceConfigLine.LedgerTransDateCalcFromPeriodClose = absenceConfigTo.LedgerTransDateCalcFromPeriodClose;
+            workerPositionAbsenceConfigLine.insert();
+        }
+
+        positionWorkerAssignment.validTimeStateUpdateMode(ValidTimeStateUpdate::CreateNewTimePeriod);
+        positionWorkerAssignment.Worker = workerTransferRequest.Worker;
+        positionWorkerAssignment.Position = position;
+        positionWorkerAssignment.ValidFrom = DateTimeUtil::newDateTime(transferDate, 00-00);
+        positionWorkerAssignment.ValidTo = DateTimeUtil::maxValue();
+        positionWorkerAssignment.insert();
+
+        return ret;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>updateTransferRequest</Name>
+				<Source><![CDATA[
+    public boolean updateTransferRequest()
+    {
+        boolean ret = true;
+        workerTransferRequest.selectForUpdate(true);
+        workerTransferRequest.WorkflowStatus = SPYWorkflowStatus::Approved;
+        workerTransferRequest.ApprovedForTransferIn = true;
+        workerTransferRequest.Posted = true;
+        workerTransferRequest.update();
+
+        return ret;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>validateTransferRequest</Name>
+				<Source><![CDATA[
+    public boolean validateTransferRequest()
+    {
+        boolean ret = true;
+        
+        if(!workerTransferRequest.RecId)
+            ret = checkFailed(strFmt("@SPY:TransferRequestNotSaved", workerTransferRequest.WorkerTransferRequestCode));
+        if(workerTransferRequest.WorkflowStatus != SPYWorkflowStatus::Approved)
+            ret = checkFailed(strFmt("@SPY:TransferRequestNotApproved", workerTransferRequest.WorkerTransferRequestCode));
+        if(workerTransferRequest.Posted)
+            ret = checkFailed(strFmt("@SPY:TransferRequestPosted", workerTransferRequest.WorkerTransferRequestCode));
+        if(!workerTransferRequest.ToLegalEntity)
+            ret = checkFailed(strFmt("@SPY:TransferRequestNoToLegalEntity", workerTransferRequest.WorkerTransferRequestCode));
+
+        return ret;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

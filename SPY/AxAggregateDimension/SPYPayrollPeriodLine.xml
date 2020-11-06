@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxAggregateDimension xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="Microsoft.Dynamics.AX.Metadata.V2">
+	<Name>SPYPayrollPeriodLine</Name>
+	<Label>@SPYExpression:PayrollPeriodDetails</Label>
+	<Table>SPYPayrollPeriodLine</Table>
+	<Attributes>
+		<AxDimensionAttribute xmlns="">
+			<Name>PeriodEndDate</Name>
+			<NameField>PeriodEndDate</NameField>
+			<Usage>Key</Usage>
+			<KeyFields>
+				<AxDimensionFieldReference>
+					<DimensionField>PeriodEndDate</DimensionField>
+				</AxDimensionFieldReference>
+			</KeyFields>
+		</AxDimensionAttribute>
+		<AxDimensionAttribute xmlns="">
+			<Name>PeriodStartDate</Name>
+			<KeyFields>
+				<AxDimensionFieldReference>
+					<DimensionField>PeriodStartDate</DimensionField>
+				</AxDimensionFieldReference>
+			</KeyFields>
+		</AxDimensionAttribute>
+		<AxDimensionAttribute xmlns="">
+			<Name>PayrollPeriod</Name>
+			<NameField>PayrollPeriod</NameField>
+			<KeyFields>
+				<AxDimensionFieldReference>
+					<DimensionField>PayrollPeriod</DimensionField>
+				</AxDimensionFieldReference>
+			</KeyFields>
+		</AxDimensionAttribute>
+		<AxDimensionAttribute xmlns="">
+			<Name>RecId</Name>
+			<NameField>RecId</NameField>
+			<KeyFields>
+				<AxDimensionFieldReference>
+					<DimensionField>RecId</DimensionField>
+				</AxDimensionFieldReference>
+			</KeyFields>
+		</AxDimensionAttribute>
+	</Attributes>
+	<Hierarchies />
+</AxAggregateDimension>

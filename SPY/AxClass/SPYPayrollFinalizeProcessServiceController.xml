@@ -8,6 +8,8 @@ class SPYPayrollFinalizeProcessServiceController extends SysOperationServiceCont
     FormRun                                         payrollFinalizeProcessEdit;
     SPYPayrollFinalizeProcessContract     payrollFinalizeProcessContract;
     SPYPayrollParameterState                 payrollParameterState;
+    boolean     calledFromEOS;
+    SPYEOSRunTable                 eosRunTable;
 
 }
 ]]></Declaration>
@@ -120,6 +122,29 @@ class SPYPayrollFinalizeProcessServiceController extends SysOperationServiceCont
 ]]></Source>
 			</Method>
 			<Method>
+				<Name>parmCalledFromEOS</Name>
+				<Source><![CDATA[
+    public boolean parmCalledFromEOS(boolean _calledFromEOS = calledFromEOS)
+    {
+        calledFromEOS = _calledFromEOS;
+    
+        return calledFromEOS;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmEOSRunTable</Name>
+				<Source><![CDATA[
+    public SPYEOSRunTable parmEOSRunTable(SPYEOSRunTable _eosRunTable = eosRunTable)
+    {
+        eosRunTable = _eosRunTable;
+        return eosRunTable;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
 				<Name>construct</Name>
 				<Source><![CDATA[
     static SPYPayrollFinalizeProcessServiceController construct(IdentifierName _className  = '',
@@ -144,8 +169,16 @@ class SPYPayrollFinalizeProcessServiceController extends SysOperationServiceCont
         mode = SysOperationExecutionMode::Synchronous;
         payrollFinalizeProcessServiceController = SPYPayrollFinalizeProcessServiceController::construct(className, methodName, mode);
     
-        if(args.caller() && args.caller().payrollParameterState())
-            payrollFinalizeProcessServiceController.parmPayrollParameterState(args.caller().payrollParameterState());
+        if(args.menuItemName() == menuItemActionStr(SPYPayrollFinalizeProcessEOSServiceController))
+        {
+            payrollFinalizeProcessServiceController.parmCalledFromEOS(true);
+            payrollFinalizeProcessServiceController.parmEOSRunTable(args.record());
+        }
+        else
+        {
+            if(args.caller() && args.caller().payrollParameterState())
+                payrollFinalizeProcessServiceController.parmPayrollParameterState(args.caller().payrollParameterState());
+        }
     
         if(payrollFinalizeProcessServiceController.prompt())
             payrollFinalizeProcessServiceController.run();

@@ -202,6 +202,36 @@
 			<PositionType>Begin</PositionType>
 			<MenuElement xmlns=""
 				i:type="AxMenuElementSubMenu">
+				<Name>WorkerTransferRequest</Name>
+				<Label>@SPY:WorkerTransferRequest</Label>
+				<Elements>
+					<AxMenuElement xmlns=""
+						i:type="AxMenuElementMenuItem">
+						<Name>SPYWorkerTransferRequestList_AllRequest</Name>
+						<MenuItemName>SPYWorkerTransferRequestList_AllRequest</MenuItemName>
+					</AxMenuElement>
+					<AxMenuElement xmlns=""
+						i:type="AxMenuElementMenuItem">
+						<Name>SPYWorkerTransferRequestList_MyRequest</Name>
+						<MenuItemName>SPYWorkerTransferRequestList_MyRequest</MenuItemName>
+					</AxMenuElement>
+					<AxMenuElement xmlns=""
+						i:type="AxMenuElementMenuItem">
+						<Name>SPYWorkerTransferRequestList_AllTransferInRequest</Name>
+						<MenuItemName>SPYWorkerTransferRequestList_AllTransferInRequest</MenuItemName>
+					</AxMenuElement>
+					<AxMenuElement xmlns=""
+						i:type="AxMenuElementMenuItem">
+						<Name>SPYWorkerTransferRequestList_AllTransferOutRequest</Name>
+						<MenuItemName>SPYWorkerTransferRequestList_AllTransferOutRequest</MenuItemName>
+					</AxMenuElement>
+				</Elements>
+			</MenuElement>
+		</AxMenuExtensionElement>
+		<AxMenuExtensionElement xmlns="">
+			<PositionType>Begin</PositionType>
+			<MenuElement xmlns=""
+				i:type="AxMenuElementSubMenu">
 				<Name>EndOfService</Name>
 				<Label>@SPY585</Label>
 				<Elements>

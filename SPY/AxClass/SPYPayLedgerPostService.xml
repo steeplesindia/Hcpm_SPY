@@ -26,7 +26,7 @@ class   SPYPayLedgerPostService extends SPYPayService
     SPYPayrollPeriodLine        payrollPeriodLineFinalize;
 
     SPYPayLedgerTmp             payLedgerTmp;
-    boolean                     calledFromLeaveSettlement;
+    boolean                     calledFromLeaveSettlement, calledFromEOS;
 
 }
 ]]></Declaration>
@@ -76,7 +76,7 @@ class   SPYPayLedgerPostService extends SPYPayService
         payrollJournalTable.initValue();
         payrollJournalTable.JournalId           = NumberSeq::newGetNum(SPYPayrollParameters::numRefPayrollJournalId()).num();
         payrollJournalTable.Description         = journalDescription;
-        if(!calledFromLeaveSettlement)
+        if(!calledFromLeaveSettlement && !calledFromEOS)
         {
             payrollJournalTable.SourceDocument      = contract.parmPayrollParameterState().parmSourceDocument();
             payrollJournalTable.SourceDocumentRef   = contract.parmPayrollParameterState().parmSourceDocumentRef();
@@ -348,7 +348,7 @@ class   SPYPayLedgerPostService extends SPYPayService
             costDistributionTmp.Percent = costDistributionTmp.Percent * 100 / totalPercent;
             costDistributionTmp.update();
         }
-        if(!calledFromLeaveSettlement && contract.parmPayrollParameterState().parmCalledFromJournal())
+        if(!calledFromLeaveSettlement && !calledFromEOS && contract.parmPayrollParameterState().parmCalledFromJournal())
         {
             this.refreshPayLedgerTmpFromPayroll();
             this.processPayrollLedgerFromJournal(_payrollJournal);
@@ -639,6 +639,104 @@ class   SPYPayLedgerPostService extends SPYPayService
             error("@SPY293");
             error("@SPY252");
         }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>postFromEOS</Name>
+				<Source><![CDATA[
+    public void postFromEOS(SPYPayLedgerEOSContract _contract)
+    {
+        SPYPayrollJournalRecId  payrollJournal;
+        #AviFiles
+        SysOperationProgress    progress = new SysOperationProgress();
+        int                     progressCount;
+    
+        contract = _contract;
+        SPYEOSRunTable  eosRunTable = _contract.parmEOSRunTable();
+        calledFromEOS = true;
+        this.setLegalEntity(CompanyInfo::current());       
+        this.setTransDate(eosRunTable.TransDate);
+        this.initialize();
+        progress.setCaption("@SPY1098");
+        progress.setAnimation(#AviUpdate);
+        progress.setTotal(1);
+        progressCount = 1;
+        setPrefix("@SPY319");
+        
+        try
+        {
+            ttsBegin;
+            journalDescription = _contract.parmJournalDescription();
+            payrollJournal = this.createJournalHeader();
+            lineNum = 1;
+            ListEnumerator      payrollPeriodList = this.eosPeriodList(eosRunTable).getEnumerator();
+            while(payrollPeriodList.moveNext())
+            {
+                contract.parmPayrollPeriodLine(payrollPeriodList.current());
+                this.setPayrollPeriodLine(payrollPeriodList.current());
+                this.setPayrollTimesheetDate(SPYPayrollPeriodLine::find(payrollPeriodList.current()));
+                this.setWorker(HcmWorker::find(eosRunTable.Worker));
+                progress.setText(strfmt("@SPY882", worker.name()));
+                progress.setCount(progressCount, 1);
+                this.createJournalLine(payrollJournal);
+                progressCount++;
+            }
+            this.commitJournal();
+            this.updateAccountDistribution(payrollJournal);
+            this.commitAccountDistribution();
+            this.checkJournalHeader(payrollJournal);
+            this.updatePayLedger();
+            ttsCommit;
+            this.showInfo(payrollJournal);
+        }
+        catch(Exception::Error)
+        {
+            ttsAbort;
+            error("@SPY293");
+            error("@SPY252");
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>eosPeriodList</Name>
+				<Source><![CDATA[
+    private List eosPeriodList(SPYEOSRunTable  _eosRunTable)
+    {
+        SPYPayrollLedger        payrollLedger;
+        SPYEOSRunPayroll        eosRunPayroll;
+        SPYBenefitLedger    benefitLedger;
+        SPYEOSRunBenefit        eosRunBenefit;
+        Map    payrollPeriodLineMap = new Map(Types::Int64, Types::Int64);
+        List    payrollPeriodLineList = new List(Types::Int64);
+
+        while select payrollLedger group by payrollPeriodLine
+            join eosRunPayroll
+            where eosRunPayroll.PayrollLedger == payrollLedger.RecId &&
+            eosRunPayroll.EOSRun == _eosRunTable.RecId
+        {
+            payrollPeriodLineMap.insert(payrollLedger.PayrollPeriodLine, 0);
+        }
+
+        while select benefitLedger group by payrollPeriodLine
+            join eosRunBenefit
+            where eosRunBenefit.BenefitLedger == benefitLedger.RecId &&
+            eosRunBenefit.EOSRun == _eosRunTable.RecId
+        {
+            if(!payrollPeriodLineMap.exists(benefitLedger.PayrollPeriodLine))
+                payrollPeriodLineMap.insert(benefitLedger.PayrollPeriodLine, 0);
+        }
+
+        MapEnumerator   payrollPeriodLineMapEnum = payrollPeriodLineMap.getEnumerator();
+        while(payrollPeriodLineMapEnum.moveNext())
+        {
+            payrollPeriodLineList.addStart(payrollPeriodLineMapEnum.currentKey());
+        }
+
+        return payrollPeriodLineList;
     }
 
 ]]></Source>

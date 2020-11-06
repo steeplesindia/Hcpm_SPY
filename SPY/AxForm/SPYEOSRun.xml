@@ -79,6 +79,7 @@ public class SPYEOSRun extends FormRun
         SPYBenefitLedger.enabled(SPYEOSRunTable.PostedToLedger);
         SPYEOSRunPayrollServiceController.enabled(isEditable);
         SPYEOSRunBenefitServiceController.enabled(isEditable);
+        SPYPayrollFinalizeProcessEOSServiceController.enabled(SPYEOSRunTable.PostedToLedger && !SPYEOSRunTable.IsFinalised);
     }
 
 ]]></Source>
@@ -201,6 +202,27 @@ public class SPYEOSRun extends FormRun
 			</DataSource>
 		</DataSources>
 		<DataControls xmlns="">
+			<Control>
+				<Name>SPYPayrollFinalizeProcessEOSServiceController</Name>
+				<Type>MenuFunctionButton</Type>
+				<Methods>
+					<Method>
+						<Name>clicked</Name>
+						<Source><![CDATA[
+        /// <summary>
+        ///
+        /// </summary>
+        public void clicked()
+        {
+            super();
+            SPYEOSRunTable_ds.reread();
+            SPYEOSRunTable_ds.refresh();
+        }
+
+]]></Source>
+					</Method>
+				</Methods>
+			</Control>
 			<Control>
 				<Name>Tab</Name>
 				<Type>Tab</Type>
@@ -347,6 +369,10 @@ public class SPYEOSRun extends FormRun
 					<DataField>ImmediateDisbursement</DataField>
 				</AxFormDataSourceField>
 				<AxFormDataSourceField>
+					<AllowEdit>No</AllowEdit>
+					<DataField>IsFinalised</DataField>
+				</AxFormDataSourceField>
+				<AxFormDataSourceField>
 					<DataField>modifiedBy</DataField>
 				</AxFormDataSourceField>
 				<AxFormDataSourceField>
@@ -356,6 +382,10 @@ public class SPYEOSRun extends FormRun
 					<DataField>Partition</DataField>
 				</AxFormDataSourceField>
 				<AxFormDataSourceField>
+					<DataField>PayrollJournal</DataField>
+				</AxFormDataSourceField>
+				<AxFormDataSourceField>
+					<AllowEdit>No</AllowEdit>
 					<DataField>PostedToLedger</DataField>
 				</AxFormDataSourceField>
 				<AxFormDataSourceField>
@@ -792,6 +822,27 @@ public class SPYEOSRun extends FormRun
 											i:nil="true" />
 										<Big>Yes</Big>
 										<MenuItemName>SPYEOSLedgerUpdateServiceController</MenuItemName>
+										<MenuItemType>Action</MenuItemType>
+									</AxFormControl>
+									<AxFormControl xmlns=""
+										i:type="AxFormMenuFunctionButtonControl">
+										<Name>SPYPayrollFinalizeProcessEOSServiceController</Name>
+										<AutoDeclaration>Yes</AutoDeclaration>
+										<Type>MenuFunctionButton</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataSource>SPYEOSRunTable</DataSource>
+										<MenuItemName>SPYPayrollFinalizeProcessEOSServiceController</MenuItemName>
+										<MenuItemType>Action</MenuItemType>
+									</AxFormControl>
+									<AxFormControl xmlns=""
+										i:type="AxFormMenuFunctionButtonControl">
+										<Name>SPYPayLedgerPostEOSServiceController</Name>
+										<Type>MenuFunctionButton</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataSource>SPYEOSRunTable</DataSource>
+										<MenuItemName>SPYPayLedgerPostEOSServiceController</MenuItemName>
 										<MenuItemType>Action</MenuItemType>
 									</AxFormControl>
 								</Controls>
@@ -3403,6 +3454,7 @@ public class SPYEOSRun extends FormRun
 										<Controls />
 										<DataSource>SPYEOSRunTable</DataSource>
 										<ReferenceField>Worker</ReferenceField>
+										<ReplacementFieldGroup>PersonAndPersonnelNumber</ReplacementFieldGroup>
 									</AxFormControl>
 									<AxFormControl xmlns=""
 										i:type="AxFormDateControl">
@@ -3416,6 +3468,25 @@ public class SPYEOSRun extends FormRun
 										<FormControlExtension
 											i:nil="true" />
 										<DataField>EOSDate</DataField>
+										<DataSource>SPYEOSRunTable</DataSource>
+									</AxFormControl>
+									<AxFormControl xmlns=""
+										i:type="AxFormComboBoxControl">
+										<Name>SPYEOSRunTable_WorkflowStatus1</Name>
+										<Type>ComboBox</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataField>WorkflowStatus</DataField>
+										<DataSource>SPYEOSRunTable</DataSource>
+										<Items />
+									</AxFormControl>
+									<AxFormControl xmlns=""
+										i:type="AxFormCheckBoxControl">
+										<Name>SPYEOSRunTable_PostedToLedger</Name>
+										<Type>CheckBox</Type>
+										<FormControlExtension
+											i:nil="true" />
+										<DataField>PostedToLedger</DataField>
 										<DataSource>SPYEOSRunTable</DataSource>
 									</AxFormControl>
 								</Controls>

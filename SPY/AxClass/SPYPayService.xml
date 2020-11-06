@@ -836,7 +836,7 @@ class SPYPayService extends SysOperationServiceBase implements SPYIObservable
         benefitLedger.TransDate                 = transDate;
         benefitLedger.Txt                       = this.getTxt(_benefit);
         benefitLedger.JournalType               = SPYBenefitJournalType::Accrual;
-        benefitLedger.setAccount(transDate,legalEntity,payrollPeriodLine);
+        benefitLedger.setAccount(transDate, legalEntity, payrollPeriodLine, hcmEmployment, hcmEmploymentDetail);
         if(expressionContext.expressionReturnObject().parmLedgerUpdateSourceReturn() != conNull())
             benefitLedger.PayLedgerSource = this.updateLedgerSource(expressionContext.expressionReturnObject().parmLedgerUpdateSourceReturn());
         if(leaveSettlement)
@@ -929,7 +929,7 @@ class SPYPayService extends SysOperationServiceBase implements SPYIObservable
         payrollLedger.AccountingCurrencyAmount  = _AccCurAmt;
         payrollLedger.TransDate                 = transDate;
         payrollLedger.Txt                       = this.getTxt(_payroll);
-        payrollLedger.setAccount(transDate,legalEntity,payrollPeriodLine);
+        payrollLedger.setAccount(transDate, legalEntity, payrollPeriodLine, hcmEmployment, hcmEmploymentDetail);
         if(expressionContext.expressionReturnObject().parmLedgerUpdateSourceReturn() != conNull())
             payrollLedger.PayLedgerSource = this.updateLedgerSource(expressionContext.expressionReturnObject().parmLedgerUpdateSourceReturn());
         if(leaveSettlement)

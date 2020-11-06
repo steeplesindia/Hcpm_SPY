@@ -77,30 +77,36 @@ public class SPYBenefitLedger extends common
 			<Method>
 				<Name>setAccount</Name>
 				<Source><![CDATA[
-    public void setAccount(TransDate                    _transDate,
-                           LegalEntityRecId             _legalEntity,
-                           SPYPayrollPeriodLineRecId    _payrollPeriodLine,
-                           boolean                      _encashment = false)
+    public void setAccount(TransDate    _transDate,
+                                      LegalEntityRecId  _legalEntity,
+                                      SPYPayrollPeriodLineRecId     _payrollPeriodLine,
+                                      HcmEmployment     _hcmEmployment,
+                                      HcmEmploymentDetail     _hcmEmploymentDetails,
+                                      boolean   _encashment = false)
     {
         TransDateTime           transDateTime = DateTimeUtil::newDateTime(_transDate,00-00);
         SPYPayrollPeriodLine    payrollPeriodLine = SPYPayrollPeriodLine::find(_payrollPeriodLine);
-        HcmEmployment           hcmEmployment = HcmEmployment::findByWorkerLegalEntity(this.Worker,_legalEntity,transDateTime);
-        HcmEmploymentDetail     hcmEmploymentDetails;
+        HcmEmployment           hcmEmployment = _hcmEmployment;
+        HcmEmploymentDetail     hcmEmploymentDetails = _hcmEmploymentDetails;
         SPYPayElementDetails    payElementDetails;
         SPYPayElementAccount    payElementAccount;
     
         if(!hcmEmployment)
         {
-            transDateTime = DateTimeUtil::newDateTime(payrollPeriodLine.PeriodStartDate,00-00);
             hcmEmployment = HcmEmployment::findByWorkerLegalEntity(this.Worker,_legalEntity,transDateTime);
+            if(!hcmEmployment)
+            {
+                transDateTime = DateTimeUtil::newDateTime(payrollPeriodLine.PeriodStartDate,00-00);
+                hcmEmployment = HcmEmployment::findByWorkerLegalEntity(this.Worker,_legalEntity,transDateTime);
     
+            }
+            if(!hcmEmployment)
+            {
+                transDateTime = DateTimeUtil::newDateTime(payrollPeriodLine.PeriodEndDate,00-00);
+                hcmEmployment = HcmEmployment::findByWorkerLegalEntity(this.Worker,_legalEntity,transDateTime);
+            }
+            hcmEmploymentDetails = HcmEmploymentDetail::findByEmployment(hcmEmployment.RecId,transDateTime);
         }
-        if(!hcmEmployment)
-        {
-            transDateTime = DateTimeUtil::newDateTime(payrollPeriodLine.PeriodEndDate,00-00);
-            hcmEmployment = HcmEmployment::findByWorkerLegalEntity(this.Worker,_legalEntity,transDateTime);
-        }
-        hcmEmploymentDetails = HcmEmploymentDetail::findByEmployment(hcmEmployment.RecId,transDateTime);
         payElementDetails = SPYPayElementDetails::findByPayElementLegalEntity(this.Benefit,_legalEntity,_transDate);
         payElementAccount = SPYPayElementAccount::findByWorkerPayElementGroup(payElementDetails.PayElementGroup,
                                                                             hcmEmploymentDetails.SPYWorkerGroupCode,

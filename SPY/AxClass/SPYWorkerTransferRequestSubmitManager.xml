@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>SPYWorkerTransferRequestSubmitManager</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+public class SPYWorkerTransferRequestSubmitManager
+{
+    SPYWorkerTransferRequest          workerTransferRequest;
+        
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>parmWorkerTransferRequest</Name>
+				<Source><![CDATA[
+    private SPYWorkerTransferRequest parmWorkerTransferRequest(SPYWorkerTransferRequest _workerTransferRequest = workerTransferRequest)
+    {
+        workerTransferRequest = _workerTransferRequest;
+    
+        return workerTransferRequest;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>submit</Name>
+				<Source><![CDATA[
+    private void submit(Args _args)
+    {
+        WorkflowSubmitDialog    workflowSubmitDialog;
+        Object  formRun;    
+        
+        workflowSubmitDialog = WorkflowSubmitDialog::construct(_args.caller().getActiveWorkflowConfiguration());
+        if (this.submitDialog(workflowSubmitDialog))
+        {
+            workerTransferRequest.submitToWorkflow(workFlowTypeStr(SPYWorkerTransferRequest), workflowSubmitDialog.parmWorkflowComment(), false);
+        }
+    
+        formRun = _args.caller();
+        formRun.refreshDataSource();        
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>submitDialog</Name>
+				<Source><![CDATA[
+    protected boolean  submitDialog(WorkflowSubmitDialog  _workflowSubmitDialog)
+    {
+        _workflowSubmitDialog.run();
+        return _workflowSubmitDialog.parmIsClosedOK();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>main</Name>
+				<Source><![CDATA[
+    public static void main(Args args)
+    {
+        SPYWorkerTransferRequestSubmitManager         workerTransferRequestSubmitManager = new SPYWorkerTransferRequestSubmitManager();
+        SPYWorkerTransferRequest              workerTransferRequest = args.record();
+    
+        workerTransferRequestSubmitManager.parmWorkerTransferRequest(workerTransferRequest);
+    
+        if(args.menuItemName() == menuitemActionStr(SPYWorkerTransferRequestSubmit))
+            workerTransferRequestSubmitManager.submit(args);
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

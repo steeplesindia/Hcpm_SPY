@@ -792,7 +792,6 @@ public class SPYLeaveApplication extends FormRun
 										<Name>SPYLeaveApplicationCancel</Name>
 										<HeightMode>Auto</HeightMode>
 										<Type>MenuFunctionButton</Type>
-										<Visible>No</Visible>
 										<WidthMode>Auto</WidthMode>
 										<FormControlExtension
 											i:nil="true" />
