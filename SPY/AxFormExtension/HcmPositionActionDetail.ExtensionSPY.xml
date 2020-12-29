@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxFormExtension xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="Microsoft.Dynamics.AX.Metadata.V6">
+	<Name>HcmPositionActionDetail.ExtensionSPY</Name>
+	<ControlModifications />
+	<Controls>
+		<AxFormExtensionControl xmlns="">
+			<Name>FormExtensionControltezyuwt31</Name>
+			<FormControl xmlns=""
+				i:type="AxFormGroupControl">
+				<Name>SPYCompensationLevelGroup</Name>
+				<Type>Group</Type>
+				<FormControlExtension
+					i:nil="true" />
+				<Controls>
+					<AxFormControl xmlns=""
+						i:type="AxFormReferenceGroupControl">
+						<Name>SPYCompensationLevelGroup_SPYCompensationLevelGrade</Name>
+						<Type>ReferenceGroup</Type>
+						<FormControlExtension
+							i:nil="true" />
+						<Controls />
+						<DataSource>HcmPositionActionDetail</DataSource>
+						<ReferenceField>SPYCompensationLevelGrade</ReferenceField>
+					</AxFormControl>
+					<AxFormControl xmlns=""
+						i:type="AxFormReferenceGroupControl">
+						<Name>SPYCompensationLevelGroup_SPYCompensationLevelBand</Name>
+						<Type>ReferenceGroup</Type>
+						<FormControlExtension
+							i:nil="true" />
+						<Controls />
+						<DataSource>HcmPositionActionDetail</DataSource>
+						<ReferenceField>SPYCompensationLevelBand</ReferenceField>
+					</AxFormControl>
+					<AxFormControl xmlns=""
+						i:type="AxFormReferenceGroupControl">
+						<Name>SPYCompensationLevelGroup_SPYCompensationLevelStep</Name>
+						<Type>ReferenceGroup</Type>
+						<FormControlExtension
+							i:nil="true" />
+						<Controls />
+						<DataSource>HcmPositionActionDetail</DataSource>
+						<ReferenceField>SPYCompensationLevelStep</ReferenceField>
+					</AxFormControl>
+				</Controls>
+				<DataGroup>SPYCompensationLevel</DataGroup>
+				<DataSource>HcmPositionActionDetail</DataSource>
+			</FormControl>
+			<Parent>DetailsTabPage</Parent>
+		</AxFormExtensionControl>
+	</Controls>
+	<DataSourceModifications />
+	<DataSources />
+	<Parts />
+	<PropertyModifications />
+</AxFormExtension>

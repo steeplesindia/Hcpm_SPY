@@ -77,8 +77,7 @@ class SPYPayProcessService extends SPYPayService
                 workerValidationText = workerValidationText + "\n" + (strFmt("@SPY1431",
                 worker.name(),worker.PersonnelNumber));
 
-                this.insertPayProcessLogLine(payrollProcessLogHeader.RecId,
-                                             worker.RecId,
+                this.insertPayProcessLogLine(worker.RecId,
                                              SPYPayProcessLogStatus::Error,
                                              payrollPeriodLine,
                                              workerValidationText);
@@ -180,11 +179,6 @@ class SPYPayProcessService extends SPYPayService
         progressCount = 1;
         setPrefix("@SPY378");
         info(strFmt("@SPY253",DateTimeUtil::utcNow()));
-
-        select firstonly RecId from payrollProcessLogHeader 
-            order by RecId desc;    
-        
-        //ttsBegin;
         while(workerListEnumerator.moveNext())
         {
             try
@@ -204,8 +198,7 @@ class SPYPayProcessService extends SPYPayService
                     //--</Pay calculation>--
 
                     // Inserting the success records
-                    this.insertPayProcessLogLine(payrollProcessLogHeader.RecId,
-                                                 worker.RecId,
+                    this.insertPayProcessLogLine(worker.RecId,
                                                  SPYPayProcessLogStatus::Success,
                                                  payrollPeriodLine,
                                                  strFmt("@SPYLabel:LblPayrollProcessSuccess",worker.name()));
@@ -228,8 +221,7 @@ class SPYPayProcessService extends SPYPayService
                 errorMessage = infolog.text(infologLine());
                 // Insertion of logging mechanism supporting records.
                 ttsbegin;
-                this.insertPayProcessLogLine(payrollProcessLogHeader.RecId,
-                                             worker.RecId,
+                this.insertPayProcessLogLine(worker.RecId,
                                              SPYPayProcessLogStatus::Error,
                                              payrollPeriodLine,
                                              errorMessage);
@@ -244,8 +236,7 @@ class SPYPayProcessService extends SPYPayService
                 errorMessage = infolog.text(infologLine());
                 // Insertion of logging mechanism supporting records.
                 ttsbegin;
-                this.insertPayProcessLogLine(payrollProcessLogHeader.RecId,
-                                             worker.RecId,
+                this.insertPayProcessLogLine(worker.RecId,
                                              SPYPayProcessLogStatus::Error,
                                              payrollPeriodLine,
                                              errorMessage);
@@ -313,23 +304,52 @@ class SPYPayProcessService extends SPYPayService
 ]]></Source>
 			</Method>
 			<Method>
+				<Name>initialize</Name>
+				<Source><![CDATA[
+    public void initialize()
+    {
+        super();
+        this.insertPayProcessLogHeader();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
 				<Name>insertPayProcessLogLine</Name>
 				<Source><![CDATA[
-    public void insertPayProcessLogLine(RecId                      _payrollProcessHeaderRecId,
-                                        HcmWorkerRecId             _workerRecId,
+    public void insertPayProcessLogLine(HcmWorkerRecId             _workerRecId,
                                         SPYPayProcessLogStatus     _payProcessStatus,
                                         SPYPayrollPeriodLineRecId  _payrollPeriodLineRecId,
                                         Description255             _description)
     {
-        payrollProcessLogLine.clear();
-        
-        payrollProcessLogLine.PayProcessHeaderRef       = _payrollProcessHeaderRecId;
+        payrollProcessLogLine.clear();        
+        payrollProcessLogLine.PayProcessHeaderRef       = payrollProcessLogHeader.RecId;
         payrollProcessLogLine.Worker                    = _workerRecId;
         payrollProcessLogLine.PayProcessLogStatus       = _payProcessStatus;
         payrollProcessLogLine.PayrollPeriodLineRecId    = _payrollPeriodLineRecId;
-        payrollProcessLogLine.Description               = _description;
-  
+        payrollProcessLogLine.Description               = _description;  
         payrollProcessLogLine.insert();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>insertPayProcessLogHeader</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// Method introduced for logging mechanism.
+    /// </summary>
+    public void insertPayProcessLogHeader()
+    {
+        // Used for inserting the first header record information when a payroll process starts.
+        ttsbegin;
+        payrollProcessLogHeader.clear();
+        payrollProcessLogHeader.PayProcessRunDate   = DateTimeUtil::getToday(DateTimeUtil::getUserPreferredTimeZone());
+        payrollProcessLogHeader.PayProcessStartTime = DateTimeUtil::getTimeNow(DateTimeUtil::getUserPreferredTimeZone());
+        payrollProcessLogHeader.Description         = "@SPY1143";
+        payrollProcessLogHeader.PayrollPeriodLine   = payrollPeriodLine;
+        payrollProcessLogHeader.insert();
+        ttscommit;
     }
 
 ]]></Source>

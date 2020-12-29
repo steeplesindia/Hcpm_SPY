@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>SPYHcmPositionDetailEventHandler</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+class SPYHcmPositionDetailEventHandler
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>HcmPositionAction_onModifiedField</Name>
+				<Source><![CDATA[
+    [DataEventHandler(tableStr(HcmPositionDetail), DataEventType::ModifiedField)]
+    public static void HcmPositionAction_onModifiedField(Common sender, DataEventArgs e)
+    {
+        ModifyFieldEventArgs    modifyFieldEventArgs = e as ModifyFieldEventArgs;
+
+        switch(modifyFieldEventArgs.parmFieldId())
+        {
+            case fieldNum(HcmPositionDetail, Job):
+                HcmPositionDetail   hcmPositionDetail = sender as HcmPositionDetail;
+                HcmJobDetail    jobDetail = HcmJobDetail::findByJob(hcmPositionDetail.Job);
+                hcmPositionDetail.SPYCompensationLevelBand = jobDetail.SPYCompensationLevelBand;
+                hcmPositionDetail.SPYCompensationLevelGrade = jobDetail.SPYCompensationLevelGrade;
+                hcmPositionDetail.SPYCompensationLevelStep = jobDetail.SPYCompensationLevelStep;
+                break;
+        }
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

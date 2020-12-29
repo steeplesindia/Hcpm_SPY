@@ -78,11 +78,11 @@ class SPYWorkerTransition
         if(worker)
         {
             try
-            {
+            {                
                 if(SPYPayrollParameters::find().DefaultingPayWarning == SPYWarningOrNone::Warning)
                 {
                     if(Box::okCancel("@SPY557",DialogButton::Ok) != DialogButton::Ok)
-                    return;
+                        return;
                 }
                 ttsBegin;
                 workerCompensationPlan = new SPYWorkerCompensationPlan(worker,legalEntity,position);
@@ -90,9 +90,9 @@ class SPYWorkerTransition
                 workerCompensationPlan.parmPayEndDateTime(employmentEndDate);
                 workerCompensationPlan.parmPayStartDate(DateTimeUtil::date(DateTimeUtil::applyTimeZoneOffset(employmentStartDate,DateTimeUtil::getClientMachineTimeZone())));
                 if(employmentEndDate == DateTimeUtil::maxValue())
-                workerCompensationPlan.parmPayEndDate(dateMax());
+                    workerCompensationPlan.parmPayEndDate(dateMax());
                 else
-                workerCompensationPlan.parmPayEndDate(DateTimeUtil::date(DateTimeUtil::applyTimeZoneOffset(employmentEndDate,DateTimeUtil::getClientMachineTimeZone())));
+                    workerCompensationPlan.parmPayEndDate(DateTimeUtil::date(DateTimeUtil::applyTimeZoneOffset(employmentEndDate,DateTimeUtil::getClientMachineTimeZone())));
                 workerCompensationPlan.updateCompensation();
                 ttsCommit;
             }

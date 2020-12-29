@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxDataEntityViewExtension xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>HcmJobEntity.ExtensionSPY</Name>
+	<DataSources>
+		<AxQueryExtensionEmbeddedDataSource>
+			<Parent>HcmJobDetail</Parent>
+			<DataSource>
+				<Name>HcmCompensationLevelGrade</Name>
+				<DynamicFields>Yes</DynamicFields>
+				<IsReadOnly>Yes</IsReadOnly>
+				<Table>HcmCompensationLevel</Table>
+				<DataSources />
+				<DerivedDataSources />
+				<Fields />
+				<Ranges />
+				<JoinMode>OuterJoin</JoinMode>
+				<Relations>
+					<AxQuerySimpleDataSourceRelation>
+						<Name>QueryDataSourceRelation1</Name>
+						<Field>SPYCompensationLevelGrade</Field>
+						<JoinDataSource>HcmJobDetail</JoinDataSource>
+						<RelatedField>RecId</RelatedField>
+					</AxQuerySimpleDataSourceRelation>
+				</Relations>
+			</DataSource>
+		</AxQueryExtensionEmbeddedDataSource>
+		<AxQueryExtensionEmbeddedDataSource>
+			<Parent>HcmJobDetail</Parent>
+			<DataSource>
+				<Name>HcmCompensationLevelBand</Name>
+				<DynamicFields>Yes</DynamicFields>
+				<IsReadOnly>Yes</IsReadOnly>
+				<Table>HcmCompensationLevel</Table>
+				<DataSources />
+				<DerivedDataSources />
+				<Fields />
+				<Ranges />
+				<JoinMode>OuterJoin</JoinMode>
+				<Relations>
+					<AxQuerySimpleDataSourceRelation>
+						<Name>QueryDataSourceRelation1</Name>
+						<Field>SPYCompensationLevelBand</Field>
+						<JoinDataSource>HcmJobDetail</JoinDataSource>
+						<RelatedField>RecId</RelatedField>
+					</AxQuerySimpleDataSourceRelation>
+				</Relations>
+			</DataSource>
+		</AxQueryExtensionEmbeddedDataSource>
+		<AxQueryExtensionEmbeddedDataSource>
+			<Parent>HcmJobDetail</Parent>
+			<DataSource>
+				<Name>HcmCompensationLevelStep</Name>
+				<DynamicFields>Yes</DynamicFields>
+				<IsReadOnly>Yes</IsReadOnly>
+				<Table>HcmCompensationLevel</Table>
+				<DataSources />
+				<DerivedDataSources />
+				<Fields />
+				<Ranges />
+				<JoinMode>OuterJoin</JoinMode>
+				<Relations>
+					<AxQuerySimpleDataSourceRelation>
+						<Name>QueryDataSourceRelation1</Name>
+						<Field>SPYCompensationLevelStep</Field>
+						<JoinDataSource>HcmJobDetail</JoinDataSource>
+						<RelatedField>RecId</RelatedField>
+					</AxQuerySimpleDataSourceRelation>
+				</Relations>
+			</DataSource>
+		</AxQueryExtensionEmbeddedDataSource>
+	</DataSources>
+	<FieldGroupExtensions />
+	<FieldGroups />
+	<FieldModifications />
+	<Fields>
+		<AxDataEntityViewField xmlns=""
+			i:type="AxDataEntityViewMappedField">
+			<Name>SPYCompensationLevelBandId</Name>
+			<AllowEdit>Yes</AllowEdit>
+			<AllowEditOnCreate>Yes</AllowEditOnCreate>
+			<Label>@SYS116554</Label>
+			<DataField>CompensationLevelId</DataField>
+			<DataSource>HcmCompensationLevelBand</DataSource>
+		</AxDataEntityViewField>
+		<AxDataEntityViewField xmlns=""
+			i:type="AxDataEntityViewMappedField">
+			<Name>SPYCompensationLevelGradeId</Name>
+			<AllowEdit>Yes</AllowEdit>
+			<AllowEditOnCreate>Yes</AllowEditOnCreate>
+			<Label>@SYS116553</Label>
+			<DataField>CompensationLevelId</DataField>
+			<DataSource>HcmCompensationLevelGrade</DataSource>
+		</AxDataEntityViewField>
+		<AxDataEntityViewField xmlns=""
+			i:type="AxDataEntityViewMappedField">
+			<Name>SPYCompensationLevelStepId</Name>
+			<AllowEdit>Yes</AllowEdit>
+			<AllowEditOnCreate>Yes</AllowEditOnCreate>
+			<Label>@SYS108671</Label>
+			<DataField>CompensationLevelId</DataField>
+			<DataSource>HcmCompensationLevelStep</DataSource>
+		</AxDataEntityViewField>
+	</Fields>
+	<Mappings />
+	<PropertyModifications />
+	<Relations>
+		<AxDataEntityViewRelation>
+			<Name>SPYCompensationLevelBand</Name>
+			<Cardinality>ZeroMore</Cardinality>
+			<RelatedDataEntity>HcmCompensationLevelEntity</RelatedDataEntity>
+			<RelatedDataEntityCardinality>ZeroOne</RelatedDataEntityCardinality>
+			<RelatedDataEntityRole>SPYCompensationLevelBand</RelatedDataEntityRole>
+			<RelationshipType>Association</RelationshipType>
+			<Role>Band</Role>
+			<Constraints>
+				<AxDataEntityViewRelationConstraint xmlns=""
+					i:type="AxDataEntityViewRelationConstraintField">
+					<Name>RelationConstraintField1</Name>
+					<Field>SPYCompensationLevelBandId</Field>
+					<RelatedField>Level</RelatedField>
+				</AxDataEntityViewRelationConstraint>
+			</Constraints>
+		</AxDataEntityViewRelation>
+		<AxDataEntityViewRelation>
+			<Name>SPYCompensationLevelGrade</Name>
+			<Cardinality>ZeroMore</Cardinality>
+			<RelatedDataEntity>HcmCompensationLevelEntity</RelatedDataEntity>
+			<RelatedDataEntityCardinality>ZeroOne</RelatedDataEntityCardinality>
+			<RelatedDataEntityRole>SPYCompensationLevelGrade</RelatedDataEntityRole>
+			<RelationshipType>Association</RelationshipType>
+			<Role>Grade</Role>
+			<Constraints>
+				<AxDataEntityViewRelationConstraint xmlns=""
+					i:type="AxDataEntityViewRelationConstraintField">
+					<Name>RelationConstraintField1</Name>
+					<Field>SPYCompensationLevelGradeId</Field>
+					<RelatedField>Level</RelatedField>
+				</AxDataEntityViewRelationConstraint>
+			</Constraints>
+		</AxDataEntityViewRelation>
+		<AxDataEntityViewRelation>
+			<Name>SPYCompensationLevelStep</Name>
+			<Cardinality>ZeroMore</Cardinality>
+			<RelatedDataEntity>HcmCompensationLevelEntity</RelatedDataEntity>
+			<RelatedDataEntityCardinality>ZeroOne</RelatedDataEntityCardinality>
+			<RelatedDataEntityRole>SPYCompensationLevelStep</RelatedDataEntityRole>
+			<RelationshipType>Association</RelationshipType>
+			<Role>Step</Role>
+			<Constraints>
+				<AxDataEntityViewRelationConstraint xmlns=""
+					i:type="AxDataEntityViewRelationConstraintField">
+					<Name>RelationConstraintField1</Name>
+					<Field>SPYCompensationLevelStepId</Field>
+					<RelatedField>Level</RelatedField>
+				</AxDataEntityViewRelationConstraint>
+			</Constraints>
+		</AxDataEntityViewRelation>
+	</Relations>
+</AxDataEntityViewExtension>

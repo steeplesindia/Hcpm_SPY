@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>SPYPayLoanProcessService</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+class SPYPayLoanProcessService
+{
+    TransDate       transDate;
+    HcmEmployment   hcmEmployment;
+    HcmEmploymentDetail     hcmEmploymentDetail;
+    RecordInsertList        payrollLedgerList;
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>new</Name>
+				<Source><![CDATA[
+    public void new(TransDate _transDate)
+    {
+        transDate = _transDate;
+        payrollLedgerList = new RecordInsertList(tableNum(SPYPayrollLedger));
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>updatePayroll</Name>
+				<Source><![CDATA[
+    public boolean updatePayroll(HcmWorker  _hcmWorker, SPYPayrollPeriodLine  _payrollPeriodLine)
+    {
+        SPYPayLoanLedger        payLoanLedger;
+        SPYLoanTypeTable        loanTypeTable;
+        SPYPayrollLedger        payrollLedger, payrollLedgerTab;
+        ExchangeRateHelper      exchangeRateHelper;
+        SPYPayrollTable         payrollTable;
+        
+        boolean ret;
+       
+        while select payLoanLedger
+            join loanTypeTable
+            where payLoanLedger.LoanType == loanTypeTable.RecId &&
+            payLoanLedger.Worker == _hcmWorker.RecId &&
+            payLoanLedger.PayrollPeriodLine == _payrollPeriodLine.RecId &&
+            payLoanLedger.PayLoanTransType == SPYPayLoanTransType::Disbursement
+            join payrollTable
+            where payrollTable.RecId == loanTypeTable.DisbursementPayroll
+        {
+            select sum(TransactionCurrencyAmount), sum(AccountingCurrencyAmount) from payrollLedgerTab
+                where payrollLedgerTab.Worker == _hcmWorker.RecId &&
+                payrollLedgerTab.PayrollPeriodLine == _payrollPeriodLine.RecId &&
+                payrollLedgerTab.SourceDocument == tableNum(SPYPayLoanTable) &&            
+                payrollLedgerTab.payroll == payrollTable.RecId &&
+                payrollLedgerTab.PayLoanLedger == payLoanLedger.RecId;
+
+            payrollLedgerList.add(this.insertToLedger(_hcmWorker, _payrollPeriodLine, payLoanLedger, payrollTable, SPYPayLoanTransType::Disbursement,
+                payrollLedgerTab.TransactionCurrencyAmount, payrollLedgerTab.AccountingCurrencyAmount));
+        }
+
+        while select payLoanLedger
+            join loanTypeTable
+            where payLoanLedger.LoanType == loanTypeTable.RecId &&
+            payLoanLedger.Worker == _hcmWorker.RecId &&
+            payLoanLedger.PayrollPeriodLine == _payrollPeriodLine.RecId &&
+            payLoanLedger.PayLoanTransType == SPYPayLoanTransType::Recovery
+            join payrollTable
+            where payrollTable.RecId == loanTypeTable.RecoveryPayroll
+        {
+            select sum(TransactionCurrencyAmount), sum(AccountingCurrencyAmount) from payrollLedgerTab
+                where payrollLedgerTab.Worker == _hcmWorker.RecId &&
+                payrollLedgerTab.PayrollPeriodLine == _payrollPeriodLine.RecId &&
+                payrollLedgerTab.SourceDocument == tableNum(SPYPayLoanTable) &&
+                payrollLedgerTab.payroll == payrollTable.RecId &&
+                payrollLedgerTab.PayLoanLedger == payLoanLedger.RecId;
+            
+            payrollLedgerList.add(this.insertToLedger(_hcmWorker, _payrollPeriodLine, payLoanLedger, payrollTable, SPYPayLoanTransType::Recovery,
+                payrollLedgerTab.TransactionCurrencyAmount, payrollLedgerTab.AccountingCurrencyAmount));
+        }
+
+        if(payrollLedgerList)
+            payrollLedgerList.insertDatabase();
+
+        return ret;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>insertToLedger</Name>
+				<Source><![CDATA[
+    public SPYPayrollLedger insertToLedger(HcmWorker  _hcmWorker, SPYPayrollPeriodLine  _payrollPeriodLine, SPYPayLoanLedger _payLoanLedger,
+        SPYPayrollTable _payrollTable, SPYPayLoanTransType _loanTransType, SPYAmount _finalizedTransCurAmt, SPYAmount _finalizedAccCurAmt)
+    {
+        SPYPayrollLedger        payrollLedger;
+
+        payrollLedger.clear();
+        payrollLedger.initValue();
+        payrollLedger.Worker    = _hcmWorker.RecId;
+        payrollLedger.PayrollPeriodLine = _payrollPeriodLine.RecId;
+        payrollLedger.Payroll   = _payrollTable.RecId;
+        payrollLedger.TransDate = transDate;
+        payrollLedger.Txt   = _payLoanLedger.Txt ? _payLoanLedger.Txt :
+                                            strFmt("%1 for period %3 - %4 from pay loan journal.",
+                                            _payrollTable.PayElementCode,
+                                            _payrollPeriodLine.PeriodStartDate,
+                                            _payrollPeriodLine.PeriodEndDate);
+        payrollLedger.DefaultDimension  = _payLoanLedger.DefaultDimension;
+        if(_loanTransType == SPYPayLoanTransType::Disbursement)
+            payrollLedger.TransactionCurrencyAmount   = _payLoanLedger.TransactionCurrencyAmount - _finalizedTransCurAmt;
+        else if(_loanTransType == SPYPayLoanTransType::Recovery)
+            payrollLedger.TransactionCurrencyAmount   = -_payLoanLedger.TransactionCurrencyAmount - _finalizedTransCurAmt;
+        payrollLedger.Currency  = _payLoanLedger.Currency;
+        payrollLedger.ExchRate  = _payLoanLedger.ExchRate;
+        if(_loanTransType == SPYPayLoanTransType::Disbursement)
+            payrollLedger.AccountingCurrencyAmount   = _payLoanLedger.AccountingCurrencyAmount - _finalizedAccCurAmt;
+        else if(_loanTransType == SPYPayLoanTransType::Recovery)
+            payrollLedger.AccountingCurrencyAmount   = -_payLoanLedger.AccountingCurrencyAmount - _finalizedAccCurAmt;
+        payrollLedger.setAccount(transDate, CompanyInfo::current(), _payrollPeriodLine.RecId, hcmEmployment, hcmEmploymentDetail);
+        payrollLedger.SourceDocument    = tableNum(SPYPayLoanTable);
+        payrollLedger.PayLoanLedger   = _payLoanLedger.RecId;
+
+        return payrollLedger;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

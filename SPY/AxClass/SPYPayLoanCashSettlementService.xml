@@ -75,10 +75,12 @@ class SPYPayLoanCashSettlementService extends SysOperationServiceBase
                 this.commitLedger();
             }
             ttsCommit;
+            info("@SPY:SettlementIsDoneSuccessfully");
         }
         catch(Exception::Error)
         {
             ttsAbort;
+            Error("@SPY:ErrorOccurredWhileSettlingPayLoan");
         }
     }
 
@@ -95,40 +97,63 @@ class SPYPayLoanCashSettlementService extends SysOperationServiceBase
 
         select RecId from payLoanLine
         where payLoanLine.PayLoan == _contract.parmPayLoan();
-
-        select sum(TransactionCurrencyAmount) from payLoanLedger
-            where payLoanLedger.PayLoanLine == payLoanLine.RecId
-               && payLoanLedger.PayLoanTransType == SPYPayLoanTransType::CashSettlement;
-
-        amountRecoveredCash = payLoanLedger.TransactionCurrencyAmount;
-
         advanceAmount = _contract.parmAmount();
 
-        while select forUpdate payLoanLedger order by PayrollPeriodLine asc
-        where payLoanLedger.PayLoanLine == payLoanLine.RecId &&
-              payLoanLedger.PayLoanTransType == SPYPayLoanTransType::Recovery
+        if(_contract.parmSettledOnlyInSettlementPeriod())
         {
-            if(!payLoanLedger.amountRecoveredTransCur())
+            while select forUpdate payLoanLedger
+                where payLoanLedger.PayLoanLine == payLoanLine.RecId &&
+                payLoanLedger.PayLoanTransType == SPYPayLoanTransType::Recovery &&
+                payLoanLedger.PayrollPeriodLine == _contract.parmSettlementPeriod()
             {
-                if((advanceAmount - payLoanLedger.TransactionCurrencyAmount) > 0)
-                {
-                    advanceAmount = advanceAmount - payLoanLedger.TransactionCurrencyAmount;
-                    payLoanLedger.delete();
-                }
-                else if((advanceAmount - payLoanLedger.TransactionCurrencyAmount) == 0)
+                if(advanceAmount >= payLoanLedger.TransactionCurrencyAmount)
                 {
                     ttsBegin;
                     payLoanLedger.delete();
                     ttsCommit;
-                    break;
                 }
-                else if((advanceAmount - payLoanLedger.TransactionCurrencyAmount) < 0)
+                else
                 {
                     ttsBegin;
                     payLoanLedger.TransactionCurrencyAmount = payLoanLedger.TransactionCurrencyAmount - advanceAmount;
                     payLoanLedger.update();
                     ttsCommit;
-                    break;
+                }
+            }
+        }
+        else
+        {
+            select sum(TransactionCurrencyAmount) from payLoanLedger
+                where payLoanLedger.PayLoanLine == payLoanLine.RecId
+                   && payLoanLedger.PayLoanTransType == SPYPayLoanTransType::CashSettlement;
+
+            amountRecoveredCash = payLoanLedger.TransactionCurrencyAmount;
+            while select forUpdate payLoanLedger order by PayrollPeriodLine asc
+            where payLoanLedger.PayLoanLine == payLoanLine.RecId &&
+                  payLoanLedger.PayLoanTransType == SPYPayLoanTransType::Recovery
+            {
+                if(!payLoanLedger.amountRecoveredTransCur())
+                {
+                    if((advanceAmount - payLoanLedger.TransactionCurrencyAmount) > 0)
+                    {
+                        advanceAmount = advanceAmount - payLoanLedger.TransactionCurrencyAmount;
+                        payLoanLedger.delete();
+                    }
+                    else if((advanceAmount - payLoanLedger.TransactionCurrencyAmount) == 0)
+                    {
+                        ttsBegin;
+                        payLoanLedger.delete();
+                        ttsCommit;
+                        break;
+                    }
+                    else if((advanceAmount - payLoanLedger.TransactionCurrencyAmount) < 0)
+                    {
+                        ttsBegin;
+                        payLoanLedger.TransactionCurrencyAmount = payLoanLedger.TransactionCurrencyAmount - advanceAmount;
+                        payLoanLedger.update();
+                        ttsCommit;
+                        break;
+                    }
                 }
             }
         }
@@ -149,30 +174,41 @@ class SPYPayLoanCashSettlementService extends SysOperationServiceBase
         select RecId, Amount from payLoanLine
         where payLoanLine.PayLoan == _contract.parmPayLoan();
 
-        select sum(TransactionCurrencyAmount) from payLoanLedger
-            where payLoanLedger.PayLoanLine == payLoanLine.RecId
-               && payLoanLedger.PayLoanTransType == SPYPayLoanTransType::CashSettlement;
-
-        amountRecoveredCash = payLoanLedger.TransactionCurrencyAmount;
-
-        while select payLoanLedger order by PayrollPeriodLine asc
-        where payLoanLedger.PayLoanLine == payLoanLine.RecId &&
-              payLoanLedger.PayLoanTransType == SPYPayLoanTransType::Recovery
+        if(_contract.parmSettledOnlyInSettlementPeriod())
         {
-            if(payLoanLedger.amountRecoveredTransCur())
+            select firstonly payLoanLedger
+                where payLoanLedger.PayLoanLine == payLoanLine.RecId &&
+                payLoanLedger.PayLoanTransType == SPYPayLoanTransType::Recovery &&
+                payLoanLedger.PayrollPeriodLine == _contract.parmSettlementPeriod();
+            if(_contract.parmAmount() > payLoanLedger.TransactionCurrencyAmount)
+                ret = checkFailed(strFmt("@SPY1983", payLoanLedger.TransactionCurrencyAmount));
+        }
+        else
+        {
+            select sum(TransactionCurrencyAmount) from payLoanLedger
+                where payLoanLedger.PayLoanLine == payLoanLine.RecId &&
+                payLoanLedger.PayLoanTransType == SPYPayLoanTransType::CashSettlement;
+                amountRecoveredCash = payLoanLedger.TransactionCurrencyAmount;
+
+            while select payLoanLedger order by PayrollPeriodLine asc
+                where payLoanLedger.PayLoanLine == payLoanLine.RecId &&
+                payLoanLedger.PayLoanTransType == SPYPayLoanTransType::Recovery
             {
-                amountRecoveredPayroll = amountRecoveredPayroll + payLoanLedger.TransactionCurrencyAmount;
+                if(payLoanLedger.amountRecoveredTransCur())
+                {
+                    amountRecoveredPayroll = amountRecoveredPayroll + payLoanLedger.TransactionCurrencyAmount;
+                }
             }
-        }
-        if((payLoanLine.Amount - (amountRecoveredCash + amountRecoveredPayroll)) == 0)
-        {
-            ret = checkFailed(strFmt("@SPY1982"));
-            return ret;
-        }
+            if((payLoanLine.Amount - (amountRecoveredCash + amountRecoveredPayroll)) == 0)
+            {
+                ret = checkFailed(strFmt("@SPY1982"));
+                return ret;
+            }
 
-        if((payLoanLine.Amount - (amountRecoveredCash + amountRecoveredPayroll)) <  _contract.parmAmount())
-        {
-            ret = checkFailed(strFmt("@SPY1983",(payLoanLine.Amount - (amountRecoveredCash + amountRecoveredPayroll))));
+            if((payLoanLine.Amount - (amountRecoveredCash + amountRecoveredPayroll)) <  _contract.parmAmount())
+            {
+                ret = checkFailed(strFmt("@SPY1983",(payLoanLine.Amount - (amountRecoveredCash + amountRecoveredPayroll))));
+            }
         }
 
         return ret;

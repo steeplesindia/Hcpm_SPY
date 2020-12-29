@@ -208,6 +208,26 @@ class SPYBenefitCalculation extends SPYIBenefitCalculation implements SPYIObserv
 
 ]]></Source>
 			</Method>
+			<Method>
+				<Name>getExpressionTrace</Name>
+				<Source><![CDATA[
+    public SPYExpressionTraceRecId getExpressionTrace()
+    {
+        SPYIObserver                localObserver;
+        int                         ctr;
+        SPYExpressionTraceRecId     expressionTrace;
+    
+        for (Ctr = 1; Ctr <= observers.lastIndex(); Ctr++ )
+        {
+            localObserver = observers.value(Ctr);
+            expressionTrace = localObserver.getExpressionTrace();
+        }
+
+        return expressionTrace;
+    }
+
+]]></Source>
+			</Method>
 		</Methods>
 	</SourceCode>
 </AxClass>

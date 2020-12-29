@@ -2132,7 +2132,7 @@
                                                         <Paragraph>
                                                           <TextRuns>
                                                             <TextRun>
-                                                              <Value>=IIf(Sum(Fields!OpeningBalance.Value, "HRMAbsenceCodeId") = 0, "0", Sum(Fields!OpeningBalance.Value, "HRMAbsenceCodeId"))</Value>
+                                                              <Value>=Sum(Fields!OpeningBalance.Value)</Value>
                                                               <Style>
                                                                 <FontStyle>Normal</FontStyle>
                                                                 <FontFamily>Segoe UI</FontFamily>
@@ -2240,14 +2240,14 @@
                                                 </TablixCell>
                                                 <TablixCell>
                                                   <CellContents>
-                                                    <Textbox Name="AnualEntitlement">
+                                                    <Textbox Name="LeavesEarned">
                                                       <CanGrow>true</CanGrow>
                                                       <KeepTogether>true</KeepTogether>
                                                       <Paragraphs>
                                                         <Paragraph>
                                                           <TextRuns>
                                                             <TextRun>
-                                                              <Value>=IIf(Sum(Fields!AnualEntitlement.Value, "HRMAbsenceCodeId") = 0, "0", Sum(Fields!AnualEntitlement.Value, "HRMAbsenceCodeId"))</Value>
+                                                              <Value>=Sum(Fields!LeavesEarned.Value)</Value>
                                                               <Style>
                                                                 <FontStyle>Normal</FontStyle>
                                                                 <FontFamily>Segoe UI</FontFamily>
@@ -2263,7 +2263,7 @@
                                                           </Style>
                                                         </Paragraph>
                                                       </Paragraphs>
-                                                      <rd:DefaultName>AnualEntitlement</rd:DefaultName>
+                                                      <rd:DefaultName>LeavesEarned</rd:DefaultName>
                                                       <Style>
                                                         <Border>
                                                           <Style>None</Style>
@@ -2355,14 +2355,14 @@
                                                 </TablixCell>
                                                 <TablixCell>
                                                   <CellContents>
-                                                    <Textbox Name="Booked">
+                                                    <Textbox Name="LeavesTaken">
                                                       <CanGrow>true</CanGrow>
                                                       <KeepTogether>true</KeepTogether>
                                                       <Paragraphs>
                                                         <Paragraph>
                                                           <TextRuns>
                                                             <TextRun>
-                                                              <Value>=IIf(Sum(Fields!Booked.Value, "HRMAbsenceCodeId") = 0, "0", Sum(Fields!Booked.Value, "HRMAbsenceCodeId"))</Value>
+                                                              <Value>=Sum(Fields!LeavesTaken.Value)</Value>
                                                               <Style>
                                                                 <FontStyle>Normal</FontStyle>
                                                                 <FontFamily>Segoe UI</FontFamily>
@@ -2378,7 +2378,7 @@
                                                           </Style>
                                                         </Paragraph>
                                                       </Paragraphs>
-                                                      <rd:DefaultName>Booked</rd:DefaultName>
+                                                      <rd:DefaultName>LeavesTaken</rd:DefaultName>
                                                       <Style>
                                                         <Border>
                                                           <Style>None</Style>
@@ -2473,14 +2473,14 @@
                                                 </TablixCell>
                                                 <TablixCell>
                                                   <CellContents>
-                                                    <Textbox Name="OpeningBalance1">
+                                                    <Textbox Name="ClosingBalance">
                                                       <CanGrow>true</CanGrow>
                                                       <KeepTogether>true</KeepTogether>
                                                       <Paragraphs>
                                                         <Paragraph>
                                                           <TextRuns>
                                                             <TextRun>
-                                                              <Value>=IIf(Sum(Fields!OpeningBalance.Value, "HRMAbsenceCodeId") + Sum(Fields!AnualEntitlement.Value, "HRMAbsenceCodeId") + Sum(Fields!Booked.Value, "HRMAbsenceCodeId") = 0, "0", Sum(Fields!OpeningBalance.Value, "HRMAbsenceCodeId") + Sum(Fields!AnualEntitlement.Value, "HRMAbsenceCodeId") + Sum(Fields!Booked.Value, "HRMAbsenceCodeId"))</Value>
+                                                              <Value>=Sum(Fields!ClosingBalance.Value)</Value>
                                                               <Style>
                                                                 <FontStyle>Normal</FontStyle>
                                                                 <FontFamily>Segoe UI</FontFamily>
@@ -2496,7 +2496,7 @@
                                                           </Style>
                                                         </Paragraph>
                                                       </Paragraphs>
-                                                      <rd:DefaultName>OpeningBalance1</rd:DefaultName>
+                                                      <rd:DefaultName>ClosingBalance</rd:DefaultName>
                                                       <Style>
                                                         <Border>
                                                           <Style>None</Style>
@@ -2844,8 +2844,8 @@
                 </Border>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
+                <PaddingTop>0.2pt</PaddingTop>
+                <PaddingBottom>0.2pt</PaddingBottom>
               </Style>
             </Textbox>
             <Textbox Name="PeriodStartDate2">
@@ -3046,7 +3046,7 @@
         <ConnectString />
         <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
-      <rd:DataSourceID>f6082172-006a-4bd7-ada4-d79b433f52e9</rd:DataSourceID>
+      <rd:DataSourceID>96ef81f9-b596-498e-9542-7e40b5d72e09</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>

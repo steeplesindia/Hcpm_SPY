@@ -2800,8 +2800,6 @@ MinimumRequired=Minimum required
  ;PMS
 DataMethod=Data method
  ;New Comment
-NewLabel1=@SPY1967
- ;New Comment
 PlannedWorkingHourSource=Planned working hour source
  ;New Comment
 Generated=Generated
@@ -3808,9 +3806,9 @@ OriginalHiringDateCantBeNull=Original hiring date cant be null for worker %1.
  ;New Comment
 TransactionDate=Transaction date
  ;New Comment
-TransDateFromLeave=Transaction date from leave
+TransDateFromLeave=Transaction date (Update from leave application)
  ;New Comment
-TransDateFromPeriodClose=Transaction date from period close
+TransDateFromPeriodClose=Transaction date (Update from period close)
  ;New Comment
 AsYearStartDate=As year start date
  ;New Comment
@@ -4016,7 +4014,7 @@ BenefitBalance=Benefit balance
  ;New Comment
 TransferFromEntity=Transfer from entity
  ;New Comment
-LACantRecalled=Leave application can't be cancelled as related benefit ledger is found.
+LACantRecalled=Leave application can't be cancelled as related finalized benefit ledger is found.
  ;New Comment
 DoYouWantCancelLA=Do you want to cancel the leave application?
  ;New Comment
@@ -4087,4 +4085,22 @@ WantToRefreshTansferIn=Do you want to refresh transfer in details?
 TransferInDetails=Transfer in details
  ;New Comment
 TransferOutDetails=Transfer out details
+ ;New Comment
+AsYearEndDate=As year end date
+ ;New Comment
+SettledOnlyInSettlementPeriod=Settled only in settlement period
+ ;New Comment
+ErrorOccurredWhileSettlingPayLoan=Error occurred while settling pay loan.
+ ;New Comment
+SettlementIsDoneSuccessfully=Settlement is done successfully.
+ ;New Comment
+AutomateLoanProcessInPayroll=Automate loan process in payroll
+ ;New Comment
+PayLoanProcess=Pay loan process
+ ;New Comment
+WorkerDetailsView=Worker details view
+ ;New Comment
+ValidFromMonth=Valid from month
+ ;New Comment
+HCPMWorkerDetails=HCPM worker details
  ;New Comment

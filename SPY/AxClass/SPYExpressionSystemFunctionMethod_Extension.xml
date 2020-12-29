@@ -50,17 +50,29 @@ final class SPYExpressionSystemFunctionMethod_Extension
         CalendarId workerCalendarId = expressionContext.workerCalendarId();
         FromDate periodFromDate = expressionContext.periodFromDate();
         ToDate periodToDate = expressionContext.periodToDate();
-
+        SPYExpressionFunctionParameter expressionFunctionParameter1 = expressionContext.expressionFunctionParameter1();  //Include holiday in working day
         WorkCalendarDate    workCalendarDate;
         int     noOfDays;
 
-        select count(RecId)
-            from workCalendarDate
-            where workCalendarDate.CalendarId == workerCalendarId
-                && workCalendarDate.ClosedForPickup == NoYes::No
-                && workCalendarDate.SPYHoliday == NoYes::No
-                && workCalendarDate.TransDate >= periodFromDate
-                && workCalendarDate.TransDate <= periodToDate;
+        if(expressionFunctionParameter1 == "True")
+        {
+            select count(RecId)
+                from workCalendarDate
+                where workCalendarDate.CalendarId == workerCalendarId
+                    && (workCalendarDate.ClosedForPickup == NoYes::No || workCalendarDate.SPYHoliday)
+                    && workCalendarDate.TransDate >= periodFromDate
+                    && workCalendarDate.TransDate <= periodToDate;
+        }
+        else
+        {
+            select count(RecId)
+                from workCalendarDate
+                where workCalendarDate.CalendarId == workerCalendarId
+                    && workCalendarDate.ClosedForPickup == NoYes::No
+                    && workCalendarDate.SPYHoliday == NoYes::No
+                    && workCalendarDate.TransDate >= periodFromDate
+                    && workCalendarDate.TransDate <= periodToDate;
+        }
 
         noOfDays = int642int( workCalendarDate.RecId);
 
@@ -531,7 +543,8 @@ final class SPYExpressionSystemFunctionMethod_Extension
             monthEndEffectiveDate = monthEndDate;
             monthEndEffectiveDay = dayOfMth(monthEndDate);
         }
-        if(mthOfYr(monthEndEffectiveDate) == mthOfYr(employmentEndDate)) //termination in first month
+        if((mthOfYr(monthEndEffectiveDate) == mthOfYr(employmentEndDate)) &&
+            (year(monthEndEffectiveDate) == year(employmentEndDate))) //termination in first month
         {
             monthEndEffectiveDate = employmentEndDate;
             monthEndEffectiveDay = dayOfMth(employmentEndDate);
@@ -966,30 +979,41 @@ final class SPYExpressionSystemFunctionMethod_Extension
     public SPYAmount AB_LEAVE_DAYS()
     {
         HcmWorkerRecId worker = expressionContext.worker();
-        SPYLeaveApplicationLine     spyLeaveApplicationLine;
-        
-        FromDate timesheetFromDate = expressionContext.timesheetFromDate();
-        ToDate timesheetToDate = expressionContext.timesheetToDate();        
+        SPYLeaveApplicationLine     spyLeaveApplicationLine;        
+        FromDate fromDate;
+        ToDate toDate;
         SPYExpressionFunctionParameter expressionFunctionParameter1 = expressionContext.expressionFunctionParameter1();
+        SPYExpressionFunctionParameter expressionFunctionParameter2 = expressionContext.expressionFunctionParameter2();
         SPYAbsenceLedger    absenceLedger;
+        
+        if(expressionFunctionParameter2 == "PayrollPeriod")
+        {
+            fromDate = expressionContext.PeriodFromDate();
+            toDate = expressionContext.PeriodToDate();
+        }
+        else if(expressionFunctionParameter2 == "TimesheetPeriod")
+        {
+            fromDate = expressionContext.timesheetFromDate();
+            toDate = expressionContext.timesheetToDate();
+        }
 
         if ( expressionFunctionParameter1 == '' )
         {
-        select sum ( AbsenceDays )
-            from absenceLedger
-            where absenceLedger.Worker == worker
-                && absenceLedger.TransDate >= timesheetFromDate
-                && absenceLedger.TransDate <= timesheetToDate            
-            && ( absenceLedger.LeaveApplicationLine || absenceLedger.AbsenceDays < 0) ;
+            select sum ( AbsenceDays )
+                from absenceLedger
+                where absenceLedger.Worker == worker
+                && absenceLedger.TransDate >= fromDate
+                && absenceLedger.TransDate <= toDate
+                && ( absenceLedger.LeaveApplicationLine || absenceLedger.AbsenceDays < 0) ;
         }
         else
         {
             select sum ( AbsenceDays )
-            from absenceLedger
+                from absenceLedger
                 join spyLeaveApplicationLine
-            where absenceLedger.Worker == worker
-                && absenceLedger.TransDate >= timesheetFromDate
-                && absenceLedger.TransDate <= timesheetToDate
+                where absenceLedger.Worker == worker
+                && absenceLedger.TransDate >= fromDate
+                && absenceLedger.TransDate <= toDate
                 && absenceLedger.LeaveApplicationLine == spyLeaveApplicationLine.RecId
                 && spyLeaveApplicationLine.HRMAbsenceCode == expressionFunctionParameter1;
         }
@@ -1007,19 +1031,31 @@ final class SPYExpressionSystemFunctionMethod_Extension
     public SPYAmount AB_EMP_APPLIED()
     {
         HcmWorkerRecId worker = expressionContext.worker();
-        FromDate timesheetFromDate = expressionContext.timesheetFromDate();
-        ToDate timesheetToDate = expressionContext.timesheetToDate();
+        FromDate fromDate;
+        ToDate toDate;
         SPYExpressionFunctionParameter expressionFunctionParameter1 = expressionContext.expressionFunctionParameter1();
-
+        SPYExpressionFunctionParameter expressionFunctionParameter2 = expressionContext.expressionFunctionParameter2();
         SPYAbsenceLedger    absenceLedger;
+
+        if(expressionFunctionParameter2 == "PayrollPeriod")
+        {
+            fromDate = expressionContext.PeriodFromDate();
+            toDate = expressionContext.PeriodToDate();
+        }
+        else if(expressionFunctionParameter2 == "TimesheetPeriod")
+        {
+            fromDate = expressionContext.timesheetFromDate();
+            toDate = expressionContext.timesheetToDate();
+        }
 
         select sum ( AbsenceDays )
             from absenceLedger
             where absenceLedger.Worker == worker
-                && absenceLedger.TransDate >= timesheetFromDate
-                && absenceLedger.TransDate <= timesheetToDate
+                && absenceLedger.TransDate >= fromDate
+                && absenceLedger.TransDate <= toDate
             && absenceLedger.HRMAbsenceCodeId == expressionFunctionParameter1
-            && ( absenceLedger.LeaveApplicationLine || absenceLedger.AbsenceDays < 0) ;
+            && ( absenceLedger.LeaveApplicationLine || absenceLedger.AbsenceDays < 0) 
+            && absenceLedger.EntryType == SPYAbsenceLedgerEntryType::Transaction;
         
         return absenceLedger.AbsenceDays *-1;
     }
@@ -1034,25 +1070,32 @@ final class SPYExpressionSystemFunctionMethod_Extension
     {
         HcmWorkerRecId worker = expressionContext.worker();
         RecId payrollPeriodLine = expressionContext.payrollPeriodLine();
-        FromDate timesheetFromDate = expressionContext.timesheetFromDate();
+        FromDate fromDate;
         FromDate periodFromDate = expressionContext.periodFromDate();
         SPYExpressionFunctionParameter expressionFunctionParameter1 = expressionContext.expressionFunctionParameter1();
-
+        SPYExpressionFunctionParameter expressionFunctionParameter2 = expressionContext.expressionFunctionParameter2();
         SPYAbsenceLedger    absenceLedger;
         SPYPayrollPeriodLine        payrollPeriodLineTab;
         date   prevYearDec = mkDate(1,12,Year(periodFromDate) - 1), prevYearDecTimesheetDate;
 
         select firstonly payrollPeriodLineTab
-            where payrollPeriodLineTab.PayrollPeriod == SPYPayrollPeriodLine::find(payrollPeriodLine).PayrollPeriod
-            &&  payrollPeriodLineTab.PeriodStartDate == prevYearDec;
-
+            where payrollPeriodLineTab.PayrollPeriod == SPYPayrollPeriodLine::find(payrollPeriodLine).PayrollPeriod &&
+            payrollPeriodLineTab.PeriodStartDate == prevYearDec;
         prevYearDecTimesheetDate = payrollPeriodLineTab.PayrollDate;
+        if(expressionFunctionParameter2 == "PayrollPeriod")
+        {
+            fromDate = expressionContext.PeriodFromDate();
+        }
+        else if(expressionFunctionParameter2 == "TimesheetPeriod")
+        {
+            fromDate = expressionContext.timesheetFromDate();
+        }        
 
         select sum ( AbsenceDays )
             from absenceLedger
             where absenceLedger.Worker == worker
                 && absenceLedger.TransDate > prevYearDecTimesheetDate
-                && absenceLedger.TransDate < timesheetFromDate
+                && absenceLedger.TransDate < fromDate
                 && absenceLedger.HRMAbsenceCodeId == expressionFunctionParameter1
                 && ( absenceLedger.LeaveApplicationLine || absenceLedger.AbsenceDays < 0)
                 && absenceLedger.EntryType == SPYAbsenceLedgerEntryType::Transaction;
@@ -2159,8 +2202,8 @@ final class SPYExpressionSystemFunctionMethod_Extension
     {
         HcmWorkerRecId worker = expressionContext.worker();
         TransDate transDate = expressionContext.transDate();
-        SPYExpressionFunctionParameter expressionFunctionParameter1 = expressionContext.expressionFunctionParameter1();
-
+        SPYExpressionFunctionParameter expressionFunctionParameter1 = expressionContext.expressionFunctionParameter1(); //relationship type
+        SPYExpressionFunctionParameter expressionFunctionParameter2 = expressionContext.expressionFunctionParameter2(); //subcategory
         HCMWorker hcmWorker ;
         DIRPARTYRELATIONSHIP DirPartyRelationShip;
         HCMPersonPrivateDetails hcmPersonPrivateDetails;
@@ -2168,8 +2211,8 @@ final class SPYExpressionSystemFunctionMethod_Extension
         real    ageAsOfDate;
         real    fromLimit, toLimit;
 
-        fromLimit = this.CONFIG_KEY_ASDOUBLE(expressionFunctionParameter1 +"fromAge");
-        toLimit= this.CONFIG_KEY_ASDOUBLE(expressionFunctionParameter1 +"toAge");
+        fromLimit = this.CONFIG_KEY_ASDOUBLE(expressionFunctionParameter1 +expressionFunctionParameter2+"fromAge");
+        toLimit= this.CONFIG_KEY_ASDOUBLE(expressionFunctionParameter1 +expressionFunctionParameter2+"toAge");
 
         while select *
             from hcmWorker
@@ -2190,7 +2233,7 @@ final class SPYExpressionSystemFunctionMethod_Extension
                     if ((ageAsOfDate >= fromLimit) && (ageAsOfDate < toLimit ) )
                     {
                         dependentCount += 1;
-                        };
+                    }
                 }
                 else 
                 {
@@ -2841,20 +2884,29 @@ final class SPYExpressionSystemFunctionMethod_Extension
         FromDate calcFromDate = expressionContext.calcFromDate();
         ToDate calcToDate = expressionContext.calcToDate();
         date  transDate = calcFromDate;
+        SPYExpressionFunctionParameter expressionFunctionParameter1 = expressionContext.expressionFunctionParameter1();  //Include holiday in working day
         boolean     isOffDay;
         int workingDay;      
         SPYWorkingProfile   workingProfile = new SPYWorkingProfile(worker, legalEntity);
-
+        boolean isHoliday;
         while(transDate <= calcToDate)
         {
-            boolean isHoliday = workingProfile.IsHolidayFromProfile(transDate);
-            if(!isHoliday)
+            if(expressionFunctionParameter1 == "True")
             {
                 SPYAmount   workingHours = workingProfile.workingHoursFromProfile(transDate);
                 isOffDay = workingHours == 0 ? true : false;
             }
             else
-                isOffDay = true;
+            {
+                isHoliday= workingProfile.IsHolidayFromProfile(transDate);
+                if(!isHoliday)
+                {
+                    SPYAmount   workingHours = workingProfile.workingHoursFromProfile(transDate);
+                    isOffDay = workingHours == 0 ? true : false;
+                }
+                else
+                    isOffDay = true;                
+            }
             
             if(!isOffDay)
                 workingDay++;
@@ -2885,13 +2937,12 @@ final class SPYExpressionSystemFunctionMethod_Extension
 			<Method>
 				<Name>EMP_ELEMENT_AMT</Name>
 				<Source><![CDATA[
-    //this function woudl reutrn the amount for a given pay elments from the employe salalry structure 
+    //this function would reutrn the amount for a given pay elments from the employe salalry structure 
     public SPYAmount EMP_ELEMENT_AMT()
     {
         HcmWorkerRecId worker = expressionContext.worker();
         LegalEntityRecId legalEntity = expressionContext.legalEntity();
         FromDate calcFromDate = expressionContext.calcFromDate();
-        RecId payElement = expressionContext.payElement();
         SPYExpressionFunctionParameter expressionFunctionParameter1 = expressionContext.expressionFunctionParameter1();
         SPYExpressionFunctionParameter expressionFunctionParameter2 = expressionContext.expressionFunctionParameter2();
         SPYPayElementCode   payElementCode = expressionFunctionParameter1;
@@ -2989,13 +3040,12 @@ final class SPYExpressionSystemFunctionMethod_Extension
 			<Method>
 				<Name>EMP_ELEMENT_QTY</Name>
 				<Source><![CDATA[
-    //this function woudl reutrn the amount for a given pay elments from the employe salalry structure
+    //this function would reutrn the qty for a given pay elments from the employe salalry structure
     public SPYAmount EMP_ELEMENT_QTY()
     {
         HcmWorkerRecId worker = expressionContext.worker();
         LegalEntityRecId legalEntity = expressionContext.legalEntity();
         FromDate calcFromDate = expressionContext.calcFromDate();
-        RecId payElement = expressionContext.payElement();
         SPYExpressionFunctionParameter expressionFunctionParameter1 = expressionContext.expressionFunctionParameter1();
         SPYExpressionFunctionParameter expressionFunctionParameter2 = expressionContext.expressionFunctionParameter2();
 
@@ -3007,8 +3057,7 @@ final class SPYExpressionSystemFunctionMethod_Extension
         select firstonly validtimestate(calcFromDate) *
         from spyWorkerPositionBenefit
         join spyPayElementTable
-        where spyPayElementTable.RecId == payElement
-        && spyPayElementTable.RecId == spyWorkerPositionBenefit.Benefit
+        where spyPayElementTable.RecId == spyWorkerPositionBenefit.Benefit
         && spyWorkerPositionBenefit.Worker == worker
         && spyWorkerPositionBenefit.LegalEntity == legalEntity
         && spyPayElementTable.PayElementCode == expressionFunctionParameter1;

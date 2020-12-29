@@ -13,5 +13,10 @@
 			<Label>@SPY:AsYearStartDate</Label>
 			<Value>1</Value>
 		</AxEnumValue>
+		<AxEnumValue>
+			<Name>YearEndDate</Name>
+			<Label>@SPY:AsYearEndDate</Label>
+			<Value>2</Value>
+		</AxEnumValue>
 	</EnumValues>
 </AxEnum>

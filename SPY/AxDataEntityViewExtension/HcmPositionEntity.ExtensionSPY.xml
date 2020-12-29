@@ -7,6 +7,7 @@
 			<DataSource>
 				<Name>HcmCompensationLevelGrade</Name>
 				<DynamicFields>Yes</DynamicFields>
+				<IsReadOnly>Yes</IsReadOnly>
 				<Table>HcmCompensationLevel</Table>
 				<DataSources />
 				<DerivedDataSources />
@@ -28,6 +29,7 @@
 			<DataSource>
 				<Name>HcmCompensationLevelBand</Name>
 				<DynamicFields>Yes</DynamicFields>
+				<IsReadOnly>Yes</IsReadOnly>
 				<Table>HcmCompensationLevel</Table>
 				<DataSources />
 				<DerivedDataSources />
@@ -49,6 +51,7 @@
 			<DataSource>
 				<Name>HcmCompensationLevelStep</Name>
 				<DynamicFields>Yes</DynamicFields>
+				<IsReadOnly>Yes</IsReadOnly>
 				<Table>HcmCompensationLevel</Table>
 				<DataSources />
 				<DerivedDataSources />
@@ -72,40 +75,28 @@
 	<Fields>
 		<AxDataEntityViewField xmlns=""
 			i:type="AxDataEntityViewMappedField">
-			<Name>SPYCompensationLevelBand</Name>
-			<DataField>SPYCompensationLevelBand</DataField>
-			<DataSource>HcmPositionDetail</DataSource>
-		</AxDataEntityViewField>
-		<AxDataEntityViewField xmlns=""
-			i:type="AxDataEntityViewMappedField">
-			<Name>SPYCompensationLevelGrade</Name>
-			<DataField>SPYCompensationLevelGrade</DataField>
-			<DataSource>HcmPositionDetail</DataSource>
-		</AxDataEntityViewField>
-		<AxDataEntityViewField xmlns=""
-			i:type="AxDataEntityViewMappedField">
-			<Name>SPYCompensationLevelStep</Name>
-			<DataField>SPYCompensationLevelStep</DataField>
-			<DataSource>HcmPositionDetail</DataSource>
-		</AxDataEntityViewField>
-		<AxDataEntityViewField xmlns=""
-			i:type="AxDataEntityViewMappedField">
-			<Name>CompensationLevelBandId</Name>
-			<Label>Compensation bandId</Label>
+			<Name>SPYCompensationLevelBandId</Name>
+			<AllowEdit>Yes</AllowEdit>
+			<AllowEditOnCreate>Yes</AllowEditOnCreate>
+			<Label>@SYS116554</Label>
 			<DataField>CompensationLevelId</DataField>
 			<DataSource>HcmCompensationLevelBand</DataSource>
 		</AxDataEntityViewField>
 		<AxDataEntityViewField xmlns=""
 			i:type="AxDataEntityViewMappedField">
-			<Name>CompensationLevelGradeId</Name>
-			<Label>Compensation gradeId</Label>
+			<Name>SPYCompensationLevelGradeId</Name>
+			<AllowEdit>Yes</AllowEdit>
+			<AllowEditOnCreate>Yes</AllowEditOnCreate>
+			<Label>@SYS116553</Label>
 			<DataField>CompensationLevelId</DataField>
 			<DataSource>HcmCompensationLevelGrade</DataSource>
 		</AxDataEntityViewField>
 		<AxDataEntityViewField xmlns=""
 			i:type="AxDataEntityViewMappedField">
-			<Name>CompensationLevelStepId</Name>
-			<Label>Compensation stepId</Label>
+			<Name>SPYCompensationLevelStepId</Name>
+			<AllowEdit>Yes</AllowEdit>
+			<AllowEditOnCreate>Yes</AllowEditOnCreate>
+			<Label>@SYS108671</Label>
 			<DataField>CompensationLevelId</DataField>
 			<DataSource>HcmCompensationLevelStep</DataSource>
 		</AxDataEntityViewField>

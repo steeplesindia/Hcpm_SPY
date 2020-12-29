@@ -57,10 +57,46 @@ class SPYWorkingProfile
 
         JmgProfileId  profileId = this.workerProfileId(_transDate);
         jmgProfiles = new JmgProfiles(false);
-        jmgProfiles.getProfile(profileId, dayOfWk(_transDate));
+       
+        jmgProfiles.getProfile(profileId, this.weekDayToJmgDay(dayOfWk(_transDate)));
         jmgProfiles.initStampJournalTable(stampJournalTable);
-    
+       
         return stampJournalTable.ProfileSeconds / 3600;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>weekDayToJmgDay</Name>
+				<Source><![CDATA[
+    public JmgDayId weekDayToJmgDay(int _dayOfWeek)
+    {
+        JmgDayIdEnum    ret;
+        switch(_dayOfWeek)
+        {
+            case 1:
+                ret = JmgDayIdEnum::Monday;
+                break;
+            case 2:
+                ret = JmgDayIdEnum::Tuesday;
+                break;
+            case 3:
+                ret = JmgDayIdEnum::Wednesday;
+                break;
+            case 4:
+                ret = JmgDayIdEnum::Thursday;
+                break;
+            case 5:
+                ret = JmgDayIdEnum::Friday;
+                break;
+            case 6:
+                ret = JmgDayIdEnum::Saturday;
+                break;
+            case 7:
+                ret = JmgDayIdEnum::Sunday;
+                break;
+        }
+        return ret;
     }
 
 ]]></Source>

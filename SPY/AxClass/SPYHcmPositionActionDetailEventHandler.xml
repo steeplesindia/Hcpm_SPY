@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>SPYHcmPositionActionDetailEventHandler</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+class SPYHcmPositionActionDetailEventHandler
+{
+    
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>HcmPositionAction_onModifiedField</Name>
+				<Source><![CDATA[
+    [DataEventHandler(tableStr(HcmPositionActionDetail), DataEventType::ModifiedField)]
+    public static void HcmPositionAction_onModifiedField(Common sender, DataEventArgs e)
+    {
+        ModifyFieldEventArgs    modifyFieldEventArgs = e as ModifyFieldEventArgs;
+
+        switch(modifyFieldEventArgs.parmFieldId())
+        {
+            case fieldNum(hcmPositionActionDetail, Job):
+                HcmPositionActionDetail   hcmPositionActionDetail = sender as HcmPositionActionDetail;
+                HcmJobDetail    jobDetail = HcmJobDetail::findByJob(hcmPositionActionDetail.Job);
+                hcmPositionActionDetail.SPYCompensationLevelBand = jobDetail.SPYCompensationLevelBand;
+                hcmPositionActionDetail.SPYCompensationLevelGrade = jobDetail.SPYCompensationLevelGrade;
+                hcmPositionActionDetail.SPYCompensationLevelStep = jobDetail.SPYCompensationLevelStep;
+                break;
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>HcmPositionActionDetail_Post_isRecordModified</Name>
+				<Source><![CDATA[
+    [PostHandlerFor(tableStr(HcmPositionActionDetail), tableMethodStr(HcmPositionActionDetail, isRecordModified))]
+    public static void HcmPositionActionDetail_Post_isRecordModified(XppPrePostArgs args)
+    {
+        HcmPositionActionDetail     hcmPositionActionDetail = args.getThis() as HcmPositionActionDetail;
+        HcmPositionDetail   hcmPositionDetail = args.getArg("_positionDetail") as HcmPositionDetail;
+
+        boolean ret = args.getReturnValue();
+        if(!ret)
+            ret = !(hcmPositionActionDetail.SPYCompensationLevelBand == hcmPositionDetail.SPYCompensationLevelBand &&
+                    hcmPositionActionDetail.SPYCompensationLevelGrade == hcmPositionDetail.SPYCompensationLevelGrade &&
+                    hcmPositionActionDetail.SPYCompensationLevelStep == hcmPositionDetail.SPYCompensationLevelStep);
+
+        args.setReturnValue(ret);
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

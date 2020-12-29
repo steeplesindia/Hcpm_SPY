@@ -218,13 +218,13 @@ class SPYDisbursementPostService extends SPYPayService
 
         if (!disbursementWorkerRequest.RecId)
         {
-            while select AccountingCurrencyAmount,Currency,IsRemainder from bankDisbursement
+            while select AccountingCurrencyAmount,SPYCurrency,IsRemainder from bankDisbursement
                     join RecId, Worker from bankAccount
                     where bankDisbursement.WorkerBankAccount  == bankAccount.RecId
                     && bankAccount.Worker == hcmWorker.RecId
             {
                 CurrencyExchangeHelper currencyExchangeHelper = CurrencyExchangeHelper::newExchangeDate(Ledger::current(), systemDateGet());
-                Amount amountMst = currencyExchangeHelper.calculateTransactionToAccounting(bankDisbursement.Currency,bankDisbursement.AccountingCurrencyAmount,false);
+                Amount amountMst = currencyExchangeHelper.calculateTransactionToAccounting(bankDisbursement.SPYCurrency,bankDisbursement.AccountingCurrencyAmount,false);
                 
                 disbursementWorkerRequest.clear();
                 disbursementWorkerRequest.initValue();
@@ -235,7 +235,7 @@ class SPYDisbursementPostService extends SPYPayService
                 disbursementWorkerRequest.AmountMst = amountMst;
                 disbursementWorkerRequest.AmountRemainMST = amountMst;
                 disbursementWorkerRequest.ExchRate = bankDisbursement.AccountingCurrencyAmount ? amountMst / bankDisbursement.AccountingCurrencyAmount : 0;
-                disbursementWorkerRequest.Currency = bankDisbursement.Currency;
+                disbursementWorkerRequest.Currency = bankDisbursement.SPYCurrency;
                 disbursementWorkerRequest.IsRemainder = bankDisbursement.IsRemainder;
 
                 disbursementWorkerRequest.insert();

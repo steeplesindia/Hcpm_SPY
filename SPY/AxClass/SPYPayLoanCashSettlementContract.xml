@@ -12,6 +12,7 @@ class SPYPayLoanCashSettlementContract
     SPYPayLoanRecId             payLoan;
     Amount                      amount;
     Description                 description;
+    boolean     settledOnlyInSettlementPeriod; // if its true cash settlement entry will be created in settlement period only otherwise entries will be created from unsettled period
 
 }
 ]]></Declaration>
@@ -84,6 +85,18 @@ class SPYPayLoanCashSettlementContract
     {
         settlementPeriod = _settlementPeriod;
         return settlementPeriod;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmSettledOnlyInSettlementPeriod</Name>
+				<Source><![CDATA[
+    [DataMemberAttribute]
+    public boolean parmSettledOnlyInSettlementPeriod(boolean _settledOnlyInSettlementPeriod = settledOnlyInSettlementPeriod)
+    {
+        settledOnlyInSettlementPeriod = _settledOnlyInSettlementPeriod;
+        return settledOnlyInSettlementPeriod;
     }
 
 ]]></Source>

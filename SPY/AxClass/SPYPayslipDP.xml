@@ -145,6 +145,102 @@ public class SPYPayslipDP extends SrsReportDataProviderPreProcess
         SPYWorkerPositionBenefit    workerPositionBenefit;
         SPYBenefitTable             benefitTable;
         SPYBenefitTypeTable         benefitTypeTable;
+        SPYBenefitLedger            benefitLedgerLoc;
+        FromDate                    fromDate = payrollPeriodLine.PeriodStartDate;
+        ToDate                      toDate = payrollPeriodLine.PeriodEndDate;
+        HRMAbsenceCode              hrmAbsenceCode;
+        SPYAbsenceLedger            absenceLedger, absenceLedgerOpEntry, absenceLedgerCloEntry, absenceLedgerLevTaken;
+        SPYPayrollPeriodLine        payrollPeriodLineLoc;
+        RecordInsertList            recordInsertLeaveDetails;
+
+        recordInsertLeaveDetails = new RecordInsertList(tableNum(SPYPaySlipDetailsTmp));
+        while select validTimeState(fromDate, ToDate) workerPositionBenefit
+            join benefitTable
+            where workerPositionBenefit.Worker      == hcmWorker.RecId
+            &&  workerPositionBenefit.Benefit       == benefitTable.RecId
+            &&  workerPositionBenefit.LegalEntity   == CompanyInfo::current()
+            join benefitTypeTable
+            where benefitTable.BenefitType          == benefitTypeTable.RecId
+            && benefitTypeTable.BenefitTypeCode     == "Leave"
+            join hrmAbsenceCode
+            where hrmAbsenceCode.SPYBenefit         == benefitTable.recId
+        {
+            payslipDetailsTmp.clear();
+            payslipDetailsTmp.Worker                    = hcmWorker.RecId;
+            payslipDetailsTmp.WorkerName                = hcmWorker.name();
+            payslipDetailsTmp.WorkerPersonnelNumber     = hcmWorker.PersonnelNumber;
+            payslipDetailsTmp.PayrollPeriodLine         = payrollPeriodLineRecId;
+            payslipDetailsTmp.PeriodCode                = SPYPayrollPeriod::find(payrollPeriodLine.PayrollPeriod).PayrollPeriodCode;
+            payslipDetailsTmp.PeriodStartDate           = payrollPeriodLine.PeriodStartDate;
+            payslipDetailsTmp.PeriodEndDate             = payrollPeriodLine.PeriodEndDate;
+            payslipDetailsTmp.EntryType                 = SPYEntryType::Leave;
+            payslipDetailsTmp.HRMAbsenceCodeId          = hrmAbsenceCode.hrmAbsenceCodeId;
+            payslipDetailsTmp.AbsenceDescription        = hrmAbsenceCode.hrmAbsenceCodeId;//hrmAbsenceCode.description;
+            payslipDetailsTmp.AnualEntitlement          = workerPositionBenefit.QtyAnnual;
+            
+            TransDate       openingEntryDate = dateNull();
+            select reverse absenceLedger
+                where absenceLedger.Worker == hcmWorker.RecId
+                    && absenceLedger.HRMAbsenceCodeId == hrmAbsenceCode.hrmAbsenceCodeId
+                && absenceLedger.EntryType == SPYAbsenceLedgerEntryType::OpeningEntry;
+
+            if(absenceLedger)
+            {
+                openingEntryDate = absenceLedger.TransDate;
+            }
+
+            select sum(absenceDays) from absenceLedgerOpEntry
+                where absenceLedgerOpEntry.TransDate >= openingEntryDate
+                &&  absenceLedgerOpEntry.TransDate   < fromDate
+                && absenceLedgerOpEntry.EntryType != SPYAbsenceLedgerEntryType::ClosingEntry
+                && absenceLedgerOpEntry.Worker == hcmWorker.RecId
+                && absenceLedgerOpEntry.HRMAbsenceCodeId == hrmAbsenceCode.hrmAbsenceCodeId;
+            
+
+            payslipDetailsTmp.OpeningBalance    = absenceLedgerOpEntry.AbsenceDays;
+    
+            select sum(Quantity) from benefitLedgerLoc
+                where benefitLedgerLoc.Worker           == hcmWorker.RecId
+                &&  benefitLedgerLoc.Benefit            == benefitTable.RecId
+                && benefitLedgerLoc.SourceDocument == 0  //Consider Payroll process
+                &&  benefitLedgerLoc.PayrollPeriodLine == PayrollPeriodLine.RecId;
+                
+            payslipDetailsTmp.LeavesEarned      = benefitLedgerLoc.Quantity;
+    
+            select sum(absenceDays) from absenceLedgerLevTaken
+                where absenceLedgerLevTaken.TransDate >= fromDate
+                &&  absenceLedgerLevTaken.TransDate   <= toDate
+                && absenceLedgerLevTaken.SourceDocument == tableNum(SPYLeaveApplicationTable)
+                && absenceLedgerLevTaken.Worker == hcmWorker.RecId
+                && absenceLedgerLevTaken.HRMAbsenceCodeId == hrmAbsenceCode.hrmAbsenceCodeId;
+
+            payslipDetailsTmp.LeavesTaken = abs(absenceLedgerLevTaken.AbsenceDays);
+
+            select sum(absenceDays) from absenceLedgerCloEntry
+                where absenceLedgerCloEntry.TransDate >= openingEntryDate
+                &&  absenceLedgerCloEntry.TransDate   <= toDate
+                && absenceLedgerCloEntry.EntryType != SPYAbsenceLedgerEntryType::ClosingEntry
+                && absenceLedgerCloEntry.Worker == hcmWorker.RecId
+                && absenceLedgerCloEntry.HRMAbsenceCodeId == hrmAbsenceCode.hrmAbsenceCodeId;
+            
+            payslipDetailsTmp.ClosingBalance            = absenceLedgerCloEntry.AbsenceDays;
+    
+            this.setEmplBanks();
+            recordInsertLeaveDetails.add(payslipDetailsTmp);
+        }
+        recordInsertLeaveDetails.insertDatabase();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>insertLeaveDetails_Old</Name>
+				<Source><![CDATA[
+    public void insertLeaveDetails_Old()
+    {
+        SPYWorkerPositionBenefit    workerPositionBenefit;
+        SPYBenefitTable             benefitTable;
+        SPYBenefitTypeTable         benefitTypeTable;
         FromDate                    fromDate = payrollPeriodLine.PeriodStartDate;
         ToDate                      toDate = payrollPeriodLine.PeriodEndDate;
         HRMAbsenceCode              hrmAbsenceCode;
@@ -212,7 +308,8 @@ public class SPYPayslipDP extends SrsReportDataProviderPreProcess
             &&  payrollPeriodLineLoc.PayrollPeriod  == PayrollPeriodLine.PayrollPeriod;
     
             payslipDetailsTmp.OpeningBalance            = benefitLedger.Quantity;
-            payslipDetailsTmp.ClosingBalance            = payslipDetailsTmp.OpeningBalance + payslipDetailsTmp.LeavesEarned - payslipDetailsTmp.LeavesTaken;
+            payslipDetailsTmp.ClosingBalance            = payslipDetailsTmp.OpeningBalance +
+                                                                    payslipDetailsTmp.LeavesEarned - payslipDetailsTmp.LeavesTaken;
     
             this.setEmplBanks();
             recordInsertLeaveDetails.add(payslipDetailsTmp);
@@ -316,7 +413,7 @@ public class SPYPayslipDP extends SrsReportDataProviderPreProcess
             payrollledger   = qr.get(tableNum(SPYPayrollLedger));
             this.insertIntoPayslipDetailsTmp();
         }
-    
+        
         qr =new QueryRun(this.parmQuery());
     
         while(qr.next())
@@ -328,6 +425,7 @@ public class SPYPayslipDP extends SrsReportDataProviderPreProcess
                 this.insertLeaveDetails();
             }
         }
+       
     
     }
 

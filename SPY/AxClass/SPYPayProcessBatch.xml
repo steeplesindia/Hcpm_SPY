@@ -80,6 +80,7 @@ class SPYPayProcessBatch
                 payProcessContract.parmTransDate(_payProcessContract.parmTransDate());
                 payProcessContract.parmCallFromBatchTask(true);
                 controller.batchInfo().parmCaption(strFmt("Payroll Batck Task - %1", batchSeq));
+                controller.batchInfo().parmRetriesOnFailure(10);
                 batchHeader.addTask(controller);
             }
             workerCounter++;

@@ -917,7 +917,8 @@ class SPYEOSService extends SPYPayService
         EOSRunBenefit.Txt                       = strFmt("@SPY1109",SPYPayElementTable::find(_benefit).PayElementCode,
                                                   worker.name(),periodStart,periodEnd);
         EOSRunBenefit.setAccount(payrollPeriodLineTable.PeriodStartDate,legalEntity,payrollPeriodLineTable.RecId,true);
-    
+        EOSRunBenefit.ExpressionTrace = this.getExpressionTrace();
+
         return EOSRunBenefit;
     }
 
@@ -965,6 +966,7 @@ class SPYEOSService extends SPYPayService
             EOSRunPayroll.Txt                       = strFmt("@SPY1109",SPYPayElementTable::find(_benefit).PayElementCode,
                                                       worker.name(),periodStart,periodEnd);
             EOSRunPayroll.setAccount(payrollPeriodLineTable.PeriodStartDate,legalEntity,payrollPeriodLineTable.RecId);
+            EOSRunPayroll.ExpressionTrace = this.getExpressionTrace();
             EOSRunPayroll.UpdateFromBenefit         = true;
         }
         return EOSRunPayroll;
@@ -1097,7 +1099,7 @@ class SPYEOSService extends SPYPayService
             [totalTransCurAmount,totalAccCurAmount,totalQty] = this.amtQtyFromBenefitLedgerTmp(benefitLedgerTmp);
             [totalAccruedAccCurAmt,totalQty] = this.getBalanceAccCurAmtNQty(benefit);
             this.notifyObserver(strFmt("@SYS90673",benefitCode),strFmt("@SPY778",totalTransCurAmount,
-                                                            totalQty),4,2);
+                                                            totalQty),5,2);
     
             EOSRunUpdate.updateBenefit(this.updateEOSRunEncashment(benefit,
                                                                    totalAccCurAmount,

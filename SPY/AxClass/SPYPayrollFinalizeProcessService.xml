@@ -261,10 +261,11 @@ class SPYPayrollFinalizeProcessService extends SPYPayrollFinalize
 
         while select Benefit, sum(Quantity) 
             from benefitLedger group by Benefit
-            where benefitLedger.Worker == hcmWorker.RecId 
-                && benefitLedger.PayrollPeriodLine == _payrollPeriodLine
-         join absenceCode group by hrmAbsenceCodeId
-             where absenceCode.SPYBenefit == benefitLedger.Benefit
+            where benefitLedger.Worker == hcmWorker.RecId &&
+                    benefitLedger.PayrollPeriodLine == _payrollPeriodLine &&
+                    benefitLedger.SourceDocument != tableNum(SPYAbsenceLedger) //entries coming from absence ledger in timesheet process should be ignored
+            join absenceCode group by hrmAbsenceCodeId
+            where absenceCode.SPYBenefit == benefitLedger.Benefit
         {
                 select hrmAbsenceCodeId, sum(AbsenceDays)
                 from absenceLedger
@@ -274,9 +275,9 @@ class SPYPayrollFinalizeProcessService extends SPYPayrollFinalize
                 absenceLedger.TransDate >= timesheetStartDate &&
                 absenceLedger.TransDate <= timesheetEndDate;
 
-            if(absenceLedger.AbsenceDays != benefitLedger.Quantity && absenceLedger.hrmAbsenceCodeId)
+            if(absenceLedger.AbsenceDays != benefitLedger.Quantity && absenceCode.hrmAbsenceCodeId)
             {
-                this.insert2AbsenceLedger(absenceLedger.hrmAbsenceCodeId, benefitLedger.Quantity);
+                this.insert2AbsenceLedger(absenceCode.hrmAbsenceCodeId, benefitLedger.Quantity);
             }
         }
     }
@@ -303,22 +304,26 @@ class SPYPayrollFinalizeProcessService extends SPYPayrollFinalize
             select sum(AbsenceDays) from absenceLedger
             where absenceLedger.Worker == hcmWorker.RecId &&
             absenceLedger.HRMAbsenceCodeId == _absenceCodeId &&
+            !absenceLedger.BenefitLedger &&  //Entries tagged with benefit ledger where benefit ledger is created in Timesheet process should be ignored
             absenceLedger.TransDate >= timesheetStartDate &&
             absenceLedger.TransDate <= timesheetEndDate;
             SPYAmount   diffQty = _benefitLedgerQty - absenceLedger.AbsenceDays;
 
-            absenceLedger.clear();
-            absenceLedger.initValue();
-            absenceLedger.Worker = hcmWorker.RecId;
-            absenceLedger.EntryType  = SPYAbsenceLedgerEntryType::Transaction;
-            absenceLedger.HRMAbsenceCodeId = _absenceCodeId;
-            absenceLedger.AbsenceDate = timesheetEndDate;
-            absenceLedger.TransDate = timesheetEndDate;
-            absenceLedger.AbsenceDays = diffQty;
-            absenceLedger.AbsenceHours = absenceWorkerService.workingHours() *  diffQty; //dont pass the date for working hrs as the end date my be weeked
-            absenceLedger.Txt = "@SPY:AdjustedQtyFromBenefitLedger";
-            absenceLedger.SourceDocument  = tableNum(SPYBenefitLedger);
-            absenceLedger.insert();
+            if(diffQty)
+            {
+                absenceLedger.clear();
+                absenceLedger.initValue();
+                absenceLedger.Worker = hcmWorker.RecId;
+                absenceLedger.EntryType  = SPYAbsenceLedgerEntryType::Transaction;
+                absenceLedger.HRMAbsenceCodeId = _absenceCodeId;
+                absenceLedger.AbsenceDate = timesheetEndDate;
+                absenceLedger.TransDate = timesheetEndDate;
+                absenceLedger.AbsenceDays = diffQty;
+                absenceLedger.AbsenceHours = absenceWorkerService.workingHours() *  diffQty; //dont pass the date for working hrs as the end date my be weeked
+                absenceLedger.Txt = "@SPY:AdjustedQtyFromBenefitLedger";
+                absenceLedger.SourceDocument  = tableNum(SPYBenefitLedger);
+                absenceLedger.insert();
+            }
         }
     }
 

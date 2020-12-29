@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>SPYHcmPositionActionEventHandler</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+class SPYHcmPositionActionEventHandler
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>HcmPositionAction_defaultingActionFromPosition</Name>
+				<Source><![CDATA[
+    [SubscribesTo(tableStr(HcmPositionAction), staticDelegateStr(HcmPositionAction, defaultingActionFromPosition))]
+    public static void HcmPositionAction_defaultingActionFromPosition(HcmPositionRecId _positionRecId, HcmActionStateRecId _actionStateRecId, HcmActionType _actionType, EffectiveDateTime _effectiveOn, ValidFromDate _validFrom)
+    {
+        HcmPositionDetail positionDetail = HcmPositionDetail::findByPosition(_positionRecId, _effectiveOn);
+        HcmPositionActionDetail positionActionDetail = HcmPositionActionDetail::findByActionState(_actionStateRecId, true);
+
+        positionActionDetail.SPYCompensationLevelBand = positionDetail.SPYCompensationLevelBand;
+        positionActionDetail.SPYCompensationLevelGrade = positionDetail.SPYCompensationLevelGrade;
+        positionActionDetail.SPYCompensationLevelStep = positionDetail.SPYCompensationLevelStep;
+        
+        positionActionDetail.write();
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

@@ -169,6 +169,7 @@ class SPYBenefitEncashmentService extends SysOperationServiceBase Implements SPY
         observers = new Array(Types::Class);
         tracer = new SPYObserver();
         expressionEvaluationEngine  = new SPYExpressionEvaluationEngine(SPYProcess::PayProcess);
+        expressionEvaluationEngine.parmExpressionContext(expressionContext);
         //this.refreshExpressionContextTmp();
         SPYObjectCache::flushAllUserCache();
     }
@@ -203,7 +204,7 @@ class SPYBenefitEncashmentService extends SysOperationServiceBase Implements SPY
                                                        workerPositionBenefit, //null instance
                                                        transCur,
                                                        benefitLedgerTmp);
-        benefitCalculation.parmTracer(tracer);
+        benefitCalculation.parmTracer(tracer);        
         benefitLedgerTmp = benefitCalculation.processBenefitEncashment(expressionEvaluationEngine);
         [totalTransCurAmount,totalAccCurAmount,totalQty] = this.amtQtyFromBenefitLedgerTmp(benefitLedgerTmp);
         this.notifyObserver(strFmt("@SYS90673",benefitCode),strFmt("@SPY778",totalTransCurAmount,
@@ -466,13 +467,13 @@ class SPYBenefitEncashmentService extends SysOperationServiceBase Implements SPY
         this.notifyObserver("@SYS80745",hcmWorker.name(),3);
         if(encashmentAmountSource == SPYEncashmentAmtSource::BalanceAmount)
         {
-            balanceQty = benefitTable.balanceQty(hcmWorker.RecId,periodStart);
-            balanceAmt = benefitTable.balanceAccountingCurAmount(hcmWorker.RecId,periodStart);
+            balanceQty = -benefitTable.balanceQty(hcmWorker.RecId,periodStart);
+            balanceAmt = -benefitTable.balanceAccountingCurAmount(hcmWorker.RecId,periodStart);
         }
         else
         {
             this.refreshContext();
-            balanceQty = benefitTable.balanceQty(hcmWorker.RecId,periodStart);
+            balanceQty = -benefitTable.balanceQty(hcmWorker.RecId,periodStart);
             balanceAmt = this.calcBenefitEncashmentExpression();
         }
     

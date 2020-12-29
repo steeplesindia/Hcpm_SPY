@@ -297,7 +297,7 @@ class SPYEOSRunDP extends SRSReportDataProviderBase
             }
     
             // Code for inserting overtime, leave and absence deduction to SPYEOSRunPayrollTmp table
-            this.insertIntoSPYEOSRunPayrollTmp();
+            //this.insertIntoSPYEOSRunPayrollTmp();
     
             while select eOSRunBenefit where eOSRunBenefit.EOSRun == eOSRunTable.RecId
             {

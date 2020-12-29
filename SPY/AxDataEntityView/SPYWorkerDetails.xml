@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxDataEntityView xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>SPYWorkerDetails</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+public class SPYWorkerDetails extends common
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>postLoad</Name>
+				<Source><![CDATA[
+    /// <summary>
+    ///
+    /// </summary>
+    public void postLoad()
+    {
+        super();
+
+        this.JoiningDate = DateTimeUtil::date(this.JoiningDateTime);
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+	<ConfigurationKey>SPYPayroll</ConfigurationKey>
+	<Label>@SPY:HCPMWorkerDetails</Label>
+	<SubscriberAccessLevel>
+		<Read>Allow</Read>
+	</SubscriberAccessLevel>
+	<IsPublic>Yes</IsPublic>
+	<IsReadOnly>Yes</IsReadOnly>
+	<PrimaryKey>EntityKey</PrimaryKey>
+	<PublicCollectionName>SPYWorkerDetails</PublicCollectionName>
+	<PublicEntityName>SPYWorkerDetails</PublicEntityName>
+	<DeleteActions />
+	<FieldGroups>
+		<AxTableFieldGroup>
+			<Name>AutoReport</Name>
+			<Fields />
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>AutoLookup</Name>
+			<Fields />
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>AutoIdentification</Name>
+			<AutoPopulate>Yes</AutoPopulate>
+			<Fields />
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>AutoSummary</Name>
+			<Fields />
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>AutoBrowse</Name>
+			<Fields />
+		</AxTableFieldGroup>
+	</FieldGroups>
+	<Fields>
+		<AxDataEntityViewField xmlns=""
+			i:type="AxDataEntityViewMappedField">
+			<Name>Person</Name>
+			<DataField>Person</DataField>
+			<DataSource>HcmWorker</DataSource>
+		</AxDataEntityViewField>
+		<AxDataEntityViewField xmlns=""
+			i:type="AxDataEntityViewUnmappedFieldDate">
+			<Name>JoiningDate</Name>
+			<Label>@SPY:EmpJoiningDate</Label>
+			<ExtendedDataType>TransDate</ExtendedDataType>
+			<IsComputedField>No</IsComputedField>
+		</AxDataEntityViewField>
+		<AxDataEntityViewField xmlns=""
+			i:type="AxDataEntityViewMappedField">
+			<Name>BankIBAN</Name>
+			<DataField>BankIBAN</DataField>
+			<DataSource>SPYWorkerDetailsView</DataSource>
+		</AxDataEntityViewField>
+		<AxDataEntityViewField xmlns=""
+			i:type="AxDataEntityViewMappedField">
+			<Name>BankName</Name>
+			<DataField>BankName</DataField>
+			<DataSource>SPYWorkerDetailsView</DataSource>
+		</AxDataEntityViewField>
+		<AxDataEntityViewField xmlns=""
+			i:type="AxDataEntityViewMappedField">
+			<Name>JoiningDateTime</Name>
+			<DataField>JoiningDate</DataField>
+			<DataSource>SPYWorkerDetailsView</DataSource>
+		</AxDataEntityViewField>
+		<AxDataEntityViewField xmlns=""
+			i:type="AxDataEntityViewMappedField">
+			<Name>LegalEntity</Name>
+			<DataField>LegalEntity</DataField>
+			<DataSource>SPYWorkerDetailsView</DataSource>
+		</AxDataEntityViewField>
+		<AxDataEntityViewField xmlns=""
+			i:type="AxDataEntityViewMappedField">
+			<Name>Name</Name>
+			<DataField>Name</DataField>
+			<DataSource>SPYWorkerDetailsView</DataSource>
+		</AxDataEntityViewField>
+		<AxDataEntityViewField xmlns=""
+			i:type="AxDataEntityViewMappedField">
+			<Name>NationalityCountryRegion</Name>
+			<DataField>NationalityCountryRegion</DataField>
+			<DataSource>SPYWorkerDetailsView</DataSource>
+		</AxDataEntityViewField>
+		<AxDataEntityViewField xmlns=""
+			i:type="AxDataEntityViewMappedField">
+			<Name>NationalityCountryRegionName</Name>
+			<DataField>NationalityCountryRegionName</DataField>
+			<DataSource>SPYWorkerDetailsView</DataSource>
+		</AxDataEntityViewField>
+		<AxDataEntityViewField xmlns=""
+			i:type="AxDataEntityViewMappedField">
+			<Name>PersonalTitle</Name>
+			<DataField>PersonalTitle</DataField>
+			<DataSource>SPYWorkerDetailsView</DataSource>
+		</AxDataEntityViewField>
+		<AxDataEntityViewField xmlns=""
+			i:type="AxDataEntityViewMappedField">
+			<Name>PersonnelNumber</Name>
+			<DataField>PersonnelNumber</DataField>
+			<DataSource>SPYWorkerDetailsView</DataSource>
+		</AxDataEntityViewField>
+		<AxDataEntityViewField xmlns=""
+			i:type="AxDataEntityViewMappedField">
+			<Name>PositionDescription</Name>
+			<DataField>PositionDescription</DataField>
+			<DataSource>SPYWorkerDetailsView</DataSource>
+		</AxDataEntityViewField>
+		<AxDataEntityViewField xmlns=""
+			i:type="AxDataEntityViewMappedField">
+			<Name>PrimaryIdentificationNumber</Name>
+			<DataField>PrimaryIdentificationNumber</DataField>
+			<DataSource>SPYWorkerDetailsView</DataSource>
+		</AxDataEntityViewField>
+		<AxDataEntityViewField xmlns=""
+			i:type="AxDataEntityViewMappedField">
+			<Name>Title</Name>
+			<DataField>Title</DataField>
+			<DataSource>SPYWorkerDetailsView</DataSource>
+		</AxDataEntityViewField>
+		<AxDataEntityViewField xmlns=""
+			i:type="AxDataEntityViewMappedField">
+			<Name>TotalMonthlySalary</Name>
+			<DataField>TotalMonthlySalary</DataField>
+			<DataSource>SPYWorkerDetailsView</DataSource>
+		</AxDataEntityViewField>
+	</Fields>
+	<Keys>
+		<AxDataEntityViewKey>
+			<Name>EntityKey</Name>
+			<Fields>
+				<AxDataEntityViewKeyField>
+					<DataField>Person</DataField>
+				</AxDataEntityViewKeyField>
+			</Fields>
+		</AxDataEntityViewKey>
+	</Keys>
+	<Mappings />
+	<Ranges />
+	<Relations />
+	<StateMachines />
+	<ViewMetadata>
+		<Name>Metadata</Name>
+		<SourceCode>
+			<Methods>
+				<Method>
+					<Name>classDeclaration</Name>
+					<Source><![CDATA[
+[Query]
+public class Metadata extends QueryRun
+{
+}
+]]></Source>
+				</Method>
+			</Methods>
+		</SourceCode>
+		<DataSources>
+			<AxQuerySimpleRootDataSource>
+				<Name>HcmWorker</Name>
+				<DynamicFields>Yes</DynamicFields>
+				<Table>HcmWorker</Table>
+				<DataSources>
+					<AxQuerySimpleEmbeddedDataSource>
+						<Name>SPYWorkerDetailsView</Name>
+						<DynamicFields>Yes</DynamicFields>
+						<Table>SPYWorkerDetailsView</Table>
+						<DataSources />
+						<DerivedDataSources />
+						<Fields />
+						<Ranges />
+						<Relations>
+							<AxQuerySimpleDataSourceRelation>
+								<Name>QueryDataSourceRelation1</Name>
+								<Field>PersonnelNumber</Field>
+								<JoinDataSource>HcmWorker</JoinDataSource>
+								<RelatedField>PersonnelNumber</RelatedField>
+							</AxQuerySimpleDataSourceRelation>
+						</Relations>
+					</AxQuerySimpleEmbeddedDataSource>
+				</DataSources>
+				<DerivedDataSources />
+				<Fields />
+				<Ranges />
+				<GroupBy />
+				<Having />
+				<OrderBy />
+			</AxQuerySimpleRootDataSource>
+		</DataSources>
+	</ViewMetadata>
+</AxDataEntityView>

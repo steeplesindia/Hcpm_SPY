@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxView xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>SPYWorkerDetailsView</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+public class SPYWorkerDetailsView extends common
+{
+}
+]]></Declaration>
+		<Methods />
+	</SourceCode>
+	<ConfigurationKey>SPYPayroll</ConfigurationKey>
+	<Label>@SPY:WorkerDetailsView</Label>
+	<SubscriberAccessLevel>
+		<Read>Allow</Read>
+	</SubscriberAccessLevel>
+	<TableGroup>Main</TableGroup>
+	<FieldGroups>
+		<AxTableFieldGroup>
+			<Name>AutoReport</Name>
+			<Fields />
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>AutoLookup</Name>
+			<Fields />
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>AutoIdentification</Name>
+			<AutoPopulate>Yes</AutoPopulate>
+			<Fields />
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>AutoSummary</Name>
+			<Fields />
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>AutoBrowse</Name>
+			<Fields />
+		</AxTableFieldGroup>
+	</FieldGroups>
+	<Fields>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>PersonnelNumber</Name>
+			<DataField>PersonnelNumber</DataField>
+			<DataSource>HcmWorker</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>PersonalTitle</Name>
+			<DataField>Affix</DataField>
+			<DataSource>DirNameAffix</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>Name</Name>
+			<DataField>Name</DataField>
+			<DataSource>DirPerson</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>JoiningDate</Name>
+			<DataField>ValidFrom</DataField>
+			<DataSource>HcmEmployment</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>LegalEntity</Name>
+			<DataField>DataArea</DataField>
+			<DataSource>CompanyInfo</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>PositionDescription</Name>
+			<DataField>Description</DataField>
+			<DataSource>HcmPositionDetail</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>Title</Name>
+			<DataField>TitleId</DataField>
+			<DataSource>HcmTitle</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>TotalMonthlySalary</Name>
+			<Aggregation>Sum</Aggregation>
+			<DataField>Monthly</DataField>
+			<DataSource>SPYWorkerPositionPayroll</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>BankIBAN</Name>
+			<DataField>BankIBAN</DataField>
+			<DataSource>HcmWorkerBankAccount</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>BankName</Name>
+			<DataField>Name</DataField>
+			<DataSource>HcmWorkerBankAccount</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>NationalityCountryRegion</Name>
+			<DataField>NationalityCountryRegion</DataField>
+			<DataSource>HcmPersonPrivateDetails</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>NationalityCountryRegionName</Name>
+			<DataField>ShortName</DataField>
+			<DataSource>LogisticsAddressCountryRegionTranslation</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>PrimaryIdentificationNumber</Name>
+			<DataField>IdentificationNumber</DataField>
+			<DataSource>HcmPersonIdentificationNumber</DataSource>
+		</AxViewField>
+	</Fields>
+	<Indexes />
+	<Mappings />
+	<Relations />
+	<StateMachines />
+	<ViewMetadata>
+		<Name>Metadata</Name>
+		<SourceCode>
+			<Methods />
+		</SourceCode>
+		<DataSources>
+			<AxQuerySimpleRootDataSource>
+				<Name>HcmWorker</Name>
+				<DynamicFields>Yes</DynamicFields>
+				<Table>HcmWorker</Table>
+				<DataSources>
+					<AxQuerySimpleEmbeddedDataSource>
+						<Name>HcmEmployment</Name>
+						<DynamicFields>Yes</DynamicFields>
+						<Table>HcmEmployment</Table>
+						<DataSources>
+							<AxQuerySimpleEmbeddedDataSource>
+								<Name>CompanyInfo</Name>
+								<DynamicFields>Yes</DynamicFields>
+								<Table>CompanyInfo</Table>
+								<DataSources />
+								<DerivedDataSources />
+								<Fields />
+								<Ranges />
+								<Relations>
+									<AxQuerySimpleDataSourceRelation>
+										<Name>QueryDataSourceRelation1</Name>
+										<Field>LegalEntity</Field>
+										<JoinDataSource>HcmEmployment</JoinDataSource>
+										<RelatedField>RecId</RelatedField>
+									</AxQuerySimpleDataSourceRelation>
+								</Relations>
+							</AxQuerySimpleEmbeddedDataSource>
+							<AxQuerySimpleEmbeddedDataSource>
+								<Name>SPYWorkerPositionPayroll</Name>
+								<DynamicFields>Yes</DynamicFields>
+								<Table>SPYWorkerPositionPayroll</Table>
+								<DataSources />
+								<DerivedDataSources />
+								<Fields />
+								<Ranges />
+								<JoinMode>OuterJoin</JoinMode>
+								<Relations>
+									<AxQuerySimpleDataSourceRelation>
+										<Name>QueryDataSourceRelation1</Name>
+										<Field>Worker</Field>
+										<JoinDataSource>HcmEmployment</JoinDataSource>
+										<RelatedField>Worker</RelatedField>
+									</AxQuerySimpleDataSourceRelation>
+									<AxQuerySimpleDataSourceRelation>
+										<Name>QueryDataSourceRelation2</Name>
+										<Field>LegalEntity</Field>
+										<JoinDataSource>HcmEmployment</JoinDataSource>
+										<RelatedField>LegalEntity</RelatedField>
+									</AxQuerySimpleDataSourceRelation>
+								</Relations>
+							</AxQuerySimpleEmbeddedDataSource>
+						</DataSources>
+						<DerivedDataSources />
+						<Fields />
+						<Ranges />
+						<Relations>
+							<AxQuerySimpleDataSourceRelation>
+								<Name>QueryDataSourceRelation1</Name>
+								<Field>RecId</Field>
+								<JoinDataSource>HcmWorker</JoinDataSource>
+								<RelatedField>Worker</RelatedField>
+							</AxQuerySimpleDataSourceRelation>
+						</Relations>
+					</AxQuerySimpleEmbeddedDataSource>
+					<AxQuerySimpleEmbeddedDataSource>
+						<Name>DirPerson</Name>
+						<DynamicFields>Yes</DynamicFields>
+						<Table>DirPerson</Table>
+						<DataSources>
+							<AxQuerySimpleEmbeddedDataSource>
+								<Name>HcmPersonPrivateDetails</Name>
+								<DynamicFields>Yes</DynamicFields>
+								<Table>HcmPersonPrivateDetails</Table>
+								<DataSources>
+									<AxQuerySimpleEmbeddedDataSource>
+										<Name>LogisticsAddressCountryRegionTranslation</Name>
+										<DynamicFields>Yes</DynamicFields>
+										<Table>LogisticsAddressCountryRegionTranslation</Table>
+										<DataSources />
+										<DerivedDataSources />
+										<Fields />
+										<Ranges>
+											<AxQuerySimpleDataSourceRange>
+												<Name>LanguageId</Name>
+												<Field>LanguageId</Field>
+												<Value>EN-US</Value>
+											</AxQuerySimpleDataSourceRange>
+										</Ranges>
+										<JoinMode>OuterJoin</JoinMode>
+										<Relations>
+											<AxQuerySimpleDataSourceRelation>
+												<Name>QueryDataSourceRelation1</Name>
+												<Field>NationalityCountryRegion</Field>
+												<JoinDataSource>HcmPersonPrivateDetails</JoinDataSource>
+												<RelatedField>CountryRegionId</RelatedField>
+											</AxQuerySimpleDataSourceRelation>
+										</Relations>
+									</AxQuerySimpleEmbeddedDataSource>
+								</DataSources>
+								<DerivedDataSources />
+								<Fields />
+								<Ranges />
+								<JoinMode>OuterJoin</JoinMode>
+								<Relations>
+									<AxQuerySimpleDataSourceRelation>
+										<Name>QueryDataSourceRelation1</Name>
+										<Field>RecId</Field>
+										<JoinDataSource>DirPerson</JoinDataSource>
+										<RelatedField>Person</RelatedField>
+									</AxQuerySimpleDataSourceRelation>
+								</Relations>
+							</AxQuerySimpleEmbeddedDataSource>
+							<AxQuerySimpleEmbeddedDataSource>
+								<Name>HcmPersonIdentificationNumber</Name>
+								<DynamicFields>Yes</DynamicFields>
+								<Table>HcmPersonIdentificationNumber</Table>
+								<DataSources />
+								<DerivedDataSources />
+								<Fields />
+								<Ranges>
+									<AxQuerySimpleDataSourceRange>
+										<Name>IsPrimary</Name>
+										<Field>IsPrimary</Field>
+										<Value>1</Value>
+									</AxQuerySimpleDataSourceRange>
+								</Ranges>
+								<JoinMode>OuterJoin</JoinMode>
+								<Relations>
+									<AxQuerySimpleDataSourceRelation>
+										<Name>QueryDataSourceRelation1</Name>
+										<Field>RecId</Field>
+										<JoinDataSource>DirPerson</JoinDataSource>
+										<RelatedField>Person</RelatedField>
+									</AxQuerySimpleDataSourceRelation>
+								</Relations>
+							</AxQuerySimpleEmbeddedDataSource>
+							<AxQuerySimpleEmbeddedDataSource>
+								<Name>DirNameAffix</Name>
+								<DynamicFields>Yes</DynamicFields>
+								<Table>DirNameAffix</Table>
+								<DataSources />
+								<DerivedDataSources />
+								<Fields />
+								<Ranges>
+									<AxQuerySimpleDataSourceRange>
+										<Name>AffixType</Name>
+										<Field>AffixType</Field>
+										<Value>1</Value>
+									</AxQuerySimpleDataSourceRange>
+								</Ranges>
+								<JoinMode>OuterJoin</JoinMode>
+								<Relations>
+									<AxQuerySimpleDataSourceRelation>
+										<Name>QueryDataSourceRelation1</Name>
+										<Field>PersonalTitle</Field>
+										<JoinDataSource>DirPerson</JoinDataSource>
+										<RelatedField>RecId</RelatedField>
+									</AxQuerySimpleDataSourceRelation>
+								</Relations>
+							</AxQuerySimpleEmbeddedDataSource>
+						</DataSources>
+						<DerivedDataSources />
+						<Fields />
+						<Ranges />
+						<Relations>
+							<AxQuerySimpleDataSourceRelation>
+								<Name>QueryDataSourceRelation1</Name>
+								<Field>Person</Field>
+								<JoinDataSource>HcmWorker</JoinDataSource>
+								<RelatedField>RecId</RelatedField>
+							</AxQuerySimpleDataSourceRelation>
+						</Relations>
+					</AxQuerySimpleEmbeddedDataSource>
+					<AxQuerySimpleEmbeddedDataSource>
+						<Name>HcmPositionWorkerAssignment</Name>
+						<DynamicFields>Yes</DynamicFields>
+						<Table>HcmPositionWorkerAssignment</Table>
+						<DataSources>
+							<AxQuerySimpleEmbeddedDataSource>
+								<Name>HcmPositionDetail</Name>
+								<DynamicFields>Yes</DynamicFields>
+								<Table>HcmPositionDetail</Table>
+								<DataSources>
+									<AxQuerySimpleEmbeddedDataSource>
+										<Name>HcmTitle</Name>
+										<DynamicFields>Yes</DynamicFields>
+										<Table>HcmTitle</Table>
+										<DataSources />
+										<DerivedDataSources />
+										<Fields />
+										<Ranges />
+										<Relations>
+											<AxQuerySimpleDataSourceRelation>
+												<Name>QueryDataSourceRelation1</Name>
+												<Field>Title</Field>
+												<JoinDataSource>HcmPositionDetail</JoinDataSource>
+												<RelatedField>RecId</RelatedField>
+											</AxQuerySimpleDataSourceRelation>
+										</Relations>
+									</AxQuerySimpleEmbeddedDataSource>
+								</DataSources>
+								<DerivedDataSources />
+								<Fields />
+								<Ranges />
+								<Relations>
+									<AxQuerySimpleDataSourceRelation>
+										<Name>QueryDataSourceRelation1</Name>
+										<Field>Position</Field>
+										<JoinDataSource>HcmPositionWorkerAssignment</JoinDataSource>
+										<RelatedField>Position</RelatedField>
+									</AxQuerySimpleDataSourceRelation>
+								</Relations>
+							</AxQuerySimpleEmbeddedDataSource>
+							<AxQuerySimpleEmbeddedDataSource>
+								<Name>HcmWorkerPrimaryPosition</Name>
+								<DynamicFields>Yes</DynamicFields>
+								<Table>HcmWorkerPrimaryPosition</Table>
+								<DataSources />
+								<DerivedDataSources />
+								<Fields />
+								<Ranges />
+								<Relations>
+									<AxQuerySimpleDataSourceRelation>
+										<Name>QueryDataSourceRelation1</Name>
+										<Field>RecId</Field>
+										<JoinDataSource>HcmPositionWorkerAssignment</JoinDataSource>
+										<RelatedField>PositionAssignment</RelatedField>
+									</AxQuerySimpleDataSourceRelation>
+								</Relations>
+							</AxQuerySimpleEmbeddedDataSource>
+						</DataSources>
+						<DerivedDataSources />
+						<Fields />
+						<Ranges />
+						<JoinMode>OuterJoin</JoinMode>
+						<Relations>
+							<AxQuerySimpleDataSourceRelation>
+								<Name>QueryDataSourceRelation1</Name>
+								<Field>RecId</Field>
+								<JoinDataSource>HcmWorker</JoinDataSource>
+								<RelatedField>Worker</RelatedField>
+							</AxQuerySimpleDataSourceRelation>
+						</Relations>
+					</AxQuerySimpleEmbeddedDataSource>
+					<AxQuerySimpleEmbeddedDataSource>
+						<Name>HcmWorkerBankAccount</Name>
+						<DynamicFields>Yes</DynamicFields>
+						<Table>HcmWorkerBankAccount</Table>
+						<DataSources />
+						<DerivedDataSources />
+						<Fields />
+						<Ranges />
+						<JoinMode>OuterJoin</JoinMode>
+						<Relations>
+							<AxQuerySimpleDataSourceRelation>
+								<Name>QueryDataSourceRelation1</Name>
+								<Field>RecId</Field>
+								<JoinDataSource>HcmWorker</JoinDataSource>
+								<RelatedField>Worker</RelatedField>
+							</AxQuerySimpleDataSourceRelation>
+						</Relations>
+					</AxQuerySimpleEmbeddedDataSource>
+				</DataSources>
+				<DerivedDataSources />
+				<Fields />
+				<Ranges />
+				<GroupBy />
+				<Having />
+				<OrderBy />
+			</AxQuerySimpleRootDataSource>
+		</DataSources>
+	</ViewMetadata>
+</AxView>

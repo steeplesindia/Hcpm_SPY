@@ -11,34 +11,33 @@ public class SPYPromotionWorkerTable extends common
 			<Method>
 				<Name>modifiedField</Name>
 				<Source><![CDATA[
-    /// <summary>
-    ///
-    /// </summary>
-    /// <param name = "_fieldId"></param>
     public void modifiedField(FieldId _fieldId)
     {
-        SPYCompensationPlanTable                    compensationPlanTable;
-        HcmPositionDetail                                   hcmPositionDetail;
-        TransDate                               validFrom, validTo;
-
+        HcmPositionDetail   hcmPositionDetail;
+        HcmJobDetail        hcmJobDetail;
 
         super(_fieldId);
-
-        validFrom = dateNull();
-        validTo     = dateMax();
         switch (_fieldId)
         {
             case fieldNum(SPYPromotionWorkerTable, ProposedPosition) :
-                select validtimestate(validFrom, validTo) * from compensationPlanTable
-                        exists join hcmPositionDetail
-                    where hcmPositionDetail.Position == this.ProposedPosition
-                                && hcmPositionDetail.SPYCompensationLevelBand == compensationPlanTable.CompensationLevelBand
-                                && hcmPositionDetail.SPYCompensationLevelGrade == compensationPlanTable.CompensationLevelGrade
-                                && hcmPositionDetail.SPYCompensationLevelStep == compensationPlanTable.CompensationLevelStep;
-
-                this.ProposedGrade  = compensationPlanTable.CompensationLevelGrade;
-                this.ProposedBand    =   compensationPlanTable.CompensationLevelBand;
-                this.ProposedStep     = compensationPlanTable.CompensationLevelStep;
+                TransDate   effectiveDate = this.StartDate;
+                select validtimestate(effectiveDate) hcmPositionDetail
+                    where hcmPositionDetail.Position == this.ProposedPosition;
+                select validtimestate(effectiveDate) hcmJobDetail
+                    where hcmJobDetail.Job == hcmPositionDetail.Job;
+                
+                if(hcmJobDetail.SPYCompensationLevelGrade || hcmJobDetail.SPYCompensationLevelBand || hcmJobDetail.SPYCompensationLevelStep)
+                {
+                    this.ProposedGrade  = hcmJobDetail.SPYCompensationLevelGrade;
+                    this.ProposedBand    = hcmJobDetail.SPYCompensationLevelBand;
+                    this.ProposedStep     = hcmJobDetail.SPYCompensationLevelStep;
+                }
+                else
+                {
+                    this.ProposedGrade  = hcmPositionDetail.SPYCompensationLevelGrade;
+                    this.ProposedBand    = hcmPositionDetail.SPYCompensationLevelBand;
+                    this.ProposedStep     = hcmPositionDetail.SPYCompensationLevelStep;
+                }
                 break;
         }
     }

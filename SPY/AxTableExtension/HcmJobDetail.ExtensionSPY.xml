@@ -51,6 +51,7 @@
 			i:type="AxTableRelationForeignKey">
 			<Name>HcmCompensationLevelBand</Name>
 			<Cardinality>ZeroMore</Cardinality>
+			<OnDelete>Restricted</OnDelete>
 			<RelatedTable>HcmCompensationLevel</RelatedTable>
 			<RelatedTableCardinality>ExactlyOne</RelatedTableCardinality>
 			<RelatedTableRole>Band</RelatedTableRole>
@@ -75,6 +76,7 @@
 			i:type="AxTableRelationForeignKey">
 			<Name>HcmCompensationLevelGrade</Name>
 			<Cardinality>ZeroMore</Cardinality>
+			<OnDelete>Restricted</OnDelete>
 			<RelatedTable>HcmCompensationLevel</RelatedTable>
 			<RelatedTableCardinality>ExactlyOne</RelatedTableCardinality>
 			<RelatedTableRole>Grade</RelatedTableRole>
@@ -99,6 +101,7 @@
 			i:type="AxTableRelationForeignKey">
 			<Name>HcmCompensationLevelStep</Name>
 			<Cardinality>ZeroMore</Cardinality>
+			<OnDelete>Restricted</OnDelete>
 			<RelatedTable>HcmCompensationLevel</RelatedTable>
 			<RelatedTableCardinality>ExactlyOne</RelatedTableCardinality>
 			<RelatedTableRole>Step</RelatedTableRole>

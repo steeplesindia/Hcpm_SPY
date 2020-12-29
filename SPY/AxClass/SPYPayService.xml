@@ -2471,7 +2471,7 @@ class SPYPayService extends SysOperationServiceBase implements SPYIObservable
         this.notifyObserver("@SPY1649",strFmt("%1",payrollTable.PayElementCode),4,1);
         this.setPayElement(_payroll);
         //this.payElementPreEventHandler_old(SPYPayEventFrequency::PayElement);
-        this.notifyObserver(strFmt("@SYS90673",payrollTable.PayElementCode),strFmt("%1",_totalTransCurAmount),4,2);
+        this.notifyObserver(strFmt("@SYS90673",payrollTable.PayElementCode),strFmt("%1",_totalTransCurAmount),5,2);
         this.setCurrentExpressionReturn(_totalTransCurAmount,0);
         //this.payElementPostEventHandler_old(SPYPayEventFrequency::PayElement);
     }

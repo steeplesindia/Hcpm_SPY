@@ -66,18 +66,18 @@ public class SPYCompensationPlanTable extends common
         HcmJobDetail                    jobDetail;
         TransDate                       transDate = DateTimeUtil::date(_startDateTime);
 
-        if(positionDetail.SPYCompensationLevelGrade || positionDetail.SPYCompensationLevelBand || positionDetail.SPYCompensationLevelStep)
+        jobDetail = HcmJobDetail::findByJob(HcmPosition::getJob(_position),_startDateTime);
+        if(jobDetail.SPYCompensationLevelGrade || jobDetail.SPYCompensationLevelBand || jobDetail.SPYCompensationLevelStep)
         {
-            grade = positionDetail.SPYCompensationLevelGrade;
-            band = positionDetail.SPYCompensationLevelBand;
-            step = positionDetail.SPYCompensationLevelStep;
-        }
-        else
-        {
-            jobDetail = HcmJobDetail::findByJob(HcmPosition::getJob(_position),_startDateTime);
             grade = jobDetail.SPYCompensationLevelGrade;
             band = jobDetail.SPYCompensationLevelBand;
             step = jobDetail.SPYCompensationLevelStep;
+        }
+        else
+        {
+            grade = positionDetail.SPYCompensationLevelGrade;
+            band = positionDetail.SPYCompensationLevelBand;
+            step = positionDetail.SPYCompensationLevelStep;            
         }
 
         select firstOnly validTimeState(transDate) compensationPlanTable

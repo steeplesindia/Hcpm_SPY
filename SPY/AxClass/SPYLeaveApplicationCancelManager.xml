@@ -50,17 +50,30 @@ extends         WorkflowCancelManager
         {
             try
             {
+                SPYLeaveApplicationRecId leaveApplication =  _args.record().RecId;
                 ttsBegin;
                 select firstonly validTimeState(fromDate,toDate) absenceLedger
                         join RecId from leaveApplicationLine
                         join RecId from benefitLedger
                         where leaveApplicationLine.RecId == absenceLedger.LeaveApplicationLine &&
                               absenceLedger.BenefitLedger == benefitLedger.RecId &&
-                              //benefitLedger.IsFinalised &&
-                              leaveApplicationLine.LeaveApplication == _args.record().RecId;
+                              benefitLedger.IsFinalised &&
+                    leaveApplicationLine.LeaveApplication == leaveApplication;
                 if(absenceLedger)
                     throw error("@SPY:LACantRecalled");
-                SPYLeaveApplicationTable::updateWorkflowStatus(_args.record().RecId, SPYWorkflowStatus::Cancelled);
+                while select validTimeState(fromDate,toDate) absenceLedger
+                    join leaveApplicationLine
+                    where absenceLedger.LeaveApplicationLine == leaveApplicationLine.RecId &&
+                    leaveApplicationLine.LeaveApplication == leaveApplication
+                {
+                    while select forupdate benefitLedger
+                        where benefitLedger.RecId == absenceLedger.BenefitLedger &&
+                        !benefitLedger.IsFinalised
+                    {
+                        benefitLedger.delete();
+                    }
+                }
+                SPYLeaveApplicationTable::updateWorkflowStatus(leaveApplication, SPYWorkflowStatus::Cancelled);
                 ttsCommit;
             }
             catch(Exception::Error)

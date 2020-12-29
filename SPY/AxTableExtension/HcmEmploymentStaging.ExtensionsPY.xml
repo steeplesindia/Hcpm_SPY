@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxTableExtension xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>HcmEmploymentStaging.ExtensionsPY</Name>
+	<FieldGroupExtensions />
+	<FieldGroups />
+	<FieldModifications />
+	<Fields>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldEnum">
+			<Name>SPYValidFromMonthsOfYear</Name>
+			<ConfigurationKey>SPYPayroll</ConfigurationKey>
+			<Label>@SPY:ValidFromMonth</Label>
+			<EnumType>MonthsOfYear</EnumType>
+		</AxTableField>
+	</Fields>
+	<Indexes />
+	<Mappings />
+	<PropertyModifications />
+	<Relations />
+</AxTableExtension>

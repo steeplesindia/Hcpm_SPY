@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>SPYHcmPositionActionCompletion_Extension</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[ExtensionOf(classstr(HcmPositionActionCompletion))]
+final class SPYHcmPositionActionCompletion_Extension
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>initPositionDetail</Name>
+				<Source><![CDATA[
+    protected HcmPositionDetail initPositionDetail(HcmPositionRecId _positionRecId, EffectiveDateTime _effectiveOn)
+    {
+        HcmPositionDetail positionDetail;
+
+        positionDetail = next initPositionDetail(_positionRecId, _effectiveOn);
+        positionDetail.SPYCompensationLevelBand = hcmPositionActionDetail.SPYCompensationLevelBand;
+        positionDetail.SPYCompensationLevelGrade = hcmPositionActionDetail.SPYCompensationLevelGrade;
+        positionDetail.SPYCompensationLevelStep = hcmPositionActionDetail.SPYCompensationLevelStep;
+
+        return positionDetail;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

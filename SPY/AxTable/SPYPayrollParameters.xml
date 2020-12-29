@@ -496,6 +496,15 @@ public class SPYPayrollParameters extends common
 				</AxTableFieldGroupField>
 			</Fields>
 		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>PayLoan</Name>
+			<Label>@SPY335</Label>
+			<Fields>
+				<AxTableFieldGroupField>
+					<DataField>AutomateLoanProcessInPayroll</DataField>
+				</AxTableFieldGroupField>
+			</Fields>
+		</AxTableFieldGroup>
 	</FieldGroups>
 	<Fields>
 		<AxTableField xmlns=""
@@ -672,6 +681,12 @@ public class SPYPayrollParameters extends common
 			i:type="AxTableFieldEnum">
 			<Name>EncashLeavesAvailed</Name>
 			<Label>@SPY:EncshLeaveApp</Label>
+			<EnumType>NoYes</EnumType>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldEnum">
+			<Name>AutomateLoanProcessInPayroll</Name>
+			<Label>@SPY:AutomateLoanProcessInPayroll</Label>
 			<EnumType>NoYes</EnumType>
 		</AxTableField>
 	</Fields>

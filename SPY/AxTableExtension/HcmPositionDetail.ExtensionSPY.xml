@@ -49,6 +49,7 @@
 		<AxTableRelation>
 			<Name>SPYCompensationLevelGrade</Name>
 			<Cardinality>ZeroOne</Cardinality>
+			<OnDelete>Restricted</OnDelete>
 			<RelatedTable>HcmCompensationLevel</RelatedTable>
 			<RelatedTableCardinality>ExactlyOne</RelatedTableCardinality>
 			<RelatedTableRole>Grade</RelatedTableRole>
@@ -71,6 +72,7 @@
 		<AxTableRelation>
 			<Name>SPYCompensationLevelBand</Name>
 			<Cardinality>ZeroOne</Cardinality>
+			<OnDelete>Restricted</OnDelete>
 			<RelatedTable>HcmCompensationLevel</RelatedTable>
 			<RelatedTableCardinality>ExactlyOne</RelatedTableCardinality>
 			<RelatedTableRole>Band</RelatedTableRole>
@@ -93,6 +95,7 @@
 		<AxTableRelation>
 			<Name>SPYCompensationLevelStep</Name>
 			<Cardinality>ZeroOne</Cardinality>
+			<OnDelete>Restricted</OnDelete>
 			<RelatedTable>HcmCompensationLevel</RelatedTable>
 			<RelatedTableCardinality>ExactlyOne</RelatedTableCardinality>
 			<RelatedTableRole>Step</RelatedTableRole>

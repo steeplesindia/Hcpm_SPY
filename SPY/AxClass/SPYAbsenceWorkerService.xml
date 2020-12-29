@@ -10,6 +10,7 @@ class SPYAbsenceWorkerService
     HcmEmploymentDetail         hcmEmploymentDetail;
     CalendarId                          calendarId;
     JmgProfileId                        profileId;
+    SPYWorkerPositionAbsenceConfigLine  workerPositionAbsenceConfigLine;
 
 }
 ]]></Declaration>
@@ -23,13 +24,23 @@ class SPYAbsenceWorkerService
         TransDate               startDate = this.openingEntryDate(_asOnDate, _absenceCode);
         SPYAmount               balance;
 
+        //count for startDate and exclude period close transaction
         select sum(AbsenceDays) from absenceLedger
         where absenceLedger.Worker == hcmWorker.RecId &&
               absenceLedger.HRMAbsenceCodeId == _absenceCode &&
-              absenceLedger.TransDate >= startDate &&
-              absenceLedger.TransDate <= _asOnDate;
+            absenceLedger.TransDate == startDate &&
+            absenceLedger.EntryType != SPYAbsenceLedgerEntryType::ClosingEntry;
         balance = absenceLedger.AbsenceDays;
+
+        //count start date onwards toll asOnDate
+        select sum(AbsenceDays) from absenceLedger
+        where absenceLedger.Worker == hcmWorker.RecId &&
+              absenceLedger.HRMAbsenceCodeId == _absenceCode &&
+              absenceLedger.TransDate > startDate &&
+              absenceLedger.TransDate <= _asOnDate;
+        balance += absenceLedger.AbsenceDays;
     
+        //count future transaction coming from leave application
         select sum(AbsenceDays) from absenceLedger
         where absenceLedger.Worker == hcmWorker.RecId &&
               absenceLedger.HRMAbsenceCodeId == _absenceCode &&
@@ -114,11 +125,11 @@ class SPYAbsenceWorkerService
 			<Method>
 				<Name>probationCheck</Name>
 				<Source><![CDATA[
-    private boolean probationCheck(SPYAbsenceConfigRecId _absenceConfig,TransDateTime _transDateTime, 
+    private boolean probationCheck(TransDateTime _transDateTime, 
         HcmEmploymentEmployee _employmentEmployee, HRMAbsenceCodeId _absenceCode)
     {
-        if(SPYAbsenceConfigLine::findByAbsenceCode(_absenceConfig,  _absenceCode).RestrictInProbation &&
-    _employmentEmployee.ProbationEndDate && _employmentEmployee.ProbationEndDate >= _transDateTime)
+        if(workerPositionAbsenceConfigLine.RestrictInProbation &&
+            _employmentEmployee.ProbationEndDate && _employmentEmployee.ProbationEndDate >= _transDateTime)
             return false;
         else
             return true;
@@ -131,17 +142,29 @@ class SPYAbsenceWorkerService
 				<Source><![CDATA[
     public container probationNNoticeCheck(TransDate _asOnDate, HRMAbsenceCodeId _absenceCode)
     {
-        SPYAbsenceConfigRecId       absenceConfig;
         HcmEmploymentEmployee       employmentEmployee;
-        TransDateTime               transDateTime = DateTimeUtil::newDateTime(_asOnDate,00-00);
+        TransDateTime               transDateTime = DateTimeUtil::newDateTime(_asOnDate,00-00);        
         container                   ret;
 
         this.setEmployment(_asOnDate);
         employmentEmployee = HcmEmploymentEmployee::findByEmployment(hcmEmployment.RecId, transDateTime);
-        absenceConfig = hcmEmploymentDetail.SPYAbsenceConfig;
+        this.setAbsenceConfig(_asOnDate, _absenceCode);
 
-        return [this.probationCheck(absenceConfig ,transDateTime ,employmentEmployee, _absenceCode),
-            this.noticePeriodCheck(absenceConfig, transDateTime, employmentEmployee, _absenceCode)];
+        return [this.probationCheck(transDateTime ,employmentEmployee, _absenceCode),
+            this.noticePeriodCheck(transDateTime, employmentEmployee, _absenceCode)];
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>setAbsenceConfig</Name>
+				<Source><![CDATA[
+    private void setAbsenceConfig(TransDate _asOnDate, HRMAbsenceCodeId _absenceCode)
+    {
+        select validtimestate(_asOnDate) workerPositionAbsenceConfigLine
+            where workerPositionAbsenceConfigLine.Worker == hcmWorker.RecId &&
+            workerPositionAbsenceConfigLine.LegalEntity == CompanyInfo::current() &&
+            workerPositionAbsenceConfigLine.HRMAbsenceCodeId == _absenceCode;
     }
 
 ]]></Source>
@@ -149,11 +172,11 @@ class SPYAbsenceWorkerService
 			<Method>
 				<Name>noticePeriodCheck</Name>
 				<Source><![CDATA[
-    private boolean noticePeriodCheck(SPYAbsenceConfigRecId _absenceConfig,TransDateTime _transDateTime,
+    private boolean noticePeriodCheck(TransDateTime _transDateTime,
          HcmEmploymentEmployee _employmentEmployee, HRMAbsenceCodeId _absenceCode)
     {
         TransDateTime    noticeStartDate;
-        if(SPYAbsenceConfigLine::findByAbsenceCode(_absenceConfig, _absenceCode).RestrictInNotice && hcmEmploymentDetail.LastDateWorked)
+        if(workerPositionAbsenceConfigLine.RestrictInNotice && hcmEmploymentDetail.LastDateWorked)
         {
             switch(hcmEmploymentDetail.WorkerUnitOfNotice)
             {

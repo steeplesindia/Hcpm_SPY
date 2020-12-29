@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxTableExtension xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>HcmJobStaging.ExtensionSPY</Name>
+	<FieldGroupExtensions />
+	<FieldGroups />
+	<FieldModifications />
+	<Fields>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>SPYCompensationLevelBandId</Name>
+			<ExtendedDataType>HcmCompensationLevelId</ExtendedDataType>
+			<Label>@SYS116554</Label>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>SPYCompensationLevelGradeId</Name>
+			<ExtendedDataType>HcmCompensationLevelId</ExtendedDataType>
+			<Label>@SYS116553</Label>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>SPYCompensationLevelStepId</Name>
+			<ExtendedDataType>HcmCompensationLevelId</ExtendedDataType>
+			<Label>@SYS108671</Label>
+		</AxTableField>
+	</Fields>
+	<Indexes />
+	<Mappings />
+	<PropertyModifications />
+	<Relations />
+</AxTableExtension>

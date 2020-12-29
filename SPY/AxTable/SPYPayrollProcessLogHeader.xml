@@ -34,6 +34,19 @@ public class SPYPayrollProcessLogHeader extends common
 
 ]]></Source>
 			</Method>
+			<Method>
+				<Name>insert</Name>
+				<Source><![CDATA[
+    /// <summary>
+    ///
+    /// </summary>
+    public void insert()
+    {
+        super();
+    }
+
+]]></Source>
+			</Method>
 		</Methods>
 	</SourceCode>
 	<ConfigurationKey>SPYPayroll</ConfigurationKey>

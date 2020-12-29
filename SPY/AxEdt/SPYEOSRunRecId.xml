@@ -4,6 +4,7 @@
 	<Name>SPYEOSRunRecId</Name>
 	<ConfigurationKey>SPYPayroll</ConfigurationKey>
 	<Extends>RefRecId</Extends>
+	<FormHelp>SPYEOSRunLookup</FormHelp>
 	<HelpText>@SPY656</HelpText>
 	<Label>@SPY655</Label>
 	<ReferenceTable>SPYEOSRunTable</ReferenceTable>

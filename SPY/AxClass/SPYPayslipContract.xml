@@ -17,7 +17,7 @@
 ]
 public class SPYPayslipContract
 {
-    SPYPayrollPeriodLineRecId   payrollPeriodline;
+    SPYPayrollPeriodLineRecId_Report   payrollPeriodline;
     SPYAmountDisplay            amountDisplay;
     Str1260                     footerTxt;
 
@@ -70,7 +70,7 @@ public class SPYPayslipContract
         SysOperationGroupMemberAttribute('PayrollPeriod'),
         SysOperationDisplayOrderAttribute('1')
     ]
-    public SPYPayrollPeriodLineRecId parmPayrollPeriodline(SPYPayrollPeriodLineRecId    _payrollPeriodLine = payrollPeriodline)
+    public SPYPayrollPeriodLineRecId_Report parmPayrollPeriodline(SPYPayrollPeriodLineRecId_Report    _payrollPeriodLine = payrollPeriodline)
     {
         payrollPeriodline = _payrollPeriodLine;
     

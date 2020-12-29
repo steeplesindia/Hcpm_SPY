@@ -45,6 +45,7 @@ public class SPYPayLoanCashSettlementEdit extends FormRun implements IDialogable
             payLoanCashSettlementContract.parmPayLoan(SPYPayLoanTable::findByCode(payLoanCashSettlementController.parmPayLoanCode()).RecId);
             payLoanCashSettlementContract.parmSettlementPeriod(SettlementPeriod.value());
             payLoanCashSettlementContract.parmSettlementDate(SettlementDate.dateValue());
+            payLoanCashSettlementContract.parmSettledOnlyInSettlementPeriod(SettledOnlyInSettlementPeriod.value());
         }
 
         return ret;
@@ -105,7 +106,6 @@ public class SPYPayLoanCashSettlementEdit extends FormRun implements IDialogable
 
         SettlementDate.dateValue(DateTimeUtil::getToday(DateTimeUtil::getUserPreferredTimeZone()));
         RemainingLoanAmount.realValue(remainingPayLoanAmount);
-
     }
 
 ]]></Source>
@@ -123,35 +123,7 @@ public class SPYPayLoanCashSettlementEdit extends FormRun implements IDialogable
 			</Method>
 		</Methods>
 		<DataSources xmlns="" />
-		<DataControls xmlns="">
-			<Control>
-				<Name>OK</Name>
-				<Type>CommandButton</Type>
-				<Methods>
-					<Method>
-						<Name>clicked</Name>
-						<Source><![CDATA[
-        /// <summary>
-        ///
-        /// </summary>
-        public void clicked()
-        {
-            boolean ret = false;
-            if(Amount.realValue()<=0)
-            {
-                ret = checkFailed("@SPY1734");
-            }
-            else
-            {
-                super();
-            }
-        }
-
-]]></Source>
-					</Method>
-				</Methods>
-			</Control>
-		</DataControls>
+		<DataControls xmlns="" />
 		<Members xmlns="" />
 	</SourceCode>
 	<DataSources />
@@ -174,6 +146,7 @@ public class SPYPayLoanCashSettlementEdit extends FormRun implements IDialogable
 					<AxFormControl xmlns=""
 						i:type="AxFormRealControl">
 						<Name>RemainingLoanAmount</Name>
+						<AllowEdit>No</AllowEdit>
 						<AutoDeclaration>Yes</AutoDeclaration>
 						<Type>Real</Type>
 						<FormControlExtension
@@ -196,6 +169,15 @@ public class SPYPayLoanCashSettlementEdit extends FormRun implements IDialogable
 				<FormControlExtension
 					i:nil="true" />
 				<Controls>
+					<AxFormControl xmlns=""
+						i:type="AxFormCheckBoxControl">
+						<Name>SettledOnlyInSettlementPeriod</Name>
+						<AutoDeclaration>Yes</AutoDeclaration>
+						<Type>CheckBox</Type>
+						<FormControlExtension
+							i:nil="true" />
+						<Label>@SPY:SettledOnlyInSettlementPeriod</Label>
+					</AxFormControl>
 					<AxFormControl xmlns=""
 						i:type="AxFormDateControl">
 						<Name>SettlementDate</Name>
@@ -223,6 +205,7 @@ public class SPYPayLoanCashSettlementEdit extends FormRun implements IDialogable
 						<Type>Real</Type>
 						<FormControlExtension
 							i:nil="true" />
+						<AllowNegative>No</AllowNegative>
 						<Label>Amount</Label>
 					</AxFormControl>
 					<AxFormControl xmlns=""

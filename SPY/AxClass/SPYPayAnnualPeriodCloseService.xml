@@ -55,7 +55,7 @@ class SPYPayAnnualPeriodCloseService extends SPYPayPeriodCloseService
             joiningMonth = mthOfYr(workerJoiningDate);
             anniversaryJoiningDate = mkDate(joiningDay,joiningMonth,year(periodEnd));
             periodStart = mkDate(joiningDay,joiningMonth,year(periodStart) - 1);
-            periodEnd = anniversaryJoiningDate;
+            periodEnd = anniversaryJoiningDate - 1;
             nextPeriodStart = periodEnd + 1;
         }
     }
@@ -109,8 +109,10 @@ class SPYPayAnnualPeriodCloseService extends SPYPayPeriodCloseService
         absenceLedger.AbsenceDate = periodEnd;
         if(workerPositionAbsenceConfigLine.LedgerTransDateCalcFromPeriodClose == SPYAbsenceLedgerTransDateCalcFromPeriodClose::AbsenceDate)
             absenceLedger.TransDate = periodEnd;
-        else
+        else if(workerPositionAbsenceConfigLine.LedgerTransDateCalcFromPeriodClose == SPYAbsenceLedgerTransDateCalcFromPeriodClose::YearStartDate)
             absenceLedger.TransDate = nextPeriodStart;
+        else if(workerPositionAbsenceConfigLine.LedgerTransDateCalcFromPeriodClose == SPYAbsenceLedgerTransDateCalcFromPeriodClose::YearEndDate)
+            absenceLedger.TransDate = periodEnd;
         absenceLedger.AbsenceDays = - absenceLedgerTab.AbsenceDays;
         absenceLedger.AbsenceHours = - absenceLedgerTab.AbsenceHours;
         absenceLedger.EntryType = SPYAbsenceLedgerEntryType::ClosingEntry;
@@ -123,7 +125,12 @@ class SPYPayAnnualPeriodCloseService extends SPYPayPeriodCloseService
         absenceLedger.Worker = hcmWorker.RecId;
         absenceLedger.HRMAbsenceCodeId = workerPositionAbsenceConfigLine.HRMAbsenceCodeId;
         absenceLedger.AbsenceDate = nextPeriodStart;
-        absenceLedger.TransDate = nextPeriodStart;
+        if(workerPositionAbsenceConfigLine.LedgerTransDateCalcFromPeriodClose == SPYAbsenceLedgerTransDateCalcFromPeriodClose::AbsenceDate)
+            absenceLedger.TransDate = nextPeriodStart;
+        else if(workerPositionAbsenceConfigLine.LedgerTransDateCalcFromPeriodClose == SPYAbsenceLedgerTransDateCalcFromPeriodClose::YearStartDate)
+            absenceLedger.TransDate = nextPeriodStart;
+        else if(workerPositionAbsenceConfigLine.LedgerTransDateCalcFromPeriodClose == SPYAbsenceLedgerTransDateCalcFromPeriodClose::YearEndDate)
+            absenceLedger.TransDate = periodEnd;
         absenceLedger.AbsenceDays = openingEntryQty;
         absenceLedger.AbsenceHours = openingEntryQty * workCalendarTable.StandardWorkDayHours;
         absenceLedger.EntryType = SPYAbsenceLedgerEntryType::OpeningEntry;

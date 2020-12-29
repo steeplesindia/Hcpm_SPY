@@ -380,6 +380,15 @@ public class SPYPayrollLedger extends common
 				</AxTableFieldGroupField>
 			</Fields>
 		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>PayLoan</Name>
+			<Label>@SPY335</Label>
+			<Fields>
+				<AxTableFieldGroupField>
+					<DataField>PayLoanLedger</DataField>
+				</AxTableFieldGroupField>
+			</Fields>
+		</AxTableFieldGroup>
 	</FieldGroups>
 	<Fields>
 		<AxTableField xmlns=""
@@ -537,6 +546,11 @@ public class SPYPayrollLedger extends common
 			<Name>IsDisbursed</Name>
 			<Label>Disbursed</Label>
 			<EnumType>NoYes</EnumType>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldInt64">
+			<Name>PayLoanLedger</Name>
+			<ExtendedDataType>SPYPayLoanLedgerRecId</ExtendedDataType>
 		</AxTableField>
 	</Fields>
 	<FullTextIndexes />
@@ -827,6 +841,24 @@ public class SPYPayrollLedger extends common
 					i:type="AxTableRelationConstraintField">
 					<Name>ExpressionTrace</Name>
 					<Field>ExpressionTrace</Field>
+					<RelatedField>RecId</RelatedField>
+				</AxTableRelationConstraint>
+			</Constraints>
+			<Index>RecId</Index>
+		</AxTableRelation>
+		<AxTableRelation xmlns=""
+			i:type="AxTableRelationForeignKey">
+			<Name>SPYPayLoanLedger</Name>
+			<Cardinality>ZeroOne</Cardinality>
+			<OnDelete>Restricted</OnDelete>
+			<RelatedTable>SPYPayLoanLedger</RelatedTable>
+			<RelatedTableCardinality>ExactlyOne</RelatedTableCardinality>
+			<RelationshipType>Association</RelationshipType>
+			<Constraints>
+				<AxTableRelationConstraint xmlns=""
+					i:type="AxTableRelationConstraintField">
+					<Name>PayLoanLedger</Name>
+					<Field>PayLoanLedger</Field>
 					<RelatedField>RecId</RelatedField>
 				</AxTableRelationConstraint>
 			</Constraints>

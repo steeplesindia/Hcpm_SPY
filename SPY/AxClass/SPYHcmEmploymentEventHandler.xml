@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>SPYHcmEmploymentEventHandler</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+class SPYHcmEmploymentEventHandler
+{
+    
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>HcmEmployment_onModifiedField</Name>
+				<Source><![CDATA[
+    [DataEventHandler(tableStr(HcmEmployment), DataEventType::ModifiedField)]
+    public static void HcmEmployment_onModifiedField(Common sender, DataEventArgs e)
+    {
+        ModifyFieldEventArgs    event = e as DataEventArgs;
+        FieldId fieldId = event.parmFieldId();
+
+        switch(fieldId)
+        {
+            case fieldNum(HcmEmployment, ValidFrom) :
+                HcmEmployment   hcmEmployment = sender as HcmEmployment;
+                utcdatetime offestValidFrom = DateTimeUtil::applyTimeZoneOffset(hcmEmployment.ValidFrom, DateTimeUtil::getUserPreferredTimeZone());
+                hcmEmployment.SPYValidFromMonthsOfYear = mthOfYr(DateTimeUtil::date(offestValidFrom));
+                break;
+        }       
+        
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>
