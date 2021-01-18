@@ -263,7 +263,8 @@ class SPYPayrollFinalizeProcessService extends SPYPayrollFinalize
             from benefitLedger group by Benefit
             where benefitLedger.Worker == hcmWorker.RecId &&
                     benefitLedger.PayrollPeriodLine == _payrollPeriodLine &&
-                    benefitLedger.SourceDocument != tableNum(SPYAbsenceLedger) //entries coming from absence ledger in timesheet process should be ignored
+                    benefitLedger.SourceDocument != tableNum(SPYAbsenceLedger) && //entries coming from absence ledger in timesheet process should be ignored
+                    benefitLedger.SourceDocument != tableNum(SPYBenefitJournalTable) //entries coming from benefit journal should be ignored as benefit journal posted to benefit ledger and absence ledger both
             join absenceCode group by hrmAbsenceCodeId
             where absenceCode.SPYBenefit == benefitLedger.Benefit
         {
@@ -273,7 +274,8 @@ class SPYPayrollFinalizeProcessService extends SPYPayrollFinalize
                 where absenceLedger.Worker == hcmWorker.RecId &&
                 absenceLedger.HRMAbsenceCodeId == absenceCode.hrmAbsenceCodeId &&
                 absenceLedger.TransDate >= timesheetStartDate &&
-                absenceLedger.TransDate <= timesheetEndDate;
+                absenceLedger.TransDate <= timesheetEndDate &&
+                absenceLedger.SourceDocument != tableNum(SPYBenefitJournalTable);
 
             if(absenceLedger.AbsenceDays != benefitLedger.Quantity && absenceCode.hrmAbsenceCodeId)
             {

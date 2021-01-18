@@ -9,17 +9,13 @@
 [Form]
 public class SPYPayElementTable extends FormRun implements IDateEffectivenessPaneCaller
 {
-    QueryBuildRange                         rangePayElementLegalEntity;
-    QueryBuildRange                         rangePayrollLegalEntity;
-    QueryBuildRange                         rangeBenefitLegalEntity;
-
-
-    RefRecId                                selectedDataAreaRecId;
-    SelectableDataArea                      selectedLegalEntityDataAreaId;
-
-    DateEffectivenessPaneController         dateEffectivenessPaneController;
+    QueryBuildRange     rangePayElementLegalEntity;
+    QueryBuildRange     rangePayrollLegalEntity;
+    QueryBuildRange     rangeBenefitLegalEntity;
+    RefRecId        selectedDataAreaRecId;
+    SelectableDataArea      selectedLegalEntityDataAreaId;
+    DateEffectivenessPaneController dateEffectivenessPaneController;
     LedgerDimensionDefaultAccountController earningCodeAccountingRuleLedgerDimensionController;
-
     boolean                                 isRecordSaved;
 
 }

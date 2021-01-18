@@ -11,6 +11,8 @@ public class SPYPayLoan extends FormRun
 {
     NumberSeqFormHandler            numberSeqFormHandler;
     SPYPayLoanTable                 payLoanCaller;
+    boolean     myLoan;
+
 }
 ]]></Source>
 			</Method>
@@ -35,10 +37,9 @@ public class SPYPayLoan extends FormRun
     {
         if(element.args().record() is SPYPayLoanTable)
             payLoanCaller = element.args().record() as SPYPayLoanTable;
-    
+        if(element.args().menuItemName() == menuItemDisplayStr(SPYPayLoanListPage_MyLoan))
+            myLoan = true;
         super();
-    
-    
         element.setEnable();
     }
 
@@ -116,6 +117,7 @@ public class SPYPayLoan extends FormRun
     
         SPYPayLoanTable_ds.allowEdit(checkEditable);
         SPYPayLoanTable_ds.allowDelete(SPYPayLoanTable.WorkflowStatus == SPYWorkflowStatus::Created);
+        SPYPayLoanTable_ds.object(fieldNum(SPYPayLoanTable, Worker)).allowEdit(checkEditable && !myLoan);
         SPYPayLoanLine_ds.allowCreate(checkEditable);
         SPYPayLoanLine_ds.allowEdit(checkEditable);
         SPYPayLoanLine_ds.allowDelete(checkEditable);

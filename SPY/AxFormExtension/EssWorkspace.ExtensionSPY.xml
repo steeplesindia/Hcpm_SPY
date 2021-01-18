@@ -34,6 +34,16 @@
 					</AxFormControl>
 					<AxFormControl xmlns=""
 						i:type="AxFormMenuFunctionButtonControl">
+						<Name>SPYPayLoanListPage_MyLoan</Name>
+						<Type>MenuFunctionButton</Type>
+						<FormControlExtension
+							i:nil="true" />
+						<ButtonDisplay>TextOnly</ButtonDisplay>
+						<MenuItemName>SPYPayLoanListPage_MyLoan</MenuItemName>
+						<Style>Link</Style>
+					</AxFormControl>
+					<AxFormControl xmlns=""
+						i:type="AxFormMenuFunctionButtonControl">
 						<Name>SPYPayslip</Name>
 						<Type>MenuFunctionButton</Type>
 						<FormControlExtension
@@ -51,6 +61,7 @@
 			<PositionType>Begin</PositionType>
 		</AxFormExtensionControl>
 	</Controls>
+	<DataSourceModifications />
 	<DataSources />
 	<Parts />
 	<PropertyModifications />

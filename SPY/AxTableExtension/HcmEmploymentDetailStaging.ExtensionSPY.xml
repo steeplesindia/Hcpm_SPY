@@ -114,9 +114,29 @@
 			<Name>SPYTimesheetProcessSource</Name>
 			<EnumType>SPYTimesheetProcessSource</EnumType>
 		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldInt64">
+			<Name>SPYBenefitPolicy</Name>
+			<ExtendedDataType>SPYBenefitPolicyRecId</ExtendedDataType>
+		</AxTableField>
 	</Fields>
 	<Indexes />
 	<Mappings />
 	<PropertyModifications />
-	<Relations />
+	<Relations>
+		<AxTableRelation xmlns=""
+			i:type="AxTableRelationForeignKey">
+			<Name>SPYBenefitPolicyTable</Name>
+			<RelatedTable>SPYBenefitPolicyTable</RelatedTable>
+			<Constraints>
+				<AxTableRelationConstraint xmlns=""
+					i:type="AxTableRelationConstraintField">
+					<Name>SPYBenefitPolicy</Name>
+					<Field>SPYBenefitPolicy</Field>
+					<RelatedField>RecId</RelatedField>
+				</AxTableRelationConstraint>
+			</Constraints>
+			<Index>RecId</Index>
+		</AxTableRelation>
+	</Relations>
 </AxTableExtension>

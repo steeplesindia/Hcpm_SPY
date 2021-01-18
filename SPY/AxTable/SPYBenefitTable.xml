@@ -115,10 +115,12 @@ public class SPYBenefitTable extends SPYPayElementTable
         roundedQty = round(benefitLedger.Quantity,0.01);
     
         if(roundedQty)
-            balanceAmtPerQty = (benefitLedger.AccountingCurrencyAmount+benefitLedger.AccountingCurPnLAmount) / benefitLedger.Quantity;
+            balanceAmtPerQty = (benefitLedger.AccountingCurrencyAmount+benefitLedger.AccountingCurPnLAmount) / roundedQty;
+        else if(_encashmentQty)
+            balanceAmtPerQty = (benefitLedger.AccountingCurrencyAmount+benefitLedger.AccountingCurPnLAmount) / _encashmentQty;//If balance qty is zero
         else
-            balanceAmtPerQty = (benefitLedger.AccountingCurrencyAmount+benefitLedger.AccountingCurPnLAmount) / _encashmentQty;  //If balance qty is zero
-    
+            balanceAmtPerQty = (benefitLedger.AccountingCurrencyAmount+benefitLedger.AccountingCurPnLAmount);
+
         return abs(balanceAmtPerQty);
     }
 

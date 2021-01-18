@@ -48,11 +48,28 @@ final class SPYExpressionSystemFunctionMethod_Extension
     public int PERIOD_WORKDAYS()
     {
         CalendarId workerCalendarId = expressionContext.workerCalendarId();
-        FromDate periodFromDate = expressionContext.periodFromDate();
-        ToDate periodToDate = expressionContext.periodToDate();
+        FromDate periodFromDate;
+        ToDate periodToDate;
         SPYExpressionFunctionParameter expressionFunctionParameter1 = expressionContext.expressionFunctionParameter1();  //Include holiday in working day
+        SPYExpressionFunctionParameter expressionFunctionParameter2 = expressionContext.expressionFunctionParameter2();  //Payroll period or Timesheet period or Calc period
         WorkCalendarDate    workCalendarDate;
         int     noOfDays;
+
+        if(expressionFunctionParameter2 == "PayrollPeriod")
+        {
+            periodFromDate = expressionContext.PeriodFromDate();
+            periodToDate = expressionContext.PeriodToDate();
+        }
+        else if(expressionFunctionParameter2 == "TimesheetPeriod")
+        {
+            periodFromDate = expressionContext.timesheetFromDate();
+            periodToDate = expressionContext.timesheetToDate();
+        }
+        else if(expressionFunctionParameter2 == "CalcPeriod")
+        {
+            periodFromDate = expressionContext.calcFromDate();
+            periodToDate = expressionContext.calcToDate();
+        }
 
         if(expressionFunctionParameter1 == "True")
         {
@@ -1033,8 +1050,8 @@ final class SPYExpressionSystemFunctionMethod_Extension
         HcmWorkerRecId worker = expressionContext.worker();
         FromDate fromDate;
         ToDate toDate;
-        SPYExpressionFunctionParameter expressionFunctionParameter1 = expressionContext.expressionFunctionParameter1();
-        SPYExpressionFunctionParameter expressionFunctionParameter2 = expressionContext.expressionFunctionParameter2();
+        SPYExpressionFunctionParameter expressionFunctionParameter1 = expressionContext.expressionFunctionParameter1(); //Absence code
+        SPYExpressionFunctionParameter expressionFunctionParameter2 = expressionContext.expressionFunctionParameter2(); //Payrollperiod or Timesheet period
         SPYAbsenceLedger    absenceLedger;
 
         if(expressionFunctionParameter2 == "PayrollPeriod")
@@ -1070,13 +1087,22 @@ final class SPYExpressionSystemFunctionMethod_Extension
     {
         HcmWorkerRecId worker = expressionContext.worker();
         RecId payrollPeriodLine = expressionContext.payrollPeriodLine();
+        LegalEntityRecId    legalEntity = expressionContext.legalEntity();
         FromDate fromDate;
         FromDate periodFromDate = expressionContext.periodFromDate();
         SPYExpressionFunctionParameter expressionFunctionParameter1 = expressionContext.expressionFunctionParameter1();
         SPYExpressionFunctionParameter expressionFunctionParameter2 = expressionContext.expressionFunctionParameter2();
+        SPYExpressionFunctionParameter expressionFunctionParameter3 = expressionContext.expressionFunctionParameter3();
         SPYAbsenceLedger    absenceLedger;
         SPYPayrollPeriodLine        payrollPeriodLineTab;
-        date   prevYearDec = mkDate(1,12,Year(periodFromDate) - 1), prevYearDecTimesheetDate;
+        date   prevYearDec, prevYearDecTimesheetDate;
+
+        if(expressionFunctionParameter3 == "YearStartDate")
+            prevYearDec = mkDate(1,12,Year(periodFromDate) - 1);
+        else if(expressionFunctionParameter3 == "JoiningDate")
+        {            
+            prevYearDec = dateNull(); //For joining date consider entire transactions
+        }
 
         select firstonly payrollPeriodLineTab
             where payrollPeriodLineTab.PayrollPeriod == SPYPayrollPeriodLine::find(payrollPeriodLine).PayrollPeriod &&
@@ -2881,14 +2907,32 @@ final class SPYExpressionSystemFunctionMethod_Extension
     {
         HcmWorkerRecId worker = expressionContext.worker();
         LegalEntityRecId legalEntity = expressionContext.legalEntity();
-        FromDate calcFromDate = expressionContext.calcFromDate();
-        ToDate calcToDate = expressionContext.calcToDate();
-        date  transDate = calcFromDate;
+        FromDate calcFromDate;
+        ToDate calcToDate;
+        date  transDate;
         SPYExpressionFunctionParameter expressionFunctionParameter1 = expressionContext.expressionFunctionParameter1();  //Include holiday in working day
+        SPYExpressionFunctionParameter expressionFunctionParameter2 = expressionContext.expressionFunctionParameter2();  //Payroll period or Timesheet period or Calc period
         boolean     isOffDay;
         int workingDay;      
         SPYWorkingProfile   workingProfile = new SPYWorkingProfile(worker, legalEntity);
         boolean isHoliday;
+
+        if(expressionFunctionParameter2 == "PayrollPeriod")
+        {
+            calcFromDate = expressionContext.PeriodFromDate();
+            calcToDate = expressionContext.PeriodToDate();
+        }
+        else if(expressionFunctionParameter2 == "TimesheetPeriod")
+        {
+            calcFromDate = expressionContext.timesheetFromDate();
+            calcToDate = expressionContext.timesheetToDate();
+        }
+        else if(expressionFunctionParameter2 == "CalcPeriod")
+        {
+            calcFromDate = expressionContext.calcFromDate();
+            calcToDate = expressionContext.calcToDate();
+        }
+        transDate = calcFromDate;
         while(transDate <= calcToDate)
         {
             if(expressionFunctionParameter1 == "True")

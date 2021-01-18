@@ -28,21 +28,17 @@ public class SPYPayLoanLedger extends common
     {
         SPYPayLedgerSourceLine      payLedgerSourceLine;
         SPYPayrollLedger            payrollLedger;
-        SPYPayrollJournalLine       payrollJournalLine;
-        SPYPayrollJournalTable      payrollJournalTable;
 
         if(this.PayLoanTransType == SPYPayLoanTransType::CashSettlement)
         {
             return abs(this.TransactionCurrencyAmount);
         }
 
-        select sum(TransactionCurrencyAmount) from payrollLedger join payLedgerSourceLine join payrollJournalLine join payrollJournalTable where
+        select sum(TransactionCurrencyAmount) from payrollLedger join payLedgerSourceLine where
         payLedgerSourceLine.TableReference == tableNum(SPYPayLoanLedger) &&
         payLedgerSourceLine.RecordReference == this.RecId &&
         payLedgerSourceLine.PayLedgerSource == payrollLedger.PayLedgerSource &&
-        payrollLedger.PayrollJournalLine == payrollJournalLine.RecId &&
-        payrollJournalTable.RecId == payrollJournalLine.PayrollJournal &&
-        payrollJournalTable.Posted == NoYes::Yes;
+        payrollLedger.IsFinalised == true;
 
         return abs(payrollLedger.TransactionCurrencyAmount);
     }

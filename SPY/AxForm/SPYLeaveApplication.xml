@@ -9,7 +9,9 @@
 [Form]
 public class SPYLeaveApplication extends FormRun
 {
-    NumberSeqFormHandler                numberSeqFormHandler;
+    NumberSeqFormHandler    numberSeqFormHandler;
+    boolean     myAppl;
+
 }
 ]]></Source>
 			</Method>
@@ -75,7 +77,6 @@ public class SPYLeaveApplication extends FormRun
     void setEnable()
     {
         WorkflowWorkItemTable       workflowWorkItemTable;
-    
         select firstonly RecId from workflowWorkItemTable
             where workflowWorkItemTable.RefTableId == tableNum(SPYLeaveApplicationTable) &&
                   workflowWorkItemTable.RefRecId == SPYLeaveApplicationTable.RecId &&
@@ -140,10 +141,9 @@ public class SPYLeaveApplication extends FormRun
         SPYLeaveApplicationLine_ds.object(fieldNum(SPYLeaveApplicationLine,ActualEndDate)).allowEdit(isEditableActualDate);
         SPYLeaveApplicationLine_ds.object(fieldNum(SPYLeaveApplicationLine,Hours)).allowEdit(isEditable &&
                                                                                            (SPYLeaveApplicationLine.ValidFrom == SPYLeaveApplicationLine.ValidTo));
-        SPYLeaveApplicationTable_ds.object(fieldNum(SPYLeaveApplicationTable,Worker)).allowEdit(isEditable);
+        SPYLeaveApplicationTable_ds.object(fieldNum(SPYLeaveApplicationTable,Worker)).allowEdit(isEditable && !myAppl);
         SPYLeaveResumptionService.enabled(SPYLeaveApplicationTable.WorkflowStatus == SPYWorkflowStatus::Approved &&
-                                          !SPYLeaveApplicationTable.ServiceResumed);
-    
+                                          !SPYLeaveApplicationTable.ServiceResumed);    
     }
 
 ]]></Source>
@@ -155,6 +155,18 @@ public class SPYLeaveApplication extends FormRun
     {
         HeaderTitle.text(strFmt('%1 : %2', SPYLeaveApplicationTable.LeaveApplicationCode,
                                 HcmWorker::find(SPYLeaveApplicationTable.Worker).name()));
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>init</Name>
+				<Source><![CDATA[
+    public void init()
+    {
+        super();
+        if(element.args().menuItemName() == menuItemDisplayStr(SPYLeaveApplListPage_MyApplication))
+            myAppl = true;
     }
 
 ]]></Source>

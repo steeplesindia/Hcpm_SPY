@@ -408,6 +408,9 @@ public class SPYPayrollParameters extends common
 				<AxTableFieldGroupField>
 					<DataField>NullIncludedLedger</DataField>
 				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>NoOfDecimalInLedger</DataField>
+				</AxTableFieldGroupField>
 			</Fields>
 		</AxTableFieldGroup>
 		<AxTableFieldGroup>
@@ -688,6 +691,11 @@ public class SPYPayrollParameters extends common
 			<Name>AutomateLoanProcessInPayroll</Name>
 			<Label>@SPY:AutomateLoanProcessInPayroll</Label>
 			<EnumType>NoYes</EnumType>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldInt">
+			<Name>NoOfDecimalInLedger</Name>
+			<Label>@SPY:NoOfDecimalInLedger</Label>
 		</AxTableField>
 	</Fields>
 	<FullTextIndexes />

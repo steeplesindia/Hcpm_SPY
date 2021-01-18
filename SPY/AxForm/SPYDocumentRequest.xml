@@ -11,6 +11,7 @@ public class SPYDocumentRequest extends FormRun
 {
     SPYDocumentRequestTable                 documentRequestTableCaller;
     NumberSeqFormHandler                    numberSeqFormHandler;
+    boolean     myRequest;
 
 }
 ]]></Source>
@@ -35,10 +36,10 @@ public class SPYDocumentRequest extends FormRun
     public void init()
     {
         if(element.args().record() is SPYDocumentRequestTable)
-            documentRequestTableCaller = element.args().record() as SPYDocumentRequestTable;
-    
-        super();
-    
+            documentRequestTableCaller = element.args().record() as SPYDocumentRequestTable;    
+        if(element.args().menuItemName() == menuItemDisplayStr(SPYDocumentRequestListPage_MyRequest))
+            myRequest = true;
+        super();    
         element.setEnable();
     }
 
@@ -85,6 +86,7 @@ public class SPYDocumentRequest extends FormRun
 
         SPYDocumentRequestTable_ds.allowEdit(checkEditable);
         SPYDocumentRequestTable_ds.allowDelete(SPYDocumentRequestTable.WorkflowStatus == SPYWorkflowStatus::Created);
+        SPYDocumentRequestTable_ds.object(fieldNum(SPYDocumentRequestTable, Worker)).allowEdit(checkEditable && !myRequest);
         //SPYDocumentRequestTable_ds.allowCreate(checkEditable);
         SPYDocumentRequestLine_ds.allowEdit(checkEditable);
         SPYDocumentRequestLine_ds.allowDelete(checkEditable);

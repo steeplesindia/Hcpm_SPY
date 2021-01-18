@@ -4104,3 +4104,5 @@ ValidFromMonth=Valid from month
  ;New Comment
 HCPMWorkerDetails=HCPM worker details
  ;New Comment
+NoOfDecimalInLedger=No of decimal in ledger
+ ;New Comment

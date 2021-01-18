@@ -100,7 +100,8 @@ public class SPYSalaryRegisterDP extends SrsReportDataProviderPreProcess
     public void insertIntoSalaryRegisterDetailsTmp(boolean benefit = false)
     {
         SPYPayElementTable      payElementTable;
-        HcmEmployment           hcmEmployment = HcmEmployment::findByWorkerLegalEntity(hcmWorker.RecId, companyInfo::current());
+        TransDate   startDate = dateNull(), endDate = dateMax();
+        HcmEmployment           hcmEmployment = HcmEmployment::findByWorkerLegalEntity(hcmWorker.RecId, companyInfo::current(), payrollPeriodFrom.PeriodStartDate, payrollPeriodTo.PeriodEndDate);
         date                    joinDate =  DateTimeUtil::date(DateTimeUtil::applyTimeZoneOffset(hcmEmployment.ValidFrom, DateTimeUtil::getUserPreferredTimeZone()));
   
         salaryRegisterDetailsTmp.clear();

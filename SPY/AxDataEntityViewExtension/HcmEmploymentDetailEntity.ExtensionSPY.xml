@@ -153,6 +153,12 @@
 			<DataField>SPYTimesheetProcessSource</DataField>
 			<DataSource>HcmEmploymentDetail</DataSource>
 		</AxDataEntityViewField>
+		<AxDataEntityViewField xmlns=""
+			i:type="AxDataEntityViewMappedField">
+			<Name>SPYBenefitPolicy</Name>
+			<DataField>SPYBenefitPolicy</DataField>
+			<DataSource>HcmEmploymentDetail</DataSource>
+		</AxDataEntityViewField>
 	</Fields>
 	<Mappings />
 	<PropertyModifications />

@@ -51,7 +51,15 @@ public class SPYPayrollLedger extends common
         {
             ret = checkFailed( strFmt( "@SPY1223", payrollPeriodLine.PeriodStartDate, payrollPeriodLine.PeriodEndDate) );
         }
-    
+        /*
+        if(ret)
+        {
+            real decimal = SPYPayrollParameters::find().NoOfDecimalInLedger;
+            decimal = power(10, -decimal);
+            this.AccountingCurrencyAmount =  round(this.AccountingCurrencyAmount, decimal);
+            this.TransactionCurrencyAmount =  round(this.TransactionCurrencyAmount, decimal);
+        }
+        */
         return ret;
     }
 

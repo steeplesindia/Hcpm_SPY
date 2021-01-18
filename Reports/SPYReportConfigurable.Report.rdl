@@ -121,7 +121,7 @@
         <ConnectString />
         <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
-      <rd:DataSourceID>5b86b23c-69c8-4ec4-a3f8-ca4050d15ea8</rd:DataSourceID>
+      <rd:DataSourceID>914abe0d-8c83-431a-936f-e20555db9bff</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>

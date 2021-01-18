@@ -654,38 +654,58 @@ public class SPYLeaveApplicationTable extends common
         SPYLeaveApplicationTable   leaveApplicationTableUpdate;
         SPYLeaveApplicationLine     leaveApplicationLineUpdate;
         date    validFrom = dateNull(), validTo = dateMax();
-    
-        ttsBegin;
-        leaveApplicationTableUpdate = SPYLeaveApplicationTable::find(_leaveApplication, true);
-        if(leaveApplicationTableUpdate)
+        #OCCRetryCount
+
+        try
         {
-            leaveApplicationTableUpdate.WorkflowStatus = _status;
-            if(leaveApplicationTableUpdate.WorkflowStatus == SPYWorkflowStatus::Approved && leaveApplicationTableUpdate.ResumptionInitiated)
-                leaveApplicationTableUpdate.ServiceResumed = true;
-            if(leaveApplicationTableUpdate.ResumptionInitiated == false)
+            ttsBegin;
+            leaveApplicationTableUpdate = SPYLeaveApplicationTable::find(_leaveApplication, true);
+            if(leaveApplicationTableUpdate)
             {
-                leaveApplicationTableUpdate.ApprovalStatus = _status;
+                leaveApplicationTableUpdate.WorkflowStatus = _status;
+                if(leaveApplicationTableUpdate.WorkflowStatus == SPYWorkflowStatus::Approved && leaveApplicationTableUpdate.ResumptionInitiated)
+                    leaveApplicationTableUpdate.ServiceResumed = true;
+                if(leaveApplicationTableUpdate.ResumptionInitiated == false)
+                {
+                    leaveApplicationTableUpdate.ApprovalStatus = _status;
+                }
+                else
+                {
+                    leaveApplicationTableUpdate.ResumptionStatus = _status;
+                }
+                leaveApplicationTableUpdate.update();
+                if(_status == SPYWorkflowStatus::Cancelled)
+                    leaveApplicationTableUpdate.updateAbsenceLedger(true);
+                if(_status == SPYWorkflowStatus::Submitted)
+                {
+                    while select forupdate validtimestate(validFrom, validTo) leaveApplicationLineUpdate
+                        where leaveApplicationLineUpdate.LeaveApplication == _leaveApplication
+                    {
+                        leaveApplicationLineUpdate.validTimeStateUpdateMode(ValidTimeStateUpdate::Correction);
+                        leaveApplicationLineUpdate.update();
+                    }
+                }            
+            }
+            ttsCommit;
+        }
+        catch(Exception::UpdateConflict)
+        {
+            if (appl.ttsLevel() == 0)
+            {
+                if (xSession::currentRetryCount() >= #RetryNum)
+                {
+                    throw Exception::UpdateConflictNotRecovered;
+                }
+                else
+                {
+                    retry;
+                }
             }
             else
             {
-                leaveApplicationTableUpdate.ResumptionStatus = _status;
+                throw Exception::UpdateConflict;
             }
-            leaveApplicationTableUpdate.update();
-            if(_status == SPYWorkflowStatus::Cancelled)
-                leaveApplicationTableUpdate.updateAbsenceLedger(true);
-            if(_status == SPYWorkflowStatus::Submitted)
-            {
-                while select forupdate validtimestate(validFrom, validTo) leaveApplicationLineUpdate
-                    where leaveApplicationLineUpdate.LeaveApplication == _leaveApplication
-                {
-                    leaveApplicationLineUpdate.validTimeStateUpdateMode(ValidTimeStateUpdate::Correction);
-                    leaveApplicationLineUpdate.update();
-                }
-            }
-
-            
         }
-        ttsCommit;
     }
 
 ]]></Source>
